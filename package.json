@@ -1,0 +1,93 @@
+{
+  "name": "is-antibot",
+  "description": "Detect Captcha responses",
+  "homepage": "https://github.com/kikobeats/is-antibot",
+  "version": "0.0.0",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://kikobeats.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/is-antibot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kikobeats/is-antibot/issues"
+  },
+  "keywords": [
+    "captcha",
+    "challenge",
+    "cloudflare"
+  ],
+  "dependencies": {
+    "@metascraper/helpers": "~5.49.15",
+    "cheerio": "~1.1.2",
+    "debug-logfmt": "~1.4.7"
+  },
+  "files": [
+    "src"
+  ],
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!test/util.js"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "@ksmithut/prettier-standard": "latest",
+    "ava": "latest",
+    "c8": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
+    "github-generate-release": "latest",
+    "nano-staged": "latest",
+    "simple-git-hooks": "latest",
+    "standard": "latest",
+    "standard-version": "latest"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "contributors": "(npx git-authors-cli && npx finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "coverage": "c8 report --reporter=text-lcov > coverage/lcov.info",
+    "lint": "standard",
+    "postrelease": "npm run release:tags && npm run release:github && npm publish",
+    "pretest": "npm run lint",
+    "release": "standard-version -a",
+    "release:github": "github-generate-release",
+    "release:tags": "git push --follow-tags origin HEAD:master",
+    "test": "c8 ava"
+  },
+  "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "body-max-line-length": [
+        0
+      ]
+    }
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "nano-staged": {
+    "*.js": [
+      "prettier-standard",
+      "standard --fix"
+    ],
+    "package.json": [
+      "finepack"
+    ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx nano-staged"
+  }
+}
