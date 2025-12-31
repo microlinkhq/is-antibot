@@ -3,7 +3,7 @@
 const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
-module.exports = ({ url, $, html, headers = {} } = {}) => {
+module.exports = ({ url, htmlDom, html, headers = {} } = {}) => {
   // https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/
   if (headers['cf-mitigated'] === 'challenge') {
     debug({ provider: 'cloudflare' })
@@ -19,8 +19,7 @@ module.exports = ({ url, $, html, headers = {} } = {}) => {
   const { domainWithoutSuffix } = parseUrl(url)
 
   if (domainWithoutSuffix === 'reddit') {
-    $ = $ || require('cheerio').load(html)
-    const condition = $('title').text().includes('Prove your humanity')
+    const condition = htmlDom.text().includes('Prove your humanity')
     if (condition) {
       debug({ provider: 'reddit' })
       return true

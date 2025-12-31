@@ -2,7 +2,7 @@
   "name": "is-antibot",
   "description": "Detect Captcha responses",
   "homepage": "https://github.com/kikobeats/is-antibot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
@@ -22,7 +22,6 @@
   ],
   "dependencies": {
     "@metascraper/helpers": "~5.49.15",
-    "cheerio": "~1.1.2",
     "debug-logfmt": "~1.4.7"
   },
   "files": [
