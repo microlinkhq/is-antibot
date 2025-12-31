@@ -26,7 +26,7 @@ module.exports = ({ url, htmlDom, html, headers = {} } = {}) => {
     }
   }
 
-  debug({ provider: 'unknown', ...parsedUrl })
-
   return false
 }
+
+module.exports.debug = debug
