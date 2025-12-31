@@ -16,15 +16,17 @@ module.exports = ({ url, htmlDom, html, headers = {} } = {}) => {
     return true
   }
 
-  const { domainWithoutSuffix } = parseUrl(url)
+  const parsedUrl = parseUrl(url)
 
-  if (domainWithoutSuffix === 'reddit') {
+  if (parsedUrl.domainWithoutSuffix === 'reddit') {
     const condition = htmlDom.text().includes('Prove your humanity')
     if (condition) {
       debug({ provider: 'reddit' })
       return true
     }
   }
+
+  debug({ provider: 'unknown', ...parsedUrl })
 
   return false
 }
