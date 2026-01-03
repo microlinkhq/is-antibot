@@ -1,5 +1,6 @@
 'use strict'
 
+const { load } = require('cheerio')
 const test = require('ava')
 const path = require('path')
 
@@ -17,40 +18,53 @@ for (const domain of DOMAINS_FIXTURES) {
 test('cloudflare', t => {
   const url = 'https://example.com'
   const headers = { 'cf-mitigated': 'challenge' }
-  const result = isCaptcha({ url, headers, html: '' })
+  const result = isCaptcha({ url, headers, htmlDom: load('') })
   t.true(result)
 })
 
 test('vercel', t => {
   const url = 'https://example.com'
   const headers = { 'x-vercel-mitigated': 'challenge' }
-  const result = isCaptcha({ url, headers, html: '' })
+  const result = isCaptcha({ url, headers, htmlDom: load('') })
   t.true(result)
+})
+
+test('akamai', t => {
+  const url = 'https://example.com'
+  const headers = { 'akamai-cache-status': 'Error from child' }
+  const result = isCaptcha({ url, headers, htmlDom: load('') })
+  t.true(result)
+})
+
+test('akamai (no antibot)', t => {
+  const url = 'https://example.com'
+  const headers = { 'akamai-cache-status': 'HIT' }
+  const result = isCaptcha({ url, headers, htmlDom: load('') })
+  t.false(result)
 })
 
 test('reddit (no antibot)', t => {
   const url = 'https://reddit.com'
   const html = '<title>Reddit: the front page of the internet</title>'
-  const result = isCaptcha({ url, html, headers: {} })
+  const result = isCaptcha({ url, htmlDom: load(html), headers: {} })
   t.false(result)
 })
 
 test('general (no antibot)', t => {
   const url = 'https://example.com'
-  const result = isCaptcha({ url, headers: {}, html: '' })
+  const result = isCaptcha({ url, headers: {}, htmlDom: load('') })
   t.false(result)
 })
 
 test('no headers provided', t => {
   const url = 'https://example.com'
-  const result = isCaptcha({ url, html: '' })
+  const result = isCaptcha({ url, htmlDom: load('') })
   t.false(result)
 })
 
 test('provide cheerio instance', t => {
   const url = 'https://reddit.com'
   const html = '<title>Prove your humanity</title>'
-  const $ = require('cheerio').load(html)
-  const result = isCaptcha({ url, $ })
+  const result = isCaptcha({ url, htmlDom: load(html) })
   t.true(result)
 })

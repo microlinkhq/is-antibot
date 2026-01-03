@@ -3,7 +3,7 @@
 const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
-module.exports = ({ url, htmlDom, html, headers = {} } = {}) => {
+module.exports = ({ url, htmlDom, headers = {} } = {}) => {
   // https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/
   if (headers['cf-mitigated'] === 'challenge') {
     debug({ provider: 'cloudflare' })
@@ -13,6 +13,12 @@ module.exports = ({ url, htmlDom, html, headers = {} } = {}) => {
   // https://github.com/glizzykingdreko/Vercel-Attack-Mode-Solver
   if (headers['x-vercel-mitigated'] === 'challenge') {
     debug({ provider: 'vercel' })
+    return true
+  }
+
+  // https://techdocs.akamai.com/property-mgr/docs/return-cache-status
+  if (headers['akamai-cache-status']?.startsWith('Error')) {
+    debug({ provider: 'akamai' })
     return true
   }
 

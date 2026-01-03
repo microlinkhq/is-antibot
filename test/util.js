@@ -1,7 +1,8 @@
 'use strict'
 
-const { readFile } = require('fs/promises')
 const { statSync, readdirSync } = require('fs')
+const { readFile } = require('fs/promises')
+const { load } = require('cheerio')
 const path = require('path')
 
 const DOMAINS_PATH = path.join(__dirname, '../domains')
@@ -18,7 +19,7 @@ const loadHAR = async filepath => {
       return acc
     }, {}),
     statusCode: response.status,
-    html: await readFile(path.join(filepath, 'index.html'), 'utf8')
+    htmlDom: load(await readFile(path.join(filepath, 'index.html'), 'utf8'))
   }
 }
 

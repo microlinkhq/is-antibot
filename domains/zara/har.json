@@ -1,0 +1,120 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "24.11.1"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "https://www.zara.com/es/en/striped-shirt-with-pocket-p02298168.html?v1=500273060",
+        "startedDateTime": "2026-01-03T09:01:11.580Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 95.939
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-01-03T09:01:11.580Z",
+        "time": 95.939,
+        "serverIPAddress": "23.44.201.11",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.zara.com/es/en/striped-shirt-with-pocket-p02298168.html?v1=500273060",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.zara.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/es/en/striped-shirt-with-pocket-p02298168.html?v1=500273060"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "host",
+              "value": "www.zara.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "curl/7.81.0"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "v1",
+              "value": "500273060"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 403,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "mime-version",
+              "value": "1.0"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "content-length",
+              "value": "443"
+            },
+            {
+              "name": "expires",
+              "value": "Sat, 03 Jan 2026 09:01:11 GMT"
+            },
+            {
+              "name": "date",
+              "value": "Sat, 03 Jan 2026 09:01:11 GMT"
+            },
+            {
+              "name": "set-cookie",
+              "value": "ITXSESSIONID=d4a6bc5839e282a947fecee3c1a48ed6; expires=Sat, 03-Jan-2026 09:31:11 GMT; path=/; domain=.zara.com; secure"
+            },
+            {
+              "name": "akamai-cache-status",
+              "value": "Error from child"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 443,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1
+        }
+      }
+    ]
+  }
+}
