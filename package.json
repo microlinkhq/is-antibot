@@ -1,19 +1,19 @@
 {
   "name": "is-antibot",
-  "description": "Detect Captcha responses",
-  "homepage": "https://github.com/kikobeats/is-antibot",
+  "description": "Lightweight, vendor-agnostic library to identify antibot responses.",
+  "homepage": "https://github.com/microlinkhq/is-antibot",
   "version": "0.0.4",
   "author": {
-    "name": "Kiko Beats",
-    "email": "josefrancisco.verdu@gmail.com",
-    "url": "https://kikobeats.com"
+    "name": "Microlink",
+    "email": "hello@microlink.io",
+    "url": "https://microlink.io"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kikobeats/is-antibot.git"
+    "url": "git+https://github.com/microlinkhq/is-antibot.git"
   },
   "bugs": {
-    "url": "https://github.com/kikobeats/is-antibot/issues"
+    "url": "https://github.com/microlinkhq/is-antibot/issues"
   },
   "keywords": [
     "captcha",

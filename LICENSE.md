@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright © 2025 Kiko Beats <josefrancisco.verdu@gmail.com> (kikobeats.com)
+Copyright © 2025 Microlink <hello@microlink.io> (https://microlink.io)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

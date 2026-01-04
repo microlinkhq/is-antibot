@@ -9,8 +9,8 @@ const isAntibot = require('../src')
 
 for (const domain of DOMAINS_FIXTURES) {
   test(path.basename(domain), async t => {
-    const data = await loadHAR(domain)
-    const result = isAntibot(data)
+    const headers = await loadHAR(domain)
+    const result = isAntibot({ headers })
     t.is(result.detected, true)
     t.truthy(result.provider)
   })
