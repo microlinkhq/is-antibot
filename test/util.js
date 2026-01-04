@@ -2,7 +2,6 @@
 
 const { statSync, readdirSync } = require('fs')
 const { readFile } = require('fs/promises')
-const { load } = require('cheerio')
 const path = require('path')
 
 const DOMAINS_PATH = path.join(__dirname, '../domains')
@@ -12,15 +11,10 @@ const loadHAR = async filepath => {
   const json = JSON.parse(har)
   const response = json.log.entries[0].response
 
-  return {
-    url: json.log.entries[0].request.url,
-    headers: response.headers.reduce((acc, header) => {
-      acc[header.name] = header.value
-      return acc
-    }, {}),
-    statusCode: response.status,
-    htmlDom: load(await readFile(path.join(filepath, 'index.html'), 'utf8'))
-  }
+  return response.headers.reduce((acc, header) => {
+    acc[header.name] = header.value
+    return acc
+  }, {})
 }
 
 const DOMAINS_FIXTURES = readdirSync(DOMAINS_PATH)

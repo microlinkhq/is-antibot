@@ -1,55 +1,54 @@
 'use strict'
 
-const { load } = require('cheerio')
 const test = require('ava')
 
 const isAntibot = require('../src')
 
 test('cloudflare', t => {
-  const url = 'https://example.com'
   const headers = { 'cf-mitigated': 'challenge' }
-  const result = isAntibot({ url, headers, htmlDom: load('') })
-  t.true(result)
+  const result = isAntibot(headers)
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudflare')
 })
 
 test('vercel', t => {
-  const url = 'https://example.com'
   const headers = { 'x-vercel-mitigated': 'challenge' }
-  const result = isAntibot({ url, headers, htmlDom: load('') })
-  t.true(result)
+  const result = isAntibot(headers)
+  t.is(result.detected, true)
+  t.is(result.provider, 'vercel')
 })
 
 test('akamai', t => {
-  const url = 'https://example.com'
   const headers = { 'akamai-cache-status': 'Error from child' }
-  const result = isAntibot({ url, headers, htmlDom: load('') })
-  t.true(result)
+  const result = isAntibot(headers)
+  t.is(result.detected, true)
+  t.is(result.provider, 'akamai')
 })
 
 test('akamai (no antibot)', t => {
-  const url = 'https://example.com'
   const headers = { 'akamai-cache-status': 'HIT' }
-  const result = isAntibot({ url, headers, htmlDom: load('') })
-  t.false(result)
+  const result = isAntibot(headers)
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('datadome', t => {
-  const url = 'https://example.com'
   for (const value of ['1', '2']) {
     const headers = { 'x-dd-b': value }
-    const result = isAntibot({ url, headers, htmlDom: load('') })
-    t.true(result, `should detect datadome for x-dd-b=${value}`)
+    const result = isAntibot(headers)
+    t.is(result.detected, true, `should detect datadome for x-dd-b=${value}`)
+    t.is(result.provider, 'datadome')
   }
 })
 
 test('general (no antibot)', t => {
-  const url = 'https://example.com'
-  const result = isAntibot({ url, headers: {}, htmlDom: load('') })
-  t.false(result)
+  const result = isAntibot({})
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('no headers provided', t => {
-  const url = 'https://example.com'
-  const result = isAntibot({ url, htmlDom: load('') })
-  t.false(result)
+  const result = isAntibot()
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
