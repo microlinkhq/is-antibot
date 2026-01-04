@@ -1,11 +1,14 @@
 {
   "name": "is-antibot",
-  "description": "Lightweight, vendor-agnostic library to identify antibot responses.",
+  "description": "Identify if a response is an antibot challenge from CloudFlare, Akamai, DataDome, Vercel, and more.",
   "homepage": "https://github.com/microlinkhq/is-antibot",
   "version": "0.0.4",
+  "exports": {
+    ".": "./src/index.js"
+  },
   "author": {
-    "name": "Microlink",
     "email": "hello@microlink.io",
+    "name": "Microlink",
     "url": "https://microlink.io"
   },
   "repository": {
@@ -16,21 +19,21 @@
     "url": "https://github.com/microlinkhq/is-antibot/issues"
   },
   "keywords": [
+    "akamai",
+    "antibot",
+    "bot",
     "captcha",
     "challenge",
-    "cloudflare"
+    "cloudflare",
+    "datadome",
+    "detection",
+    "scraper",
+    "scraping",
+    "vercel",
+    "waf"
   ],
   "dependencies": {
     "debug-logfmt": "~1.4.7"
-  },
-  "files": [
-    "src"
-  ],
-  "ava": {
-    "files": [
-      "test/**/*.js",
-      "!test/util.js"
-    ]
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -49,6 +52,9 @@
   "engines": {
     "node": ">= 20"
   },
+  "files": [
+    "src"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "contributors": "(npx git-authors-cli && npx finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
@@ -62,6 +68,12 @@
     "test": "c8 ava"
   },
   "license": "MIT",
+  "ava": {
+    "files": [
+      "test/**/*.js",
+      "!test/util.js"
+    ]
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -71,9 +83,6 @@
         0
       ]
     }
-  },
-  "exports": {
-    ".": "./src/index.js"
   },
   "nano-staged": {
     "*.js": [

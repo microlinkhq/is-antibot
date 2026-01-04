@@ -7,17 +7,15 @@
 [![Coverage Status](https://img.shields.io/coveralls/microlinkhq/is-antibot.svg?style=flat-square)](https://coveralls.io/github/microlinkhq/is-antibot)
 [![NPM Status](https://img.shields.io/npm/dm/is-antibot.svg?style=flat-square)](https://www.npmjs.org/package/is-antibot)
 
-> Lightweight, vendor-agnostic library to identify antibot responses.
-
-It helps you to identify if a response from a popular site (like **LinkedIn**, **Instagram**, or **YouTube**) is actually an antibot challenge, such as a **403 Forbidden**, **429 Too Many Requests**, or a **"Please prove you're human"** challenge.
+> Identify if a response is an antibot challenge from CloudFlare, Akamai, DataDome, Vercel, and more.
 
 ## Why
 
-Websites receiving massive quantities of traffic throughout the day have sophisticated antibot systems to prevent automated access.
+Websites receiving massive quantities of traffic throughout the day, like LinkedIn, Instagram, or YouTube, have sophisticated antibot systems to prevent automated access.
 
-These systems are often powered by providers like **Cloudflare**, **DataDome**, **Akamai**, or **Vercel**. When you try to fetch the HTML of these sites without the right tools, you often end up with a blocked response that contains no useful data, just the challenge itself.
+When you try to fetch the HTML of these sites without the right tools, you often hit a 403 Forbidden, 429 Too Many Requests, or a "Please prove you're human" challenge, leaving you with a response that contains no useful data.
 
-**is-antibot** is a lightweight, vendor-agnostic JavaScript library that identifies when a response is actually an antibot challenge.
+**is-antibot** is a lightweight, vendor-agnostic JavaScript library that identifies when a response is actually an antibot challenge, helping you understand when and why your request was blocked.
 
 ## Install
 
@@ -27,9 +25,7 @@ $ npm install is-antibot --save
 
 ## Usage
 
-The library expects a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object or an object representing HTTP response headers as input.
-
-It's designed to be used after a fetch request to determine if the response was blocked or challenged by an antibot system:
+The library is designed for evaluating a HTTP response:
 
 ```js
 const isAntibot = require('is-antibot')
@@ -41,6 +37,8 @@ if (detected) {
   console.log(`Antibot detected: ${provider}`)
 }
 ```
+
+The library expects a [Fetch Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object, a [Node.js Response](https://nodejs.org/api/http.html#class-httpincomingmessage) object, or an object representing HTTP response headers as input.
 
 ## License
 
