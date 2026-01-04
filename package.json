@@ -21,7 +21,6 @@
     "cloudflare"
   ],
   "dependencies": {
-    "@metascraper/helpers": "~5.49.15",
     "debug-logfmt": "~1.4.7"
   },
   "files": [

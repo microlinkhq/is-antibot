@@ -1,6 +1,5 @@
 'use strict'
 
-const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
 module.exports = ({ url, htmlDom, headers = {} } = {}) => {
@@ -22,14 +21,12 @@ module.exports = ({ url, htmlDom, headers = {} } = {}) => {
     return true
   }
 
-  const parsedUrl = parseUrl(url)
-
-  if (parsedUrl.domainWithoutSuffix === 'reddit') {
-    const condition = htmlDom.text().includes('Prove your humanity')
-    if (condition) {
-      debug({ provider: 'reddit' })
-      return true
-    }
+  // https://docs.datadome.co/reference/validate-request
+  // 1: Soft challenge / JS redirect / interstitial
+  // 2: Hard challenge / HTML redirect / CAPTCHA
+  if (['1', '2'].includes(headers['x-dd-b'])) {
+    debug({ provider: 'datadome' })
+    return true
   }
 
   return false
