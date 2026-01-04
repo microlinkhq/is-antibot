@@ -11,6 +11,12 @@
     "name": "Microlink",
     "url": "https://microlink.io"
   },
+  "contributors": [
+    {
+      "name": "Kiko Beats",
+      "email": "josefrancisco.verdu@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microlinkhq/is-antibot.git"
@@ -65,13 +71,13 @@
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "pretest": "npm run lint",
     "release": "pnpm run release:version && pnpm run release:changelog && pnpm run release:commit && pnpm run release:tag",
-    "release:github": "github-generate-release",
-    "release:tags": "git push origin HEAD:master --follow-tags",
-    "test": "c8 ava",
     "release:changelog": "conventional-changelog -i CHANGELOG.md",
     "release:commit": "git add package.json CHANGELOG.md && git commit -m \"chore(release): $(node -p \"require('./package.json').version\")\"",
+    "release:github": "github-generate-release",
     "release:tag": "git tag -a v$(node -p \"require('./package.json').version\") -m \"v$(node -p \"require('./package.json').version\")\"",
-    "release:version": "standard-version --skip.changelog --skip.commit --skip.tag"
+    "release:tags": "git push origin HEAD:master --follow-tags",
+    "release:version": "standard-version --skip.changelog --skip.commit --skip.tag",
+    "test": "c8 ava"
   },
   "license": "MIT",
   "ava": {
