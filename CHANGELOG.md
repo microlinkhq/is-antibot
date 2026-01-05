@@ -1,3 +1,9 @@
+## <small>0.0.5 (2026-01-05)</small>
+
+* fix: changelog generation ([96918d8](https://github.com/microlinkhq/is-antibot/commit/96918d8))
+
+
+
 ## <small>0.0.4 (2026-01-05)</small>
 
 * fix: changelog generation ([4b1db89](https://github.com/microlinkhq/is-antibot/commit/4b1db89))

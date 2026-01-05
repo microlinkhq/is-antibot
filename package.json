@@ -2,7 +2,7 @@
   "name": "is-antibot",
   "description": "Identify if a response is an antibot challenge from CloudFlare, Akamai, DataDome, Vercel, and more.",
   "homepage": "https://github.com/microlinkhq/is-antibot",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "exports": {
     ".": "./src/index.js"
   },
