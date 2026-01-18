@@ -31,14 +31,66 @@ The library is designed for evaluating a HTTP response:
 const isAntibot = require('is-antibot')
 
 const response = await fetch('https://example.com')
-const { detected, provider } = isAntibot(response)
+const { detected, provider, confidence } = isAntibot(response)
 
 if (detected) {
-  console.log(`Antibot detected: ${provider}`)
+  console.log(`Antibot detected: ${provider} (confidence: ${confidence}%)`)
 }
 ```
 
 The library expects a [Fetch Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object, a [Node.js Response](https://nodejs.org/api/http.html#class-httpincomingmessage) object, or an object representing HTTP response headers as input.
+
+You can also pass optional `body` and `url` parameters for enhanced detection:
+
+```js
+const result = isAntibot({ 
+  headers: response.headers,
+  body: await response.text(),
+  url: response.url
+})
+```
+
+### Response
+
+The library returns an object with the following properties:
+
+- `detected` (boolean): Whether an antibot challenge was detected
+- `provider` (string|null): The name of the detected provider (e.g., 'cloudflare', 'recaptcha')
+- `confidence` (number): Confidence score from 0-100 indicating detection certainty
+- `detections` (array, optional): Array of all detected providers when multiple are found
+
+## Supported Providers
+
+### Anti-Bot Systems
+
+- **CloudFlare** - Bot management and challenge pages
+- **Vercel** - Attack mode protection
+- **Akamai** - Bot Manager and Web Application Protector
+- **DataDome** - Bot protection with CAPTCHA challenges
+- **PerimeterX** - Behavioral bot detection
+- **Shape Security** - Enterprise bot management
+- **Kasada** - Advanced bot mitigation
+- **Imperva/Incapsula** - Web application firewall
+- **AWS WAF** - Amazon Web Services Web Application Firewall
+
+### CAPTCHA Providers
+
+- **reCAPTCHA** - Google's CAPTCHA service (v2 and v3)
+- **hCaptcha** - Privacy-focused CAPTCHA alternative
+- **FunCaptcha** - Arkose Labs interactive challenges
+- **GeeTest** - AI-powered CAPTCHA
+- **Cloudflare Turnstile** - Privacy-preserving CAPTCHA alternative
+
+### Confidence Scoring
+
+Each detection includes a confidence score (0-100) indicating how certain the detection is:
+
+- **90-100**: High confidence - definitive indicators present
+- **80-89**: Medium-high confidence - strong indicators
+- **70-79**: Medium confidence - reliable patterns detected
+- **Below 70**: Lower confidence - weak or generic indicators
+
+Higher confidence scores indicate more specific and reliable detection patterns.
 
 ## License
 
