@@ -1,3 +1,10 @@
+## 1.1.0 (2026-01-18)
+
+* build: contributors ([f29c73b](https://github.com/microlinkhq/is-antibot/commit/f29c73b))
+* feat: add detection for 10 additional antibot/CAPTCHA providers (#3) ([492b2d8](https://github.com/microlinkhq/is-antibot/commit/492b2d8)), closes [#3](https://github.com/microlinkhq/is-antibot/issues/3)
+
+
+
 ## 1.0.0 (2026-01-05)
 
 * fix: changelog generation ([96918d8](https://github.com/microlinkhq/is-antibot/commit/96918d8))

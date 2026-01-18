@@ -2,7 +2,7 @@
   "name": "is-antibot",
   "description": "Identify if a response is an antibot challenge from CloudFlare, Akamai, DataDome, Vercel, PerimeterX, Shape Security, and more, including CAPTCHA providers like reCAPTCHA and hCaptcha.",
   "homepage": "https://github.com/microlinkhq/is-antibot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "exports": {
     ".": "./src/index.js"
   },
