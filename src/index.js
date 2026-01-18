@@ -189,7 +189,7 @@ const detectors = [
       if (
         url &&
         (testPattern(url, 'recaptcha/api') ||
-          testPattern(url, 'google.com/recaptcha'))
+          testPattern(url, 'google\\.com/recaptcha', true))
       ) {
         return 100
       }
@@ -203,7 +203,7 @@ const detectors = [
   {
     name: 'hcaptcha',
     detect: ({ body, url }) => {
-      if (url && testPattern(url, 'hcaptcha.com')) return 100
+      if (url && testPattern(url, 'hcaptcha\\.com', true)) return 100
       if (body && testPattern(body, 'hcaptcha')) return 100
       if (body && testPattern(body, 'h-captcha')) return 95
       return 0
@@ -215,7 +215,8 @@ const detectors = [
     detect: ({ body, url }) => {
       if (
         url &&
-        (testPattern(url, 'arkoselabs.com') || testPattern(url, 'funcaptcha'))
+        (testPattern(url, 'arkoselabs\\.com', true) ||
+          testPattern(url, 'funcaptcha'))
       ) {
         return 100
       }
@@ -232,7 +233,7 @@ const detectors = [
   {
     name: 'geetest',
     detect: ({ body, url }) => {
-      if (url && testPattern(url, 'geetest.com')) return 100
+      if (url && testPattern(url, 'geetest\\.com', true)) return 100
       if (body && testPattern(body, 'geetest')) return 95
       if (body && testPattern(body, 'gt.js')) return 90
       return 0
@@ -242,7 +243,10 @@ const detectors = [
   {
     name: 'cloudflare-turnstile',
     detect: ({ body, url }) => {
-      if (url && testPattern(url, 'challenges.cloudflare.com/turnstile')) {
+      if (
+        url &&
+        testPattern(url, 'challenges\\.cloudflare\\.com/turnstile', true)
+      ) {
         return 100
       }
       if (body && testPattern(body, 'cf-turnstile')) return 100
