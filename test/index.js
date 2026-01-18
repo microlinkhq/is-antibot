@@ -9,15 +9,6 @@ test('cloudflare', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
-  t.is(result.confidence, 100)
-})
-
-test('cloudflare (with cf-ray)', t => {
-  const headers = { 'cf-ray': '12345', server: 'cloudflare' }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'cloudflare')
-  t.is(result.confidence, 85)
 })
 
 test('vercel', t => {
@@ -25,7 +16,6 @@ test('vercel', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'vercel')
-  t.is(result.confidence, 100)
 })
 
 test('akamai', t => {
@@ -33,15 +23,13 @@ test('akamai', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'akamai')
-  t.is(result.confidence, 100)
 })
 
-test('akamai (with _abck cookie)', t => {
-  const headers = { cookie: '_abck=test123' }
+test('akamai (with header)', t => {
+  const headers = { 'akamai-grn': 'test123' }
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'akamai')
-  t.is(result.confidence, 90)
 })
 
 test('akamai (no antibot)', t => {
@@ -57,16 +45,14 @@ test('datadome', t => {
     const result = isAntibot({ headers })
     t.is(result.detected, true, `should detect datadome for x-dd-b=${value}`)
     t.is(result.provider, 'datadome')
-    t.is(result.confidence, 100)
   }
 })
 
-test('datadome (with cookie)', t => {
-  const headers = { cookie: 'datadome=test123' }
+test('datadome (with header)', t => {
+  const headers = { 'x-datadome': 'test' }
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'datadome')
-  t.is(result.confidence, 95)
 })
 
 test('perimeterx (header)', t => {
@@ -74,15 +60,6 @@ test('perimeterx (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
-  t.is(result.confidence, 100)
-})
-
-test('perimeterx (cookie)', t => {
-  const headers = { cookie: '_px3=test123' }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'perimeterx')
-  t.is(result.confidence, 100)
 })
 
 test('perimeterx (body)', t => {
@@ -90,7 +67,6 @@ test('perimeterx (body)', t => {
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
-  t.is(result.confidence, 90)
 })
 
 test('shapesecurity (header)', t => {
@@ -98,15 +74,13 @@ test('shapesecurity (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'shapesecurity')
-  t.is(result.confidence, 100)
 })
 
-test('shapesecurity (cookie)', t => {
-  const headers = { cookie: 'shape123=data|1|0|test' }
-  const result = isAntibot({ headers })
+test('shapesecurity (body)', t => {
+  const body = '<script>shapesecurity.init();</script>'
+  const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'shapesecurity')
-  t.is(result.confidence, 95)
 })
 
 test('kasada (header)', t => {
@@ -114,23 +88,13 @@ test('kasada (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'kasada')
-  t.is(result.confidence, 90)
 })
 
-test('kasada (cookie)', t => {
-  const headers = { cookie: 'kas.js=test123' }
-  const result = isAntibot({ headers })
+test('kasada (body)', t => {
+  const body = '<script>__kasada.init();</script>'
+  const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'kasada')
-  t.is(result.confidence, 95)
-})
-
-test('imperva (cookie)', t => {
-  const headers = { cookie: 'visid_incap_12345=test' }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'imperva')
-  t.is(result.confidence, 100)
 })
 
 test('imperva (header)', t => {
@@ -138,7 +102,13 @@ test('imperva (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
-  t.is(result.confidence, 95)
+})
+
+test('imperva (body)', t => {
+  const body = '<script>incapsula.init();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'imperva')
 })
 
 test('recaptcha (url)', t => {
@@ -146,7 +116,6 @@ test('recaptcha (url)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
-  t.is(result.confidence, 100)
 })
 
 test('recaptcha (body)', t => {
@@ -154,7 +123,6 @@ test('recaptcha (body)', t => {
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
-  t.is(result.confidence, 100)
 })
 
 test('hcaptcha (url)', t => {
@@ -162,7 +130,6 @@ test('hcaptcha (url)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
-  t.is(result.confidence, 100)
 })
 
 test('hcaptcha (body)', t => {
@@ -170,7 +137,6 @@ test('hcaptcha (body)', t => {
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
-  t.is(result.confidence, 95)
 })
 
 test('funcaptcha (url)', t => {
@@ -178,7 +144,13 @@ test('funcaptcha (url)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
-  t.is(result.confidence, 100)
+})
+
+test('funcaptcha (body)', t => {
+  const body = '<script>funcaptcha.init();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'funcaptcha')
 })
 
 test('geetest (url)', t => {
@@ -186,7 +158,13 @@ test('geetest (url)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'geetest')
-  t.is(result.confidence, 100)
+})
+
+test('geetest (body)', t => {
+  const body = '<script>geetest.init();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'geetest')
 })
 
 test('cloudflare-turnstile (body)', t => {
@@ -194,15 +172,6 @@ test('cloudflare-turnstile (body)', t => {
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
-  t.is(result.confidence, 100)
-})
-
-test('aws-waf (cookie)', t => {
-  const headers = { cookie: 'aws-waf-token=test123' }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'aws-waf')
-  t.is(result.confidence, 100)
 })
 
 test('aws-waf (header)', t => {
@@ -210,20 +179,13 @@ test('aws-waf (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
-  t.is(result.confidence, 90)
 })
 
-test('multiple detections', t => {
-  const headers = { 'cf-mitigated': 'challenge' }
-  const body = '<div class="g-recaptcha"></div>'
-  const result = isAntibot({ headers, body })
+test('aws-waf (body)', t => {
+  const body = '<script>aws-waf.init();</script>'
+  const result = isAntibot({ body })
   t.is(result.detected, true)
-  t.is(result.provider, 'cloudflare')
-  t.is(result.confidence, 100)
-  t.truthy(result.detections)
-  t.is(result.detections.length, 2)
-  t.is(result.detections[0].name, 'cloudflare')
-  t.is(result.detections[1].name, 'recaptcha')
+  t.is(result.provider, 'aws-waf')
 })
 
 test('general (no antibot)', t => {

@@ -31,10 +31,10 @@ The library is designed for evaluating a HTTP response:
 const isAntibot = require('is-antibot')
 
 const response = await fetch('https://example.com')
-const { detected, provider, confidence } = isAntibot(response)
+const { detected, provider } = isAntibot(response)
 
 if (detected) {
-  console.log(`Antibot detected: ${provider} (confidence: ${confidence}%)`)
+  console.log(`Antibot detected: ${provider}`)
 }
 ```
 
@@ -56,8 +56,6 @@ The library returns an object with the following properties:
 
 - `detected` (boolean): Whether an antibot challenge was detected
 - `provider` (string|null): The name of the detected provider (e.g., 'cloudflare', 'recaptcha')
-- `confidence` (number): Confidence score from 0-100 indicating detection certainty
-- `detections` (array, optional): Array of all detected providers when multiple are found
 
 ## Supported Providers
 
@@ -80,17 +78,6 @@ The library returns an object with the following properties:
 - **FunCaptcha** - Arkose Labs interactive challenges
 - **GeeTest** - AI-powered CAPTCHA
 - **Cloudflare Turnstile** - Privacy-preserving CAPTCHA alternative
-
-### Confidence Scoring
-
-Each detection includes a confidence score (0-100) indicating how certain the detection is:
-
-- **90-100**: High confidence - definitive indicators present
-- **80-89**: Medium-high confidence - strong indicators
-- **70-79**: Medium confidence - reliable patterns detected
-- **Below 70**: Lower confidence - weak or generic indicators
-
-Higher confidence scores indicate more specific and reliable detection patterns.
 
 ## License
 
