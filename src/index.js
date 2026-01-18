@@ -244,3 +244,4 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
 }
 
 module.exports.debug = debug
+module.exports.testPattern = testPattern

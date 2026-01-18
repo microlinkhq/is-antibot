@@ -104,15 +104,29 @@ test('imperva (header)', t => {
   t.is(result.provider, 'imperva')
 })
 
-test('imperva (body)', t => {
+test('imperva (body with incapsula)', t => {
   const body = '<script>incapsula.init();</script>'
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
 })
 
-test('recaptcha (url)', t => {
+test('imperva (body with imperva)', t => {
+  const body = '<script>imperva.protect();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'imperva')
+})
+
+test('recaptcha (url with recaptcha/api)', t => {
   const url = 'https://www.google.com/recaptcha/api.js'
+  const result = isAntibot({ url })
+  t.is(result.detected, true)
+  t.is(result.provider, 'recaptcha')
+})
+
+test('recaptcha (url with google.com/recaptcha)', t => {
+  const url = 'https://google.com/recaptcha/enterprise.js'
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
@@ -139,15 +153,29 @@ test('hcaptcha (body)', t => {
   t.is(result.provider, 'hcaptcha')
 })
 
-test('funcaptcha (url)', t => {
+test('funcaptcha (url with arkoselabs)', t => {
   const url = 'https://client-api.arkoselabs.com/fc/gc/'
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
 })
 
-test('funcaptcha (body)', t => {
+test('funcaptcha (url with funcaptcha)', t => {
+  const url = 'https://api.funcaptcha.com/fc/gt2/public_key/test'
+  const result = isAntibot({ url })
+  t.is(result.detected, true)
+  t.is(result.provider, 'funcaptcha')
+})
+
+test('funcaptcha (body with funcaptcha)', t => {
   const body = '<script>funcaptcha.init();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'funcaptcha')
+})
+
+test('funcaptcha (body with arkose)', t => {
+  const body = '<script>window.arkoseCallback();</script>'
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
@@ -186,6 +214,55 @@ test('aws-waf (body)', t => {
   const result = isAntibot({ body })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+})
+
+test('recaptcha (body with g-recaptcha)', t => {
+  const body = '<div class="g-recaptcha" data-sitekey="test"></div>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'recaptcha')
+})
+
+test('hcaptcha (body with hcaptcha)', t => {
+  const body = '<div data-hcaptcha="test"></div>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'hcaptcha')
+})
+
+test('geetest (body with gt.js)', t => {
+  const body = '<script src="/static/gt.js"></script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'geetest')
+})
+
+test('cloudflare-turnstile (url)', t => {
+  const url = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+  const result = isAntibot({ url })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudflare-turnstile')
+})
+
+test('cloudflare-turnstile (body with turnstile)', t => {
+  const body = '<script>window.turnstile.render();</script>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudflare-turnstile')
+})
+
+test('testPattern with invalid regex catches error', t => {
+  const { testPattern } = require('../src')
+  // Test with an invalid regex pattern that would throw
+  const result = testPattern('test', '[invalid(regex', true)
+  t.is(result, false)
+})
+
+test('testPattern with invalid regex', t => {
+  const result = isAntibot({ url: 'test', body: 'test' })
+  // Should not throw and should return no detection
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('general (no antibot)', t => {
