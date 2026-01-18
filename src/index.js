@@ -5,19 +5,22 @@ const debug = require('debug-logfmt')('is-antibot')
 const getHeader = (headers, name) =>
   typeof headers.get === 'function' ? headers.get(name) : headers[name]
 
-const getCookie = (headers, name, isPattern = false) => {
+const getCookie = (headers, name, useStartsWith = false) => {
   const cookieHeader =
     getHeader(headers, 'cookie') || getHeader(headers, 'set-cookie')
   if (!cookieHeader) return null
   const cookies =
     typeof cookieHeader === 'string' ? [cookieHeader] : cookieHeader
   for (const cookie of cookies) {
-    if (isPattern) {
-      // For patterns, check if any cookie name matches
+    if (useStartsWith) {
+      // For patterns, check if any cookie name starts with the pattern
       const cookiePairs = cookie.split(';')
       for (const pair of cookiePairs) {
         const cookieName = pair.trim().split('=')[0]
-        if (cookieName && testPattern(cookieName, name, true)) {
+        if (
+          cookieName &&
+          cookieName.toLowerCase().startsWith(name.toLowerCase())
+        ) {
           return pair.trim().split('=')[1] || ''
         }
       }
@@ -54,7 +57,9 @@ const detectors = [
       if (
         getHeader(headers, 'cf-ray') &&
         getHeader(headers, 'server') === 'cloudflare'
-      ) { return 85 }
+      ) {
+        return 85
+      }
       return 0
     }
   },
@@ -79,7 +84,9 @@ const detectors = [
       if (
         getHeader(headers, 'akamai-grn') ||
         getHeader(headers, 'x-akamai-session-info')
-      ) { return 80 }
+      ) {
+        return 80
+      }
       return 0
     }
   },
@@ -111,15 +118,20 @@ const detectors = [
   {
     name: 'shapesecurity',
     detect: ({ headers, body }) => {
-      // Dynamic header patterns: x-[8chars]-[a-f]
+      // Dynamic header patterns: x-[8chars]-[abcdfz]
       const headerNames = Object.keys(headers)
       for (const name of headerNames) {
-        if (/^x-[a-z0-9]{8}-[a-fz]$/i.test(name)) return 100
+        if (/^x-[a-z0-9]{8}-[abcdfz]$/i.test(name)) return 100
       }
       // Cookie pattern: 8-character name with |1|0| or |1|1| pattern
       const cookieHeader =
         getHeader(headers, 'cookie') || getHeader(headers, 'set-cookie')
-      if (cookieHeader && /[A-Za-z0-9]{8}=[^;]*\|1\|[01]\|/.test(cookieHeader)) { return 95 }
+      if (
+        cookieHeader &&
+        /[A-Za-z0-9]{8}=[^;]*\|1\|[01]\|/.test(cookieHeader)
+      ) {
+        return 95
+      }
       if (body && testPattern(body, 'shapesecurity')) return 85
       return 0
     }
@@ -131,13 +143,17 @@ const detectors = [
       if (
         getHeader(headers, 'x-kasada') ||
         getHeader(headers, 'x-kasada-challenge')
-      ) { return 90 }
+      ) {
+        return 90
+      }
       if (getCookie(headers, 'kas.js')) return 95
       if (getCookie(headers, 'kas_challenge')) return 90
       if (
         body &&
         (testPattern(body, '__kasada') || testPattern(body, 'kasada.js'))
-      ) { return 85 }
+      ) {
+        return 85
+      }
       return 0
     }
   },
@@ -148,15 +164,21 @@ const detectors = [
       if (
         getCookie(headers, 'visid_incap', true) ||
         getCookie(headers, 'incap_ses', true)
-      ) { return 100 }
+      ) {
+        return 100
+      }
       if (
         getHeader(headers, 'x-cdn') === 'Incapsula' ||
         getHeader(headers, 'x-iinfo')
-      ) { return 95 }
+      ) {
+        return 95
+      }
       if (
         body &&
         (testPattern(body, 'incapsula') || testPattern(body, 'imperva'))
-      ) { return 85 }
+      ) {
+        return 85
+      }
       return 0
     }
   },
@@ -168,7 +190,9 @@ const detectors = [
         url &&
         (testPattern(url, 'recaptcha/api') ||
           testPattern(url, 'google.com/recaptcha'))
-      ) { return 100 }
+      ) {
+        return 100
+      }
       if (body && testPattern(body, 'grecaptcha')) return 100
       if (body && testPattern(body, 'g-recaptcha')) return 95
       if (body && testPattern(body, 'recaptcha')) return 85
@@ -192,11 +216,15 @@ const detectors = [
       if (
         url &&
         (testPattern(url, 'arkoselabs.com') || testPattern(url, 'funcaptcha'))
-      ) { return 100 }
+      ) {
+        return 100
+      }
       if (
         body &&
         (testPattern(body, 'funcaptcha') || testPattern(body, 'arkose'))
-      ) { return 95 }
+      ) {
+        return 95
+      }
       return 0
     }
   },
@@ -214,7 +242,9 @@ const detectors = [
   {
     name: 'cloudflare-turnstile',
     detect: ({ body, url }) => {
-      if (url && testPattern(url, 'challenges.cloudflare.com/turnstile')) { return 100 }
+      if (url && testPattern(url, 'challenges.cloudflare.com/turnstile')) {
+        return 100
+      }
       if (body && testPattern(body, 'cf-turnstile')) return 100
       if (body && testPattern(body, 'turnstile')) return 95
       return 0
@@ -228,7 +258,9 @@ const detectors = [
       if (
         getHeader(headers, 'x-amzn-waf-action') ||
         getHeader(headers, 'x-amzn-requestid')
-      ) { return 90 }
+      ) {
+        return 90
+      }
       if (body && testPattern(body, 'aws-waf')) return 85
       return 0
     }
