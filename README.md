@@ -9,6 +9,28 @@
 
 > Identify if a response is an antibot challenge from CloudFlare, Akamai, DataDome, Vercel, and more.
 
+## Supported Providers
+
+### Anti-Bot Systems
+
+- **CloudFlare** - Bot management and challenge pages
+- **Vercel** - Attack mode protection
+- **Akamai** - Bot Manager and Web Application Protector
+- **DataDome** - Bot protection with CAPTCHA challenges
+- **PerimeterX** - Behavioral bot detection
+- **Shape Security** - Enterprise bot management
+- **Kasada** - Advanced bot mitigation
+- **Imperva/Incapsula** - Web application firewall
+- **AWS WAF** - Amazon Web Services Web Application Firewall
+
+### CAPTCHA Providers
+
+- **reCAPTCHA** - Google's CAPTCHA service (v2 and v3)
+- **hCaptcha** - Privacy-focused CAPTCHA alternative
+- **FunCaptcha** - Arkose Labs interactive challenges
+- **GeeTest** - AI-powered CAPTCHA
+- **Cloudflare Turnstile** - Privacy-preserving CAPTCHA alternative
+
 ## Why
 
 Websites receiving massive quantities of traffic throughout the day, like LinkedIn, Instagram, or YouTube, have sophisticated antibot systems to prevent automated access.
@@ -39,6 +61,23 @@ if (detected) {
 ```
 
 The library expects a [Fetch Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object, a [Node.js Response](https://nodejs.org/api/http.html#class-httpincomingmessage) object, or an object representing HTTP response headers as input.
+
+You can also pass optional `body` and `url` parameters for enhanced detection:
+
+```js
+const result = isAntibot({
+  headers: response.headers,
+  body: await response.text(),
+  url: response.url
+})
+```
+
+### Response
+
+The library returns an object with the following properties:
+
+- `detected` (boolean): Whether an antibot challenge was detected
+- `provider` (string|null): The name of the detected provider (e.g., 'cloudflare', 'recaptcha')
 
 ## License
 
