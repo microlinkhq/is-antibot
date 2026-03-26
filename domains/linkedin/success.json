@@ -1,0 +1,5162 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2026-03-26T08:44:25.641Z",
+        "id": "page_1",
+        "title": "https://www.linkedin.com/in/kikobeats/",
+        "pageTimings": {
+          "onContentLoad": 1086.3520000020799,
+          "onLoad": 1324.1940000007162
+        }
+      }
+    ],
+    "entries": [
+      {
+        "_connectionId": "391412",
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.linkedin.com/in/kikobeats/",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.linkedin.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/in/kikobeats/"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,es;q=0.9"
+            },
+            {
+              "name": "dnt",
+              "value": "1"
+            },
+            {
+              "name": "priority",
+              "value": "u=0, i"
+            },
+            {
+              "name": "sec-ch-prefers-color-scheme",
+              "value": "dark"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "document"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "navigate"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "none"
+            },
+            {
+              "name": "sec-fetch-user",
+              "value": "?1"
+            },
+            {
+              "name": "sec-gpc",
+              "value": "1"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "accept-ch",
+              "value": "Sec-CH-Prefers-Color-Scheme"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "Vary"
+            },
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, no-transform"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "name": "cf-ray",
+              "value": "9e24df94789d780f-MAD"
+            },
+            {
+              "name": "content-encoding",
+              "value": "br"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "default-src 'none';connect-src 'self' *.licdn.com *.linkedin.com cdn.linkedin.oribi.io dpm.demdex.net/id lnkd.demdex.net blob: data: accounts.google.com/gsi/ www.google.com/recaptcha/ linkedin.sc.omtrdc.net/b/ss/ *.microsoft.com login.microsoftonline.com *.adnxs.com *.qualtrics.com *.xlgmedia.com collect.tealiumiq.com bat.bing.com www.googletagmanager.com www.googleadservices.com googleads.g.doubleclick.net www.google.com google.com adservice.google.com td.doubleclick.net pagead2.googlesyndication.com ad.doubleclick.net trkn.us *.licdn.cn;script-src 'report-sample' 'self' platform.linkedin.com platform-akam.linkedin.com platform-ecst.linkedin.com platform-azur.linkedin.com dms.licdn.com snap.licdn.com static.licdn.com static-exp1.licdn.com static-exp2.licdn.com static-exp3.licdn.com www.google.com/recaptcha/ www.googletagmanager.com/gtag/js www.googleadservices.com/pagead/ www.google.com/pagead/ googleads.g.doubleclick.net/pagead/ adservice.google.com/pagead/ www.googletagmanager.com/gtag/destination pagead2.googlesyndication.com/pagead/ *.msauth.net 'nonce-b33dc69dd81c87c66caee79bc6c7a7ec' 'sha256-CJ+nqxpbLgxDSmynghnRJDJrv8wJsRIZvISPLrQ/LnU=' 'sha256-xNJ7LBVZlglw0rn+i4ihjfoXGC+ANIOMtnpClFgi9I4=' dms.licdn.cn snap.licdn.cn static.licdn.cn static-exp1.licdn.cn static-exp2.licdn.cn static-exp3.licdn.cn;img-src data: blob: * android-webview-video-poster:;font-src data: *;style-src 'self' 'unsafe-inline' static.licdn.com static-exp1.licdn.com static-exp2.licdn.com static-exp3.licdn.com static.licdn.cn static-exp1.licdn.cn static-exp2.licdn.cn static-exp3.licdn.cn;media-src *.licdn.com *.lynda.com *.linkedin.com blob: data: *.licdn.cn;frame-src 'self' www.youtube.com/embed/ www.youtube-nocookie.com/embed/ lnkd.demdex.net smartlock.google.com accounts.google.com www.google.com/recaptcha/ player.vimeo.com *.linkedin.com www.slideshare.net *.megaphone.fm *.omny.fm *.sounder.fm msit.powerbi.com linkedin.github.io *.licdn.com acdn.adnxs-simple.com radar.cedexis.com *.qualtrics.com calendly.com www.calendly.com *.fls.doubleclick.net www.googletagmanager.com td.doubleclick.net edge-auth.microsoft.com *.licdn.cn;worker-src 'self' blob:;frame-ancestors 'self' *.www.linkedin.com:* *.prod.linkedin.com ciafilestore.corp.linkedin.com;manifest-src 'self';form-action 'self' *.qualtrics.com;report-uri https://www.linkedin.com/security/csp?a=flagship-web;base-uri 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "critical-ch",
+              "value": "Sec-CH-Prefers-Color-Scheme"
+            },
+            {
+              "name": "cross-origin-opener-policy",
+              "value": "same-origin-allow-popups"
+            },
+            {
+              "name": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "name": "date",
+              "value": "Thu, 26 Mar 2026 08:44:26 GMT"
+            },
+            {
+              "name": "expires",
+              "value": "Thu, 01 Jan 1970 00:00:00 GMT"
+            },
+            {
+              "name": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=0,i"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "server-timing",
+              "value": "cfExtPri"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "name": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-fs-uuid",
+              "value": "00064de9644d05ddc02ef68a1718fe4c"
+            },
+            {
+              "name": "x-li-anchor-page-key",
+              "value": "d_flagship3_profile_view_base"
+            },
+            {
+              "name": "x-li-application-instance",
+              "value": "8t3rRh36RRWV2xjWRoQ4yQ=="
+            },
+            {
+              "name": "x-li-application-version",
+              "value": "0.2.4645"
+            },
+            {
+              "name": "x-li-fabric",
+              "value": "prod-ltx1"
+            },
+            {
+              "name": "x-li-initialpageforestid",
+              "value": "00064de9644d6bd800a47156e4d27d78"
+            },
+            {
+              "name": "x-li-leaf-screen-id",
+              "value": "com.linkedin.sdui.flagshipnav.profile.Profile"
+            },
+            {
+              "name": "x-li-page-instance-tracking-id",
+              "value": "X4vDRo16SnymTi2CVj/XqA=="
+            },
+            {
+              "name": "x-li-pop",
+              "value": "cf-prod-ltx1-x"
+            },
+            {
+              "name": "x-li-proto",
+              "value": "http/3"
+            },
+            {
+              "name": "x-li-uuid",
+              "value": "AAZN6WRNBd3ALvaKFxj+TA=="
+            },
+            {
+              "name": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 901254,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 70542,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "172.64.146.215",
+        "startedDateTime": "2026-03-26T08:44:25.636Z",
+        "time": 869.5330000009562,
+        "timings": {
+          "blocked": 5.898999999947846,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.241,
+          "wait": 825.8870000004324,
+          "receive": 37.50600000057602,
+          "_blocked_queueing": 5.243999999947846,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "",
+                "scriptId": "44",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/ui-QeOGZ0zW.es.js",
+                "lineNumber": 0,
+                "columnNumber": 863605
+              },
+              {
+                "functionName": "",
+                "scriptId": "44",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/ui-QeOGZ0zW.es.js",
+                "lineNumber": 0,
+                "columnNumber": 864564
+              },
+              {
+                "functionName": "l7",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 134184
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150173
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150195
+              },
+              {
+                "functionName": "dC",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 173417
+              },
+              {
+                "functionName": "dX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 176831
+              },
+              {
+                "functionName": "dz",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 175506
+              },
+              {
+                "functionName": "dS",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 173052
+              },
+              {
+                "functionName": "dx",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 171934
+              },
+              {
+                "functionName": "u3",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 167221
+              },
+              {
+                "functionName": "u4",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 166833
+              },
+              {
+                "functionName": "dq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 176717
+              },
+              {
+                "functionName": "eF",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 34435
+              }
+            ],
+            "parentId": {
+              "id": "13",
+              "debuggerId": "-8108428362303446599.302408088713264716"
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.linkedin.com/tscp-serving/dtag?z=profile&c=1&li_theme=system&pk=d_flagship3_profile_view_base&pz=BR&p=1&sz=300x250&ti=1&_x=company%3D26196751&vmid=ACoAAAVC53ABOdr1oqT5ZWk2I8XDZooUbVcb91A",
+          "httpVersion": "",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://www.linkedin.com/in/kikobeats/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-prefers-color-scheme",
+              "value": "dark"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "queryString": [
+            {
+              "name": "z",
+              "value": "profile"
+            },
+            {
+              "name": "c",
+              "value": "1"
+            },
+            {
+              "name": "li_theme",
+              "value": "system"
+            },
+            {
+              "name": "pk",
+              "value": "d_flagship3_profile_view_base"
+            },
+            {
+              "name": "pz",
+              "value": "BR"
+            },
+            {
+              "name": "p",
+              "value": "1"
+            },
+            {
+              "name": "sz",
+              "value": "300x250"
+            },
+            {
+              "name": "ti",
+              "value": "1"
+            },
+            {
+              "name": "_x",
+              "value": "company%3D26196751"
+            },
+            {
+              "name": "vmid",
+              "value": "ACoAAAVC53ABOdr1oqT5ZWk2I8XDZooUbVcb91A"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 0,
+          "statusText": "",
+          "httpVersion": "",
+          "headers": [],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 0,
+          "_error": "net::ERR_ABORTED",
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-26T08:44:26.874Z",
+        "time": 32.83000000010361,
+        "timings": {
+          "blocked": 32.83000000010361,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 0,
+          "receive": 0,
+          "_blocked_queueing": -1
+        }
+      },
+      {
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "",
+                "scriptId": "44",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/ui-QeOGZ0zW.es.js",
+                "lineNumber": 0,
+                "columnNumber": 863605
+              },
+              {
+                "functionName": "",
+                "scriptId": "44",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/ui-QeOGZ0zW.es.js",
+                "lineNumber": 0,
+                "columnNumber": 864564
+              },
+              {
+                "functionName": "l7",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 134184
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150173
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150148
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150926
+              },
+              {
+                "functionName": "cq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150039
+              },
+              {
+                "functionName": "cX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 150195
+              },
+              {
+                "functionName": "dC",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 173417
+              },
+              {
+                "functionName": "dS",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 172969
+              },
+              {
+                "functionName": "dx",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 171934
+              },
+              {
+                "functionName": "u3",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 167221
+              },
+              {
+                "functionName": "u4",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 166833
+              },
+              {
+                "functionName": "dX",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 176848
+              },
+              {
+                "functionName": "dz",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 175506
+              },
+              {
+                "functionName": "dS",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 173052
+              },
+              {
+                "functionName": "dx",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 171934
+              },
+              {
+                "functionName": "u3",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 167221
+              },
+              {
+                "functionName": "u4",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 166833
+              },
+              {
+                "functionName": "dq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 176717
+              },
+              {
+                "functionName": "eF",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 34435
+              }
+            ],
+            "parentId": {
+              "id": "13",
+              "debuggerId": "-8108428362303446599.302408088713264716"
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.linkedin.com/tscp-serving/dtag?z=profile&c=1&li_theme=dark&pk=d_flagship3_profile_view_base&pz=BR&p=1&sz=300x250&ti=1&_x=company%3D26196751&vmid=ACoAAAVC53ABOdr1oqT5ZWk2I8XDZooUbVcb91A",
+          "httpVersion": "",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://www.linkedin.com/in/kikobeats/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-prefers-color-scheme",
+              "value": "dark"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "queryString": [
+            {
+              "name": "z",
+              "value": "profile"
+            },
+            {
+              "name": "c",
+              "value": "1"
+            },
+            {
+              "name": "li_theme",
+              "value": "dark"
+            },
+            {
+              "name": "pk",
+              "value": "d_flagship3_profile_view_base"
+            },
+            {
+              "name": "pz",
+              "value": "BR"
+            },
+            {
+              "name": "p",
+              "value": "1"
+            },
+            {
+              "name": "sz",
+              "value": "300x250"
+            },
+            {
+              "name": "ti",
+              "value": "1"
+            },
+            {
+              "name": "_x",
+              "value": "company%3D26196751"
+            },
+            {
+              "name": "vmid",
+              "value": "ACoAAAVC53ABOdr1oqT5ZWk2I8XDZooUbVcb91A"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 0,
+          "statusText": "",
+          "httpVersion": "",
+          "headers": [],
+          "cookies": [],
+          "content": {
+            "size": 183958,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 183958,
+          "_error": "net::ERR_BLOCKED_BY_CLIENT",
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-26T08:44:26.909Z",
+        "time": 18.456999998306856,
+        "timings": {
+          "blocked": 18.456999998306856,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 0,
+          "receive": 0,
+          "_blocked_queueing": -1
+        }
+      },
+      {
+        "_connectionId": "391412",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "cv",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 136327
+              },
+              {
+                "functionName": "cB",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 147910
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145125
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142472
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145819
+              },
+              {
+                "functionName": "cL",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 142339
+              },
+              {
+                "functionName": "cV",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 145577
+              },
+              {
+                "functionName": "dS",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 172616
+              },
+              {
+                "functionName": "dx",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 171934
+              },
+              {
+                "functionName": "u3",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 167221
+              },
+              {
+                "functionName": "u4",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 166833
+              },
+              {
+                "functionName": "dq",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 176717
+              },
+              {
+                "functionName": "eF",
+                "scriptId": "38",
+                "url": "https://static.licdn.com/aero-v1/sc/h/assets/vendor-C5I6ALAm.es.js",
+                "lineNumber": 0,
+                "columnNumber": 34435
+              }
+            ],
+            "parentId": {
+              "id": "42",
+              "debuggerId": "-8108428362303446599.302408088713264716"
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.linkedin.com/preload/",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.linkedin.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/preload/"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,es;q=0.9"
+            },
+            {
+              "name": "dnt",
+              "value": "1"
+            },
+            {
+              "name": "priority",
+              "value": "u=0, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "sec-ch-prefers-color-scheme",
+              "value": "dark"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "iframe"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "navigate"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-origin"
+            },
+            {
+              "name": "sec-gpc",
+              "value": "1"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, no-transform"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "name": "cf-ray",
+              "value": "9e24df9d5fa5780f-MAD"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "default-src; base-uri 'self'; connect-src 'self' blob: wss: *.licdn.com *.linkedin.com *.lynda.com linkedin.sc.omtrdc.net/b/ss/ cdn.linkedin.oribi.io *.data.digitalassistant.oci.oraclecloud.com/chat/ *.tealiumiq.com *.microsoft.com *.office.com *.skype.com *.skype.net *.sd-rtn.com:* *.qualtrics.com *.trouter.io dpm.demdex.net/id lnkd.demdex.net analytics-ingress-global.bitmovin.com *.xlgmedia.com www.googleadservices.com www.google.com google.com adservice.google.com td.doubleclick.net pagead2.googlesyndication.com www.googletagmanager.com ad.doubleclick.net *.ai.azure.com *.openai.azure.com bat.bing.com googleads.g.doubleclick.net; font-src data: *; form-action 'self' *.qualtrics.com; frame-ancestors 'self' *.www.linkedin.com:* *.prod.linkedin.com; frame-src 'self' blob: *.licdn.com *.linkedin.com *.microsoft.com *.office.com *.lynda.com *.doubleclick.net *.megaphone.fm *.omny.fm *.qualtrics.com calendly.com www.calendly.com *.sounder.fm flo.uri.sh lichat.azurewebsites.net radar.cedexis.com lnkd.demdex.net cdn.embedly.com www.facebook.com embed.gettyimages.com linkedin.github.io www.linkedin-event.com livestream.com app.powerbi.com msit.powerbi.com w.soundcloud.com embed.ted.com player.vimeo.com www.youtube.com www.youtube-nocookie.com fiir-prd-cogd01.cognitiveservices.azure.com fiir-prd-cogd02.cognitiveservices.azure.com li.protechts.net *.xlgmedia.com *.px-cloud.net cs.ns1p.net *.fls.doubleclick.net www.googletagmanager.com td.doubleclick.net www.google.com/recaptcha/ linkedin-ai-tools.magicpatterns.app; img-src blob: data: *; manifest-src 'self' *.licdn.com; media-src blob: data: *; script-src 'report-sample' 'sha256-6gLjSWp3GRKZCUFvRX5aGHtECD1wVRgJOJp7r0ZQjV0=' static.licdn.com static-exp1.licdn.com static-exp2.licdn.com static-exp3.licdn.com www.linkedin.com/sc/ www.linkedin.com/scds/ www.linkedin.com/voyager/abp-detection.js piwik.corp.linkedin.com/piwik/piwik.js platform.linkedin.com/js/analytics.js platform-akam.linkedin.com/js/analytics.js platform-ecst.linkedin.com/js/analytics.js platform-azur.linkedin.com/js/analytics.js platform.linkedin.com/litms/utag/ platform-akam.linkedin.com/litms/utag/ platform-ecst.linkedin.com/litms/utag/ platform-azur.linkedin.com/litms/utag/ platform.linkedin.com/litms/vendor/ platform-akam.linkedin.com/litms/vendor/ platform-ecst.linkedin.com/litms/vendor/ platform-azur.linkedin.com/litms/vendor/ www.googletagmanager.com/gtag/js snap.licdn.com/li.lms-analytics/ www.googleadservices.com/pagead/ www.google.com/pagead/ googleads.g.doubleclick.net/pagead/ adservice.google.com/pagead/ pagead2.googlesyndication.com/pagead/ www.googletagmanager.com/gtag/destination merchantpool1.linkedin.com/mdt.js https://www.google.com/recaptcha/enterprise.js https://www.gstatic.com/recaptcha/releases/ https://assets.calendly.com/assets/external/widget.js; style-src 'unsafe-inline' static.licdn.com static-exp1.licdn.com static-exp2.licdn.com static-exp3.licdn.com www.linkedin.com/sc/ www.linkedin.com/scds/; worker-src 'self' blob:; report-uri https://www.linkedin.com/security/csp?a=voyager-web"
+            },
+            {
+              "name": "content-security-policy-report-only",
+              "value": "script-src 'report-sample' 'strict-dynamic' 'nonce-1c6uRUgsVZPf_eDRo70JFQ'; script-src-attr 'none'; report-uri https://www.linkedin.com/security/csp?a=voyager-web&f=nonce"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "date",
+              "value": "Thu, 26 Mar 2026 08:44:27 GMT"
+            },
+            {
+              "name": "expires",
+              "value": "Thu, 01 Jan 1970 00:00:00 GMT"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "priority",
+              "value": "u=0,i"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "server-timing",
+              "value": "cfExtPri"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "x-content-security-policy-nonce",
+              "value": "1c6uRUgsVZPf_eDRo70JFQ"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "sameorigin"
+            },
+            {
+              "name": "x-fs-uuid",
+              "value": "00064de96462b8dc1ed14b8f997b6793"
+            },
+            {
+              "name": "x-li-fabric",
+              "value": "prod-ltx1"
+            },
+            {
+              "name": "x-li-pop",
+              "value": "cf-prod-ltx1-x"
+            },
+            {
+              "name": "x-li-proto",
+              "value": "http/3"
+            },
+            {
+              "name": "x-li-uuid",
+              "value": "AAZN6WRiuNwe0UuPmXtnkw=="
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 1146242,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 121675,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "172.64.146.215",
+        "startedDateTime": "2026-03-26T08:44:27.062Z",
+        "time": 633.4419999984675,
+        "timings": {
+          "blocked": 1.9819999966323376,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.175,
+          "wait": 221.18799999824654,
+          "receive": 410.0970000035886,
+          "_blocked_queueing": 1.5589999966323376,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "",
+                "scriptId": "205",
+                "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                "lineNumber": 12372,
+                "columnNumber": 294
+              }
+            ],
+            "parent": {
+              "description": "Promise.then",
+              "callFrames": [
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12370,
+                  "columnNumber": 33
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 2076
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 1268
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 630
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12335,
+                  "columnNumber": 185
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://li.protechts.net/index.html?ts=1774514668648&r_id=AAZN6WRiuNwe0UuPmXtnkw%3D%3D&app_id=PXdOjV695v&uc=scraping&d_id=8f118a2ba04ec69b52d473312fb6271e27d3d40b1b9d36c5b6d84d2c18c71fcc",
+          "httpVersion": "",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "queryString": [
+            {
+              "name": "ts",
+              "value": "1774514668648"
+            },
+            {
+              "name": "r_id",
+              "value": "AAZN6WRiuNwe0UuPmXtnkw%3D%3D"
+            },
+            {
+              "name": "app_id",
+              "value": "PXdOjV695v"
+            },
+            {
+              "name": "uc",
+              "value": "scraping"
+            },
+            {
+              "name": "d_id",
+              "value": "8f118a2ba04ec69b52d473312fb6271e27d3d40b1b9d36c5b6d84d2c18c71fcc"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 0,
+          "statusText": "",
+          "httpVersion": "",
+          "headers": [],
+          "cookies": [],
+          "content": {
+            "size": 183948,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 183948,
+          "_error": "net::ERR_BLOCKED_BY_CLIENT",
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-26T08:44:28.654Z",
+        "time": 32.87800000180141,
+        "timings": {
+          "blocked": 32.87800000180141,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 0,
+          "receive": 0,
+          "_blocked_queueing": -1
+        }
+      },
+      {
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "",
+                "scriptId": "205",
+                "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                "lineNumber": 12378,
+                "columnNumber": 300
+              }
+            ],
+            "parent": {
+              "description": "Promise.then",
+              "callFrames": [
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12376,
+                  "columnNumber": 33
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 2459
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 1268
+                },
+                {
+                  "functionName": "value",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12338,
+                  "columnNumber": 630
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12335,
+                  "columnNumber": 185
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://li.protechts.net/index_stg.html?ts=1774514668649&r_id=AAZN6WRiuNwe0UuPmXtnkw%3D%3D&app_id=PXdOjV695v&uc=postAction&d_id=8f118a2ba04ec69b52d473312fb6271e27d3d40b1b9d36c5b6d84d2c18c71fcc",
+          "httpVersion": "",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "queryString": [
+            {
+              "name": "ts",
+              "value": "1774514668649"
+            },
+            {
+              "name": "r_id",
+              "value": "AAZN6WRiuNwe0UuPmXtnkw%3D%3D"
+            },
+            {
+              "name": "app_id",
+              "value": "PXdOjV695v"
+            },
+            {
+              "name": "uc",
+              "value": "postAction"
+            },
+            {
+              "name": "d_id",
+              "value": "8f118a2ba04ec69b52d473312fb6271e27d3d40b1b9d36c5b6d84d2c18c71fcc"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 0,
+          "statusText": "",
+          "httpVersion": "",
+          "headers": [],
+          "cookies": [],
+          "content": {
+            "size": 183954,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 183954,
+          "_error": "net::ERR_BLOCKED_BY_CLIENT",
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-26T08:44:28.659Z",
+        "time": 30.537999999069143,
+        "timings": {
+          "blocked": 30.537999999069143,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 0,
+          "receive": 0,
+          "_blocked_queueing": -1
+        }
+      },
+      {
+        "_connectionId": "406329",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 286,
+                "columnNumber": 406
+              },
+              {
+                "functionName": "Ven.render",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 1617,
+                "columnNumber": 505
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 303,
+                "columnNumber": 419
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 87,
+                "columnNumber": 5
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 443,
+                "columnNumber": 304
+              },
+              {
+                "functionName": "Kt",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 1065,
+                "columnNumber": 163
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 188,
+                "columnNumber": 353
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 161,
+                "columnNumber": 149
+              },
+              {
+                "functionName": "aK.<computed>.<computed>.<computed>.aK.<computed>.<computed>.<computed>",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 248,
+                "columnNumber": 211
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 249,
+                "columnNumber": 119
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 90,
+                "columnNumber": 359
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 249,
+                "columnNumber": 73
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 1639,
+                "columnNumber": 247
+              },
+              {
+                "functionName": "",
+                "scriptId": "317",
+                "url": "https://www.gstatic.com/recaptcha/releases/qm3PSRIx10pekcnS9DjGnjPW/recaptcha__en.js",
+                "lineNumber": 1677,
+                "columnNumber": 289
+              }
+            ],
+            "parent": {
+              "description": "PendingScript",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "316",
+                  "url": "https://www.google.com/recaptcha/enterprise.js?render=6LcIy_MqAAAAAMKiupFSbmzW3xjGSlIfRzNWYMjC",
+                  "lineNumber": 0,
+                  "columnNumber": 1706
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "316",
+                  "url": "https://www.google.com/recaptcha/enterprise.js?render=6LcIy_MqAAAAAMKiupFSbmzW3xjGSlIfRzNWYMjC",
+                  "lineNumber": 0,
+                  "columnNumber": 1728
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6LcIy_MqAAAAAMKiupFSbmzW3xjGSlIfRzNWYMjC&co=aHR0cHM6Ly93d3cubGlua2VkaW4uY29tOjQ0Mw..&hl=en&v=qm3PSRIx10pekcnS9DjGnjPW&size=invisible&anchor-ms=20000&execute-ms=30000&cb=yr3iaojb9c21",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.google.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/recaptcha/enterprise/anchor?ar=1&k=6LcIy_MqAAAAAMKiupFSbmzW3xjGSlIfRzNWYMjC&co=aHR0cHM6Ly93d3cubGlua2VkaW4uY29tOjQ0Mw..&hl=en&v=qm3PSRIx10pekcnS9DjGnjPW&size=invisible&anchor-ms=20000&execute-ms=30000&cb=yr3iaojb9c21"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,es;q=0.9"
+            },
+            {
+              "name": "dnt",
+              "value": "1"
+            },
+            {
+              "name": "priority",
+              "value": "u=0, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "iframe"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "navigate"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "cross-site"
+            },
+            {
+              "name": "sec-fetch-storage-access",
+              "value": "active"
+            },
+            {
+              "name": "sec-gpc",
+              "value": "1"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-browser-channel",
+              "value": "stable"
+            },
+            {
+              "name": "x-browser-copyright",
+              "value": "Copyright 2026 Google LLC. All Rights reserved."
+            },
+            {
+              "name": "x-browser-validation",
+              "value": "Py0P6fejeHTyTB4IxHUYXNtAZRQ="
+            },
+            {
+              "name": "x-browser-year",
+              "value": "2026"
+            },
+            {
+              "name": "x-client-data",
+              "value": "CIe2yQEIorbJAQipncoBCLOAywEIk6HLAQiGoM0BCLuuzwEYvanKARixis8BGKqwzwE="
+            }
+          ],
+          "queryString": [
+            {
+              "name": "ar",
+              "value": "1"
+            },
+            {
+              "name": "k",
+              "value": "6LcIy_MqAAAAAMKiupFSbmzW3xjGSlIfRzNWYMjC"
+            },
+            {
+              "name": "co",
+              "value": "aHR0cHM6Ly93d3cubGlua2VkaW4uY29tOjQ0Mw.."
+            },
+            {
+              "name": "hl",
+              "value": "en"
+            },
+            {
+              "name": "v",
+              "value": "qm3PSRIx10pekcnS9DjGnjPW"
+            },
+            {
+              "name": "size",
+              "value": "invisible"
+            },
+            {
+              "name": "anchor-ms",
+              "value": "20000"
+            },
+            {
+              "name": "execute-ms",
+              "value": "30000"
+            },
+            {
+              "name": "cb",
+              "value": "yr3iaojb9c21"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "script-src 'report-sample' 'nonce-g2bJgKbNIzsrbyq67qEkPQ' 'unsafe-inline' 'strict-dynamic' https: http: 'unsafe-eval';object-src 'none';base-uri 'self';report-uri https://csp.withgoogle.com/csp/recaptcha/1"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "cross-origin-embedder-policy",
+              "value": "require-corp"
+            },
+            {
+              "name": "cross-origin-opener-policy-report-only",
+              "value": "same-origin; report-to=\"coop_38fac9d5b82543fc4729580d18ff2d3d\""
+            },
+            {
+              "name": "cross-origin-resource-policy",
+              "value": "cross-origin"
+            },
+            {
+              "name": "date",
+              "value": "Thu, 26 Mar 2026 08:44:29 GMT"
+            },
+            {
+              "name": "expires",
+              "value": "Mon, 01 Jan 1990 00:00:00 GMT"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "report-to",
+              "value": "{\"group\":\"recaptcha\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/recaptcha\"}]}"
+            },
+            {
+              "name": "report-to",
+              "value": "{\"group\":\"coop_38fac9d5b82543fc4729580d18ff2d3d\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/38fac9d5b82543fc4729580d18ff2d3d\"}]}"
+            },
+            {
+              "name": "server",
+              "value": "ESF"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 96088,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 50900,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "142.251.152.119",
+        "startedDateTime": "2026-03-26T08:44:28.921Z",
+        "time": 148.96700000029313,
+        "timings": {
+          "blocked": 2.060000000796048,
+          "dns": 20.796,
+          "ssl": 46.64399999999999,
+          "connect": 67.59599999999999,
+          "send": 0,
+          "wait": 33.77799999976531,
+          "receive": 24.73699999973178,
+          "_blocked_queueing": 1.711000000796048,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_connectionId": "406188",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "SetIFrameSrc",
+                "scriptId": "318",
+                "url": "https://merchantpool1.linkedin.com/mdt.js?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&instanceId=fb6bbd47-fa7c-4264-b4e9-b25948407586",
+                "lineNumber": 0,
+                "columnNumber": 1622
+              },
+              {
+                "functionName": "",
+                "scriptId": "318",
+                "url": "https://merchantpool1.linkedin.com/mdt.js?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&instanceId=fb6bbd47-fa7c-4264-b4e9-b25948407586",
+                "lineNumber": 0,
+                "columnNumber": 666
+              }
+            ],
+            "parent": {
+              "description": "Promise.finally",
+              "callFrames": [
+                {
+                  "functionName": "SendBack",
+                  "scriptId": "318",
+                  "url": "https://merchantpool1.linkedin.com/mdt.js?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&instanceId=fb6bbd47-fa7c-4264-b4e9-b25948407586",
+                  "lineNumber": 0,
+                  "columnNumber": 660
+                },
+                {
+                  "functionName": "window.dfp.doFpt",
+                  "scriptId": "318",
+                  "url": "https://merchantpool1.linkedin.com/mdt.js?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&instanceId=fb6bbd47-fa7c-4264-b4e9-b25948407586",
+                  "lineNumber": 0,
+                  "columnNumber": 1639
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "205",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/1bxhj1zcq2uom8fphmddoyrot",
+                  "lineNumber": 12365,
+                  "columnNumber": 119
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://merchantpool1.linkedin.com/?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&CustomerId=fb6bbd47-fa7c-4264-b4e9-b25948407586&PageId=&w=8DE8B13E4990FEE&mdt=1774514668927&rticks=1774514668906&u1=&u3=26.3.1&u4=arm&u5=64&u2=(Chromium%2C146.0.7680.155)%2C(Not-A.Brand%2C24.0.0.0)%2C(Google%20Chrome%2C146.0.7680.155)",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "merchantpool1.linkedin.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/?session_id=ada583e1-9943-4560-826b-56b4eae7a14c&CustomerId=fb6bbd47-fa7c-4264-b4e9-b25948407586&PageId=&w=8DE8B13E4990FEE&mdt=1774514668927&rticks=1774514668906&u1=&u3=26.3.1&u4=arm&u5=64&u2=(Chromium%2C146.0.7680.155)%2C(Not-A.Brand%2C24.0.0.0)%2C(Google%20Chrome%2C146.0.7680.155)"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,es;q=0.9"
+            },
+            {
+              "name": "dnt",
+              "value": "1"
+            },
+            {
+              "name": "priority",
+              "value": "u=0, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "iframe"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "navigate"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-site"
+            },
+            {
+              "name": "sec-gpc",
+              "value": "1"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "session_id",
+              "value": "ada583e1-9943-4560-826b-56b4eae7a14c"
+            },
+            {
+              "name": "CustomerId",
+              "value": "fb6bbd47-fa7c-4264-b4e9-b25948407586"
+            },
+            {
+              "name": "PageId",
+              "value": ""
+            },
+            {
+              "name": "w",
+              "value": "8DE8B13E4990FEE"
+            },
+            {
+              "name": "mdt",
+              "value": "1774514668927"
+            },
+            {
+              "name": "rticks",
+              "value": "1774514668906"
+            },
+            {
+              "name": "u1",
+              "value": ""
+            },
+            {
+              "name": "u3",
+              "value": "26.3.1"
+            },
+            {
+              "name": "u4",
+              "value": "arm"
+            },
+            {
+              "name": "u5",
+              "value": "64"
+            },
+            {
+              "name": "u2",
+              "value": "(Chromium%2C146.0.7680.155)%2C(Not-A.Brand%2C24.0.0.0)%2C(Google%20Chrome%2C146.0.7680.155)"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "content-length",
+              "value": "0"
+            },
+            {
+              "name": "date",
+              "value": "Thu, 26 Mar 2026 08:44:28 GMT"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/plain"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 47,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "52.146.137.222",
+        "startedDateTime": "2026-03-26T08:44:28.932Z",
+        "time": 59.73999999696389,
+        "timings": {
+          "blocked": 2.493999998699408,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.11099999999999999,
+          "wait": 56.3460000003702,
+          "receive": 0.7889999978942797,
+          "_blocked_queueing": 1.865999998699408,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      },
+      {
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "insertBefore",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5231,
+                "columnNumber": 129
+              },
+              {
+                "functionName": "__flushElement",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 4692,
+                "columnNumber": 52
+              },
+              {
+                "functionName": "flushElement",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 4687,
+                "columnNumber": 5
+              },
+              {
+                "functionName": "",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 4998,
+                "columnNumber": 37
+              },
+              {
+                "functionName": "evaluate",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 4738,
+                "columnNumber": 12
+              },
+              {
+                "functionName": "evaluateSyscall",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5356,
+                "columnNumber": 60
+              },
+              {
+                "functionName": "evaluateInner",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5350,
+                "columnNumber": 112
+              },
+              {
+                "functionName": "evaluateOuter",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5350,
+                "columnNumber": 33
+              },
+              {
+                "functionName": "next",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5510,
+                "columnNumber": 21
+              },
+              {
+                "functionName": "_execute",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5509,
+                "columnNumber": 19
+              },
+              {
+                "functionName": "execute",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5508,
+                "columnNumber": 275
+              },
+              {
+                "functionName": "handleException",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5371,
+                "columnNumber": 69
+              },
+              {
+                "functionName": "handleException",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5419,
+                "columnNumber": 149
+              },
+              {
+                "functionName": "throw",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5363,
+                "columnNumber": 169
+              },
+              {
+                "functionName": "evaluate",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 4974,
+                "columnNumber": 33
+              },
+              {
+                "functionName": "_execute",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5363,
+                "columnNumber": 13
+              },
+              {
+                "functionName": "execute",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5360,
+                "columnNumber": 42
+              },
+              {
+                "functionName": "rerender",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5423,
+                "columnNumber": 31
+              },
+              {
+                "functionName": "",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 782,
+                "columnNumber": 18
+              },
+              {
+                "functionName": "",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 834,
+                "columnNumber": 30
+              },
+              {
+                "functionName": "Nt",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 5336,
+                "columnNumber": 4
+              },
+              {
+                "functionName": "_renderRoots",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 833,
+                "columnNumber": 33
+              },
+              {
+                "functionName": "_renderRootsTransaction",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 838,
+                "columnNumber": 9
+              },
+              {
+                "functionName": "_revalidate",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 844,
+                "columnNumber": 247
+              },
+              {
+                "functionName": "invokeWithOnError",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6104,
+                "columnNumber": 188
+              },
+              {
+                "functionName": "flush",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6088,
+                "columnNumber": 19
+              },
+              {
+                "functionName": "flush",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6116,
+                "columnNumber": 51
+              },
+              {
+                "functionName": "_end",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6218,
+                "columnNumber": 8
+              },
+              {
+                "functionName": "end",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6165,
+                "columnNumber": 5
+              },
+              {
+                "functionName": "_runExpiredTimers",
+                "scriptId": "207",
+                "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                "lineNumber": 6237,
+                "columnNumber": 5
+              }
+            ],
+            "parent": {
+              "description": "setTimeout",
+              "callFrames": [
+                {
+                  "functionName": "setTimeout",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 6064,
+                  "columnNumber": 25
+                },
+                {
+                  "functionName": "_installTimerTimeout",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 6244,
+                  "columnNumber": 36
+                },
+                {
+                  "functionName": "_reinstallTimerTimeout",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 6242,
+                  "columnNumber": 5
+                },
+                {
+                  "functionName": "_later",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 6231,
+                  "columnNumber": 5
+                },
+                {
+                  "functionName": "later",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 6194,
+                  "columnNumber": 12
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "207",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/6xit43scc04ns3vx47p7zv81u",
+                  "lineNumber": 3435,
+                  "columnNumber": 28
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "208",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/ev27f16vx0lxt5l5sdxmgx445",
+                  "lineNumber": 629,
+                  "columnNumber": 55
+                },
+                {
+                  "functionName": "schedule",
+                  "scriptId": "215",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/e9qwo8btaqmt0i2cp6j47b594",
+                  "lineNumber": 38625,
+                  "columnNumber": 247
+                },
+                {
+                  "functionName": "startPolling",
+                  "scriptId": "215",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/e9qwo8btaqmt0i2cp6j47b594",
+                  "lineNumber": 38612,
+                  "columnNumber": 19
+                },
+                {
+                  "functionName": "initialize",
+                  "scriptId": "215",
+                  "url": "https://static.licdn.com/aero-v1/sc/h/e9qwo8btaqmt0i2cp6j47b594",
+                  "lineNumber": 38564,
+                  "columnNumber": 98
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://cs.ns1p.net/u.html?a=1516sqc",
+          "httpVersion": "",
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "https://www.linkedin.com/"
+            },
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "queryString": [
+            {
+              "name": "a",
+              "value": "1516sqc"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 0,
+          "statusText": "",
+          "httpVersion": "",
+          "headers": [],
+          "cookies": [],
+          "content": {
+            "size": 183783,
+            "mimeType": "x-unknown"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 183783,
+          "_error": "net::ERR_BLOCKED_BY_CLIENT",
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-26T08:44:38.206Z",
+        "time": 7.9120000009424984,
+        "timings": {
+          "blocked": 7.9120000009424984,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 0,
+          "receive": 0,
+          "_blocked_queueing": -1
+        }
+      }
+    ]
+  }
+}

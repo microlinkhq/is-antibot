@@ -12,7 +12,14 @@ const loadHAR = async filepath => {
   const response = json.log.entries[0].response
 
   return response.headers.reduce((acc, header) => {
-    acc[header.name] = header.value
+    const existing = acc[header.name]
+    if (existing !== undefined) {
+      acc[header.name] = Array.isArray(existing)
+        ? [...existing, header.value]
+        : [existing, header.value]
+    } else {
+      acc[header.name] = header.value
+    }
     return acc
   }, {})
 }

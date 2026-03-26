@@ -1,5 +1,6 @@
 'use strict'
 
+const { splitSetCookieString } = require('cookie-es')
 const debug = require('debug-logfmt')('is-antibot')
 
 const getHeader = (headers, name) =>
@@ -20,6 +21,11 @@ const testPattern = (value, pattern, isRegex = false) => {
 const createResult = (detected, provider) => {
   debug({ detected, provider })
   return { detected, provider }
+}
+
+const testSetCookie = (headers, pattern) => {
+  const cookiesString = getHeader(headers, 'set-cookie')
+  return splitSetCookieString(cookiesString).some(c => c.startsWith(pattern))
 }
 
 module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
@@ -224,6 +230,11 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'cloudflare-turnstile')
   }
 
+  // LinkedIn: trkCode=bf cookie ("bot filter") is set when LinkedIn blocks a request
+  if (testSetCookie(headers, 'trkCode=bf')) {
+    return createResult(true, 'linkedin')
+  }
+
   // AWS WAF: Check for x-amzn-waf-action or x-amzn-requestid headers
   // These headers are set by AWS WAF when bot control rules are triggered
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/aws-waf.json
@@ -245,3 +256,4 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
 
 module.exports.debug = debug
 module.exports.testPattern = testPattern
+module.exports.testSetCookie = testSetCookie

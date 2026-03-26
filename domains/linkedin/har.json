@@ -1,0 +1,159 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "24.11.1"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "https://www.linkedin.com/in/kikobeats/",
+        "startedDateTime": "2026-03-26T08:34:26.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 150.0
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-03-26T08:34:26.000Z",
+        "time": 150.0,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.linkedin.com/in/kikobeats/",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "www.linkedin.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/in/kikobeats/"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "host",
+              "value": "www.linkedin.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "curl/7.81.0"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 999,
+          "statusText": "",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Thu, 26 Mar 2026 08:34:26 GMT"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "content-length",
+              "value": "1530"
+            },
+            {
+              "name": "x-li-fabric",
+              "value": "prod-ltx1"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "expires",
+              "value": "Thu, 01 Jan 1970 00:00:00 GMT"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, no-transform"
+            },
+            {
+              "name": "x-li-pop",
+              "value": "cf-prod-ltx1-x"
+            },
+            {
+              "name": "x-li-proto",
+              "value": "http/2"
+            },
+            {
+              "name": "x-li-uuid",
+              "value": "AAZN6UCZ0WFOfN9/646Y1w=="
+            },
+            {
+              "name": "set-cookie",
+              "value": "trkCode=bf; Max-Age=5"
+            },
+            {
+              "name": "set-cookie",
+              "value": "trkInfo=AQH9D3BJZIDTSQAAAZ0pS-VIw2-R26ZlYv8_uR4t-io1811wFS63Xyx74QZ-viOuV4NB5uhRI6UkHKYKLr__CUMvsqFXgQiq5IUY9MjR4t1YZj3AN5D_Dybq5FIG-ynqRd0aoZ4=; Max-Age=5"
+            },
+            {
+              "name": "set-cookie",
+              "value": "rtc=AQHzvhUfMVmWoAAAAZ0pS-VIeINGZ3pIHjmlO6gY9n314A8-XPOE1sHuKHgd6_37MIPXe6gc8XzdvmRbeWnko50LpdsURLN_DoByTS_Nx_BU63dpy7jAn0fDQBiPu9q8v3jhPiQd72nC2VGxUFVNzWewSSxSUDXiNg8Y20PD6_bY9ufdPvkTqFmHmlQ0JFAhRkrK_prFF4psBOTSIvhFj0lbACs=; Max-Age=120; path=/; domain=.linkedin.com"
+            },
+            {
+              "name": "set-cookie",
+              "value": "__cf_bm=jHvR1VJ11rKcB3Sw8vC1uyaBkaQNJ9CYzzZ.sqJhESw-1774514333-1.0.1.1-WTwsGWYEUzNAOVlSq7U_3jAg_GZ6uEDI6zqIeEXD4sDcMQexGjwefL6.huGRjL4U8.2KINQQ9qfFekKOmdemw4kHx6SySynX8b6lCNHQD.Q; path=/; expires=Thu, 26-Mar-26 09:08:53 GMT; domain=.linkedin.com; HttpOnly; Secure; SameSite=None"
+            },
+            {
+              "name": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            },
+            {
+              "name": "cf-ray",
+              "value": "9e24d0f51906038a-MAD"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 1530,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1
+        }
+      }
+    ]
+  }
+}

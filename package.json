@@ -55,6 +55,7 @@
     "waf"
   ],
   "dependencies": {
+    "cookie-es": "~3.0.1",
     "debug-logfmt": "~1.4.7"
   },
   "devDependencies": {
