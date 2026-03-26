@@ -1,0 +1,56 @@
+---
+description: Sync new detection rules from scrapfly/Antibot-Detector into is-antibot
+alwaysApply: false
+---
+
+# Sync Antibot-Detector
+
+Periodically port new detection signals from the upstream [scrapfly/Antibot-Detector](https://github.com/scrapfly/Antibot-Detector) browser extension into this Node.js library.
+
+## Prerequisites
+
+Clone or update the upstream repo into `/tmp/Antibot-Detector`:
+
+```bash
+git clone https://github.com/scrapfly/Antibot-Detector /tmp/Antibot-Detector
+```
+
+## How to find what changed
+
+1. Read the last `is-antibot` commit that references `Antibot-Detector@<sha>` to get the baseline SHA.
+2. In `/tmp/Antibot-Detector`, run `git log --oneline <baseline-sha>..HEAD -- detectors/` to see what detector files changed.
+3. Read every changed/new JSON file under `detectors/antibot/` and `detectors/captcha/`.
+4. Compare against the current checks in `src/index.js` to identify gaps.
+
+## What can be ported
+
+This library only has access to HTTP responses (headers, body, URL, set-cookie). Only port signals from these JSON fields:
+
+| Antibot-Detector field | is-antibot mechanism |
+|---|---|
+| `detection.header` | `getHeader(headers, name)` |
+| `detection.content` | `testPattern(body, text)` |
+| `detection.url` | `testPattern(url, text)` or `testPattern(url, regex, true)` |
+| `detection.cookie` | `testSetCookie(headers, 'name=')` |
+
+Skip `detection.window`, `detection.dom`, `detection.payload`, and any fingerprint detectors — they require a browser runtime.
+
+## Coding conventions
+
+- Provider keys are lowercase, hyphen-separated: `friendly-captcha`, `aws-waf`, `qcloud-captcha`.
+- Each check is a standalone `if` returning `createResult(true, 'provider')`.
+- Every check gets a comment with a short description and a Reference URL when available.
+- No section-separator comments (e.g. `// --- Provider ---`) in `src/index.js`.
+- Tests go in `test/index.js`, one `test('provider (signal)', ...)` per signal type.
+- No section-separator comments in `test/index.js` either.
+- Run `npm test` (includes lint + ava + c8 coverage) and ensure all tests pass.
+
+## Commit message format
+
+```
+feat: add N new providers and enhance M existing detections
+
+Based on scrapfly/Antibot-Detector@<full-sha-of-latest-upstream-commit>
+```
+
+This SHA reference lets the next sync know where to resume.

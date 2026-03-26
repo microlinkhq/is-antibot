@@ -35,6 +35,11 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'cloudflare')
   }
 
+  // Cloudflare: cf_clearance cookie indicates Cloudflare challenge flow
+  if (testSetCookie(headers, 'cf_clearance=')) {
+    return createResult(true, 'cloudflare')
+  }
+
   // Vercel: Check for x-vercel-mitigated header with 'challenge' value
   // Solver reference: https://github.com/glizzykingdreko/Vercel-Attack-Mode-Solver
   if (getHeader(headers, 'x-vercel-mitigated') === 'challenge') {
@@ -56,17 +61,30 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'akamai')
   }
 
+  // Akamai: _abck bot manager tracking cookie
+  if (testSetCookie(headers, '_abck=')) {
+    return createResult(true, 'akamai')
+  }
+
+  // Akamai: Bot Manager API namespace (bmak) in body
+  if (body && testPattern(body, 'bmak.')) {
+    return createResult(true, 'akamai')
+  }
+
   // DataDome: Check for x-dd-b header with values '1' (soft challenge) or '2' (hard challenge/CAPTCHA)
   // Official docs: https://docs.datadome.co/reference/validate-request
-  // 1: Soft challenge / JS redirect / interstitial
-  // 2: Hard challenge / HTML redirect / CAPTCHA
   if (['1', '2'].includes(getHeader(headers, 'x-dd-b'))) {
     return createResult(true, 'datadome')
   }
 
-  // DataDome: Check for x-datadome header presence
+  // DataDome: Check for x-datadome or x-datadome-cid header presence
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/datadome.json
-  if (getHeader(headers, 'x-datadome')) {
+  if (getHeader(headers, 'x-datadome') || getHeader(headers, 'x-datadome-cid')) {
+    return createResult(true, 'datadome')
+  }
+
+  // DataDome: datadome tracking cookie
+  if (testSetCookie(headers, 'datadome=')) {
     return createResult(true, 'datadome')
   }
 
@@ -76,9 +94,19 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'perimeterx')
   }
 
-  // PerimeterX: Check for window._pxAppId in body (JavaScript initialization)
+  // PerimeterX: Check for window._pxAppId, pxInit, or _pxAction in body
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/perimeterx.json#L130-L137
-  if (body && testPattern(body, 'window._pxAppId')) {
+  if (
+    body &&
+    (testPattern(body, 'window._pxAppId') ||
+      testPattern(body, 'pxInit') ||
+      testPattern(body, '_pxAction'))
+  ) {
+    return createResult(true, 'perimeterx')
+  }
+
+  // PerimeterX: _px3 or _pxhd cookies
+  if (testSetCookie(headers, '_px3=') || testSetCookie(headers, '_pxhd=')) {
     return createResult(true, 'perimeterx')
   }
 
@@ -134,12 +162,95 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'imperva')
   }
 
-  // reCAPTCHA: Check for recaptcha/api or google.com/recaptcha in URL
+  // Imperva/Incapsula: incap_ses_, visid_incap_, or reese84 cookies
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/incapsula.json
+  if (
+    testSetCookie(headers, 'incap_ses_') ||
+    testSetCookie(headers, 'visid_incap_') ||
+    testSetCookie(headers, 'reese84=')
+  ) {
+    return createResult(true, 'imperva')
+  }
+
+  // Reblaze: rbzid or rbzsessionid cookies
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/reblaze.json
+  if (
+    testSetCookie(headers, 'rbzid=') ||
+    testSetCookie(headers, 'rbzsessionid=')
+  ) {
+    return createResult(true, 'reblaze')
+  }
+
+  // Reblaze: Check for 'reblaze' text in response body
+  if (body && testPattern(body, 'reblaze')) {
+    return createResult(true, 'reblaze')
+  }
+
+  // Cheq: Check for CheqSdk or cheqzone.com in body
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/cheq.json
+  if (
+    body &&
+    (testPattern(body, 'CheqSdk') || testPattern(body, 'cheqzone.com'))
+  ) {
+    return createResult(true, 'cheq')
+  }
+
+  // Cheq: Check for cheqzone.com or cheq.ai in URL
+  if (
+    url &&
+    (testPattern(url, 'cheqzone\\.com', true) ||
+      testPattern(url, 'cheq\\.ai', true))
+  ) {
+    return createResult(true, 'cheq')
+  }
+
+  // Sucuri: Check for 'sucuri' text in response body
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/sucuri.json
+  if (body && testPattern(body, 'sucuri')) {
+    return createResult(true, 'sucuri')
+  }
+
+  // ThreatMetrix: Check for 'ThreatMetrix' in body
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/threatmetrix.json
+  if (body && testPattern(body, 'ThreatMetrix')) {
+    return createResult(true, 'threatmetrix')
+  }
+
+  // ThreatMetrix: Check for fp/check.js fingerprint endpoint in URL
+  if (url && testPattern(url, 'fp/check.js')) {
+    return createResult(true, 'threatmetrix')
+  }
+
+  // Meetrics: Check for 'meetrics' text in response body
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/meetrics.json
+  if (body && testPattern(body, 'meetrics')) {
+    return createResult(true, 'meetrics')
+  }
+
+  // Meetrics: Check for meetrics.com in URL
+  if (url && testPattern(url, 'meetrics\\.com', true)) {
+    return createResult(true, 'meetrics')
+  }
+
+  // Ocule: Check for ocule.co.uk in body
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/ocule.json
+  if (body && testPattern(body, 'ocule.co.uk')) {
+    return createResult(true, 'ocule')
+  }
+
+  // Ocule: Check for ocule.co.uk in URL
+  if (url && testPattern(url, 'ocule\\.co\\.uk', true)) {
+    return createResult(true, 'ocule')
+  }
+
+  // reCAPTCHA: Check for recaptcha/api, google.com/recaptcha, gstatic.com/recaptcha, or recaptcha.net in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/recaptcha.json#L13-L48
   if (
     url &&
     (testPattern(url, 'recaptcha/api') ||
-      testPattern(url, 'google\\.com/recaptcha', true))
+      testPattern(url, 'google\\.com/recaptcha', true) ||
+      testPattern(url, 'gstatic.com/recaptcha') ||
+      testPattern(url, 'recaptcha.net'))
   ) {
     return createResult(true, 'recaptcha')
   }
@@ -212,7 +323,6 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
   }
 
   // Cloudflare Turnstile: Check for challenges.cloudflare.com/turnstile in URL
-  // Turnstile is Cloudflare's CAPTCHA alternative with privacy focus
   if (
     url &&
     testPattern(url, 'challenges\\.cloudflare\\.com/turnstile', true)
@@ -220,14 +330,69 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'cloudflare-turnstile')
   }
 
-  // Cloudflare Turnstile: Check for cf-turnstile class in body (primary indicator)
+  // Cloudflare Turnstile: Check for cf-turnstile class in body
   if (body && testPattern(body, 'cf-turnstile')) {
     return createResult(true, 'cloudflare-turnstile')
   }
 
-  // Cloudflare Turnstile: Check for turnstile text in body (secondary indicator)
+  // Cloudflare Turnstile: Check for turnstile text in body
   if (body && testPattern(body, 'turnstile')) {
     return createResult(true, 'cloudflare-turnstile')
+  }
+
+  // Friendly Captcha: Check for friendlycaptcha.com in URL
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/friendlycaptcha.json
+  if (url && testPattern(url, 'friendlycaptcha\\.com', true)) {
+    return createResult(true, 'friendly-captcha')
+  }
+
+  // Friendly Captcha: Check for frc-captcha container or friendlyChallenge object in body
+  if (
+    body &&
+    (testPattern(body, 'frc-captcha') ||
+      testPattern(body, 'friendlyChallenge'))
+  ) {
+    return createResult(true, 'friendly-captcha')
+  }
+
+  // Captcha.eu: Check for captcha.eu in URL
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/captchaeu.json
+  if (url && testPattern(url, 'captcha\\.eu', true)) {
+    return createResult(true, 'captcha-eu')
+  }
+
+  // Captcha.eu: Check for CaptchaEU or captchaeu in body
+  if (
+    body &&
+    (testPattern(body, 'CaptchaEU') || testPattern(body, 'captchaeu'))
+  ) {
+    return createResult(true, 'captcha-eu')
+  }
+
+  // QCloud Captcha (Tencent): Check for turing.captcha.qcloud.com in URL
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/qcloud.json
+  if (url && testPattern(url, 'turing\\.captcha\\.qcloud\\.com', true)) {
+    return createResult(true, 'qcloud-captcha')
+  }
+
+  // QCloud Captcha: Check for TencentCaptcha or turing.captcha in body
+  if (
+    body &&
+    (testPattern(body, 'TencentCaptcha') ||
+      testPattern(body, 'turing.captcha'))
+  ) {
+    return createResult(true, 'qcloud-captcha')
+  }
+
+  // AliExpress CAPTCHA: Check for punish?x5secdata in URL
+  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/aliexpress.json
+  if (url && testPattern(url, 'punish\\?x5secdata', true)) {
+    return createResult(true, 'aliexpress-captcha')
+  }
+
+  // AliExpress CAPTCHA: Check for x5secdata in body
+  if (body && testPattern(body, 'x5secdata')) {
+    return createResult(true, 'aliexpress-captcha')
   }
 
   // LinkedIn: trkCode=bf cookie ("bot filter") is set when LinkedIn blocks a request
@@ -236,7 +401,6 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
   }
 
   // AWS WAF: Check for x-amzn-waf-action or x-amzn-requestid headers
-  // These headers are set by AWS WAF when bot control rules are triggered
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/aws-waf.json
   if (
     getHeader(headers, 'x-amzn-waf-action') ||
@@ -245,9 +409,13 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'aws-waf')
   }
 
-  // AWS WAF: Check for aws-waf text in body (challenge page indicator)
-  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/aws-waf.json#L47-L73
-  if (body && testPattern(body, 'aws-waf')) {
+  // AWS WAF: Check for aws-waf or awswaf text in body
+  if (body && (testPattern(body, 'aws-waf') || testPattern(body, 'awswaf'))) {
+    return createResult(true, 'aws-waf')
+  }
+
+  // AWS WAF: aws-waf-token cookie
+  if (testSetCookie(headers, 'aws-waf-token=')) {
     return createResult(true, 'aws-waf')
   }
 
