@@ -1,0 +1,690 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "WebInspector",
+      "version": "537.36"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2026-03-27T15:14:37.563Z",
+        "id": "page_1",
+        "title": "https://www.youtube.com/watch?v=EkdXGPGciUY",
+        "pageTimings": {
+          "onContentLoad": 2090.993999998318,
+          "onLoad": 2201.18000000366
+        }
+      }
+    ],
+    "entries": [
+      {
+        "_initiator": {
+          "type": "other"
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://www.youtube.com/watch?v=EkdXGPGciUY",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "Upgrade-Insecure-Requests",
+              "value": "1"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "device-memory",
+              "value": "8"
+            },
+            {
+              "name": "sec-ch-dpr",
+              "value": "2"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-arch",
+              "value": "\"arm\""
+            },
+            {
+              "name": "sec-ch-ua-bitness",
+              "value": "\"64\""
+            },
+            {
+              "name": "sec-ch-ua-form-factors",
+              "value": "\"Desktop\""
+            },
+            {
+              "name": "sec-ch-ua-full-version",
+              "value": "\"146.0.7680.155\""
+            },
+            {
+              "name": "sec-ch-ua-full-version-list",
+              "value": "\"Chromium\";v=\"146.0.7680.155\", \"Not-A.Brand\";v=\"24.0.0.0\", \"Google Chrome\";v=\"146.0.7680.155\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-model",
+              "value": "\"\""
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-ch-ua-platform-version",
+              "value": "\"26.3.1\""
+            },
+            {
+              "name": "sec-ch-ua-wow64",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-viewport-width",
+              "value": "1512"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "v",
+              "value": "EkdXGPGciUY"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "accept-ch",
+              "value": "Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-Viewport-Width, Sec-CH-DPR, Device-Memory"
+            },
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "name": "content-encoding",
+              "value": "br"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "script-src 'unsafe-eval' 'self' 'unsafe-inline' https://www.google.com https://apis.google.com https://ssl.gstatic.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://*.youtube.com https://*.google.com https://*.gstatic.com https://youtube.com https://www.youtube.com https://google.com https://*.doubleclick.net https://*.googleapis.com https://www.googleadservices.com https://tpc.googlesyndication.com https://www.youtubekids.com https://www.youtube-nocookie.com https://www.youtubeeducation.com https://www-onepick-opensocial.googleusercontent.com;report-uri https://csp.withgoogle.com/csp/youtube_main/allowlist, require-trusted-types-for 'script'"
+            },
+            {
+              "name": "content-security-policy-report-only",
+              "value": "report-uri https://csp.withgoogle.com/csp/youtube_main/strict;base-uri 'self';object-src 'none';script-src 'report-sample' 'nonce-SeM0vUOZiHZKvBZln_ZEOA' 'unsafe-inline' 'strict-dynamic' https: http: 'unsafe-eval'"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "cross-origin-opener-policy",
+              "value": "same-origin-allow-popups; report-to=\"youtube_main\""
+            },
+            {
+              "name": "date",
+              "value": "Fri, 27 Mar 2026 15:14:37 GMT"
+            },
+            {
+              "name": "document-policy",
+              "value": "include-js-call-stacks-in-crash-reports"
+            },
+            {
+              "name": "expires",
+              "value": "Mon, 01 Jan 1990 00:00:00 GMT"
+            },
+            {
+              "name": "origin-trial",
+              "value": "AmhMBR6zCLzDDxpW+HfpP67BqwIknWnyMOXOQGfzYswFmJe+fgaI6XZgAzcxOrzNtP7hEDsOo1jdjFnVr2IdxQ4AAAB4eyJvcmlnaW4iOiJodHRwczovL3lvdXR1YmUuY29tOjQ0MyIsImZlYXR1cmUiOiJXZWJWaWV3WFJlcXVlc3RlZFdpdGhEZXByZWNhdGlvbiIsImV4cGlyeSI6MTc1ODA2NzE5OSwiaXNTdWJkb21haW4iOnRydWV9, AiDEBptUfVeO93q48VdVMe/ubupazdAl8AaHP+NBzdnW8quUcHdzJUyGSfrmtpKJu7EOvwRp9ug2rEo3XU+WMAMAAAB2eyJvcmlnaW4iOiJodHRwczovL3lvdXR1YmUuY29tOjQ0MyIsImZlYXR1cmUiOiJEZXZpY2VCb3VuZFNlc3Npb25DcmVkZW50aWFsczIiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlfQ=="
+            },
+            {
+              "name": "p3p",
+              "value": "CP=\"This is not a P3P policy! See http://support.google.com/accounts/answer/151657?hl=es for more info.\""
+            },
+            {
+              "name": "permissions-policy",
+              "value": "ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*, compute-pressure=(), idle-detection=(), keyboard-map=(), attribution-reporting=(), private-aggregation=(), private-state-token-issuance=(), private-state-token-redemption=(), join-ad-interest-group=(), run-ad-auction=(), browsing-topics=()"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "report-to",
+              "value": "{\"group\":\"youtube_main\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/youtube_main\"}]}"
+            },
+            {
+              "name": "reporting-endpoints",
+              "value": "default=\"/web-reports?context=eJwVzn9MVXUYx3EP74V0j5d7z_l-v8-priuHTDfZtesN7I9ilhUrG4ZzbipsGFdKF3IRDzcoV62RUyIXJTM1-7E1wV-4crExQtdqMQsFf1TKwpb5IxbhokxKm53-eG2fZ8-ez57QL7flP15rrQ-lrYrZ9dZjgxus1hLf-muPbx3s9a2xGRmrPC9j1fzYaL0XXZ7VeNfyrN6VIZquhigvsDm9yGZssc1zFTbdHTa9n9i0fGYzcsWmsGEao2Vh-naE6ezJpaw_l7bA-L-5zC-OkKmOYGci7NwSYd72CN7XEfryo-SsinJqV5R1B6NkH4ryw_UoW4sc3l3mMFLpUPqsw8aNDs2BhVsdju5ziHU5qDMO00cdLkw6DJe43FrkUlruciXtcrPVpfiEy0ODLg-ecrl9qqI0pth_j0LlKeJFismnFKG04rV6xaVXFBXtihc6FBxQ9B1WlJxVTFxW3Lqq2DahuHlD0aI1ZZ4mfL-mytcs26F5KXAk0PWBZugjTdMBTeoLzVi_pnZA0zOk-fWkpvOsZt2wZtvvmsZJze4phkfFMPMOw2DMsGGWITnH0FNg6A8MxA0fJgwlCwwPLzXs3WT4uMVgtRue2G0Y_8qQfczgf2M4ftxw7LTh6PeGunNBx_-GDWvOG9rGg7s_DFuuG5r_MZgpQndI2BwW_nSFB1SQjbA6JrxeINy4V8hZLPy0RHgzJeStEeYEBmqETXXCAl_4vEF4sUmoeVnofFUobhbObBYeaREWtgnlAdMuxLcLHe8L6zuF_H3Ck_uFN7qE1CHh7U-Fmd3CtS-FipPCxLdC4XfCW-eExHlh8Gdh16VgvibE_g5-zfJYMdXjgu2RCXuMikfrnR4Xp3vU3e0Rm-HxTkGwS3osKfRwp-WM9O08kR0d6u35LSsv3pRu8Buqquc-X10Vf6Y-XevHq2tXx1P1a_21qadrKpOJ5PzEfcmiufMSlXWJ_wDqcell&authuser=0\""
+            },
+            {
+              "name": "server",
+              "value": "ESF"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "vary",
+              "value": "Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-Viewport-Width, Sec-CH-DPR, Device-Memory"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 1494998,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 0,
+          "_error": null,
+          "_fetchedViaServiceWorker": true,
+          "_serviceWorkerResponseSource": "network",
+          "_serviceWorkerRouterRuleIdMatched": 0
+        },
+        "serverIPAddress": "",
+        "startedDateTime": "2026-03-27T15:14:37.563Z",
+        "time": 1347.2389999951702,
+        "timings": {
+          "blocked": 0.5669999966351316,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0,
+          "wait": 219.56900000691414,
+          "receive": 1127.102999991621,
+          "_blocked_queueing": 0.16199999663513154,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": 0.405,
+          "_workerRespondWithSettled": 219.761,
+          "_workerRouterEvaluationStart": 0.208
+        }
+      },
+      {
+        "_connectionId": "1693857",
+        "_initiator": {
+          "type": "script",
+          "stack": {
+            "callFrames": [
+              {
+                "functionName": "reflect",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2671,
+                "columnNumber": 34
+              },
+              {
+                "functionName": "",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 3421,
+                "columnNumber": 26
+              },
+              {
+                "functionName": "apply",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2704,
+                "columnNumber": 19
+              },
+              {
+                "functionName": "reflect",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2671,
+                "columnNumber": 34
+              },
+              {
+                "functionName": "",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 3421,
+                "columnNumber": 26
+              },
+              {
+                "functionName": "apply",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2704,
+                "columnNumber": 19
+              },
+              {
+                "functionName": "reflect",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2671,
+                "columnNumber": 34
+              },
+              {
+                "functionName": "",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 3421,
+                "columnNumber": 26
+              },
+              {
+                "functionName": "apply",
+                "scriptId": "552",
+                "url": "chrome-extension://ddkjiahejlhfcafbddmgiahcphecmpfh/rulesets/scripting/scriptlet/main/ublock-filters.js",
+                "lineNumber": 2704,
+                "columnNumber": 19
+              },
+              {
+                "functionName": "",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 3747,
+                "columnNumber": 184
+              },
+              {
+                "functionName": "callback",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 21801,
+                "columnNumber": 668
+              },
+              {
+                "functionName": "",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 7508,
+                "columnNumber": 176
+              },
+              {
+                "functionName": "mIh",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 1681,
+                "columnNumber": 88
+              },
+              {
+                "functionName": "job",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 7508,
+                "columnNumber": 143
+              },
+              {
+                "functionName": "",
+                "scriptId": "611",
+                "url": "https://www.youtube.com/s/_/ytmainappweb/_/js/k=ytmainappweb.kevlar_base.en_US.VHv3Et8k72U.es5.O/am=AAAAIABAgA/d=1/br=1/rs=AGKMywGEIZuTp0JWzddmcXjelGEq2w8jcw/m=kevlar_base_module,kevlar_main_module",
+                "lineNumber": 7487,
+                "columnNumber": 593
+              },
+              {
+                "functionName": "P",
+                "scriptId": "578",
+                "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                "lineNumber": 41,
+                "columnNumber": 18
+              },
+              {
+                "functionName": "V",
+                "scriptId": "578",
+                "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                "lineNumber": 50,
+                "columnNumber": 413
+              },
+              {
+                "functionName": "",
+                "scriptId": "578",
+                "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                "lineNumber": 43,
+                "columnNumber": 78
+              }
+            ],
+            "parent": {
+              "description": "requestIdleCallback",
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "578",
+                  "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                  "lineNumber": 51,
+                  "columnNumber": 114
+                },
+                {
+                  "functionName": "V",
+                  "scriptId": "578",
+                  "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                  "lineNumber": 50,
+                  "columnNumber": 469
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "578",
+                  "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/scheduler.vflset/scheduler.js",
+                  "lineNumber": 46,
+                  "columnNumber": 82
+                },
+                {
+                  "functionName": "",
+                  "scriptId": "570",
+                  "url": "https://www.youtube.com/s/desktop/7cf77294/jsbin/web-animations-next-lite.min.vflset/web-animations-next-lite.min.js",
+                  "lineNumber": 95,
+                  "columnNumber": 190
+                }
+              ]
+            }
+          }
+        },
+        "_priority": "VeryHigh",
+        "_resourceType": "document",
+        "cache": {},
+        "connection": "443",
+        "pageref": "page_1",
+        "request": {
+          "method": "GET",
+          "url": "https://accounts.youtube.com/RotateCookiesPage?origin=https://www.youtube.com&yt_pid=1",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": ":authority",
+              "value": "accounts.youtube.com"
+            },
+            {
+              "name": ":method",
+              "value": "GET"
+            },
+            {
+              "name": ":path",
+              "value": "/RotateCookiesPage?origin=https://www.youtube.com&yt_pid=1"
+            },
+            {
+              "name": ":scheme",
+              "value": "https"
+            },
+            {
+              "name": "accept",
+              "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+            },
+            {
+              "name": "accept-encoding",
+              "value": "gzip, deflate, br, zstd"
+            },
+            {
+              "name": "accept-language",
+              "value": "en,es;q=0.9"
+            },
+            {
+              "name": "dnt",
+              "value": "1"
+            },
+            {
+              "name": "priority",
+              "value": "u=0, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://www.youtube.com/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Google Chrome\";v=\"146\""
+            },
+            {
+              "name": "sec-ch-ua-arch",
+              "value": "\"arm\""
+            },
+            {
+              "name": "sec-ch-ua-bitness",
+              "value": "\"64\""
+            },
+            {
+              "name": "sec-ch-ua-form-factors",
+              "value": "\"Desktop\""
+            },
+            {
+              "name": "sec-ch-ua-full-version",
+              "value": "\"146.0.7680.155\""
+            },
+            {
+              "name": "sec-ch-ua-full-version-list",
+              "value": "\"Chromium\";v=\"146.0.7680.155\", \"Not-A.Brand\";v=\"24.0.0.0\", \"Google Chrome\";v=\"146.0.7680.155\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-model",
+              "value": "\"\""
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-ch-ua-platform-version",
+              "value": "\"26.3.1\""
+            },
+            {
+              "name": "sec-ch-ua-wow64",
+              "value": "?0"
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "iframe"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "navigate"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-site"
+            },
+            {
+              "name": "sec-gpc",
+              "value": "1"
+            },
+            {
+              "name": "upgrade-insecure-requests",
+              "value": "1"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "x-browser-channel",
+              "value": "stable"
+            },
+            {
+              "name": "x-browser-copyright",
+              "value": "Copyright 2026 Google LLC. All Rights reserved."
+            },
+            {
+              "name": "x-browser-validation",
+              "value": "Py0P6fejeHTyTB4IxHUYXNtAZRQ="
+            },
+            {
+              "name": "x-browser-year",
+              "value": "2026"
+            },
+            {
+              "name": "x-client-data",
+              "value": "CIe2yQEIorbJAQipncoBCLOAywEIk6HLAQiGoM0BCLuuzwEI1rfPARi9qcoBGLGKzwEYzK3PARiqsM8BGPa0zwE="
+            }
+          ],
+          "queryString": [
+            {
+              "name": "origin",
+              "value": "https://www.youtube.com"
+            },
+            {
+              "name": "yt_pid",
+              "value": "1"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "h3",
+          "headers": [
+            {
+              "name": "accept-ch",
+              "value": "Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Model, Sec-CH-UA-WoW64, Sec-CH-UA-Form-Factors, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version"
+            },
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store, max-age=0, must-revalidate"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "frame-ancestors https://www.youtube.com"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "script-src 'report-sample' 'nonce-612f8Tk3eIo9SX3Nc3zv3A' 'unsafe-inline';object-src 'none';base-uri 'self';report-uri https://csp.withgoogle.com/csp/IdentityRotateCookiesHttp;worker-src 'self'"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "script-src 'unsafe-inline' 'unsafe-eval' blob: data: 'self' https://apis.google.com https://ssl.gstatic.com https://www.google.com https://www.googletagmanager.com https://www.gstatic.com https://www.google-analytics.com;report-uri https://csp.withgoogle.com/csp/IdentityRotateCookiesHttp/allowlist"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "require-trusted-types-for 'script';report-uri https://csp.withgoogle.com/csp/IdentityRotateCookiesHttp"
+            },
+            {
+              "name": "content-security-policy-report-only",
+              "value": "script-src 'unsafe-inline' 'unsafe-eval' blob: data: https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.IdentityRotateCookiesHttp.en.-4tmG-7W09o.2018.O/;report-uri https://csp.withgoogle.com/csp/IdentityRotateCookiesHttp/fine-allowlist"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "cross-origin-embedder-policy",
+              "value": "require-corp"
+            },
+            {
+              "name": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "name": "cross-origin-resource-policy",
+              "value": "same-site"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 27 Mar 2026 15:14:40 GMT"
+            },
+            {
+              "name": "expires",
+              "value": "Mon, 01 Jan 1990 00:00:00 GMT"
+            },
+            {
+              "name": "permissions-policy",
+              "value": "ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "reporting-endpoints",
+              "value": "default=\"/_/IdentityRotateCookiesHttp/web-reports?context=eJzjstDikmII0JBiKJK4wtoAxJp6vmy6QPyt2JeNpcSXzXyiP5s1EKsdDWAzAWLTkEA2ZyAW4uF4sHfWOTaBjm0zPzAqmSTlF8ZnpqTmlWSWVOom5-dnZ6bqFuWXJJZk5ufpphXl55Wk5qXEGxkYmRkYGxnpGZjEFxgAAPvgJy4\""
+            },
+            {
+              "name": "server",
+              "value": "ESF"
+            },
+            {
+              "name": "vary",
+              "value": "Sec-Fetch-Dest, Sec-Fetch-Mode, Sec-Fetch-Site"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "ALLOW-FROM https://www.youtube.com"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 369,
+            "mimeType": "text/html"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1,
+          "_transferSize": 323,
+          "_error": null,
+          "_fetchedViaServiceWorker": false
+        },
+        "serverIPAddress": "[2a00:1450:4006:811::200e]",
+        "startedDateTime": "2026-03-27T15:14:40.423Z",
+        "time": 100.4769999999553,
+        "timings": {
+          "blocked": 1.6799999979455025,
+          "dns": -1,
+          "ssl": -1,
+          "connect": -1,
+          "send": 0.185,
+          "wait": 97.32699999627285,
+          "receive": 1.285000005736947,
+          "_blocked_queueing": 1.2189999979455024,
+          "_workerStart": -1,
+          "_workerReady": -1,
+          "_workerFetchStart": -1,
+          "_workerRespondWithSettled": -1
+        }
+      }
+    ]
+  }
+}

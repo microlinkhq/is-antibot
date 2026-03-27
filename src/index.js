@@ -400,6 +400,12 @@ module.exports = ({ headers = {}, body = '', url = '' } = {}) => {
     return createResult(true, 'linkedin')
   }
 
+  // YouTube: empty title pattern indicates a degraded response requiring BotGuard JS attestation
+  // Normal pages have `<title>Video Title - YouTube</title>`, bots get `<title> - YouTube</title>`
+  if (body && testPattern(body, '<title>\\s*-\\s*YouTube<\\/title>', true)) {
+    return createResult(true, 'youtube')
+  }
+
   // AWS WAF: Check for x-amzn-waf-action or x-amzn-requestid headers
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/aws-waf.json
   if (
