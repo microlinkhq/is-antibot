@@ -28,6 +28,7 @@
 - **ThreatMetrix** - LexisNexis fraud prevention and device fingerprinting
 - **Meetrics** - User authenticity verification
 - **Ocule** - Bot detection with advanced obfuscation
+- **YouTube** - BotGuard attestation and abuse detection
 - **LinkedIn** - Bot filter protection
 
 ### CAPTCHA Providers

@@ -543,6 +543,20 @@ test('linkedin (no antibot without trkCode=bf)', t => {
   t.is(result.provider, null)
 })
 
+test('youtube (empty title in body)', t => {
+  const body = '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'
+  const result = isAntibot({ body })
+  t.is(result.detected, true)
+  t.is(result.provider, 'youtube')
+})
+
+test('youtube (no antibot with normal title)', t => {
+  const body = '<!DOCTYPE html><html><head><title>My Video - YouTube</title></head><body></body></html>'
+  const result = isAntibot({ body })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('aws-waf (header)', t => {
   const headers = { 'x-amzn-waf-action': 'CHALLENGE' }
   const result = isAntibot({ headers })
