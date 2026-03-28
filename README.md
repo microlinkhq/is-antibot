@@ -59,22 +59,37 @@ $ npm install is-antibot --save
 
 ## Usage
 
-The library is designed for evaluating a HTTP response:
+Just pass `headers`, `html`, and `url` from any HTTP response:
 
 ```js
 const isAntibot = require('is-antibot')
 
-const response = await fetch('https://example.com')
-const { detected, provider } = isAntibot(response)
+const response = await fetch('https://www.linkedin.com/in/kikobeats/')
+const html = await response.text()
+
+const { detected, provider } = isAntibot({
+  headers: response.headers,
+  html,
+  url: response.url
+})
 
 if (detected) {
   console.log(`Antibot detected: ${provider}`)
 }
 ```
 
-The library expects a [Fetch Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object, a [Node.js Response](https://nodejs.org/api/http.html#class-httpincomingmessage) object, or an object representing HTTP response headers as input.
+It also works with [got](https://github.com/sindresorhus/got) or any library where `body` is a string:
 
-### Output
+```js
+const response = await got('https://www.linkedin.com/in/kikobeats/')
+  .catch(error => errorresponse)
+
+const { detected, provider } = isAntibot(response)
+
+if (detected) {
+  console.log(`Antibot detected: ${provider}`)
+}
+```
 
 The library returns an object with the following properties:
 

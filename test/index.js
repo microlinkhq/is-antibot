@@ -630,31 +630,18 @@ test('support Response object (headers only)', t => {
   t.is(result.provider, 'cloudflare')
 })
 
-test('support Fetch Response with .text()', async t => {
-  const html = '<script>grecaptcha.execute();</script>'
-  const response = new Response(html, {
+test('support Fetch Response with await text()', async t => {
+  const response = new Response('<script>grecaptcha.execute();</script>', {
     headers: { 'x-dd-b': '2' }
   })
-  Object.defineProperty(response, 'url', { value: 'https://example.com' })
-  const result = await isAntibot(response)
+  const html = await response.text()
+  const result = isAntibot({
+    headers: response.headers,
+    html,
+    url: response.url
+  })
   t.is(result.detected, true)
   t.is(result.provider, 'datadome')
-})
-
-test('support Fetch Response with .text() for html detection', async t => {
-  const html = '<script>grecaptcha.execute();</script>'
-  const response = new Response(html)
-  const result = await isAntibot(response)
-  t.is(result.detected, true)
-  t.is(result.provider, 'recaptcha')
-})
-
-test('Fetch Response body remains unconsumed after detection', async t => {
-  const html = '<script>grecaptcha.execute();</script>'
-  const response = new Response(html)
-  await isAntibot(response)
-  t.is(response.bodyUsed, false)
-  t.is(await response.text(), html)
 })
 
 test('fallback body string to html', t => {

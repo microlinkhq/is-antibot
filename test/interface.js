@@ -10,12 +10,14 @@ const headers = { 'user-agent': 'curl/7.81.0' }
 
 test('from fetch', async t => {
   const response = await fetch(url, { headers })
-  const { detected, provider } = await isAntibot(response)
+  const html = await response.text()
+  const { detected, provider } = isAntibot({
+    headers: response.headers,
+    html,
+    url: response.url
+  })
   t.is(detected, true)
   t.is(provider, 'linkedin')
-  t.is(response.bodyUsed, false)
-  const html = await response.text()
-  t.true(html.length > 0)
 })
 
 test('from got', async t => {

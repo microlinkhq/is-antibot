@@ -387,14 +387,6 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 }
 
 const isAntibot = (input = {}) => {
-  // Response-like object (e.g., Fetch Response): clone to keep the original body unconsumed
-  if (typeof input.text === 'function') {
-    return input
-      .clone()
-      .text()
-      .then(html => detect({ headers: input.headers, html, url: input.url }))
-  }
-  // Plain object: use `html` directly, or fall back to `body` if it's a string (e.g., got response)
   const { headers, html, body, url } = input
   return detect({ headers, html: html || body, url })
 }
