@@ -588,11 +588,10 @@ test('aws-waf (aws-waf-token set-cookie)', t => {
   t.is(result.provider, 'aws-waf')
 })
 
-test('testPattern with invalid regex catches error', t => {
-  const { testPattern } = require('../src')
-  // Test with an invalid regex pattern that would throw
-  const result = testPattern('test', '[invalid(regex', true)
-  t.is(result, false)
+test('createTestPattern with invalid regex catches error', t => {
+  const { createTestPattern } = require('../src')
+  const has = createTestPattern('test')
+  t.is(has('[invalid(regex', true), false)
 })
 
 test('testPattern with invalid regex', t => {

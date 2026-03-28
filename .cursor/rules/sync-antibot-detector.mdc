@@ -28,10 +28,10 @@ This library only has access to HTTP responses (headers, html, URL, set-cookie).
 
 | Antibot-Detector field | is-antibot mechanism |
 |---|---|
-| `detection.header` | `getHeader(headers, name)` |
-| `detection.content` | `testPattern(html, text)` |
-| `detection.url` | `testPattern(url, text)` or `testPattern(url, regex, true)` |
-| `detection.cookie` | `testSetCookie(headers, 'name=')` |
+| `detection.header` | `getHeader(name)` |
+| `detection.content` | `htmlHas(text)` |
+| `detection.url` | `urlHas(text)` or `urlHas(regex, true)` |
+| `detection.cookie` | `hasCookie('name=')` |
 
 Skip `detection.window`, `detection.dom`, `detection.payload`, and any fingerprint detectors — they require a browser runtime.
 
