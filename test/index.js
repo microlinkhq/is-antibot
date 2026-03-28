@@ -46,9 +46,9 @@ test('akamai (_abck set-cookie)', t => {
   t.is(result.provider, 'akamai')
 })
 
-test('akamai (bmak in body)', t => {
-  const body = '<script>bmak.sensor_data = "test";</script>'
-  const result = isAntibot({ body })
+test('akamai (bmak in html)', t => {
+  const html = '<script>bmak.sensor_data = "test";</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'akamai')
 })
@@ -97,23 +97,23 @@ test('perimeterx (header)', t => {
   t.is(result.provider, 'perimeterx')
 })
 
-test('perimeterx (body window._pxAppId)', t => {
-  const body = '<script>window._pxAppId = "PX123";</script>'
-  const result = isAntibot({ body })
+test('perimeterx (html window._pxAppId)', t => {
+  const html = '<script>window._pxAppId = "PX123";</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
 })
 
-test('perimeterx (body pxInit)', t => {
-  const body = '<script>pxInit();</script>'
-  const result = isAntibot({ body })
+test('perimeterx (html pxInit)', t => {
+  const html = '<script>pxInit();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
 })
 
-test('perimeterx (body _pxAction)', t => {
-  const body = '<script>var _pxAction = "c";</script>'
-  const result = isAntibot({ body })
+test('perimeterx (html _pxAction)', t => {
+  const html = '<script>var _pxAction = "c";</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
 })
@@ -139,9 +139,9 @@ test('shapesecurity (header)', t => {
   t.is(result.provider, 'shapesecurity')
 })
 
-test('shapesecurity (body)', t => {
-  const body = '<script>shapesecurity.init();</script>'
-  const result = isAntibot({ body })
+test('shapesecurity (html)', t => {
+  const html = '<script>shapesecurity.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'shapesecurity')
 })
@@ -153,9 +153,9 @@ test('kasada (header)', t => {
   t.is(result.provider, 'kasada')
 })
 
-test('kasada (body)', t => {
-  const body = '<script>__kasada.init();</script>'
-  const result = isAntibot({ body })
+test('kasada (html)', t => {
+  const html = '<script>__kasada.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'kasada')
 })
@@ -167,16 +167,16 @@ test('imperva (header)', t => {
   t.is(result.provider, 'imperva')
 })
 
-test('imperva (body with incapsula)', t => {
-  const body = '<script>incapsula.init();</script>'
-  const result = isAntibot({ body })
+test('imperva (html with incapsula)', t => {
+  const html = '<script>incapsula.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
 })
 
-test('imperva (body with imperva)', t => {
-  const body = '<script>imperva.protect();</script>'
-  const result = isAntibot({ body })
+test('imperva (html with imperva)', t => {
+  const html = '<script>imperva.protect();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
 })
@@ -216,23 +216,23 @@ test('reblaze (rbzsessionid set-cookie)', t => {
   t.is(result.provider, 'reblaze')
 })
 
-test('reblaze (body)', t => {
-  const body = '<p>Protected by Reblaze</p>'
-  const result = isAntibot({ body })
+test('reblaze (html)', t => {
+  const html = '<p>Protected by Reblaze</p>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'reblaze')
 })
 
-test('cheq (body CheqSdk)', t => {
-  const body = '<script>CheqSdk.init();</script>'
-  const result = isAntibot({ body })
+test('cheq (html CheqSdk)', t => {
+  const html = '<script>CheqSdk.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'cheq')
 })
 
-test('cheq (body cheqzone.com)', t => {
-  const body = '<script src="https://ob.cheqzone.com/script.js"></script>'
-  const result = isAntibot({ body })
+test('cheq (html cheqzone.com)', t => {
+  const html = '<script src="https://ob.cheqzone.com/script.js"></script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'cheq')
 })
@@ -251,16 +251,16 @@ test('cheq (url cheq.ai)', t => {
   t.is(result.provider, 'cheq')
 })
 
-test('sucuri (body)', t => {
-  const body = '<p>Sucuri Website Firewall - Access Denied</p>'
-  const result = isAntibot({ body })
+test('sucuri (html)', t => {
+  const html = '<p>Sucuri Website Firewall - Access Denied</p>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'sucuri')
 })
 
-test('threatmetrix (body)', t => {
-  const body = '<script>ThreatMetrix.init();</script>'
-  const result = isAntibot({ body })
+test('threatmetrix (html)', t => {
+  const html = '<script>ThreatMetrix.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'threatmetrix')
 })
@@ -272,9 +272,9 @@ test('threatmetrix (url fp/check.js)', t => {
   t.is(result.provider, 'threatmetrix')
 })
 
-test('meetrics (body)', t => {
-  const body = '<script>meetricsGlobal.init();</script>'
-  const result = isAntibot({ body })
+test('meetrics (html)', t => {
+  const html = '<script>meetricsGlobal.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'meetrics')
 })
@@ -286,9 +286,9 @@ test('meetrics (url)', t => {
   t.is(result.provider, 'meetrics')
 })
 
-test('ocule (body)', t => {
-  const body = '<script src="https://proxy.ocule.co.uk/script.js"></script>'
-  const result = isAntibot({ body })
+test('ocule (html)', t => {
+  const html = '<script src="https://proxy.ocule.co.uk/script.js"></script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'ocule')
 })
@@ -328,16 +328,16 @@ test('recaptcha (url with recaptcha.net)', t => {
   t.is(result.provider, 'recaptcha')
 })
 
-test('recaptcha (body grecaptcha)', t => {
-  const body = '<script>grecaptcha.execute();</script>'
-  const result = isAntibot({ body })
+test('recaptcha (html grecaptcha)', t => {
+  const html = '<script>grecaptcha.execute();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
 })
 
-test('recaptcha (body g-recaptcha)', t => {
-  const body = '<div class="g-recaptcha" data-sitekey="test"></div>'
-  const result = isAntibot({ body })
+test('recaptcha (html g-recaptcha)', t => {
+  const html = '<div class="g-recaptcha" data-sitekey="test"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
 })
@@ -349,16 +349,16 @@ test('hcaptcha (url)', t => {
   t.is(result.provider, 'hcaptcha')
 })
 
-test('hcaptcha (body hcaptcha)', t => {
-  const body = '<div data-hcaptcha="test"></div>'
-  const result = isAntibot({ body })
+test('hcaptcha (html hcaptcha)', t => {
+  const html = '<div data-hcaptcha="test"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
 })
 
-test('hcaptcha (body h-captcha)', t => {
-  const body = '<div class="h-captcha"></div>'
-  const result = isAntibot({ body })
+test('hcaptcha (html h-captcha)', t => {
+  const html = '<div class="h-captcha"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
 })
@@ -377,16 +377,16 @@ test('funcaptcha (url with funcaptcha)', t => {
   t.is(result.provider, 'funcaptcha')
 })
 
-test('funcaptcha (body with funcaptcha)', t => {
-  const body = '<script>funcaptcha.init();</script>'
-  const result = isAntibot({ body })
+test('funcaptcha (html with funcaptcha)', t => {
+  const html = '<script>funcaptcha.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
 })
 
-test('funcaptcha (body with arkose)', t => {
-  const body = '<script>window.arkoseCallback();</script>'
-  const result = isAntibot({ body })
+test('funcaptcha (html with arkose)', t => {
+  const html = '<script>window.arkoseCallback();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
 })
@@ -398,16 +398,16 @@ test('geetest (url)', t => {
   t.is(result.provider, 'geetest')
 })
 
-test('geetest (body)', t => {
-  const body = '<script>geetest.init();</script>'
-  const result = isAntibot({ body })
+test('geetest (html)', t => {
+  const html = '<script>geetest.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'geetest')
 })
 
-test('geetest (body with gt.js)', t => {
-  const body = '<script src="/static/gt.js"></script>'
-  const result = isAntibot({ body })
+test('geetest (html with gt.js)', t => {
+  const html = '<script src="/static/gt.js"></script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'geetest')
 })
@@ -419,16 +419,16 @@ test('cloudflare-turnstile (url)', t => {
   t.is(result.provider, 'cloudflare-turnstile')
 })
 
-test('cloudflare-turnstile (body cf-turnstile)', t => {
-  const body = '<div class="cf-turnstile"></div>'
-  const result = isAntibot({ body })
+test('cloudflare-turnstile (html cf-turnstile)', t => {
+  const html = '<div class="cf-turnstile"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
 })
 
-test('cloudflare-turnstile (body turnstile)', t => {
-  const body = '<script>window.turnstile.render();</script>'
-  const result = isAntibot({ body })
+test('cloudflare-turnstile (html turnstile)', t => {
+  const html = '<script>window.turnstile.render();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
 })
@@ -440,16 +440,16 @@ test('friendly-captcha (url)', t => {
   t.is(result.provider, 'friendly-captcha')
 })
 
-test('friendly-captcha (body frc-captcha)', t => {
-  const body = '<div class="frc-captcha" data-sitekey="test"></div>'
-  const result = isAntibot({ body })
+test('friendly-captcha (html frc-captcha)', t => {
+  const html = '<div class="frc-captcha" data-sitekey="test"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'friendly-captcha')
 })
 
-test('friendly-captcha (body friendlyChallenge)', t => {
-  const body = '<script>friendlyChallenge.render();</script>'
-  const result = isAntibot({ body })
+test('friendly-captcha (html friendlyChallenge)', t => {
+  const html = '<script>friendlyChallenge.render();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'friendly-captcha')
 })
@@ -461,16 +461,16 @@ test('captcha-eu (url)', t => {
   t.is(result.provider, 'captcha-eu')
 })
 
-test('captcha-eu (body CaptchaEU)', t => {
-  const body = '<script>CaptchaEU.render();</script>'
-  const result = isAntibot({ body })
+test('captcha-eu (html CaptchaEU)', t => {
+  const html = '<script>CaptchaEU.render();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'captcha-eu')
 })
 
-test('captcha-eu (body captchaeu)', t => {
-  const body = '<div class="captchaeu-widget"></div>'
-  const result = isAntibot({ body })
+test('captcha-eu (html captchaeu)', t => {
+  const html = '<div class="captchaeu-widget"></div>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'captcha-eu')
 })
@@ -482,16 +482,16 @@ test('qcloud-captcha (url)', t => {
   t.is(result.provider, 'qcloud-captcha')
 })
 
-test('qcloud-captcha (body TencentCaptcha)', t => {
-  const body = '<script>new TencentCaptcha("appid");</script>'
-  const result = isAntibot({ body })
+test('qcloud-captcha (html TencentCaptcha)', t => {
+  const html = '<script>new TencentCaptcha("appid");</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'qcloud-captcha')
 })
 
-test('qcloud-captcha (body turing.captcha)', t => {
-  const body = '<script src="//turing.captcha.gtimg.com/tdc.js"></script>'
-  const result = isAntibot({ body })
+test('qcloud-captcha (html turing.captcha)', t => {
+  const html = '<script src="//turing.captcha.gtimg.com/tdc.js"></script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'qcloud-captcha')
 })
@@ -503,9 +503,9 @@ test('aliexpress-captcha (url)', t => {
   t.is(result.provider, 'aliexpress-captcha')
 })
 
-test('aliexpress-captcha (body)', t => {
-  const body = '<script>var x5secdata = "abc123";</script>'
-  const result = isAntibot({ body })
+test('aliexpress-captcha (html)', t => {
+  const html = '<script>var x5secdata = "abc123";</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'aliexpress-captcha')
 })
@@ -526,7 +526,8 @@ test('linkedin (got set-cookie as array)', t => {
 
 test('linkedin (fetch set-cookie as comma-joined string)', t => {
   const headers = {
-    'set-cookie': 'trkCode=bf; Max-Age=5, trkInfo=AQFyonFtUZqc7AAAAZ0pYrzwPDR4VFZ_9p6fG0FvEcRgl8OPYOi_BuI0UjU5CWQ8ajOcRDP94FWd1WG6ml4bCIeTNo529UZFwMB_Pit8kSdbz5IzaPaVV0VLYrO1HwPhyu2APN4=; Max-Age=5, rtc=AQEwoUg34YjbqQAAAZ0pYrzwk3vgeorXn_hlwqY4LaH634gq_kHjFzZC_qrYXquN4zzqX50dVT8cqdcMbfyhAdu3RA6gjC6glMQah0nh9lEeiircCG43N6-oCN4kObfwug1PtZ619Yl0F3MK-TSvU3h3KYyvW4vltvXhLrxeK9DpT5AjGyD0WDPrM8KtK7w7UF9SEsTBYrpyPqcm6nfvrYY6QY0=; Max-Age=120; path=/; domain=.linkedin.com, __cf_bm=TBitBBkee9M2KOZkThR1uXuERq5RTmOKtLwnU7KxQYM-1774515830-1.0.1.1-09U1TNumW0aJGTQClLtEJRVB92lnaY0_IVz4X6E_Vulp2cS1VcnqhX81f28bwKLxPfIZ.lrkhjKn.yNK_Impgkj3QjDocla2r5PETU_QN0A; path=/; expires=Thu, 26-Mar-26 09:33:50 GMT; domain=.linkedin.com; HttpOnly; Secure; SameSite=None'
+    'set-cookie':
+      'trkCode=bf; Max-Age=5, trkInfo=AQFyonFtUZqc7AAAAZ0pYrzwPDR4VFZ_9p6fG0FvEcRgl8OPYOi_BuI0UjU5CWQ8ajOcRDP94FWd1WG6ml4bCIeTNo529UZFwMB_Pit8kSdbz5IzaPaVV0VLYrO1HwPhyu2APN4=; Max-Age=5, rtc=AQEwoUg34YjbqQAAAZ0pYrzwk3vgeorXn_hlwqY4LaH634gq_kHjFzZC_qrYXquN4zzqX50dVT8cqdcMbfyhAdu3RA6gjC6glMQah0nh9lEeiircCG43N6-oCN4kObfwug1PtZ619Yl0F3MK-TSvU3h3KYyvW4vltvXhLrxeK9DpT5AjGyD0WDPrM8KtK7w7UF9SEsTBYrpyPqcm6nfvrYY6QY0=; Max-Age=120; path=/; domain=.linkedin.com, __cf_bm=TBitBBkee9M2KOZkThR1uXuERq5RTmOKtLwnU7KxQYM-1774515830-1.0.1.1-09U1TNumW0aJGTQClLtEJRVB92lnaY0_IVz4X6E_Vulp2cS1VcnqhX81f28bwKLxPfIZ.lrkhjKn.yNK_Impgkj3QjDocla2r5PETU_QN0A; path=/; expires=Thu, 26-Mar-26 09:33:50 GMT; domain=.linkedin.com; HttpOnly; Secure; SameSite=None'
   }
   const result = isAntibot({ headers })
   t.is(result.detected, true)
@@ -543,16 +544,18 @@ test('linkedin (no antibot without trkCode=bf)', t => {
   t.is(result.provider, null)
 })
 
-test('youtube (empty title in body)', t => {
-  const body = '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'
-  const result = isAntibot({ body })
+test('youtube (empty title in html)', t => {
+  const html =
+    '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'youtube')
 })
 
 test('youtube (no antibot with normal title)', t => {
-  const body = '<!DOCTYPE html><html><head><title>My Video - YouTube</title></head><body></body></html>'
-  const result = isAntibot({ body })
+  const html =
+    '<!DOCTYPE html><html><head><title>My Video - YouTube</title></head><body></body></html>'
+  const result = isAntibot({ html })
   t.is(result.detected, false)
   t.is(result.provider, null)
 })
@@ -564,16 +567,16 @@ test('aws-waf (header)', t => {
   t.is(result.provider, 'aws-waf')
 })
 
-test('aws-waf (body aws-waf)', t => {
-  const body = '<script>aws-waf.init();</script>'
-  const result = isAntibot({ body })
+test('aws-waf (html aws-waf)', t => {
+  const html = '<script>aws-waf.init();</script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
 })
 
-test('aws-waf (body awswaf)', t => {
-  const body = '<script src="/awswaf/challenge.js"></script>'
-  const result = isAntibot({ body })
+test('aws-waf (html awswaf)', t => {
+  const html = '<script src="/awswaf/challenge.js"></script>'
+  const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
 })
@@ -593,7 +596,7 @@ test('testPattern with invalid regex catches error', t => {
 })
 
 test('testPattern with invalid regex', t => {
-  const result = isAntibot({ url: 'test', body: 'test' })
+  const result = isAntibot({ url: 'test', html: 'test' })
   // Should not throw and should return no detection
   t.is(result.detected, false)
   t.is(result.provider, null)
@@ -620,11 +623,43 @@ test('support Headers object', t => {
   t.is(result.provider, 'cloudflare')
 })
 
-test('support Response object', t => {
+test('support Response object (headers only)', t => {
   const headers = new Map([['cf-mitigated', 'challenge']])
-  // mock Headers.get
   headers.get = headers.get.bind(headers)
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
+})
+
+test('support Fetch Response with .text()', async t => {
+  const html = '<script>grecaptcha.execute();</script>'
+  const response = new Response(html, {
+    headers: { 'x-dd-b': '2' }
+  })
+  Object.defineProperty(response, 'url', { value: 'https://example.com' })
+  const result = await isAntibot(response)
+  t.is(result.detected, true)
+  t.is(result.provider, 'datadome')
+})
+
+test('support Fetch Response with .text() for html detection', async t => {
+  const html = '<script>grecaptcha.execute();</script>'
+  const response = new Response(html)
+  const result = await isAntibot(response)
+  t.is(result.detected, true)
+  t.is(result.provider, 'recaptcha')
+})
+
+test('Fetch Response body remains unconsumed after detection', async t => {
+  const html = '<script>grecaptcha.execute();</script>'
+  const response = new Response(html)
+  await isAntibot(response)
+  t.is(response.bodyUsed, false)
+  t.is(await response.text(), html)
+})
+
+test('fallback body string to html', t => {
+  const result = isAntibot({ body: '<script>grecaptcha.execute();</script>' })
+  t.is(result.detected, true)
+  t.is(result.provider, 'recaptcha')
 })

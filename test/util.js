@@ -25,7 +25,7 @@ const loadFixture = async filepath => {
   const response = json.log.entries[0].response
   return {
     headers: headersFromHAR(response),
-    body: response.content?.text || '',
+    html: response.content?.text || '',
     url: json.log.entries[0].request?.url || ''
   }
 }

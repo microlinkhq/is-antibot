@@ -74,17 +74,7 @@ if (detected) {
 
 The library expects a [Fetch Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) object, a [Node.js Response](https://nodejs.org/api/http.html#class-httpincomingmessage) object, or an object representing HTTP response headers as input.
 
-You can also pass optional `body` and `url` parameters for enhanced detection:
-
-```js
-const result = isAntibot({
-  headers: response.headers,
-  body: await response.text(),
-  url: response.url
-})
-```
-
-### Response
+### Output
 
 The library returns an object with the following properties:
 

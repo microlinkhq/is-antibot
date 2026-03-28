@@ -24,12 +24,12 @@ git clone https://github.com/scrapfly/Antibot-Detector /tmp/Antibot-Detector
 
 ## What can be ported
 
-This library only has access to HTTP responses (headers, body, URL, set-cookie). Only port signals from these JSON fields:
+This library only has access to HTTP responses (headers, html, URL, set-cookie). Only port signals from these JSON fields:
 
 | Antibot-Detector field | is-antibot mechanism |
 |---|---|
 | `detection.header` | `getHeader(headers, name)` |
-| `detection.content` | `testPattern(body, text)` |
+| `detection.content` | `testPattern(html, text)` |
 | `detection.url` | `testPattern(url, text)` or `testPattern(url, regex, true)` |
 | `detection.cookie` | `testSetCookie(headers, 'name=')` |
 
