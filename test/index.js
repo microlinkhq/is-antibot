@@ -349,11 +349,17 @@ test('hcaptcha (url)', t => {
   t.is(result.provider, 'hcaptcha')
 })
 
-test('hcaptcha (html hcaptcha)', t => {
-  const html = '<div data-hcaptcha="test"></div>'
+test('hcaptcha (html hcaptcha.com)', t => {
+  const html = '<script src="https://hcaptcha.com/1/api.js"></script>'
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
+})
+
+test('hcaptcha (no false positive for bare hcaptcha mention)', t => {
+  const html = '<p>We use hcaptcha for bot protection.</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('hcaptcha (html h-captcha)', t => {
@@ -384,11 +390,19 @@ test('funcaptcha (html with funcaptcha)', t => {
   t.is(result.provider, 'funcaptcha')
 })
 
-test('funcaptcha (html with arkose)', t => {
-  const html = '<script>window.arkoseCallback();</script>'
+test('funcaptcha (html with arkoselabs.com)', t => {
+  const html =
+    '<script src="https://client-api.arkoselabs.com/fc/assets/loader.js"></script>'
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
+})
+
+test('funcaptcha (no false positive for bare arkose mention)', t => {
+  const html =
+    '<script>window.__arkose_config = {};</script><meta property="og:title" content="Real content">'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('geetest (url)', t => {
@@ -405,11 +419,10 @@ test('geetest (html)', t => {
   t.is(result.provider, 'geetest')
 })
 
-test('geetest (html with gt.js)', t => {
+test('geetest (no false positive for generic gt.js)', t => {
   const html = '<script src="/static/gt.js"></script>'
   const result = isAntibot({ html })
-  t.is(result.detected, true)
-  t.is(result.provider, 'geetest')
+  t.is(result.detected, false)
 })
 
 test('cloudflare-turnstile (url)', t => {
@@ -426,11 +439,18 @@ test('cloudflare-turnstile (html cf-turnstile)', t => {
   t.is(result.provider, 'cloudflare-turnstile')
 })
 
-test('cloudflare-turnstile (html turnstile)', t => {
-  const html = '<script>window.turnstile.render();</script>'
+test('cloudflare-turnstile (html turnstile API)', t => {
+  const html =
+    '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>'
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
+})
+
+test('cloudflare-turnstile (no false positive for bare turnstile word)', t => {
+  const html = '<p>The subway turnstile was broken.</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('friendly-captcha (url)', t => {
