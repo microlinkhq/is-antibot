@@ -1,3 +1,8 @@
+## 1.3.6 (2026-03-30)
+
+### Bug Fixes
+
+* too tight recaptcha html detection ([a19513f](https://github.com/microlinkhq/is-antibot/commit/a19513fdd4d3185e48b08293598d090c12c469bc))
 ## 1.3.5 (2026-03-29)
 ## 1.3.4 (2026-03-28)
 ## 1.3.3 (2026-03-28)
