@@ -60,7 +60,8 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   const hasAnyCookie = cookieNames =>
     cookieNames.some(cookieName => hasCookie(cookieName))
 
-  const hasAnyHtml = patterns => patterns.some(pattern => htmlHas(pattern))
+  const hasAnyHtml = (patterns, isRegex = false) =>
+    patterns.some(pattern => htmlHas(pattern, isRegex))
 
   const hasAnyUrl = (...patterns) => patterns.some(pattern => urlHas(pattern))
 
@@ -110,7 +111,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Akamai: Bot Manager API namespace (bmak) in html
-  if (htmlHas('bmak.')) {
+  if (hasAnyHtml(['bmak.'])) {
     return byHtml('akamai')
   }
 
@@ -160,7 +161,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Shape Security: Check for 'shapesecurity' text in response html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-shapesecurity.json
-  if (htmlHas('shapesecurity')) {
+  if (hasAnyHtml(['shapesecurity'])) {
     return byHtml('shapesecurity')
   }
 
@@ -201,7 +202,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Reblaze: Check for 'reblaze' text in response html
-  if (htmlHas('reblaze')) {
+  if (hasAnyHtml(['reblaze'])) {
     return byHtml('reblaze')
   }
 
@@ -218,13 +219,13 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Sucuri: Check for 'sucuri' text in response html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-sucuri.json
-  if (htmlHas('sucuri')) {
+  if (hasAnyHtml(['sucuri'])) {
     return byHtml('sucuri')
   }
 
   // ThreatMetrix: Check for 'ThreatMetrix' in html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-threatmetrix.json
-  if (htmlHas('ThreatMetrix')) {
+  if (hasAnyHtml(['ThreatMetrix'])) {
     return byHtml('threatmetrix')
   }
 
@@ -235,7 +236,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Meetrics: Check for 'meetrics' text in response html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-meetrics.json
-  if (htmlHas('meetrics')) {
+  if (hasAnyHtml(['meetrics'])) {
     return byHtml('meetrics')
   }
 
@@ -246,7 +247,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Ocule: Check for ocule.co.uk in html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-ocule.json
-  if (htmlHas('ocule.co.uk')) {
+  if (hasAnyHtml(['ocule.co.uk'])) {
     return byHtml('ocule')
   }
 
@@ -267,19 +268,21 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   // reCAPTCHA: Check for grecaptcha API usage in html (JavaScript indicator)
   // Note: plain "grecaptcha" is too broad (e.g. ".grecaptcha-badge" CSS appears on normal YouTube pages)
   if (
-    htmlHas(
-      '\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b',
+    hasAnyHtml(
+      [
+        '\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b',
+        '\\b(?:window\\.)?grecaptcha\\s*\\(',
+        '\\b__grecaptcha_cfg\\b'
+      ],
       true
-    ) ||
-    htmlHas('\\b(?:window\\.)?grecaptcha\\s*\\(', true) ||
-    htmlHas('\\b__grecaptcha_cfg\\b', true)
+    )
   ) {
     return byHtml('recaptcha')
   }
 
   // reCAPTCHA: Check for g-recaptcha container class in html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-recaptcha.json
-  if (htmlHas('g-recaptcha')) {
+  if (hasAnyHtml(['g-recaptcha'])) {
     return byHtml('recaptcha')
   }
 
@@ -318,7 +321,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   // GeeTest: Check for geetest object or text in html
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-geetest.json
   // Note: bare 'gt.js' removed (too generic, any script named gt.js would match)
-  if (htmlHas('geetest')) {
+  if (hasAnyHtml(['geetest'])) {
     return byHtml('geetest')
   }
 
@@ -373,7 +376,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // AliExpress CAPTCHA: Check for x5secdata in html
-  if (htmlHas('x5secdata')) {
+  if (hasAnyHtml(['x5secdata'])) {
     return byHtml('aliexpress-captcha')
   }
 
@@ -384,7 +387,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // YouTube: empty title pattern indicates a degraded response requiring BotGuard JS attestation
   // Normal pages have `<title>Video Title - YouTube</title>`, bots get `<title> - YouTube</title>`
-  if (htmlHas('<title>\\s*-\\s*YouTube<\\/title>', true)) {
+  if (hasAnyHtml(['<title>\\s*-\\s*YouTube<\\/title>'], true)) {
     return byHtml('youtube')
   }
 
