@@ -19,6 +19,14 @@ const createTestPattern = value => {
   if (!value) return () => false
   const lowerValue = value.toLowerCase()
   return (pattern, isRegex = false) => {
+    if (pattern instanceof RegExp) {
+      try {
+        return pattern.test(value)
+      } catch {
+        return false
+      }
+    }
+
     if (isRegex) {
       try {
         return new RegExp(pattern, 'i').test(value)
@@ -60,13 +68,9 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   const hasAnyCookie = cookieNames =>
     cookieNames.some(cookieName => hasCookie(cookieName))
 
-  const hasAnyHtml = (patterns, isRegex = false) =>
-    patterns.some(pattern => htmlHas(pattern, isRegex))
+  const hasAnyHtml = patterns => patterns.some(pattern => htmlHas(pattern))
 
-  const hasAnyUrl = (...patterns) => patterns.some(pattern => urlHas(pattern))
-
-  const hasAnyUrlRegex = (...patterns) =>
-    patterns.some(pattern => urlHas(pattern, true))
+  const hasAnyUrl = patterns => patterns.some(pattern => urlHas(pattern))
 
   const byHeaders = provider => createResult(true, provider, DETECTION.HEADERS)
 
@@ -83,7 +87,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Cloudflare: cf_clearance cookie indicates Cloudflare challenge flow
-  if (hasCookie('cf_clearance=')) {
+  if (hasAnyCookie(['cf_clearance='])) {
     return byCookies('cloudflare')
   }
 
@@ -106,7 +110,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Akamai: _abck bot manager tracking cookie
-  if (hasCookie('_abck=')) {
+  if (hasAnyCookie(['_abck='])) {
     return byCookies('akamai')
   }
 
@@ -128,7 +132,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // DataDome: datadome tracking cookie
-  if (hasCookie('datadome=')) {
+  if (hasAnyCookie(['datadome='])) {
     return byCookies('datadome')
   }
 
@@ -213,7 +217,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Cheq: Check for cheqzone.com or cheq.ai in URL
-  if (hasAnyUrlRegex('cheqzone\\.com', 'cheq\\.ai')) {
+  if (hasAnyUrl([/cheqzone\.com/i, /cheq\.ai/i])) {
     return byUrl('cheq')
   }
 
@@ -230,7 +234,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // ThreatMetrix: Check for fp/check.js fingerprint endpoint in URL
-  if (hasAnyUrl('fp/check.js')) {
+  if (hasAnyUrl(['fp/check.js'])) {
     return byUrl('threatmetrix')
   }
 
@@ -241,7 +245,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Meetrics: Check for meetrics.com in URL
-  if (urlHas('meetrics\\.com', true)) {
+  if (hasAnyUrl([/meetrics\.com/i])) {
     return byUrl('meetrics')
   }
 
@@ -252,15 +256,15 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Ocule: Check for ocule.co.uk in URL
-  if (urlHas('ocule\\.co\\.uk', true)) {
+  if (hasAnyUrl([/ocule\.co\.uk/i])) {
     return byUrl('ocule')
   }
 
   // reCAPTCHA: Check for recaptcha/api, google.com/recaptcha, gstatic.com/recaptcha, or recaptcha.net in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-recaptcha.json
   if (
-    hasAnyUrl('recaptcha/api', 'gstatic.com/recaptcha', 'recaptcha.net') ||
-    hasAnyUrlRegex('google\\.com/recaptcha')
+    hasAnyUrl(['recaptcha/api', 'gstatic.com/recaptcha', 'recaptcha.net']) ||
+    hasAnyUrl([/google\.com\/recaptcha/i])
   ) {
     return byUrl('recaptcha')
   }
@@ -268,14 +272,11 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   // reCAPTCHA: Check for grecaptcha API usage in html (JavaScript indicator)
   // Note: plain "grecaptcha" is too broad (e.g. ".grecaptcha-badge" CSS appears on normal YouTube pages)
   if (
-    hasAnyHtml(
-      [
-        '\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b',
-        '\\b(?:window\\.)?grecaptcha\\s*\\(',
-        '\\b__grecaptcha_cfg\\b'
-      ],
-      true
-    )
+    hasAnyHtml([
+      /\b(?:window\.)?grecaptcha\s*\.(?:execute|render|ready|getResponse|enterprise)\b/i,
+      /\b(?:window\.)?grecaptcha\s*\(/i,
+      /\b__grecaptcha_cfg\b/i
+    ])
   ) {
     return byHtml('recaptcha')
   }
@@ -288,7 +289,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // hCaptcha: Check for hcaptcha.com domain in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-hcaptcha.json
-  if (urlHas('hcaptcha\\.com', true)) {
+  if (hasAnyUrl([/hcaptcha\.com/i])) {
     return byUrl('hcaptcha')
   }
 
@@ -301,7 +302,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // FunCaptcha (Arkose Labs): Check for arkoselabs.com or funcaptcha in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-funcaptcha.json
-  if (urlHas('arkoselabs\\.com', true) || urlHas('funcaptcha')) {
+  if (hasAnyUrl([/arkoselabs\.com/i]) || hasAnyUrl(['funcaptcha'])) {
     return byUrl('funcaptcha')
   }
 
@@ -314,7 +315,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // GeeTest: Check for geetest.com domain in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-geetest.json
-  if (urlHas('geetest\\.com', true)) {
+  if (hasAnyUrl([/geetest\.com/i])) {
     return byUrl('geetest')
   }
 
@@ -326,7 +327,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // Cloudflare Turnstile: Check for challenges.cloudflare.com/turnstile in URL
-  if (urlHas('challenges\\.cloudflare\\.com/turnstile', true)) {
+  if (hasAnyUrl([/challenges\.cloudflare\.com\/turnstile/i])) {
     return byUrl('cloudflare-turnstile')
   }
 
@@ -338,7 +339,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Friendly Captcha: Check for friendlycaptcha.com in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-friendlycaptcha.json
-  if (urlHas('friendlycaptcha\\.com', true)) {
+  if (hasAnyUrl([/friendlycaptcha\.com/i])) {
     return byUrl('friendly-captcha')
   }
 
@@ -349,7 +350,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // Captcha.eu: Check for captcha.eu in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-captchaeu.json
-  if (urlHas('captcha\\.eu', true)) {
+  if (hasAnyUrl([/captcha\.eu/i])) {
     return byUrl('captcha-eu')
   }
 
@@ -360,7 +361,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // QCloud Captcha (Tencent): Check for turing.captcha.qcloud.com in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-qcloud.json
-  if (urlHas('turing\\.captcha\\.qcloud\\.com', true)) {
+  if (hasAnyUrl([/turing\.captcha\.qcloud\.com/i])) {
     return byUrl('qcloud-captcha')
   }
 
@@ -371,7 +372,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 
   // AliExpress CAPTCHA: Check for punish?x5secdata in URL
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/captcha/detect-aliexpress.json
-  if (urlHas('punish\\?x5secdata', true)) {
+  if (hasAnyUrl([/punish\?x5secdata/i])) {
     return byUrl('aliexpress-captcha')
   }
 
@@ -381,13 +382,13 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // LinkedIn: trkCode=bf cookie ("bot filter") is set when LinkedIn blocks a request
-  if (hasCookie('trkCode=bf')) {
+  if (hasAnyCookie(['trkCode=bf'])) {
     return byCookies('linkedin')
   }
 
   // YouTube: empty title pattern indicates a degraded response requiring BotGuard JS attestation
   // Normal pages have `<title>Video Title - YouTube</title>`, bots get `<title> - YouTube</title>`
-  if (hasAnyHtml(['<title>\\s*-\\s*YouTube<\\/title>'], true)) {
+  if (hasAnyHtml([/<title>\s*-\s*YouTube<\/title>/i])) {
     return byHtml('youtube')
   }
 
@@ -403,7 +404,7 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   }
 
   // AWS WAF: aws-waf-token cookie
-  if (hasCookie('aws-waf-token=')) {
+  if (hasAnyCookie(['aws-waf-token='])) {
     return byCookies('aws-waf')
   }
 
