@@ -9,6 +9,7 @@ test('cloudflare (cf-mitigated header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
+  t.is(result.technique, 'headers')
 })
 
 test('cloudflare (cf_clearance set-cookie)', t => {
@@ -16,6 +17,7 @@ test('cloudflare (cf_clearance set-cookie)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
+  t.is(result.technique, 'cookies')
 })
 
 test('vercel', t => {
@@ -58,6 +60,7 @@ test('akamai (no antibot)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, false)
   t.is(result.provider, null)
+  t.is(result.technique, null)
 })
 
 test('datadome (x-dd-b header)', t => {
@@ -221,6 +224,7 @@ test('reblaze (html)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'reblaze')
+  t.is(result.technique, 'html')
 })
 
 test('cheq (html CheqSdk)', t => {
@@ -242,6 +246,7 @@ test('cheq (url cheqzone.com)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'cheq')
+  t.is(result.technique, 'url')
 })
 
 test('cheq (url cheq.ai)', t => {
