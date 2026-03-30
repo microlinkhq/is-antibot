@@ -125,9 +125,15 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
     return byHeaders('datadome')
   }
 
-  // DataDome: Check for x-datadome or x-datadome-cid header presence
-  // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-datadome.json
-  if (hasAnyHeader(['x-datadome', 'x-datadome-cid'])) {
+  // DataDome: x-datadome header presence.
+  // Note: `x-datadome: protected` can appear on successful responses.
+  const xDatadome = getHeader('x-datadome')
+  if (xDatadome && String(xDatadome).toLowerCase() !== 'protected') {
+    return byHeaders('datadome')
+  }
+
+  // DataDome: x-datadome-cid header presence
+  if (hasAnyHeader(['x-datadome-cid'])) {
     return byHeaders('datadome')
   }
 

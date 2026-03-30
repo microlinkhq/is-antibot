@@ -79,6 +79,13 @@ test('datadome (x-datadome header)', t => {
   t.is(result.provider, 'datadome')
 })
 
+test('datadome (x-datadome protected is not enough)', t => {
+  const headers = { 'x-datadome': 'protected' }
+  const result = isAntibot({ headers })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('datadome (x-datadome-cid header)', t => {
   const headers = { 'x-datadome-cid': 'abc123' }
   const result = isAntibot({ headers })
