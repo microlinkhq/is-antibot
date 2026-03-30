@@ -67,14 +67,14 @@ const isAntibot = require('is-antibot')
 const response = await fetch('https://www.linkedin.com/in/kikobeats/')
 const html = await response.text()
 
-const { detected, provider, technique } = isAntibot({
+const { detected, provider, detection } = isAntibot({
   headers: response.headers,
   html,
   url: response.url
 })
 
 if (detected) {
-  console.log(`Antibot detected: ${provider} via ${technique}`)
+  console.log(`Antibot detected: ${provider} via ${detection}`)
 }
 ```
 
@@ -84,10 +84,10 @@ It also works with [got](https://github.com/sindresorhus/got) or any library whe
 const response = await got('https://www.linkedin.com/in/kikobeats/')
   .catch(error => errorresponse)
 
-const { detected, provider, technique } = isAntibot(response)
+const { detected, provider, detection } = isAntibot(response)
 
 if (detected) {
-  console.log(`Antibot detected: ${provider} via ${technique}`)
+  console.log(`Antibot detected: ${provider} via ${detection}`)
 }
 ```
 
@@ -95,7 +95,7 @@ The library returns an object with the following properties:
 
 - `detected` (boolean): Whether an antibot challenge was detected
 - `provider` (string|null): The name of the detected provider (e.g., 'cloudflare', 'recaptcha')
-- `technique` (string|null): Where the signal came from: `'headers'`, `'cookies'`, `'html'`, or `'url'`
+- `detection` (string|null): Where the signal came from: `'headers'`, `'cookies'`, `'html'`, or `'url'`
 
 ## License
 
