@@ -1,6 +1,7 @@
 'use strict'
 
 const { splitSetCookieString } = require('cookie-es')
+const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
 const DETECTION = {
@@ -385,6 +386,15 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   // AliExpress CAPTCHA: Check for x5secdata in html
   if (hasAnyHtml(['x5secdata'])) {
     return byHtml('aliexpress-captcha')
+  }
+
+  // Reddit: blocked requests are served as HTML challenge pages.
+  // Strongest signal is the blocked-page copy in HTML.
+  if (
+    parseUrl(url).domain === 'reddit.com' &&
+    hasAnyHtml([/blocked by network security\./i])
+  ) {
+    return byHtml('reddit')
   }
 
   // LinkedIn: trkCode=bf cookie ("bot filter") is set when LinkedIn blocks a request

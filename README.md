@@ -30,6 +30,7 @@
 - **Ocule** - Bot detection with advanced obfuscation
 - **YouTube** - BotGuard attestation and abuse detection
 - **LinkedIn** - Bot filter protection
+- **Reddit** - Network security challenge-page detection
 
 ### CAPTCHA Providers
 
@@ -45,7 +46,7 @@
 
 ## Why
 
-Websites receiving massive quantities of traffic throughout the day, like LinkedIn, Instagram, or YouTube, have sophisticated antibot systems to prevent automated access.
+Websites receiving massive quantities of traffic throughout the day, like LinkedIn, Reddit, Instagram, or YouTube, have sophisticated antibot systems to prevent automated access.
 
 When you try to fetch the HTML of these sites without the right tools, you often hit a 403 Forbidden, 429 Too Many Requests, or a "Please prove you're human" challenge, leaving you with a response that contains no useful data.
 

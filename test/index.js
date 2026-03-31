@@ -550,6 +550,36 @@ test('aliexpress-captcha (html)', t => {
   t.is(result.provider, 'aliexpress-captcha')
 })
 
+test('reddit (blocked html)', t => {
+  const html = '<div>blocked by network security.</div>'
+  const url =
+    'https://www.reddit.com/r/lotus/comments/1pzbv0z/my_lotus_elise_72d_with_17_rays_volk_gtp/'
+  const result = isAntibot({ html, url })
+  t.is(result.detected, true)
+  t.is(result.provider, 'reddit')
+  t.is(result.detection, 'html')
+})
+
+test('reddit (blocked html on non-reddit url should not match)', t => {
+  const html = '<div>blocked by network security.</div>'
+  const url = 'https://example.com/some/path'
+  const result = isAntibot({ html, url })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('reddit (allowed endpoint)', t => {
+  const headers = {
+    'content-type': 'application/json; charset=UTF-8',
+    server: 'snooserv'
+  }
+  const url =
+    'https://www.reddit.com/r/lotus/comments/1pzbv0z/my_lotus_elise_72d_with_17_rays_volk_gtp/'
+  const result = isAntibot({ headers, url })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('linkedin (got set-cookie as array)', t => {
   const headers = {
     'set-cookie': [
