@@ -1,3 +1,8 @@
+## 1.6.0 (2026-04-05)
+
+### Features
+
+* add status code detection ([#18](https://github.com/microlinkhq/is-antibot/issues/18)) ([b358d6f](https://github.com/microlinkhq/is-antibot/commit/b358d6ffbe1de2a4326112d6250ca23246fc34a2))
 ## 1.5.0 (2026-03-31)
 
 * feat: reddit detection (#16) ([96cbd83](https://github.com/microlinkhq/is-antibot/commit/96cbd83)), closes [#16](https://github.com/microlinkhq/is-antibot/issues/16)
