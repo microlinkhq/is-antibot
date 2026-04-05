@@ -13,12 +13,15 @@ test('from fetch', async t => {
   const html = await response.text()
   const { detected, provider, detection } = isAntibot({
     headers: response.headers,
+    statusCode: response.status,
     html,
     url: response.url
   })
   t.is(detected, true)
   t.is(provider, 'linkedin')
-  t.true(['headers', 'cookies', 'html', 'url'].includes(detection))
+  t.true(
+    ['headers', 'cookies', 'html', 'url', 'statusCode'].includes(detection)
+  )
 })
 
 test('from got', async t => {
@@ -26,5 +29,7 @@ test('from got', async t => {
   const { detected, provider, detection } = isAntibot(response)
   t.is(detected, true)
   t.is(provider, 'linkedin')
-  t.true(['headers', 'cookies', 'html', 'url'].includes(detection))
+  t.true(
+    ['headers', 'cookies', 'html', 'url', 'statusCode'].includes(detection)
+  )
 })

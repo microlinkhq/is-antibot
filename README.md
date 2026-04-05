@@ -60,7 +60,7 @@ $ npm install is-antibot --save
 
 ## Usage
 
-Just pass `headers`, `html`, and `url` from any HTTP response:
+Just pass `headers`, `html`, `url`, and `statusCode` from any HTTP response:
 
 ```js
 const isAntibot = require('is-antibot')
@@ -70,6 +70,7 @@ const html = await response.text()
 
 const { detected, provider, detection } = isAntibot({
   headers: response.headers,
+  statusCode: response.status,
   html,
   url: response.url
 })
@@ -96,7 +97,7 @@ The library returns an object with the following properties:
 
 - `detected` (boolean): Whether an antibot challenge was detected
 - `provider` (string|null): The name of the detected provider (e.g., 'cloudflare', 'recaptcha')
-- `detection` (string|null): Where the signal came from: `'headers'`, `'cookies'`, `'html'`, or `'url'`
+- `detection` (string|null): Where the signal came from: `'headers'`, `'cookies'`, `'html'`, `'url'`, or `'statusCode'`
 
 ## License
 

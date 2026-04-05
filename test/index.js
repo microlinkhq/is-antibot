@@ -580,36 +580,28 @@ test('reddit (allowed endpoint)', t => {
   t.is(result.provider, null)
 })
 
-test('linkedin (got set-cookie as array)', t => {
-  const headers = {
-    'set-cookie': [
-      'trkCode=bf; Max-Age=5',
-      'trkInfo=AQFAratONFrB2AAAAZ0pYgFwkRxy7pe2KqithoZ4DrIdVyCD8WiY3gYONBobD4g7t-PWmVWJzN28GTO7ZeKfrcPmTti_uaSFN-8qXScyFz-hE-pBpGPZuyIRSsqcCtg0OsMdUX4=; Max-Age=5',
-      'rtc=AQEVeAM-pHq_2QAAAZ0pYgFw6by_4L6d1QzyV8pieP39_RzmN8vtczqYcGa2WGH5LwJWuR0JT_GsVzsuuEOaQtWxSNnLIC9ARJF3qu-Ym5hkaxkL5Ciaa-WN264N2_xsawkGjX-snaZ4Nx0GGWEZlPzoNaX_ODWeNpbln_P6yWOykLOwSxcWtPLlGKRV8g4iubY9Rr0GiFUhTSsNXgxnOFfqnXA=; Max-Age=120; path=/; domain=.linkedin.com',
-      '__cf_bm=SMqN8mDteTetWk0K04HDlr8GBw_7.aINZ4GPOztm3H8-1774515782-1.0.1.1-ei2drbbibbsB.7gExLK7sOcjkxwFxQA.4tWMyU0isXPg8lzPuBGYKIb94wx9uKBfHQWb0eNRKOlTZKb.KE227rK9Vje15fD3gYHFG2bpnvA; path=/; expires=Thu, 26-Mar-26 09:33:02 GMT; domain=.linkedin.com; HttpOnly; Secure; SameSite=None'
-    ]
-  }
-  const result = isAntibot({ headers })
+test('linkedin (status 999)', t => {
+  const result = isAntibot({
+    statusCode: 999,
+    url: 'https://www.linkedin.com/in/wesbos'
+  })
   t.is(result.detected, true)
   t.is(result.provider, 'linkedin')
+  t.is(result.detection, 'statusCode')
 })
 
-test('linkedin (fetch set-cookie as comma-joined string)', t => {
-  const headers = {
-    'set-cookie':
-      'trkCode=bf; Max-Age=5, trkInfo=AQFyonFtUZqc7AAAAZ0pYrzwPDR4VFZ_9p6fG0FvEcRgl8OPYOi_BuI0UjU5CWQ8ajOcRDP94FWd1WG6ml4bCIeTNo529UZFwMB_Pit8kSdbz5IzaPaVV0VLYrO1HwPhyu2APN4=; Max-Age=5, rtc=AQEwoUg34YjbqQAAAZ0pYrzwk3vgeorXn_hlwqY4LaH634gq_kHjFzZC_qrYXquN4zzqX50dVT8cqdcMbfyhAdu3RA6gjC6glMQah0nh9lEeiircCG43N6-oCN4kObfwug1PtZ619Yl0F3MK-TSvU3h3KYyvW4vltvXhLrxeK9DpT5AjGyD0WDPrM8KtK7w7UF9SEsTBYrpyPqcm6nfvrYY6QY0=; Max-Age=120; path=/; domain=.linkedin.com, __cf_bm=TBitBBkee9M2KOZkThR1uXuERq5RTmOKtLwnU7KxQYM-1774515830-1.0.1.1-09U1TNumW0aJGTQClLtEJRVB92lnaY0_IVz4X6E_Vulp2cS1VcnqhX81f28bwKLxPfIZ.lrkhjKn.yNK_Impgkj3QjDocla2r5PETU_QN0A; path=/; expires=Thu, 26-Mar-26 09:33:50 GMT; domain=.linkedin.com; HttpOnly; Secure; SameSite=None'
-  }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'linkedin')
+test('linkedin (status 999 ignored for non-linkedin url)', t => {
+  const result = isAntibot({ statusCode: 999, url: 'https://example.com' })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
-test('linkedin (no antibot without trkCode=bf)', t => {
+test('linkedin (no antibot without status 999)', t => {
   const headers = {
     'x-li-fabric': 'prod-lor1',
     'set-cookie': 'other=value; Max-Age=5'
   }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 200 })
   t.is(result.detected, false)
   t.is(result.provider, null)
 })

@@ -8,7 +8,8 @@ const DETECTION = {
   HEADERS: 'headers',
   COOKIES: 'cookies',
   HTML: 'html',
-  URL: 'url'
+  URL: 'url',
+  STATUS_CODE: 'statusCode'
 }
 
 const createGetHeader = headers =>
@@ -57,7 +58,7 @@ const getHeaderNames = headers =>
     ? Array.from(headers.keys())
     : Object.keys(headers)
 
-const detect = ({ headers = {}, html = '', url = '' } = {}) => {
+const detect = ({ headers = {}, html = '', url = '', statusCode } = {}) => {
   const getHeader = createGetHeader(headers)
   const hasCookie = createHasCookie(headers)
   const htmlHas = createTestPattern(html)
@@ -80,6 +81,9 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
   const byHtml = provider => createResult(true, provider, DETECTION.HTML)
 
   const byUrl = provider => createResult(true, provider, DETECTION.URL)
+
+  const byStatusCode = provider =>
+    createResult(true, provider, DETECTION.STATUS_CODE)
 
   // CloudFlare: Check for cf-mitigated header with 'challenge' value
   // Official docs: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/
@@ -397,9 +401,9 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
     return byHtml('reddit')
   }
 
-  // LinkedIn: trkCode=bf cookie ("bot filter") is set when LinkedIn blocks a request
-  if (hasAnyCookie(['trkCode=bf'])) {
-    return byCookies('linkedin')
+  // LinkedIn: status 999 is LinkedIn's dedicated bot-detection response
+  if (parseUrl(url).domain === 'linkedin.com' && statusCode === 999) {
+    return byStatusCode('linkedin')
   }
 
   // YouTube: empty title pattern indicates a degraded response requiring BotGuard JS attestation
@@ -428,8 +432,13 @@ const detect = ({ headers = {}, html = '', url = '' } = {}) => {
 }
 
 const isAntibot = (input = {}) => {
-  const { headers, html, body, url } = input
-  return detect({ headers, html: html || body, url })
+  const { headers, html, body, url, statusCode, status } = input
+  return detect({
+    headers,
+    html: html || body,
+    url,
+    statusCode: statusCode ?? status
+  })
 }
 
 module.exports = isAntibot
