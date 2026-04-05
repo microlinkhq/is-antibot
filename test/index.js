@@ -606,6 +606,18 @@ test('linkedin (no antibot without status 999)', t => {
   t.is(result.provider, null)
 })
 
+test('instagram (login page redirect)', t => {
+  const html =
+    '<!DOCTYPE html><html lang="en"><head><title>Login \u2022 Instagram</title></head><body></body></html>'
+  const result = isAntibot({
+    html,
+    url: 'https://www.instagram.com/kikobeats/'
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'html')
+})
+
 test('youtube (empty title in html)', t => {
   const html =
     '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'
@@ -653,7 +665,7 @@ test('aws-waf (aws-waf-token set-cookie)', t => {
 test('createTestPattern with invalid regex catches error', t => {
   const { createTestPattern } = require('../src')
   const has = createTestPattern('test')
-  t.is(has('[invalid(regex', true), false)
+  t.is(has('[invalid(regex'), false)
 })
 
 test('testPattern with invalid regex', t => {

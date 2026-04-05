@@ -20,18 +20,10 @@ const createGetHeader = headers =>
 const createTestPattern = value => {
   if (!value) return () => false
   const lowerValue = value.toLowerCase()
-  return (pattern, isRegex = false) => {
+  return pattern => {
     if (pattern instanceof RegExp) {
       try {
         return pattern.test(value)
-      } catch {
-        return false
-      }
-    }
-
-    if (isRegex) {
-      try {
-        return new RegExp(pattern, 'i').test(value)
       } catch {
         return false
       }
@@ -404,6 +396,14 @@ const detect = ({ headers = {}, html = '', url = '', statusCode } = {}) => {
   // LinkedIn: status 999 is LinkedIn's dedicated bot-detection response
   if (parseUrl(url).domain === 'linkedin.com' && statusCode === 999) {
     return byStatusCode('linkedin')
+  }
+
+  // Instagram: login page redirect indicates bot detection
+  if (
+    parseUrl(url).domain === 'instagram.com' &&
+    hasAnyHtml([/<title>\s*Login\s*[•·]\s*Instagram\s*<\/title>/i])
+  ) {
+    return byHtml('instagram')
   }
 
   // YouTube: empty title pattern indicates a degraded response requiring BotGuard JS attestation
