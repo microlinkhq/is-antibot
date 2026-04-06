@@ -385,12 +385,13 @@ const detect = ({ headers = {}, html = '', url = '', statusCode } = {}) => {
   }
 
   // Reddit: blocked requests are served as HTML challenge pages.
-  // Strongest signal is the blocked-page copy in HTML.
-  if (
-    parseUrl(url).domain === 'reddit.com' &&
-    hasAnyHtml([/blocked by network security\./i])
-  ) {
-    return byHtml('reddit')
+  if (parseUrl(url).domain === 'reddit.com') {
+    if (statusCode === 403) {
+      return byStatusCode('reddit')
+    }
+    if (hasAnyHtml([/blocked by network security\./i])) {
+      return byHtml('reddit')
+    }
   }
 
   // LinkedIn: status 999 is LinkedIn's dedicated bot-detection response
