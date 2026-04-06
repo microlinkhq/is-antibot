@@ -568,6 +568,20 @@ test('reddit (blocked html on non-reddit url should not match)', t => {
   t.is(result.provider, null)
 })
 
+test('reddit (blocked by status code)', t => {
+  const headers = {
+    'content-type': 'text/html',
+    server: 'snooserv',
+    'cache-control': 'private, no-store'
+  }
+  const url =
+    'https://www.reddit.com/r/digitalnomad/comments/1riz2r5/i_love_mexico_city_but_i_feel_so_unhealthy_here/'
+  const result = isAntibot({ headers, url, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'reddit')
+  t.is(result.detection, 'statusCode')
+})
+
 test('reddit (allowed endpoint)', t => {
   const headers = {
     'content-type': 'application/json; charset=UTF-8',
