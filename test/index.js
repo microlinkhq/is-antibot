@@ -648,6 +648,42 @@ test('youtube (no antibot with normal title)', t => {
   t.is(result.provider, null)
 })
 
+test('anubis (html anubis_challenge script tag)', t => {
+  const html =
+    '<script id="anubis_challenge" type="application/json">{"rules":{"algorithm":"metarefresh"}}</script>'
+  const result = isAntibot({ html })
+  t.is(result.detected, true)
+  t.is(result.provider, 'anubis')
+  t.is(result.detection, 'html')
+})
+
+test('anubis (html static path)', t => {
+  const html =
+    '<img src="https://example.com/.within.website/x/cmd/anubis/static/img/pensive.webp">'
+  const result = isAntibot({ html })
+  t.is(result.detected, true)
+  t.is(result.provider, 'anubis')
+  t.is(result.detection, 'html')
+})
+
+test('anubis (no false positive for anubis_challenge in plain text)', t => {
+  const html = '<p>The template uses anubis_challenge as a key</p>'
+  const result = isAntibot({ html, headers: {} })
+  t.is(result.detected, false)
+})
+
+test('anubis (no false positive for anubis_challenge as non-script element)', t => {
+  const html = '<div id="anubis_challenge">some content</div>'
+  const result = isAntibot({ html, headers: {} })
+  t.is(result.detected, false)
+})
+
+test('anubis (no false positive for within.website in html text)', t => {
+  const html = '<p>Read more at within.website blog</p>'
+  const result = isAntibot({ html, headers: {} })
+  t.is(result.detected, false)
+})
+
 test('aws-waf (header)', t => {
   const headers = { 'x-amzn-waf-action': 'CHALLENGE' }
   const result = isAntibot({ headers })

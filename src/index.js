@@ -413,6 +413,19 @@ const detect = ({ headers = {}, html = '', url = '', statusCode } = {}) => {
     return byHtml('youtube')
   }
 
+  // Anubis (Techaro BotStopper): challenge pages always contain the JSON script block
+  // `<script id="anubis_challenge" type="application/json">` (hardcoded in web/index.templ)
+  // and asset/API URLs under the Go constant `StaticPath = "/.within.website/x/cmd/anubis/"`.
+  // Source: https://github.com/TecharoHQ/anubis
+  if (
+    hasAnyHtml([
+      /<script id="anubis_challenge"/,
+      '/.within.website/x/cmd/anubis/'
+    ])
+  ) {
+    return byHtml('anubis')
+  }
+
   // AWS WAF: Check for x-amzn-waf-action or x-amzn-requestid headers
   // Reference: https://github.com/scrapfly/Antibot-Detector/blob/main/detectors/antibot/detect-aws-waf.json
   if (hasAnyHeader(['x-amzn-waf-action', 'x-amzn-requestid'])) {
