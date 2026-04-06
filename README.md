@@ -15,6 +15,7 @@
 
 - **CloudFlare** - Bot management and challenge pages
 - **Vercel** - Attack mode protection
+- **Anubis** - Techaro BotStopper proof-of-work challenge
 - **Akamai** - Bot Manager and Web Application Protector
 - **DataDome** - Bot protection with CAPTCHA challenges
 - **PerimeterX** - Behavioral bot detection
@@ -28,6 +29,7 @@
 - **ThreatMetrix** - LexisNexis fraud prevention and device fingerprinting
 - **Meetrics** - User authenticity verification
 - **Ocule** - Bot detection with advanced obfuscation
+- **Instagram** - Login page redirect bot detection
 - **YouTube** - BotGuard attestation and abuse detection
 - **LinkedIn** - Bot filter protection
 - **Reddit** - Network security challenge-page detection
