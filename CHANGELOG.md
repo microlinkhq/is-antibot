@@ -1,3 +1,8 @@
+## 1.7.0 (2026-04-06)
+
+### Features
+
+* anubis support ([#21](https://github.com/microlinkhq/is-antibot/issues/21)) ([a8963b1](https://github.com/microlinkhq/is-antibot/commit/a8963b16edb90446ccc92e52932ee1958cb89d4f))
 ## 1.6.2 (2026-04-06)
 ## 1.6.1 (2026-04-05)
 ## 1.6.0 (2026-04-05)
