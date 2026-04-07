@@ -1,3 +1,5 @@
+/* global Node */
+
 const createSiteHeader = () => {
   let header = document.querySelector('.site-header')
 
@@ -25,41 +27,6 @@ const createSiteHeader = () => {
   return header
 }
 
-const PRETEXT_SOURCE =
-  'https://cdn.jsdelivr.net/npm/@chenglou/pretext@0.0.4/+esm'
-
-let pretextModulePromise
-
-const loadPretext = async () => {
-  if (!pretextModulePromise) {
-    pretextModulePromise = import(PRETEXT_SOURCE)
-      .then(module => {
-        if (
-          typeof module.prepareWithSegments !== 'function' ||
-          typeof module.walkLineRanges !== 'function'
-        ) {
-          return null
-        }
-
-        return module
-      })
-      .catch(() => null)
-  }
-
-  return pretextModulePromise
-}
-
-const pxValue = value => {
-  const parsed = Number.parseFloat(value)
-  return Number.isFinite(parsed) ? parsed : 0
-}
-
-const getStoryFont = styles => {
-  if (styles.font) return styles.font
-
-  return `${styles.fontStyle} ${styles.fontVariant} ${styles.fontWeight} ${styles.fontSize} ${styles.fontFamily}`
-}
-
 const setupSiteHeaderReveal = header => {
   if (header.dataset.revealBound === 'true') return
 
@@ -79,61 +46,28 @@ const setupSiteHeaderReveal = header => {
   update()
 }
 
-const createStorySection = () => {
-  const story = document.createElement('section')
-  story.className = 'story-section reveal-on-load'
-  story.setAttribute('aria-label', 'Why we built is-antibot')
-  story.innerHTML = `
-    <p>Your request returned <span class="status-flicker" aria-hidden="true"><span>429 TOO_MANY_REQUESTS</span><span>401 UNAUTHORIZED</span><span>403 FORBIDDEN</span></span></p>
-    <p>You got a challenge page. A CAPTCHA. A JavaScript puzzle.</p>
-    <p>You were <strong class="is-error">blocked</strong>, and you didn't know, wasting infrastructure resources and time.</p>
-    <p>With <strong>is-antibot</strong>, you can <br>see who and how blocked you, maximizing efficiency and minimizing disruptions.</p>
-  `
-  story.querySelector('p:nth-child(3)')?.after(createHeroGraph())
-  return story
-}
+const decorateWhySection = section => {
+  const heading = section.querySelector('h2#why')
+  if (!heading) return
+  if (heading.parentElement?.classList.contains('why-story')) return
 
-const createHeroGraph = () => {
-  const graph = document.createElement('figure')
-  graph.className = 'hero-graph reveal-on-load'
-  graph.setAttribute('aria-label', 'Illustrative antibot provider distribution')
-  graph.innerHTML = `
-    <svg class="hero-graph__svg" viewBox="0 0 520 340" role="img" aria-labelledby="hero-graph-title">
-      <title id="hero-graph-title">Illustrative antibot providers by detected blocks (example data)</title>
-      <g class="hero-graph__donut" transform="rotate(-90 260 170)">
-        <circle class="hero-graph__slice hero-graph__slice--recaptcha" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="44.7 55.3" stroke-dashoffset="0"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--cloudflare" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="12.6 87.4" stroke-dashoffset="-44.7"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--turnstile" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="8.5 91.5" stroke-dashoffset="-57.3"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--aws" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="6.8 93.2" stroke-dashoffset="-65.8"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--akamai" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="5.6 94.4" stroke-dashoffset="-72.6"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--youtube" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.8 96.2" stroke-dashoffset="-78.2"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-a" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.4 96.6" stroke-dashoffset="-82"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-b" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.1 96.9" stroke-dashoffset="-85.4"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-c" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.8 97.2" stroke-dashoffset="-88.5"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-d" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.4 97.6" stroke-dashoffset="-91.3"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-e" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.1 97.9" stroke-dashoffset="-93.7"></circle>
-        <circle class="hero-graph__slice hero-graph__slice--secondary-f" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="4.2 95.8" stroke-dashoffset="-95.8"></circle>
-      </g>
-      <circle class="hero-graph__hole" cx="260" cy="170" r="54"></circle>
-      <text class="hero-graph__center" x="260" y="165">blocked</text>
-      <text class="hero-graph__center hero-graph__center--sub" x="260" y="190">providers</text>
-      <g class="hero-graph__labels">
-        <path class="hero-graph__leader hero-graph__leader--recaptcha" d="M366 176 L390 172 L450 172"></path>
-        <text class="hero-graph__label" x="456" y="178">recaptcha</text>
-        <path class="hero-graph__leader hero-graph__leader--cloudflare" d="M218 76 L208 52 L154 52"></path>
-        <text class="hero-graph__label" x="154" y="42">cloudflare</text>
-        <path class="hero-graph__leader hero-graph__leader--turnstile" d="M175 113 L150 98 L52 98"></path>
-        <text class="hero-graph__label" x="52" y="90">cloudflare-turnstile</text>
-        <path class="hero-graph__leader hero-graph__leader--aws" d="M164 162 L112 160 L92 160"></path>
-        <text class="hero-graph__label" x="92" y="152">aws-waf</text>
-        <path class="hero-graph__leader hero-graph__leader--akamai" d="M176 220 L142 230 L108 230"></path>
-        <text class="hero-graph__label" x="108" y="252">akamai</text>
-        <path class="hero-graph__leader hero-graph__leader--youtube" d="M211 265 L192 286 L140 286"></path>
-        <text class="hero-graph__label" x="140" y="310">youtube</text>
-      </g>
-    </svg>
-  `
-  return graph
+  const wrapper = document.createElement('section')
+  wrapper.className = 'why-story'
+  wrapper.setAttribute('aria-label', 'Why')
+
+  heading.parentNode.insertBefore(wrapper, heading)
+
+  let node = heading
+  while (node) {
+    const next = node.nextSibling
+    wrapper.append(node)
+
+    if (next && next.nodeType === Node.ELEMENT_NODE && next.tagName === 'H2') {
+      break
+    }
+
+    node = next
+  }
 }
 
 const decorateHero = section => {
@@ -176,8 +110,6 @@ const decorateHero = section => {
 
   copy.append(actions)
   hero.replaceChildren(copy)
-
-  if (!section.querySelector('.story-section')) hero.after(createStorySection())
 }
 
 const decorateCodeBlocks = section => {
@@ -226,93 +158,6 @@ const disableDocsifyDefaultScrollSpy = section => {
 }
 
 let teardownNavigationTracking = () => {}
-let teardownStoryCentering = () => {}
-
-const setupStoryCentering = section => {
-  const story = section.querySelector('.story-section')
-  if (!story) return () => {}
-
-  const paragraphs = [...story.querySelectorAll('p')]
-  if (!paragraphs.length) return () => {}
-
-  const preparedCache = new Map()
-  let frame = null
-  let cancelled = false
-
-  const centerParagraphs = async () => {
-    frame = null
-
-    const pretext = await loadPretext()
-    if (cancelled || !pretext) return
-
-    const { prepareWithSegments, walkLineRanges } = pretext
-    const measures = []
-
-    for (const paragraph of paragraphs) {
-      paragraph.style.width = ''
-
-      const text = paragraph.textContent?.trim()
-      if (!text) continue
-
-      const styles = window.getComputedStyle(paragraph)
-      const font = getStoryFont(styles)
-      const maxWidth =
-        pxValue(styles.maxWidth) ||
-        paragraph.clientWidth ||
-        paragraph.getBoundingClientRect().width
-
-      if (!font || maxWidth <= 0) continue
-
-      const cacheKey = `${font}:${text}`
-      let prepared = preparedCache.get(cacheKey)
-
-      if (!prepared) {
-        prepared = prepareWithSegments(text, font)
-        preparedCache.set(cacheKey, prepared)
-      }
-
-      let widestLine = 0
-      walkLineRanges(prepared, maxWidth, line => {
-        if (line.width > widestLine) widestLine = line.width
-      })
-
-      if (widestLine > 0) measures.push({ paragraph, maxWidth, widestLine })
-    }
-
-    if (!measures.length) return
-
-    const sharedMaxWidth = Math.min(...measures.map(item => item.maxWidth))
-    const sharedWidestLine = Math.max(...measures.map(item => item.widestLine))
-    const sharedWidth = Math.ceil(Math.min(sharedMaxWidth, sharedWidestLine))
-
-    for (const item of measures) {
-      item.paragraph.style.width = `${sharedWidth}px`
-    }
-  }
-
-  const requestCentering = () => {
-    if (frame !== null) window.cancelAnimationFrame(frame)
-    frame = window.requestAnimationFrame(() => {
-      centerParagraphs().catch(() => null)
-    })
-  }
-
-  window.addEventListener('resize', requestCentering)
-
-  if (document.fonts?.ready) {
-    document.fonts.ready.then(() => {
-      if (!cancelled) requestCentering()
-    })
-  }
-
-  requestCentering()
-
-  return () => {
-    cancelled = true
-    window.removeEventListener('resize', requestCentering)
-    if (frame !== null) window.cancelAnimationFrame(frame)
-  }
-}
 
 const setupNavigationTracking = section => {
   const nav = document.querySelector('.site-nav')
@@ -364,8 +209,6 @@ const setupNavigationTracking = section => {
 }
 
 const enhancePage = () => {
-  teardownStoryCentering()
-  teardownStoryCentering = () => {}
   teardownNavigationTracking()
   teardownNavigationTracking = () => {}
 
@@ -389,10 +232,10 @@ const enhancePage = () => {
   }
 
   decorateHero(section)
+  decorateWhySection(section)
   decorateCodeBlocks(section)
   decorateTables(section)
   disableDocsifyDefaultScrollSpy(section)
-  teardownStoryCentering = setupStoryCentering(section)
   teardownNavigationTracking = setupNavigationTracking(section)
 }
 

@@ -12,7 +12,51 @@
 
 When you're building infrastructure that needs an URL as input for getting data, you’re constantly interacting with defenses designed to stop you.
 
-Modern antibot systems operate at multiple layers—often before your request even reaches application code.
+<div class="why-scene" aria-label="Why challenge detection matters">
+  <p>A request can experience <span class="status-flicker" role="text" aria-label="429 Too Many Requests, 401 Unauthorized, or 403 Forbidden"><span aria-hidden="true">429 TOO_MANY_REQUESTS</span><span aria-hidden="true">401 UNAUTHORIZED</span><span aria-hidden="true">403 FORBIDDEN</span></span></p>
+  <p>Followed by a challenge page. A captcha. A JavaScript puzzle.</p>
+</div>
+
+Modern antibot systems operate at multiple layers, often before your request even reaches the application code.
+
+Our library **is-antibot** does something fundamental: it tells you when a non-success resolution happens and who triggered it, so you can make a better decision about what to do next.
+
+<figure class="hero-graph" aria-label="Illustrative antibot provider distribution">
+  <svg class="hero-graph__svg" viewBox="0 0 520 340" role="img" aria-labelledby="hero-graph-title">
+    <title id="hero-graph-title">Illustrative antibot providers by detected blocks (example data)</title>
+    <g class="hero-graph__donut" transform="rotate(-90 260 170)">
+      <circle class="hero-graph__slice hero-graph__slice--recaptcha" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="44.7 55.3" stroke-dashoffset="0"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--cloudflare" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="12.6 87.4" stroke-dashoffset="-44.7"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--turnstile" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="8.5 91.5" stroke-dashoffset="-57.3"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--aws" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="6.8 93.2" stroke-dashoffset="-65.8"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--akamai" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="5.6 94.4" stroke-dashoffset="-72.6"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--youtube" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.8 96.2" stroke-dashoffset="-78.2"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-a" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.4 96.6" stroke-dashoffset="-82"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-b" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="3.1 96.9" stroke-dashoffset="-85.4"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-c" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.8 97.2" stroke-dashoffset="-88.5"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-d" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.4 97.6" stroke-dashoffset="-91.3"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-e" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="2.1 97.9" stroke-dashoffset="-93.7"></circle>
+      <circle class="hero-graph__slice hero-graph__slice--secondary-f" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="4.2 95.8" stroke-dashoffset="-95.8"></circle>
+    </g>
+    <circle class="hero-graph__hole" cx="260" cy="170" r="54"></circle>
+    <text class="hero-graph__center" x="260" y="165">blocked</text>
+    <text class="hero-graph__center hero-graph__center--sub" x="260" y="190">providers</text>
+    <g class="hero-graph__labels">
+      <path class="hero-graph__leader hero-graph__leader--recaptcha" d="M366 176 L390 172 L450 172"></path>
+      <text class="hero-graph__label" x="456" y="178">recaptcha</text>
+      <path class="hero-graph__leader hero-graph__leader--cloudflare" d="M218 76 L208 52 L154 52"></path>
+      <text class="hero-graph__label" x="154" y="42">cloudflare</text>
+      <path class="hero-graph__leader hero-graph__leader--turnstile" d="M175 113 L150 98 L52 98"></path>
+      <text class="hero-graph__label" x="52" y="90">cloudflare-turnstile</text>
+      <path class="hero-graph__leader hero-graph__leader--aws" d="M164 162 L112 160 L92 160"></path>
+      <text class="hero-graph__label" x="92" y="152">aws-waf</text>
+      <path class="hero-graph__leader hero-graph__leader--akamai" d="M176 220 L142 230 L108 230"></path>
+      <text class="hero-graph__label" x="108" y="252">akamai</text>
+      <path class="hero-graph__leader hero-graph__leader--youtube" d="M211 265 L192 286 L140 286"></path>
+      <text class="hero-graph__label" x="140" y="310">youtube</text>
+    </g>
+  </svg>
+</figure>
 
 Common signals include:
 
@@ -27,8 +71,6 @@ Based on these signals, a request is either:
 - **Allowed**: If the heuristics indicate a legitimate human visitor, the request is passed through to the target website.
 - **Blocked**: If the request is highly suspicious (e.g., coming from a known malicious IP or with a broken TLS fingerprint), it is blocked immediately with a 403 Forbidden or 429 Too Many Requests error.
 - **Challenged**: If the system is unsure, it serves a "challenge"—such as a CAPTCHA or a JavaScript-based interstitial—that must be resolved before the actual content is released.
-
-Our library **is-antibot** does something fundamental: it tells you that a non success resolution happened  and who triggered it, so you will have all the information to take a better decisiong of what to do next.
 
 ## Quick start
 
