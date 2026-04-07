@@ -207,7 +207,6 @@ body::after {
     );
   content: '';
   inset: var(--space-0);
-  mix-blend-mode: screen;
   opacity: var(--overlay-opacity);
   pointer-events: none;
   position: fixed;
