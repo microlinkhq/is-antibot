@@ -11,118 +11,16 @@
 
   <!-- Search Engine -->
   <meta name="description" content="Know exactly who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
-  <meta name="image" content="https://cdn.microlink.io/logo/banner.png" />
+  <meta name="image" content="https://antibot.microlink.io/static/banner.png" />
   <meta name="theme-color" content="#f2efe8" />
   <link rel="canonical" href="https://antibot.microlink.io/" />
   <title>is-antibot — Detect antibot protection from 30+ providers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://microlink.io/#organization",
-        "name": "Microlink",
-        "url": "https://microlink.io",
-        "logo": "https://cdn.microlink.io/logo/favicon.svg",
-        "sameAs": [
-          "https://github.com/microlinkhq",
-          "https://x.com/microlinkhq"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://antibot.microlink.io/#website",
-        "name": "is-antibot",
-        "url": "https://antibot.microlink.io/",
-        "description": "Detect antibot protection from 30+ providers in HTTP responses.",
-        "inLanguage": "en",
-        "publisher": { "@id": "https://microlink.io/#organization" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://antibot.microlink.io/#webpage",
-        "url": "https://antibot.microlink.io/",
-        "name": "is-antibot — Detect antibot protection from 30+ providers",
-        "description": "Identify when an HTTP response is a bot challenge instead of the real page.",
-        "isPartOf": { "@id": "https://antibot.microlink.io/#website" },
-        "about": { "@id": "https://antibot.microlink.io/#software" },
-        "inLanguage": "en"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://antibot.microlink.io/#software",
-        "name": "is-antibot",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Node.js",
-        "description": "Lightweight JavaScript library that detects antibot protection and CAPTCHA challenges from 30+ providers including Cloudflare, Akamai, DataDome, PerimeterX, Kasada, Imperva, reCAPTCHA, hCaptcha, and Turnstile by inspecting HTTP headers, cookies, HTML, URLs, and status codes.",
-        "url": "https://antibot.microlink.io/",
-        "downloadUrl": "https://www.npmjs.com/package/is-antibot",
-        "codeRepository": "https://github.com/microlinkhq/is-antibot",
-        "creator": { "@id": "https://microlink.io/#organization" },
-        "featureList": [
-          "Detects 30+ antibot providers",
-          "Five detection signals: headers, cookies, HTML, URL, and status code",
-          "Zero config, works with any HTTP client (fetch, got, axios, undici)",
-          "Lightweight with only 3 dependencies"
-        ],
-        "keywords": "antibot detection,bot protection,cloudflare,akamai,datadome,perimeterx,captcha,recaptcha,hcaptcha,web scraping,node.js"
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://antibot.microlink.io/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What antibot providers does is-antibot detect?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "is-antibot detects 30+ antibot providers including Cloudflare, Akamai, DataDome, PerimeterX, Shape Security, Kasada, Imperva/Incapsula, AWS WAF, Vercel, Anubis, Reblaze, Sucuri, reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha, GeeTest, Friendly Captcha, Captcha.eu, QCloud Captcha, AliExpress CAPTCHA, and more."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does is-antibot detect bot challenges?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "is-antibot inspects five signals from any HTTP response: response headers, set-cookie headers, HTML content, URL patterns, and HTTP status codes. Each provider has specific fingerprints across these signals."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does is-antibot require a headless browser?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. is-antibot works with any HTTP client — fetch, got, axios, undici, or any library that gives you access to headers and response body. No browser needed."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use is-antibot with my web scraping pipeline?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. is-antibot is designed for exactly this use case. It tells you what blocked your request and how it was detected, so you can implement retry logic, switch proxies, or escalate to a headless browser only when needed."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="is-antibot: Detect Bot Protection Challenges" />
-  <meta name="twitter:description" content="Know exactly who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
-  <meta name="twitter:image" content="https://cdn.microlink.io/logo/banner.png" />
-
   <!-- Open Graph general (Facebook, Pinterest & Google+) -->
   <meta property="og:title" content="is-antibot: Detect Bot Protection Challenges" />
   <meta property="og:description" content="Know exactly who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
-  <meta property="og:image" content="https://cdn.microlink.io/logo/banner.png" />
+  <meta property="og:image" content="https://antibot.microlink.io/static/banner.png" />
   <meta property="og:url" content="https://antibot.microlink.io/" />
   <meta property="og:site_name" content="antibot.microlink.io" />
   <meta property="og:type" content="website" />

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://cdn.microlink.io/logo/banner.png" alt="Microlink" width="2400" height="500">
+  <img src="https://antibot.microlink.io/static/banner.png" alt="is-antibot" width="2400" height="500">
   <br>
   <br>
   <p><strong>is-antibot</strong> detects antibot and CAPTCHA challenges from 30+ providers using five response signals, so your pipeline can retry, rotate proxies, or escalate only when needed.</p>
