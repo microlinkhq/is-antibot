@@ -56,7 +56,7 @@
     <h2 id="quick-start">Quick start</h2>
     <p>Install the package and pass any HTTP response with headers, HTML, URL, and status code.</p>
     <pre><code>npm install is-antibot</code></pre>
-    <h2 id="how-detection-works">How detection works</h2>
+    <h2 id="how-detection-works">How it works</h2>
     <p>is-antibot inspects headers, cookies, HTML fingerprints, response URLs, and provider-specific status codes to classify bot protection challenges.</p>
     <h2 id="providers">Providers</h2>
     <ul>
@@ -65,11 +65,6 @@
       <li><strong>Five detection signals</strong> — headers, cookies, HTML, URL, and status code.</li>
       <li><strong>Zero config</strong> — works with fetch, got, axios, undici, node-fetch, or raw HTTP responses.</li>
     </ul>
-    <h2 id="faq">FAQ</h2>
-    <h3>Does is-antibot require a headless browser?</h3>
-    <p>No. It runs server-side against raw HTTP responses, so you can detect bot challenges without launching a browser.</p>
-    <h3>Does it detect provider presence or active challenges?</h3>
-    <p>It detects active blocking signals, not passive provider presence. For example, Cloudflare only matches when a challenge signal is present.</p>
     <p><a href="https://github.com/microlinkhq/is-antibot">View on GitHub</a></p>
   </noscript>
 </body>

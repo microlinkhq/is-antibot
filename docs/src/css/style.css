@@ -319,7 +319,6 @@ img[src*='shields.io'],
   gap: var(--space-2);
   font-size: var(--font-size-1);
   font-weight: 700;
-  letter-spacing: 0.02em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -422,7 +421,7 @@ main {
 .markdown-section {
   margin: var(--space-0) auto;
   max-width: var(--content-width);
-  padding: var(--space-3) var(--space-4) var(--space-0);
+  padding: var(--space-3) var(--space-4) var(--space-5);
 }
 
 .markdown-section > :first-child {
@@ -447,7 +446,6 @@ nav > a,
 .markdown-section h5 {
   color: var(--ink);
   font-family: var(--body-font);
-  letter-spacing: -0.08em;
   margin: var(--space-0);
   scroll-margin-top: var(--header-scroll-offset);
   text-wrap: balance;
@@ -464,6 +462,7 @@ nav > a,
   font-size: clamp(var(--font-size-2), 3.5vw, var(--font-size-3));
   font-weight: 700;
   margin-top: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .markdown-section h2:first-of-type {
@@ -585,7 +584,7 @@ nav > a,
   font-size: clamp(var(--font-size-1), 2vw, var(--font-size-2)) !important;
   margin: 0 !important;
   max-width: var(--measure-hero) !important;
-  padding: var(--space-4) 0;
+  padding: var(--space-4) var(--space-5);
 }
 
 .hero-graph {
@@ -681,13 +680,11 @@ nav > a,
 
 .hero-graph__center {
   font-size: 18px;
-  letter-spacing: -0.08em;
 }
 
 .hero-graph__center--sub {
   fill: var(--muted);
   font-size: 12px;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -824,7 +821,6 @@ nav > a,
   display: inline-grid;
   font-size: inherit;
   font-weight: 700;
-  letter-spacing: 0.08em;
   min-width: 3ch;
   position: relative;
   text-shadow: var(--shadow-error);
@@ -886,7 +882,6 @@ nav > a,
   font-family: var(--code-font);
   font-size: var(--font-size-1);
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -981,7 +976,6 @@ pre[class*='language-'] {
   color: var(--muted);
   font-size: var(--font-size-0);
   font-weight: 700;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -991,6 +985,93 @@ pre[class*='language-'] {
 
 .markdown-section tbody tr:hover {
   background: var(--surface-soft-table);
+}
+
+.markdown-section .provider-guides-table {
+  font-size: 0.92em;
+  min-width: 100%;
+  width: 100%;
+}
+
+.markdown-section .provider-guides-table th {
+  padding: var(--space-2) var(--space-3);
+  text-transform: none;
+}
+
+.markdown-section .provider-guides-table td {
+  padding: var(--space-2) var(--space-3);
+}
+
+.markdown-section .provider-guides-table td:nth-child(3) {
+  font-weight: 600;
+  text-align: left;
+}
+
+.markdown-section .provider-chip {
+  background: var(--surface-soft-emphasis);
+  border: var(--line-thin) solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--green-bright);
+  display: inline-flex;
+  font-family: var(--code-font);
+  font-size: 0.82em;
+  font-weight: 500;
+  line-height: var(--line-height-0);
+  margin-right: var(--space-1);
+  margin-top: 3px;
+  padding: 4px 9px;
+}
+
+.markdown-section .provider-chip:last-child {
+  margin-right: 0;
+}
+
+.markdown-section .real-cases-grid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: var(--space-3);
+}
+
+.markdown-section .real-case-card {
+  background: var(--panel-strong);
+  border: var(--line-thin) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.markdown-section .real-case-card h3 {
+  margin-top: 0;
+}
+
+.markdown-section .real-case-card p {
+  margin-bottom: var(--space-2);
+  max-width: none;
+}
+
+.markdown-section .real-case-media {
+  align-items: center;
+  background: var(--surface-soft-subtle);
+  border: var(--line-thin) dashed var(--line-strong);
+  border-radius: var(--radius-md);
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.84em;
+  gap: var(--space-1);
+  justify-content: center;
+  min-height: 128px;
+  padding: var(--space-2);
+  text-align: center;
+}
+
+.markdown-section .real-case-media code {
+  white-space: normal;
+}
+
+.markdown-section .real-case-meta {
+  color: var(--ink);
+  font-size: 0.84em;
 }
 
 .provider-request {

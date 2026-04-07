@@ -9,10 +9,10 @@ const createSiteHeader = () => {
         <img src="https://cdn.microlink.io/logo/favicon.svg" alt="" width="18" height="18">
       </a>
       <nav class="site-nav" aria-label="Primary">
+      <a href="#/?id=why" data-section="why">Why</a>
         <a href="#/?id=quick-start" data-section="quick-start">Quick start</a>
-        <a href="#/?id=how-detection-works" data-section="how-detection-works">How it works</a>
+        <a href="#/?id=how-it-works" data-section="how-it-works">How it works</a>
         <a href="#/?id=providers" data-section="providers">Providers</a>
-        <a href="#/?id=faq" data-section="faq">FAQ</a>
       </nav>
       <a class="site-cta" href="https://github.com/microlinkhq/is-antibot" target="_blank" rel="noopener noreferrer">GitHub</a>
     `
@@ -86,8 +86,8 @@ const createStorySection = () => {
   story.innerHTML = `
     <p>Your request returned <span class="status-flicker" aria-hidden="true"><span>429 TOO_MANY_REQUESTS</span><span>401 UNAUTHORIZED</span><span>403 FORBIDDEN</span></span></p>
     <p>You got a challenge page. A CAPTCHA. A JavaScript puzzle.</p>
-    <p>You were <strong class="is-error">blocked</strong>, and <br>your pipeline kept running.</p>
-    <p>With <strong>is-antibot</strong>, you can <br>see who blocked you and how.</p>
+    <p>You were <strong class="is-error">blocked</strong>, and you didn't know, wasting infrastructure resources and time.</p>
+    <p>With <strong>is-antibot</strong>, you can <br>see who and how blocked you, maximizing efficiency and minimizing disruptions.</p>
   `
   story.querySelector('p:nth-child(3)')?.after(createHeroGraph())
   return story
