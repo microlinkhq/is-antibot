@@ -45,7 +45,7 @@ Our library **is-antibot** does something fundamental: it tells you when a non-s
       <path class="hero-graph__leader hero-graph__leader--recaptcha" d="M366 176 L390 172 L450 172"></path>
       <text class="hero-graph__label" x="456" y="178">recaptcha</text>
       <path class="hero-graph__leader hero-graph__leader--cloudflare" d="M218 76 L208 52 L154 52"></path>
-      <text class="hero-graph__label" x="154" y="42">cloudflare</text>
+      <text class="hero-graph__label" x="154" y="42">akamai</text>
       <path class="hero-graph__leader hero-graph__leader--turnstile" d="M175 113 L150 98 L52 98"></path>
       <text class="hero-graph__label" x="52" y="90">cloudflare-turnstile</text>
       <path class="hero-graph__leader hero-graph__leader--aws" d="M164 162 L112 160 L92 160"></path>
@@ -53,7 +53,7 @@ Our library **is-antibot** does something fundamental: it tells you when a non-s
       <path class="hero-graph__leader hero-graph__leader--akamai" d="M176 220 L142 230 L108 230"></path>
       <text class="hero-graph__label" x="108" y="252">akamai</text>
       <path class="hero-graph__leader hero-graph__leader--youtube" d="M211 265 L192 286 L140 286"></path>
-      <text class="hero-graph__label" x="140" y="310">youtube</text>
+      <text class="hero-graph__label" x="140" y="310">hcaptcha</text>
     </g>
   </svg>
 </figure>

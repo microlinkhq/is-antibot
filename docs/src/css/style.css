@@ -87,9 +87,10 @@
   --font-size-2: 20px;
   --font-size-3: 28px;
   --font-size-5: 64px;
-  --body-font: 'IBM Plex Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont,
+  --title-font: 'Zalando Sans', 'Segoe UI', -apple-system, BlinkMacSystemFont,
     system-ui, sans-serif;
-  --code-font: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --body-font: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --code-font: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 
   /* Line heights */
   --line-height-0: 1.2;
@@ -449,7 +450,7 @@ nav > a,
 .markdown-section h4,
 .markdown-section h5 {
   color: var(--ink);
-  font-family: var(--body-font);
+  font-family: var(--title-font);
   margin: var(--space-0);
   scroll-margin-top: var(--header-scroll-offset);
   text-wrap: balance;
@@ -467,10 +468,6 @@ nav > a,
   font-weight: 700;
   margin-top: var(--space-5);
   margin-bottom: var(--space-4);
-}
-
-.markdown-section h2:first-of-type {
-  margin-top: var(--space-4);
 }
 
 .markdown-section h3 {
@@ -691,7 +688,7 @@ nav > a,
 .hero-graph__center,
 .hero-graph__label {
   fill: var(--ink);
-  font-family: var(--body-font);
+  font-family: var(--title-font);
   font-weight: 700;
   paint-order: stroke;
   stroke: var(--paper);
@@ -784,10 +781,6 @@ nav > a,
    Why Section Effects
    ========================================================================== */
 
-.why-story {
-  margin-bottom: var(--space-4);
-}
-
 .why-scene p {
   color: var(--muted);
   font-size: clamp(var(--font-size-1), 2.1vw, var(--font-size-2));
@@ -807,7 +800,7 @@ nav > a,
 .why-scene .status-flicker {
   color: var(--error);
   display: inline-grid;
-  font-size: inherit;
+  font-size: var(--font-size-1);
   font-weight: 700;
   min-width: 3ch;
   position: relative;
