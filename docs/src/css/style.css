@@ -162,6 +162,7 @@ body {
 
 html {
   scroll-behavior: auto;
+  color-scheme: dark;
 
   background: radial-gradient(
       circle at 50% var(--hero-radial-offset),
@@ -310,6 +311,11 @@ img[src*='shields.io'],
 .site-cta {
   align-items: center;
   display: inline-flex;
+}
+
+a,
+button {
+  touch-action: manipulation;
 }
 
 .site-brand {
@@ -978,6 +984,7 @@ pre[class*='language-'] {
 }
 
 .markdown-section .provider-guides-table td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
   font-weight: 600;
   text-align: left;
 }
@@ -1178,40 +1185,36 @@ pre[class*='language-'] {
 
 @media (max-width: 760px) {
   .site-header {
-    gap: var(--space-2);
-    grid-template-columns: 1fr auto;
-    padding-left: var(--space-3);
-  }
-
-  .site-brand span {
     display: none;
   }
 
-  .site-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: var(--line-thin);
-  }
-
-  .site-nav a {
-    font-size: var(--font-size-1);
-  }
-
   .markdown-section {
-    padding-top: var(--space-6);
+    padding-top: var(--space-3);
   }
 
   .hero-block {
     min-height: var(--space-0);
-    padding-top: var(--space-4);
+    padding-top: var(--space-2);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 9.6vw, 3rem);
+  }
+
+  .hero-actions {
+    gap: var(--space-1);
+  }
+
+  .button {
+    font-size: 15px;
+    padding: 10px 12px;
   }
 }
 
 @media (max-width: 520px) {
-  .markdown-section h1 {
-    font-size: clamp(var(--font-size-3), 13vw, var(--font-size-5));
+  .markdown-section h1,
+  .hero-title {
+    font-size: clamp(1.8rem, 10.8vw, 2.45rem);
   }
 
   .hero-actions {
@@ -1220,7 +1223,9 @@ pre[class*='language-'] {
   }
 
   .button {
+    font-size: var(--font-size-0);
     justify-content: center;
+    padding: 9px 11px;
   }
 }
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://antibot.microlink.io/static/banner.png" alt="is-antibot" width="2400" height="500">
+  <img src="https://antibot.microlink.io/static/banner.png" alt="is-antibot" width="2400" height="500" fetchpriority="high">
   <br>
   <br>
   <p><strong>is-antibot</strong> detects antibot and CAPTCHA challenges from 30+ providers using signals.</p>
@@ -13,7 +13,7 @@
 When you're building infrastructure that needs an URL as input for getting data, you’re constantly interacting with defenses designed to stop you.
 
 <div class="why-scene" aria-label="Why challenge detection matters">
-  <p>A request can experience <span class="status-flicker" role="text" aria-label="429 Too Many Requests, 401 Unauthorized, or 403 Forbidden"><span aria-hidden="true">429 TOO_MANY_REQUESTS</span><span aria-hidden="true">401 UNAUTHORIZED</span><span aria-hidden="true">403 FORBIDDEN</span></span></p>
+  <p><span style="margin-right: 8px">A request can experience</span><span class="status-flicker" role="text" aria-label="429 Too Many Requests, 401 Unauthorized, or 403 Forbidden"><span aria-hidden="true">429 TOO_MANY_REQUESTS</span><span aria-hidden="true">401 UNAUTHORIZED</span><span aria-hidden="true">403 FORBIDDEN</span></span></p>
   <p>Followed by a challenge page. A captcha. A JavaScript puzzle.</p>
 </div>
 
@@ -70,7 +70,7 @@ Based on these signals, a request is either:
 
 - **Allowed**: If the heuristics indicate a legitimate human visitor, the request is passed through to the target website.
 - **Blocked**: If the request is highly suspicious (e.g., coming from a known malicious IP or with a broken TLS fingerprint), it is blocked immediately with a 403 Forbidden or 429 Too Many Requests error.
-- **Challenged**: If the system is unsure, it serves a "challenge"—such as a CAPTCHA or a JavaScript-based interstitial—that must be resolved before the actual content is released.
+- **Challenged**: If the system is unsure, it serves a “challenge”—such as a CAPTCHA or a JavaScript-based interstitial—that must be resolved before the actual content is released.
 
 ## Quick start
 

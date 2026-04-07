@@ -19,7 +19,9 @@ const createSiteHeader = () => {
       <a class="site-cta" href="https://github.com/microlinkhq/is-antibot" target="_blank" rel="noopener noreferrer">GitHub</a>
     `
 
-    document.body.insertBefore(header, document.querySelector('#app'))
+    const mountTarget =
+      document.querySelector('#main-content') || document.querySelector('#app')
+    if (mountTarget) document.body.insertBefore(header, mountTarget)
   }
 
   setupSiteHeaderReveal(header)
@@ -214,13 +216,17 @@ const enhancePage = () => {
 
   const section = document.querySelector('.markdown-section')
   const content = document.querySelector('.content')
+  const mainContent = document.querySelector('#main-content')
   const sidebar = document.querySelector('.sidebar')
 
   createSiteHeader()
 
   if (!section) return
 
-  if (content) {
+  if (mainContent) {
+    mainContent.setAttribute('role', 'main')
+    mainContent.setAttribute('tabindex', '-1')
+  } else if (content) {
     content.id = 'main-content'
     content.setAttribute('role', 'main')
     content.setAttribute('tabindex', '-1')
