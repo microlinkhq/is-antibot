@@ -82,7 +82,7 @@ const setupSiteHeaderReveal = header => {
 const createStorySection = () => {
   const story = document.createElement('section')
   story.className = 'story-section reveal-on-load'
-  story.setAttribute('aria-label', 'Why is-antibot exists')
+  story.setAttribute('aria-label', 'Why we built is-antibot')
   story.innerHTML = `
     <p>Your request returned <span class="status-flicker" aria-hidden="true"><span>429 TOO_MANY_REQUESTS</span><span>401 UNAUTHORIZED</span><span>403 FORBIDDEN</span></span></p>
     <p>You got a challenge page. A CAPTCHA. A JavaScript puzzle.</p>
@@ -96,10 +96,10 @@ const createStorySection = () => {
 const createHeroGraph = () => {
   const graph = document.createElement('figure')
   graph.className = 'hero-graph reveal-on-load'
-  graph.setAttribute('aria-label', 'Antibot provider distribution')
+  graph.setAttribute('aria-label', 'Illustrative antibot provider distribution')
   graph.innerHTML = `
     <svg class="hero-graph__svg" viewBox="0 0 520 340" role="img" aria-labelledby="hero-graph-title">
-      <title id="hero-graph-title">Antibot providers by detected blocks</title>
+      <title id="hero-graph-title">Illustrative antibot providers by detected blocks (example data)</title>
       <g class="hero-graph__donut" transform="rotate(-90 260 170)">
         <circle class="hero-graph__slice hero-graph__slice--recaptcha" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="44.7 55.3" stroke-dashoffset="0"></circle>
         <circle class="hero-graph__slice hero-graph__slice--cloudflare" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="12.6 87.4" stroke-dashoffset="-44.7"></circle>
@@ -158,10 +158,10 @@ const decorateHero = section => {
   kickerText.className = 'hero-kicker-text'
   kickerText.textContent = 'npm i is-antibot'
   title.className = 'hero-title reveal-on-load'
-  title.innerHTML = 'Know exactly who blocked your request.'
+  title.innerHTML = 'Know exactly who blocked your request and why.'
   actions.className = 'hero-actions reveal-on-load'
   actions.innerHTML = `
-    <a class="button button-primary" href="#/?id=quick-start">Install is-antibot</a>
+    <a class="button button-primary" href="#/?id=quick-start">Start using it</a>
     <a class="button button-secondary" href="https://github.com/microlinkhq/is-antibot" target="_blank" rel="noopener noreferrer">View on GitHub</a>
   `
 

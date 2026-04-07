@@ -2,7 +2,7 @@
   <img src="https://cdn.microlink.io/logo/banner.png" alt="Microlink" width="2400" height="500">
   <br>
   <br>
-  <p>Know exactly who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers using five response signals in a lightweight package, then route retries, proxy swaps, or headless fallback only when needed.</p>
+  <p><strong>is-antibot</strong> detects antibot and CAPTCHA challenges from 30+ providers using five response signals, so your pipeline can retry, rotate proxies, or escalate only when needed.</p>
 </div>
 
 ## Quick start
@@ -13,32 +13,33 @@ Install the package:
 npm install is-antibot
 ```
 
+No headless browser required.
+
 Pass any HTTP response and get back a detection result:
 
 ```js
-const isAntibot = require('is-antibot')
+import isAntibot from 'is-antibot'
 
 const response = await fetch('https://example.com')
-const html = await response.text()
 
 const { detected, provider, detection } = isAntibot({
   headers: response.headers,
   statusCode: response.status,
-  html,
+  html: await response.text(),
   url: response.url
 })
 
 if (detected) {
   console.log(`Blocked by ${provider} (via ${detection})`)
-  // => "Blocked by cloudflare (via headers)"
+  // => "Blocked by CloudFlare (via headers)"
 }
 ```
 
-Works with [got](https://github.com/sindresorhus/got), [axios](https://github.com/axios/axios), [undici](https://github.com/nodejs/undici), or any HTTP library:
+It works with any HTTP client, including [got](https://github.com/sindresorhus/got), [axios](https://github.com/axios/axios), [undici](https://github.com/nodejs/undici) or [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
 ## How detection works
 
-is-antibot inspects five signals from any HTTP response to identify the provider that blocked the request:
+<strong>is-antibot</strong> inspects five signals from any HTTP response to identify the provider that blocked the request:
 
 - **Headers** — Provider-specific response headers like `cf-mitigated`, `x-dd-b`, `x-vercel-mitigated`, or dynamic Shape Security patterns.
 - **Cookies** — Tracking cookies such as `cf_clearance`, `_abck`, `datadome`, `_px3`, or `aws-waf-token` in `set-cookie` headers.
@@ -60,8 +61,8 @@ Supported providers by detection signal:
 | **AWS WAF**                  |    ✓    |    ✓    |   ✓   |       |             |
 | **Captcha.eu**               |         |         |   ✓   |   ✓   |             |
 | **Cheq**                     |         |         |   ✓   |   ✓   |             |
-| **Cloudflare**               |    ✓    |    ✓    |       |       |             |
-| **Cloudflare Turnstile**     |         |         |   ✓   |   ✓   |             |
+| **CloudFlare**               |    ✓    |    ✓    |       |       |             |
+| **CloudFlare Turnstile**     |         |         |   ✓   |   ✓   |             |
 | **DataDome**                 |    ✓    |    ✓    |       |       |             |
 | **Friendly Captcha**         |         |         |   ✓   |   ✓   |             |
 | **FunCaptcha** (Arkose Labs) |         |         |   ✓   |   ✓   |             |
@@ -94,7 +95,7 @@ Any client that gives you access to headers and response body. It works with `fe
 
 ### Does it detect the challenge or the provider presence?
 
-It detects active challenges and blocking signals, not passive provider presence. For example, a Cloudflare-protected site that serves content normally won't trigger detection — only when `cf-mitigated: challenge` is present.
+It detects active challenges and blocking signals, not passive provider presence. For example, a CloudFlare-protected site that serves content normally won't trigger detection — only when `cf-mitigated: challenge` is present.
 
 ### Can I add custom providers?
 
@@ -102,4 +103,4 @@ Not directly in the library, but the source is straightforward to extend. Each p
 
 ### How is it different from browser-based detection?
 
-Browser-based tools like [Antibot-Detector](https://github.com/scrapfly/Antibot-Detector) run in the browser and inspect the live DOM. is-antibot works server-side with raw HTTP responses — no browser needed, much faster, and works in any Node.js pipeline.
+Browser-based tools like [Antibot-Detector](https://github.com/scrapfly/Antibot-Detector) run in the browser and inspect the live DOM. is-antibot works server-side with raw HTTP responses, so you can detect blocks without running a browser in your Node.js pipeline.

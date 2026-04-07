@@ -604,6 +604,13 @@ nav > a,
   overflow: visible;
 }
 
+.hero-graph__caption {
+  color: var(--muted-2);
+  font-size: var(--font-size-0);
+  margin-top: var(--space-2);
+  text-align: center;
+}
+
 .hero-graph__slice {
   fill: none;
   stroke-width: 48;
