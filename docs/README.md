@@ -23,7 +23,6 @@ Our library **is-antibot** does something fundamental: it tells you when a non-s
 
 <figure class="hero-graph" aria-label="Illustrative antibot provider distribution">
   <svg class="hero-graph__svg" viewBox="0 0 520 340" role="img" aria-labelledby="hero-graph-title">
-    <title id="hero-graph-title">Illustrative antibot providers by detected blocks (example data)</title>
     <g class="hero-graph__donut" transform="rotate(-90 260 170)">
       <circle class="hero-graph__slice hero-graph__slice--recaptcha" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="44.7 55.3" stroke-dashoffset="0"></circle>
       <circle class="hero-graph__slice hero-graph__slice--cloudflare" cx="260" cy="170" r="96" pathLength="100" stroke-dasharray="12.6 87.4" stroke-dashoffset="-44.7"></circle>
