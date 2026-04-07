@@ -77,7 +77,7 @@ const detect = ({ headers = {}, html = '', url = '', statusCode } = {}) => {
   const byStatusCode = provider =>
     createResult(true, provider, DETECTION.STATUS_CODE)
 
-  // CloudFlare: Check for cf-mitigated header with 'challenge' value
+  // Cloudflare: Check for cf-mitigated header with 'challenge' value
   // Official docs: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/detect-response/
   if (getHeader('cf-mitigated') === 'challenge') {
     return byHeaders('cloudflare')

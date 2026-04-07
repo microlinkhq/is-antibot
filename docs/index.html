@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+  <!-- Search Engine -->
+  <meta name="description" content="Know who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
+  <meta name="image" content="https://cdn.microlink.io/logo/banner.png" />
+  <meta name="theme-color" content="#f2efe8" />
+  <link rel="canonical" href="https://antibot.microlink.io/" />
+  <title>is-antibot — Detect antibot protection from 30+ providers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://microlink.io/#organization",
+        "name": "Microlink",
+        "url": "https://microlink.io",
+        "logo": "https://cdn.microlink.io/logo/favicon.svg",
+        "sameAs": [
+          "https://github.com/microlinkhq",
+          "https://x.com/microlinkhq"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://antibot.microlink.io/#website",
+        "name": "is-antibot",
+        "url": "https://antibot.microlink.io/",
+        "description": "Detect antibot protection from 30+ providers in HTTP responses.",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://microlink.io/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://antibot.microlink.io/#webpage",
+        "url": "https://antibot.microlink.io/",
+        "name": "is-antibot — Detect antibot protection from 30+ providers",
+        "description": "Identify when an HTTP response is a bot challenge instead of the real page.",
+        "isPartOf": { "@id": "https://antibot.microlink.io/#website" },
+        "about": { "@id": "https://antibot.microlink.io/#software" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://antibot.microlink.io/#software",
+        "name": "is-antibot",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Node.js",
+        "description": "Lightweight JavaScript library that detects antibot protection and CAPTCHA challenges from 30+ providers including Cloudflare, Akamai, DataDome, PerimeterX, Kasada, Imperva, reCAPTCHA, hCaptcha, and Turnstile by inspecting HTTP headers, cookies, HTML, URLs, and status codes.",
+        "url": "https://antibot.microlink.io/",
+        "downloadUrl": "https://www.npmjs.com/package/is-antibot",
+        "codeRepository": "https://github.com/microlinkhq/is-antibot",
+        "creator": { "@id": "https://microlink.io/#organization" },
+        "featureList": [
+          "Detects 30+ antibot providers",
+          "Five detection signals: headers, cookies, HTML, URL, and status code",
+          "Zero config, works with any HTTP client (fetch, got, axios, undici)",
+          "Lightweight with only 3 dependencies"
+        ],
+        "keywords": "antibot detection,bot protection,cloudflare,akamai,datadome,perimeterx,captcha,recaptcha,hcaptcha,web scraping,node.js"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://antibot.microlink.io/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What antibot providers does is-antibot detect?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "is-antibot detects 30+ antibot providers including Cloudflare, Akamai, DataDome, PerimeterX, Shape Security, Kasada, Imperva/Incapsula, AWS WAF, Vercel, Anubis, Reblaze, Sucuri, reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha, GeeTest, Friendly Captcha, Captcha.eu, QCloud Captcha, AliExpress CAPTCHA, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does is-antibot detect bot challenges?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "is-antibot inspects five signals from any HTTP response: response headers, set-cookie headers, HTML content, URL patterns, and HTTP status codes. Each provider has specific fingerprints across these signals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does is-antibot require a headless browser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. is-antibot works with any HTTP client — fetch, got, axios, undici, or any library that gives you access to headers and response body. No browser needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use is-antibot with my web scraping pipeline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. is-antibot is designed for exactly this use case. It tells you what blocked your request and how it was detected, so you can implement retry logic, switch proxies, or escalate to a headless browser only when needed."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="is-antibot: Detect Bot Protection Challenges" />
+  <meta name="twitter:description" content="Know who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
+  <meta name="twitter:image" content="https://cdn.microlink.io/logo/banner.png" />
+
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta property="og:title" content="is-antibot: Detect Bot Protection Challenges" />
+  <meta property="og:description" content="Know who blocked your request and why. Detect antibot and CAPTCHA challenges from 30+ providers in HTTP responses." />
+  <meta property="og:image" content="https://cdn.microlink.io/logo/banner.png" />
+  <meta property="og:url" content="https://antibot.microlink.io/" />
+  <meta property="og:site_name" content="antibot.microlink.io" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn.microlink.io/logo/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="https://cdn.microlink.io/logo/favicon.svg">
+  <link rel="shortcut icon" href="https://cdn.microlink.io/logo/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.microlink.io/logo/apple-touch-icon.png">
+
+  <!-- Stylesheet -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.min.css" />
+  <link
+      href="https://unpkg.com/automad-prism-themes/dist/prism-serendipity-morning.css"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a href="https://github.com/microlinkhq/is-antibot" class="github-corner" aria-label="View source on GitHub">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+      <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" class="octo-arm" />
+      <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body" />
+    </svg>
+  </a>
+  <div id="app"></div>
+  <noscript>
+    <h1>is-antibot — Detect antibot protection from 30+ providers</h1>
+    <p>is-antibot performs static HTTP response analysis so Node.js scrapers and data pipelines can identify what blocked a request and how the challenge was detected.</p>
+    <h2 id="quick-start">Quick start</h2>
+    <p>Install the package and pass any HTTP response with headers, HTML, URL, and status code.</p>
+    <pre><code>npm install is-antibot</code></pre>
+    <h2 id="how-detection-works">How detection works</h2>
+    <p>is-antibot inspects headers, cookies, HTML fingerprints, response URLs, and provider-specific status codes to classify bot protection challenges.</p>
+    <h2 id="providers">Providers</h2>
+    <ul>
+      <li><strong>Antibot providers</strong> — Cloudflare, Akamai, DataDome, PerimeterX, Kasada, Imperva, AWS WAF, Vercel, Anubis, Reblaze, Sucuri, and more.</li>
+      <li><strong>CAPTCHA providers</strong> — reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha, GeeTest, Friendly Captcha, Captcha.eu, and QCloud Captcha.</li>
+      <li><strong>Five detection signals</strong> — headers, cookies, HTML, URL, and status code.</li>
+      <li><strong>Zero config</strong> — works with fetch, got, axios, undici, node-fetch, or raw HTTP responses.</li>
+    </ul>
+    <h2 id="faq">FAQ</h2>
+    <h3>Does is-antibot require a headless browser?</h3>
+    <p>No. It runs server-side against raw HTTP responses, so you can detect bot challenges without launching a browser.</p>
+    <h3>Does it detect provider presence or active challenges?</h3>
+    <p>It detects active blocking signals, not passive provider presence. For example, Cloudflare only matches when a challenge signal is present.</p>
+    <p><a href="https://github.com/microlinkhq/is-antibot">View on GitHub</a></p>
+  </noscript>
+</body>
+<script src="/static/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+
+</html>

@@ -1,0 +1,46 @@
+# is-antibot
+
+> Detect antibot protection from 30+ providers in HTTP responses.
+
+is-antibot is a lightweight, vendor-agnostic JavaScript library that identifies when an HTTP response is actually an antibot challenge instead of the real page content. It inspects headers, cookies, HTML, URLs, and status codes to detect 30+ antibot providers.
+
+It is designed for:
+
+- web scraping pipelines that need to classify blocked responses
+- retry logic that routes differently based on the blocking provider
+- monitoring dashboards that track detection rates across scraping jobs
+- headless browser escalation — only use expensive browsers when a challenge is confirmed
+
+Detected antibot systems:
+
+- Cloudflare, Vercel, Akamai, DataDome, PerimeterX, Shape Security, Kasada
+- Imperva/Incapsula, AWS WAF, Reblaze, Anubis, Sucuri, ThreatMetrix
+- Cheq, Meetrics, Ocule, LinkedIn, Reddit, Instagram, YouTube
+
+Detected CAPTCHA providers:
+
+- reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha (Arkose Labs)
+- GeeTest, Friendly Captcha, Captcha.eu, QCloud Captcha, AliExpress CAPTCHA
+
+Five detection signals:
+
+- Response headers (e.g., cf-mitigated, x-dd-b, x-vercel-mitigated)
+- Set-cookie headers (e.g., cf_clearance, _abck, datadome)
+- HTML content (e.g., challenge scripts, SDK references, DOM patterns)
+- URL patterns (e.g., CAPTCHA provider domains, challenge endpoints)
+- HTTP status codes (e.g., LinkedIn 999, Reddit 403)
+
+Key capabilities:
+
+- zero configuration, works with any HTTP client (fetch, got, axios, undici)
+- lightweight with only 3 dependencies
+- returns provider name and detection signal for programmatic routing
+
+Primary page:
+
+- Docs and landing page: https://antibot.microlink.io
+
+Source and package:
+
+- GitHub: https://github.com/microlinkhq/is-antibot
+- npm: https://www.npmjs.com/package/is-antibot
