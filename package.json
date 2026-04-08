@@ -82,7 +82,7 @@
     "git-authors-cli": "latest",
     "github-generate-release": "latest",
     "got": "11",
-    "gulp": "4",
+    "gulp": "5",
     "gulp-concat": "latest",
     "gulp-postcss": "latest",
     "gulp-uglify": "latest",
