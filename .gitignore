@@ -1,11 +1,32 @@
 ############################
-# npm
+# Python
 ############################
-node_modules
-npm-debug.log
-.node_history
-yarn.lock
-package-lock.json
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+.venv/
+venv/
+
+############################
+# Testing & Coverage
+############################
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+.mypy_cache/
+
+############################
+# uv
+############################
+uv.lock
 
 ############################
 # tmp, editor & OS files
@@ -21,13 +42,6 @@ package-lock.json
 .idea
 *sublime*
 nbproject
-
-############################
-# Tests
-############################
-testApp
-coverage
-.nyc_output
 
 ############################
 # Other
