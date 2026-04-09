@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "is-antibot"
+version = "1.7.1"
+description = "Detect antibot protection from 30+ providers — Cloudflare, Akamai, DataDome, PerimeterX, Kasada, Imperva, reCAPTCHA, hCaptcha, Turnstile, and more."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Microlink", email = "hello@microlink.io" }]
+keywords = [
+    "akamai",
+    "antibot",
+    "anubis",
+    "arkose",
+    "aws-waf",
+    "bot",
+    "bot-detection",
+    "bot-protection",
+    "captcha",
+    "challenge",
+    "cloudflare",
+    "datadome",
+    "detection",
+    "friendly-captcha",
+    "funcaptcha",
+    "geetest",
+    "hcaptcha",
+    "imperva",
+    "incapsula",
+    "kasada",
+    "perimeterx",
+    "reblaze",
+    "recaptcha",
+    "scraper",
+    "scraping",
+    "shapesecurity",
+    "sucuri",
+    "turnstile",
+    "vercel",
+    "waf",
+    "web-scraping",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://antibot.microlink.io/"
+Repository = "https://github.com/microlinkhq/is-antibot"
+Issues = "https://github.com/microlinkhq/is-antibot/issues"
+
+[dependency-groups]
+dev = [{ include-group = "lint" }, { include-group = "test" }]
+lint = ["ruff"]
+test = ["pytest", "pytest-cov", "httpx"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/is_antibot"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
