@@ -146,20 +146,22 @@ const detectWithProviders = (
   const hasCookie = createHasCookie(headers)
   const htmlHas = createTestPattern(html)
   const urlHas = createTestPattern(url)
-  const domain = parseUrl(url).domain
+  let domain
   const context = {
     getHeader,
     hasCookie,
     htmlHas,
     urlHas,
     headerNames: getHeaderNames(headers),
-    statusCode,
-    domain
+    statusCode
   }
 
   for (const provider of compiledProviders) {
     for (const detection of provider.detections) {
-      if (detection.domain && detection.domain !== context.domain) continue
+      if (detection.domain) {
+        if (domain === undefined) domain = parseUrl(url).domain
+        if (detection.domain !== domain) continue
+      }
       if (!detection.matches(context)) continue
       return createResult(
         true,
