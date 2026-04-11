@@ -1,0 +1,740 @@
+{
+  "$schema": "https://github.com/microlinkhq/is-antibot/providers/schema.json",
+  "version": 1,
+  "providers": [
+    {
+      "name": "cloudflare",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "cf-mitigated",
+              "equals": "challenge"
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "cf_clearance="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vercel",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-vercel-mitigated",
+              "equals": "challenge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "akamai",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "akamai-cache-status",
+              "startsWith": "Error"
+            },
+            {
+              "header": "akamai-grn",
+              "exists": true
+            },
+            {
+              "header": "x-akamai-session-info",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "_abck="
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "bmak."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "datadome",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-dd-b",
+              "oneOf": ["1", "2"]
+            },
+            {
+              "header": "x-datadome",
+              "exists": true,
+              "except": "protected"
+            },
+            {
+              "header": "x-datadome-cid",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "datadome="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "perimeterx",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-px-authorization",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "window._pxAppId"
+            },
+            {
+              "contains": "pxInit"
+            },
+            {
+              "contains": "_pxAction"
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "_px3="
+            },
+            {
+              "cookie": "_pxhd="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shapesecurity",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "headerNamePattern": "^x-[a-z0-9]{8}-[abcdfz]$",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "shapesecurity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kasada",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-kasada",
+              "exists": true
+            },
+            {
+              "header": "x-kasada-challenge",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "__kasada"
+            },
+            {
+              "contains": "kasada.js"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "imperva",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-cdn",
+              "equals": "Incapsula"
+            },
+            {
+              "header": "x-iinfo",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "incapsula"
+            },
+            {
+              "contains": "imperva"
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "incap_ses_"
+            },
+            {
+              "cookie": "visid_incap_"
+            },
+            {
+              "cookie": "reese84="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reblaze",
+      "detections": [
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "rbzid="
+            },
+            {
+              "cookie": "rbzsessionid="
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "reblaze"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cheq",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "CheqSdk"
+            },
+            {
+              "contains": "cheqzone.com"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "cheqzone\\.com",
+              "flags": "i"
+            },
+            {
+              "regex": "cheq\\.ai",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sucuri",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "sucuri"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "threatmetrix",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "ThreatMetrix"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "rules": [
+            {
+              "contains": "fp/check.js"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "meetrics",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "meetrics"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "meetrics\\.com",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ocule",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "ocule.co.uk"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "ocule\\.co\\.uk",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recaptcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "contains": "recaptcha/api"
+            },
+            {
+              "contains": "gstatic.com/recaptcha"
+            },
+            {
+              "contains": "recaptcha.net"
+            },
+            {
+              "regex": "google\\.com\\/recaptcha",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "regex": "\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b",
+              "flags": "i"
+            },
+            {
+              "regex": "\\b(?:window\\.)?grecaptcha\\s*\\(",
+              "flags": "i"
+            },
+            {
+              "regex": "\\b__grecaptcha_cfg\\b",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "g-recaptcha"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hcaptcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "hcaptcha\\.com",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "hcaptcha.com"
+            },
+            {
+              "contains": "h-captcha"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "funcaptcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "arkoselabs\\.com",
+              "flags": "i"
+            },
+            {
+              "contains": "funcaptcha"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "arkoselabs.com"
+            },
+            {
+              "contains": "funcaptcha"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "geetest",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "geetest\\.com",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "geetest"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cloudflare-turnstile",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "challenges\\.cloudflare\\.com\\/turnstile",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "cf-turnstile"
+            },
+            {
+              "contains": "challenges.cloudflare.com/turnstile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "friendly-captcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "friendlycaptcha\\.com",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "frc-captcha"
+            },
+            {
+              "contains": "friendlyChallenge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "captcha-eu",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "captcha\\.eu",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "CaptchaEU"
+            },
+            {
+              "contains": "captchaeu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qcloud-captcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "turing\\.captcha\\.qcloud\\.com",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "TencentCaptcha"
+            },
+            {
+              "contains": "turing.captcha"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aliexpress-captcha",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "regex": "punish\\?x5secdata",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "x5secdata"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reddit",
+      "detections": [
+        {
+          "type": "status_code",
+          "domain": "reddit.com",
+          "rules": [
+            {
+              "status": 403
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "domain": "reddit.com",
+          "rules": [
+            {
+              "regex": "blocked by network security\\.",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "linkedin",
+      "detections": [
+        {
+          "type": "status_code",
+          "domain": "linkedin.com",
+          "rules": [
+            {
+              "status": 999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "instagram",
+      "detections": [
+        {
+          "type": "html",
+          "domain": "instagram.com",
+          "rules": [
+            {
+              "regex": "<title>\\s*Login\\s*[•·]\\s*Instagram\\s*<\\/title>",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "youtube",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "regex": "<title>\\s*-\\s*YouTube<\\/title>",
+              "flags": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anubis",
+      "detections": [
+        {
+          "type": "html",
+          "rules": [
+            {
+              "regex": "<script id=\"anubis_challenge\""
+            },
+            {
+              "contains": "/.within.website/x/cmd/anubis/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "aws-waf",
+      "detections": [
+        {
+          "type": "headers",
+          "rules": [
+            {
+              "header": "x-amzn-waf-action",
+              "exists": true
+            },
+            {
+              "header": "x-amzn-requestid",
+              "exists": true
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "aws-waf"
+            },
+            {
+              "contains": "awswaf"
+            }
+          ]
+        },
+        {
+          "type": "cookies",
+          "rules": [
+            {
+              "cookie": "aws-waf-token="
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,9 @@
   "homepage": "https://antibot.microlink.io/",
   "version": "1.7.0",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./providers.json": "./providers/providers.json",
+    "./providers.schema.json": "./providers/schema.json"
   },
   "author": {
     "email": "hello@microlink.io",
@@ -97,6 +99,7 @@
     "node": ">= 20"
   },
   "files": [
+    "providers",
     "src"
   ],
   "scripts": {
