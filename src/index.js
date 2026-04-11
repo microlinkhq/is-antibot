@@ -76,97 +76,86 @@ const getHeaderNames = headers => {
 const createRegExp = (pattern, flags = '') => new RegExp(pattern, flags)
 
 const compileHeaderRule = rule => {
-  if (typeof rule.header === 'string' && typeof rule.equals === 'string') {
-    return { type: 'equals', header: rule.header, equals: rule.equals }
+  if (rule.equals !== undefined) {
+    return ({ getHeader }) => getHeader(rule.header) === rule.equals
   }
 
-  if (typeof rule.header === 'string' && typeof rule.startsWith === 'string') {
-    return {
-      type: 'startsWith',
-      header: rule.header,
-      startsWith: rule.startsWith
+  if (rule.startsWith !== undefined) {
+    return ({ getHeader }) =>
+      getHeader(rule.header)?.startsWith(rule.startsWith)
+  }
+
+  if (rule.exists === true && rule.except !== undefined) {
+    const except = rule.except.toLowerCase()
+    return ({ getHeader }) => {
+      const value = getHeader(rule.header)
+      return Boolean(value) && String(value).toLowerCase() !== except
     }
   }
 
-  if (
-    typeof rule.header === 'string' &&
-    rule.exists === true &&
-    typeof rule.except === 'string'
-  ) {
-    return {
-      type: 'existsExcept',
-      header: rule.header,
-      except: rule.except.toLowerCase()
-    }
+  if (rule.exists === true) {
+    return ({ getHeader }) => Boolean(getHeader(rule.header))
   }
 
-  if (typeof rule.header === 'string' && rule.exists === true) {
-    return { type: 'exists', header: rule.header }
+  if (rule.oneOf !== undefined) {
+    const oneOf = new Set(rule.oneOf)
+    return ({ getHeader }) => oneOf.has(getHeader(rule.header))
   }
 
-  if (typeof rule.header === 'string' && Array.isArray(rule.oneOf)) {
-    return { type: 'oneOf', header: rule.header, oneOf: new Set(rule.oneOf) }
-  }
-
-  if (typeof rule.headerNamePattern === 'string') {
-    return {
-      type: 'headerNamePattern',
-      regex: createRegExp(rule.headerNamePattern, rule.flags ?? '')
-    }
-  }
+  const regex = createRegExp(rule.headerNamePattern, rule.flags ?? '')
+  return ({ headerNames }) => headerNames().some(name => regex.test(name))
 }
 
 const compileTextPattern = rule => {
-  if (typeof rule.contains === 'string') return rule.contains
+  if (rule.contains !== undefined) return rule.contains
   return createRegExp(rule.regex, rule.flags ?? 'i')
 }
 
-const compileDetection = detection => {
-  if (detection.type === 'cookies') {
+const DETECTION_COMPILERS = {
+  cookies: detection => {
     const cookiePatterns = detection.rules.map(rule => rule.cookie)
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: context => context.hasCookie(cookiePatterns)
+      matches: ({ hasCookie }) => hasCookie(cookiePatterns)
     }
-  }
-
-  if (detection.type === 'html') {
+  },
+  html: detection => {
     const patterns = detection.rules.map(compileTextPattern)
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: context => context.hasAnyHtml(patterns)
+      matches: ({ htmlHas }) => patterns.some(pattern => htmlHas(pattern))
     }
-  }
-
-  if (detection.type === 'url') {
+  },
+  url: detection => {
     const patterns = detection.rules.map(compileTextPattern)
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: context => context.hasAnyUrl(patterns)
+      matches: ({ urlHas }) => patterns.some(pattern => urlHas(pattern))
     }
-  }
-
-  if (detection.type === 'headers') {
+  },
+  headers: detection => {
     const headerRules = detection.rules.map(compileHeaderRule)
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: context => context.hasAnyHeader(headerRules)
+      matches: context => headerRules.some(test => test(context))
     }
-  }
-
-  if (detection.type === 'status_code') {
+  },
+  status_code: detection => {
     const statusCodes = detection.rules.map(rule => rule.status)
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: context => context.hasAnyStatusCode(statusCodes)
+      matches: ({ statusCode }) => statusCodes.includes(statusCode)
     }
   }
 }
+
+const compileDetection = detection =>
+  DETECTION_COMPILERS[detection.type](detection)
 
 const compileProviders = ({ providers = [] } = {}) =>
   providers.map(provider => ({
@@ -183,50 +172,15 @@ const detectWithProviders = (
   const htmlHas = createTestPattern(html)
   const urlHas = createTestPattern(url)
   const headerNames = getHeaderNames(headers)
-  const hasAnyHtml = patterns => patterns.some(pattern => htmlHas(pattern))
-  const hasAnyUrl = patterns => patterns.some(pattern => urlHas(pattern))
-  const hasAnyStatusCode = statusCodes => statusCodes.includes(statusCode)
-  const hasAnyHeader = headerRules =>
-    headerRules.some(rule => {
-      if (rule.type === 'equals') {
-        return getHeader(rule.header) === rule.equals
-      }
-
-      if (rule.type === 'startsWith') {
-        return getHeader(rule.header)?.startsWith(rule.startsWith)
-      }
-
-      if (rule.type === 'exists') {
-        return Boolean(getHeader(rule.header))
-      }
-
-      if (rule.type === 'oneOf') {
-        return rule.oneOf.has(getHeader(rule.header))
-      }
-
-      if (rule.type === 'existsExcept') {
-        const value = getHeader(rule.header)
-        return Boolean(value) && String(value).toLowerCase() !== rule.except
-      }
-
-      if (rule.type === 'headerNamePattern') {
-        return headerNames().some(name => rule.regex.test(name))
-      }
-
-      return false
-    })
 
   let domain
   const context = {
     getHeader,
+    headerNames,
     hasCookie,
-    hasAnyHeader,
     htmlHas,
-    hasAnyHtml,
     urlHas,
-    hasAnyUrl,
-    statusCode,
-    hasAnyStatusCode
+    statusCode
   }
 
   for (const provider of compiledProviders) {
