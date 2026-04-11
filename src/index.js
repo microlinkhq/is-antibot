@@ -30,6 +30,9 @@ const createTestPattern = value => {
         return false
       }
     }
+    if (pattern && pattern.type === 'contains') {
+      return lowerValue.includes(pattern.value)
+    }
     return lowerValue.includes(pattern.toLowerCase())
   }
 }
@@ -39,8 +42,7 @@ const createResult = (detected, provider, detection = null) => {
   return { detected, provider, detection }
 }
 
-const createHasCookie = headers => {
-  const getHeader = createGetHeader(headers)
+const createHasCookie = (headers, getHeader = createGetHeader(headers)) => {
   let cookies
   const getCookies = () => {
     if (cookies === undefined) {
@@ -107,7 +109,9 @@ const compileHeaderRule = rule => {
 }
 
 const compileTextPattern = rule => {
-  if (rule.contains !== undefined) return rule.contains
+  if (rule.contains !== undefined) {
+    return { type: 'contains', value: rule.contains.toLowerCase() }
+  }
   return createRegExp(rule.regex, rule.flags ?? 'i')
 }
 
@@ -125,7 +129,12 @@ const DETECTION_COMPILERS = {
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: ({ htmlHas }) => patterns.some(pattern => htmlHas(pattern))
+      matches: ({ htmlHas }) => {
+        for (const pattern of patterns) {
+          if (htmlHas(pattern)) return true
+        }
+        return false
+      }
     }
   },
   url: detection => {
@@ -133,7 +142,12 @@ const DETECTION_COMPILERS = {
     return {
       type: detection.type,
       domain: detection.domain,
-      matches: ({ urlHas }) => patterns.some(pattern => urlHas(pattern))
+      matches: ({ urlHas }) => {
+        for (const pattern of patterns) {
+          if (urlHas(pattern)) return true
+        }
+        return false
+      }
     }
   },
   headers: detection => {
@@ -168,7 +182,7 @@ const detectWithProviders = (
   { headers = {}, html = '', url = '', statusCode } = {}
 ) => {
   const getHeader = createGetHeader(headers)
-  const hasCookie = createHasCookie(headers)
+  const hasCookie = createHasCookie(headers, getHeader)
   const htmlHas = createTestPattern(html)
   const urlHas = createTestPattern(url)
   const headerNames = getHeaderNames(headers)
