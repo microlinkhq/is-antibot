@@ -41,12 +41,22 @@ const createResult = (detected, provider, detection = null) => {
 
 const createHasCookie = headers => {
   const getHeader = createGetHeader(headers)
-  const cookies = splitSetCookieString(getHeader('set-cookie'))
+  let cookies
+  const getCookies = () => {
+    if (cookies === undefined) {
+      cookies = splitSetCookieString(getHeader('set-cookie'))
+    }
+    return cookies
+  }
+
   return patterns => {
-    const cookiePatterns = Array.isArray(patterns) ? patterns : [patterns]
-    return cookies.some(cookie =>
-      cookiePatterns.some(pattern => cookie.startsWith(pattern))
-    )
+    const parsedCookies = getCookies()
+    if (Array.isArray(patterns)) {
+      return parsedCookies.some(cookie =>
+        patterns.some(pattern => cookie.startsWith(pattern))
+      )
+    }
+    return parsedCookies.some(cookie => cookie.startsWith(patterns))
   }
 }
 
@@ -63,13 +73,7 @@ const getHeaderNames = headers => {
   }
 }
 
-const createSafeRegExp = (pattern, flags = '') => {
-  try {
-    return new RegExp(pattern, flags)
-  } catch {
-    return null
-  }
-}
+const createRegExp = (pattern, flags = '') => new RegExp(pattern, flags)
 
 const compileHeaderRule = rule => {
   if (typeof rule.header === 'string' && typeof rule.equals === 'string') {
@@ -101,88 +105,20 @@ const compileHeaderRule = rule => {
   }
 
   if (typeof rule.header === 'string' && Array.isArray(rule.oneOf)) {
-    return { type: 'oneOf', header: rule.header, oneOf: rule.oneOf }
+    return { type: 'oneOf', header: rule.header, oneOf: new Set(rule.oneOf) }
   }
 
   if (typeof rule.headerNamePattern === 'string') {
     return {
       type: 'headerNamePattern',
-      regex: createSafeRegExp(rule.headerNamePattern, rule.flags ?? '')
+      regex: createRegExp(rule.headerNamePattern, rule.flags ?? '')
     }
   }
-
-  return null
 }
 
 const compileTextPattern = rule => {
   if (typeof rule.contains === 'string') return rule.contains
-  if (typeof rule.regex === 'string') {
-    return createSafeRegExp(rule.regex, rule.flags ?? 'i')
-  }
-  return null
-}
-
-const compileRule = (detectionType, rule) => {
-  if (!rule || typeof rule !== 'object') return () => false
-
-  if (typeof rule.header === 'string' && typeof rule.equals === 'string') {
-    return ({ getHeader }) => getHeader(rule.header) === rule.equals
-  }
-
-  if (typeof rule.header === 'string' && typeof rule.startsWith === 'string') {
-    return ({ getHeader }) =>
-      getHeader(rule.header)?.startsWith(rule.startsWith)
-  }
-
-  if (
-    typeof rule.header === 'string' &&
-    rule.exists === true &&
-    typeof rule.except === 'string'
-  ) {
-    const except = rule.except.toLowerCase()
-    return ({ getHeader }) => {
-      const value = getHeader(rule.header)
-      return Boolean(value) && String(value).toLowerCase() !== except
-    }
-  }
-
-  if (typeof rule.header === 'string' && rule.exists === true) {
-    return ({ getHeader }) => Boolean(getHeader(rule.header))
-  }
-
-  if (typeof rule.header === 'string' && Array.isArray(rule.oneOf)) {
-    return ({ getHeader }) => rule.oneOf.includes(getHeader(rule.header))
-  }
-
-  if (typeof rule.headerNamePattern === 'string') {
-    const regex = createSafeRegExp(rule.headerNamePattern, rule.flags ?? '')
-    if (!regex) return () => false
-    return ({ headerNames }) => headerNames.some(name => regex.test(name))
-  }
-
-  if (typeof rule.cookie === 'string') {
-    return ({ hasCookie }) => hasCookie(rule.cookie)
-  }
-
-  if (typeof rule.contains === 'string') {
-    if (detectionType === 'html') return ({ htmlHas }) => htmlHas(rule.contains)
-    if (detectionType === 'url') return ({ urlHas }) => urlHas(rule.contains)
-    return () => false
-  }
-
-  if (typeof rule.regex === 'string') {
-    const regex = createSafeRegExp(rule.regex, rule.flags ?? 'i')
-    if (!regex) return () => false
-    if (detectionType === 'html') return ({ htmlHas }) => htmlHas(regex)
-    if (detectionType === 'url') return ({ urlHas }) => urlHas(regex)
-    return () => false
-  }
-
-  if (Number.isInteger(rule.status)) {
-    return ({ statusCode }) => statusCode === rule.status
-  }
-
-  return () => false
+  return createRegExp(rule.regex, rule.flags ?? 'i')
 }
 
 const compileDetection = detection => {
@@ -230,14 +166,6 @@ const compileDetection = detection => {
       matches: context => context.hasAnyStatusCode(statusCodes)
     }
   }
-
-  const rules = detection.rules.map(rule => compileRule(detection.type, rule))
-
-  return {
-    type: detection.type,
-    domain: detection.domain,
-    matches: context => rules.some(rule => rule(context))
-  }
 }
 
 const compileProviders = ({ providers = [] } = {}) =>
@@ -255,15 +183,11 @@ const detectWithProviders = (
   const htmlHas = createTestPattern(html)
   const urlHas = createTestPattern(url)
   const headerNames = getHeaderNames(headers)
-  const hasAnyHtml = patterns =>
-    patterns.some(pattern => pattern && htmlHas(pattern))
-  const hasAnyUrl = patterns =>
-    patterns.some(pattern => pattern && urlHas(pattern))
+  const hasAnyHtml = patterns => patterns.some(pattern => htmlHas(pattern))
+  const hasAnyUrl = patterns => patterns.some(pattern => urlHas(pattern))
   const hasAnyStatusCode = statusCodes => statusCodes.includes(statusCode)
   const hasAnyHeader = headerRules =>
     headerRules.some(rule => {
-      if (!rule) return false
-
       if (rule.type === 'equals') {
         return getHeader(rule.header) === rule.equals
       }
@@ -277,7 +201,7 @@ const detectWithProviders = (
       }
 
       if (rule.type === 'oneOf') {
-        return rule.oneOf.includes(getHeader(rule.header))
+        return rule.oneOf.has(getHeader(rule.header))
       }
 
       if (rule.type === 'existsExcept') {
@@ -286,9 +210,7 @@ const detectWithProviders = (
       }
 
       if (rule.type === 'headerNamePattern') {
-        return rule.regex
-          ? headerNames().some(name => rule.regex.test(name))
-          : false
+        return headerNames().some(name => rule.regex.test(name))
       }
 
       return false
