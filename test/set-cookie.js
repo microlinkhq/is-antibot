@@ -62,3 +62,11 @@ test('empty array', t => {
   const hasCookie = createHasCookie({ 'set-cookie': [] })
   t.is(hasCookie('trkCode=bf'), false)
 })
+
+test('array patterns', t => {
+  const hasCookie = createHasCookie({
+    'set-cookie': ['foo=bar; path=/', 'trkCode=bf; Max-Age=5']
+  })
+  t.is(hasCookie(['missing=value', 'trkCode=bf']), true)
+  t.is(hasCookie(['missing=value', 'another=value']), false)
+})
