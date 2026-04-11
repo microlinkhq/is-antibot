@@ -77,6 +77,19 @@ const getHeaderNames = headers => {
 
 const createRegExp = (pattern, flags = '') => new RegExp(pattern, flags)
 
+const createCompiledDetection = (detection, matches) => ({
+  type: detection.type,
+  domain: detection.domain,
+  matches
+})
+
+const createPatternMatcher = patterns => testPattern => {
+  for (const pattern of patterns) {
+    if (testPattern(pattern)) return true
+  }
+  return false
+}
+
 const compileHeaderRule = rule => {
   if (rule.equals !== undefined) {
     return ({ getHeader }) => getHeader(rule.header) === rule.equals
@@ -115,56 +128,35 @@ const compileTextPattern = rule => {
   return createRegExp(rule.regex, rule.flags ?? 'i')
 }
 
+const compileTextDetection = (detection, getPatternTester) => {
+  const patterns = detection.rules.map(compileTextPattern)
+  const matchPatterns = createPatternMatcher(patterns)
+
+  return createCompiledDetection(detection, context =>
+    matchPatterns(getPatternTester(context))
+  )
+}
+
 const DETECTION_COMPILERS = {
   cookies: detection => {
     const cookiePatterns = detection.rules.map(rule => rule.cookie)
-    return {
-      type: detection.type,
-      domain: detection.domain,
-      matches: ({ hasCookie }) => hasCookie(cookiePatterns)
-    }
+    return createCompiledDetection(detection, ({ hasCookie }) =>
+      hasCookie(cookiePatterns)
+    )
   },
-  html: detection => {
-    const patterns = detection.rules.map(compileTextPattern)
-    return {
-      type: detection.type,
-      domain: detection.domain,
-      matches: ({ htmlHas }) => {
-        for (const pattern of patterns) {
-          if (htmlHas(pattern)) return true
-        }
-        return false
-      }
-    }
-  },
-  url: detection => {
-    const patterns = detection.rules.map(compileTextPattern)
-    return {
-      type: detection.type,
-      domain: detection.domain,
-      matches: ({ urlHas }) => {
-        for (const pattern of patterns) {
-          if (urlHas(pattern)) return true
-        }
-        return false
-      }
-    }
-  },
+  html: detection => compileTextDetection(detection, ({ htmlHas }) => htmlHas),
+  url: detection => compileTextDetection(detection, ({ urlHas }) => urlHas),
   headers: detection => {
     const headerRules = detection.rules.map(compileHeaderRule)
-    return {
-      type: detection.type,
-      domain: detection.domain,
-      matches: context => headerRules.some(test => test(context))
-    }
+    return createCompiledDetection(detection, context =>
+      headerRules.some(test => test(context))
+    )
   },
   status_code: detection => {
     const statusCodes = detection.rules.map(rule => rule.status)
-    return {
-      type: detection.type,
-      domain: detection.domain,
-      matches: ({ statusCode }) => statusCodes.includes(statusCode)
-    }
+    return createCompiledDetection(detection, ({ statusCode }) =>
+      statusCodes.includes(statusCode)
+    )
   }
 }
 
@@ -217,28 +209,23 @@ const detectWithProviders = (
 
 const COMPILED_PROVIDERS = compileProviders(providersData)
 
-const createDetector = providers => {
-  const compiledProviders = compileProviders(providers)
-  return input => {
-    const { headers, html, body, url, statusCode, status } = input || {}
-    return detectWithProviders(compiledProviders, {
-      headers,
-      html: html || body,
-      url,
-      statusCode: statusCode ?? status
-    })
-  }
-}
-
-const isAntibot = (input = {}) => {
-  const { headers, html, body, url, statusCode, status } = input
-  return detectWithProviders(COMPILED_PROVIDERS, {
+const normalizeInput = input => {
+  const { headers, html, body, url, statusCode, status } = input || {}
+  return {
     headers,
     html: html || body,
     url,
     statusCode: statusCode ?? status
-  })
+  }
 }
+
+const createDetector = providers => {
+  const compiledProviders = compileProviders(providers)
+  return input => detectWithProviders(compiledProviders, normalizeInput(input))
+}
+
+const isAntibot = (input = {}) =>
+  detectWithProviders(COMPILED_PROVIDERS, normalizeInput(input))
 
 module.exports = isAntibot
 module.exports.debug = debug
