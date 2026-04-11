@@ -100,7 +100,7 @@ const compileHeaderRule = rule => {
       getHeader(rule.header)?.startsWith(rule.startsWith)
   }
 
-  if (rule.exists === true && rule.except !== undefined) {
+  if (rule.exists && rule.except !== undefined) {
     const except = rule.except.toLowerCase()
     return ({ getHeader }) => {
       const value = getHeader(rule.header)
@@ -108,7 +108,7 @@ const compileHeaderRule = rule => {
     }
   }
 
-  if (rule.exists === true) {
+  if (rule.exists) {
     return ({ getHeader }) => Boolean(getHeader(rule.header))
   }
 
