@@ -93,7 +93,7 @@ const compileRule = (detectionType, rule) => {
   }
 
   if (typeof rule.headerNamePattern === 'string') {
-    const regex = createSafeRegExp(rule.headerNamePattern, rule.flags || '')
+    const regex = createSafeRegExp(rule.headerNamePattern, rule.flags ?? '')
     if (!regex) return () => false
     return ({ headerNames }) => headerNames.some(name => regex.test(name))
   }
@@ -109,7 +109,7 @@ const compileRule = (detectionType, rule) => {
   }
 
   if (typeof rule.regex === 'string') {
-    const regex = createSafeRegExp(rule.regex, rule.flags || 'i')
+    const regex = createSafeRegExp(rule.regex, rule.flags ?? 'i')
     if (!regex) return () => false
     if (detectionType === 'html') return ({ htmlHas }) => htmlHas(regex)
     if (detectionType === 'url') return ({ urlHas }) => urlHas(regex)

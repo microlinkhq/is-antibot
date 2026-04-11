@@ -690,7 +690,8 @@
           "type": "html",
           "rules": [
             {
-              "regex": "<script id=\"anubis_challenge\""
+              "regex": "<script id=\"anubis_challenge\"",
+              "flags": ""
             },
             {
               "contains": "/.within.website/x/cmd/anubis/"

@@ -96,3 +96,28 @@ test('provider and detection order determines precedence', t => {
   t.is(result.provider, 'first-provider')
   t.is(result.detection, 'url')
 })
+
+test('regex flags honors explicit empty string and defaults to i when omitted', t => {
+  const explicitFlags = createDetector({
+    providers: [
+      {
+        name: 'explicit',
+        detections: [{ type: 'html', rules: [{ regex: 'abc', flags: '' }] }]
+      }
+    ]
+  })
+
+  t.is(explicitFlags({ html: 'ABC' }).detected, false)
+  t.is(explicitFlags({ html: 'abc' }).provider, 'explicit')
+
+  const defaultFlags = createDetector({
+    providers: [
+      {
+        name: 'default',
+        detections: [{ type: 'html', rules: [{ regex: 'abc' }] }]
+      }
+    ]
+  })
+
+  t.is(defaultFlags({ html: 'ABC' }).provider, 'default')
+})
