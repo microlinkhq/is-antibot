@@ -50,10 +50,18 @@ const createHasCookie = headers => {
   }
 }
 
-const getHeaderNames = headers =>
-  typeof headers.keys === 'function'
-    ? Array.from(headers.keys())
-    : Object.keys(headers)
+const getHeaderNames = headers => {
+  let value
+  return () => {
+    if (value === undefined) {
+      value =
+        typeof headers.keys === 'function'
+          ? Array.from(headers.keys())
+          : Object.keys(headers)
+    }
+    return value
+  }
+}
 
 const createSafeRegExp = (pattern, flags = '') => {
   try {
@@ -279,7 +287,7 @@ const detectWithProviders = (
 
       if (rule.type === 'headerNamePattern') {
         return rule.regex
-          ? headerNames.some(name => rule.regex.test(name))
+          ? headerNames().some(name => rule.regex.test(name))
           : false
       }
 
@@ -295,7 +303,6 @@ const detectWithProviders = (
     hasAnyHtml,
     urlHas,
     hasAnyUrl,
-    headerNames,
     statusCode,
     hasAnyStatusCode
   }
