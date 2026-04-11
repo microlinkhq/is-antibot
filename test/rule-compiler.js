@@ -121,3 +121,18 @@ test('regex flags honors explicit empty string and defaults to i when omitted', 
 
   t.is(defaultFlags({ html: 'ABC' }).provider, 'default')
 })
+
+test('throws for invalid header rule shape', t => {
+  const error = t.throws(() =>
+    createDetector({
+      providers: [
+        {
+          name: 'invalid-header-rule',
+          detections: [{ type: 'headers', rules: [{ header: 'x-foo' }] }]
+        }
+      ]
+    })
+  )
+
+  t.regex(error.message, /Invalid header rule shape/)
+})

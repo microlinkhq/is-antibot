@@ -117,8 +117,12 @@ const compileHeaderRule = rule => {
     return ({ getHeader }) => oneOf.has(getHeader(rule.header))
   }
 
-  const regex = createRegExp(rule.headerNamePattern, rule.flags ?? '')
-  return ({ headerNames }) => headerNames().some(name => regex.test(name))
+  if (typeof rule.headerNamePattern === 'string') {
+    const regex = createRegExp(rule.headerNamePattern, rule.flags ?? '')
+    return ({ headerNames }) => headerNames().some(name => regex.test(name))
+  }
+
+  throw new TypeError('Invalid header rule shape')
 }
 
 const compileTextPattern = rule => {
