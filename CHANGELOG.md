@@ -1,3 +1,12 @@
+## 2.0.0 (2026-04-12)
+
+### ⚠ BREAKING CHANGES
+
+* schema (#30)
+
+### Features
+
+* schema ([#30](https://github.com/microlinkhq/is-antibot/issues/30)) ([e1d89ce](https://github.com/microlinkhq/is-antibot/commit/e1d89cee566e09b8d2d7e6bf78cdf34ea536df80))
 ## 1.7.1 (2026-04-08)
 ## 1.7.0 (2026-04-06)
 
