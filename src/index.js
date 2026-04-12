@@ -4,7 +4,7 @@ const { splitSetCookieString } = require('cookie-es')
 const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
-const providersData = require('../providers/providers.json')
+const providersData = require('./providers.json')
 
 const DETECTION = {
   headers: 'headers',

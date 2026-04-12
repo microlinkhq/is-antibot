@@ -5,8 +5,9 @@
   "version": "1.7.0",
   "exports": {
     ".": "./src/index.js",
-    "./providers.json": "./providers/providers.json",
-    "./providers.schema.json": "./providers/schema.json"
+    "./providers.json": "./src/providers.json",
+    "./schema.json": "./src/schema.json",
+    "./providers.schema.json": "./src/schema.json"
   },
   "author": {
     "email": "hello@microlink.io",

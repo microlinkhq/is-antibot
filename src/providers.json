@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/microlinkhq/is-antibot/providers/schema.json",
+  "$schema": "https://github.com/microlinkhq/is-antibot/src/schema.json",
   "version": 1,
   "providers": [
     {

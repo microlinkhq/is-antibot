@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/microlinkhq/is-antibot/providers/schema.json",
+  "$id": "https://github.com/microlinkhq/is-antibot/src/schema.json",
   "title": "is-antibot providers",
   "description": "Detection rules for antibot and CAPTCHA providers. Providers are evaluated in order; within each provider, detections are evaluated in order; within each detection, rules use OR logic (any match triggers).",
   "type": "object",

@@ -5,8 +5,10 @@ const { readFileSync } = require('fs')
 const Module = require('module')
 const path = require('path')
 
-const RE_PROVIDER_REQUIRE =
+const PROVIDER_REQUIRE_PATTERNS = [
+  "const providersData = require('./providers.json')",
   "const providersData = require('../providers/providers.json')"
+]
 const CWD = path.join(__dirname, '..')
 const SRC_DIR = path.join(CWD, 'src')
 
@@ -74,12 +76,16 @@ const loadDetectorFromRef = ref => {
   }
 
   let source = gitShow(ref, 'src/index.js')
-  if (source.includes(RE_PROVIDER_REQUIRE)) {
+  const providerRequirePattern = PROVIDER_REQUIRE_PATTERNS.find(pattern =>
+    source.includes(pattern)
+  )
+  if (providerRequirePattern) {
     const providers =
+      maybeGitShow(ref, 'src/providers.json') ||
       maybeGitShow(ref, 'providers/providers.json') ||
-      readFileSync(path.join(CWD, 'providers/providers.json'), 'utf8')
+      readFileSync(path.join(CWD, 'src/providers.json'), 'utf8')
     source = source.replace(
-      RE_PROVIDER_REQUIRE,
+      providerRequirePattern,
       `const providersData = ${providers}`
     )
   }

@@ -2,8 +2,8 @@
 
 const test = require('ava')
 
-const schema = require('../providers/schema.json')
-const providers = require('../providers/providers.json')
+const schema = require('../src/schema.json')
+const providers = require('../src/providers.json')
 
 const resolveRef = (root, ref) => {
   if (!ref.startsWith('#/')) {
