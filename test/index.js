@@ -684,6 +684,13 @@ test('anubis (no false positive for within.website in html text)', t => {
   t.is(result.detected, false)
 })
 
+test('anubis (regex is case-sensitive)', t => {
+  const html =
+    '<SCRIPT id="anubis_challenge" type="application/json">{"rules":{"algorithm":"metarefresh"}}</SCRIPT>'
+  const result = isAntibot({ html, headers: {} })
+  t.is(result.detected, false)
+})
+
 test('aws-waf (header)', t => {
   const headers = { 'x-amzn-waf-action': 'CHALLENGE' }
   const result = isAntibot({ headers })

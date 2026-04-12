@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/microlinkhq/is-antibot/src/schema.json",
+  "title": "is-antibot providers",
+  "description": "Detection rules for antibot and CAPTCHA providers. Providers are evaluated in order; within each provider, detections are evaluated in order; within each detection, rules use OR logic (any match triggers).",
+  "type": "object",
+  "required": ["$schema", "version", "providers"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/provider"
+      }
+    }
+  },
+  "$defs": {
+    "provider": {
+      "type": "object",
+      "required": ["name", "detections"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*$",
+          "description": "Unique provider identifier (kebab-case)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description or official docs link."
+        },
+        "detections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/detection"
+          }
+        }
+      }
+    },
+    "detection": {
+      "type": "object",
+      "required": ["type", "rules"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": ["headers", "cookies", "html", "url", "status_code"]
+        },
+        "domain": {
+          "type": "string",
+          "description": "When set, this detection only applies if the request URL's registrable domain matches (e.g. 'reddit.com')."
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/rule"
+          },
+          "description": "OR logic: any matching rule triggers the detection."
+        }
+      }
+    },
+    "rule": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/headerEquals"
+        },
+        {
+          "$ref": "#/$defs/headerStartsWith"
+        },
+        {
+          "$ref": "#/$defs/headerExists"
+        },
+        {
+          "$ref": "#/$defs/headerOneOf"
+        },
+        {
+          "$ref": "#/$defs/headerExistsExcept"
+        },
+        {
+          "$ref": "#/$defs/headerNamePattern"
+        },
+        {
+          "$ref": "#/$defs/cookiePrefix"
+        },
+        {
+          "$ref": "#/$defs/contains"
+        },
+        {
+          "$ref": "#/$defs/regex"
+        },
+        {
+          "$ref": "#/$defs/statusEquals"
+        }
+      ]
+    },
+    "headerEquals": {
+      "type": "object",
+      "description": "Match when a response header has an exact value.",
+      "required": ["header", "equals"],
+      "additionalProperties": false,
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "equals": {
+          "type": "string"
+        }
+      }
+    },
+    "headerStartsWith": {
+      "type": "object",
+      "description": "Match when a response header value starts with a prefix.",
+      "required": ["header", "startsWith"],
+      "additionalProperties": false,
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "startsWith": {
+          "type": "string"
+        }
+      }
+    },
+    "headerExists": {
+      "type": "object",
+      "description": "Match when a response header is present (any value).",
+      "required": ["header", "exists"],
+      "additionalProperties": false,
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "exists": {
+          "const": true
+        }
+      }
+    },
+    "headerOneOf": {
+      "type": "object",
+      "description": "Match when a response header value is one of the listed values.",
+      "required": ["header", "oneOf"],
+      "additionalProperties": false,
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "oneOf": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "headerExistsExcept": {
+      "type": "object",
+      "description": "Match when a response header is present and its value is NOT the excluded value. Used for headers that appear on both challenge and success responses (e.g. x-datadome: protected).",
+      "required": ["header", "exists", "except"],
+      "additionalProperties": false,
+      "properties": {
+        "header": {
+          "type": "string"
+        },
+        "exists": {
+          "const": true
+        },
+        "except": {
+          "type": "string"
+        }
+      }
+    },
+    "headerNamePattern": {
+      "type": "object",
+      "description": "Match when ANY response header name matches the regex. Used for providers with dynamic header names (e.g. Shape Security's x-[8chars]-[abcdfz]).",
+      "required": ["headerNamePattern"],
+      "additionalProperties": false,
+      "properties": {
+        "headerNamePattern": {
+          "type": "string",
+          "format": "regex"
+        },
+        "flags": {
+          "type": "string",
+          "pattern": "^[imsu]*$",
+          "default": ""
+        }
+      }
+    },
+    "cookiePrefix": {
+      "type": "object",
+      "description": "Match when any Set-Cookie value starts with the given prefix.",
+      "required": ["cookie"],
+      "additionalProperties": false,
+      "properties": {
+        "cookie": {
+          "type": "string"
+        }
+      }
+    },
+    "contains": {
+      "type": "object",
+      "description": "Case-insensitive substring match against html or url (depending on detection type).",
+      "required": ["contains"],
+      "additionalProperties": false,
+      "properties": {
+        "contains": {
+          "type": "string"
+        }
+      }
+    },
+    "regex": {
+      "type": "object",
+      "description": "Regex match against html or url (depending on detection type).",
+      "required": ["regex"],
+      "additionalProperties": false,
+      "properties": {
+        "regex": {
+          "type": "string",
+          "format": "regex"
+        },
+        "flags": {
+          "type": "string",
+          "pattern": "^[imsu]*$",
+          "default": "i"
+        }
+      }
+    },
+    "statusEquals": {
+      "type": "object",
+      "description": "Match when the HTTP status code equals the given value.",
+      "required": ["status"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
