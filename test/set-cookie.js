@@ -70,3 +70,18 @@ test('array patterns', t => {
   t.is(hasCookie(['missing=value', 'trkCode=bf']), true)
   t.is(hasCookie(['missing=value', 'another=value']), false)
 })
+
+test('string set-cookie with array patterns checks all patterns', t => {
+  const hasCookie = createHasCookie({
+    'set-cookie': 'foo=bar; path=/, trkCode=bf; Max-Age=5'
+  })
+  t.is(hasCookie(['missing=value', 'trkCode=bf']), true)
+  t.is(hasCookie(['missing=value', 'another=value']), false)
+})
+
+test('string candidate in attributes is not treated as cookie prefix match', t => {
+  const hasCookie = createHasCookie({
+    'set-cookie': 'foo=bar; Path=/trkCode=bf'
+  })
+  t.is(hasCookie('trkCode=bf'), false)
+})

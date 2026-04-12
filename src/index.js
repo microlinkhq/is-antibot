@@ -43,22 +43,56 @@ const createResult = (detected, provider, detection = null) => {
 }
 
 const createHasCookie = (headers, getHeader = createGetHeader(headers)) => {
+  let setCookieHeader
   let cookies
+
+  const getSetCookieHeader = () => {
+    if (setCookieHeader === undefined) {
+      setCookieHeader = getHeader('set-cookie')
+    }
+    return setCookieHeader
+  }
+
   const getCookies = () => {
     if (cookies === undefined) {
-      cookies = splitSetCookieString(getHeader('set-cookie'))
+      cookies = splitSetCookieString(getSetCookieHeader())
     }
     return cookies
   }
 
-  return patterns => {
-    const parsedCookies = getCookies()
-    if (Array.isArray(patterns)) {
-      return parsedCookies.some(cookie =>
-        patterns.some(pattern => cookie.startsWith(pattern))
-      )
+  const hasAnyCookie = (cookieList, patterns) => {
+    for (const cookie of cookieList) {
+      for (const pattern of patterns) {
+        if (cookie.startsWith(pattern)) return true
+      }
     }
-    return parsedCookies.some(cookie => cookie.startsWith(patterns))
+    return false
+  }
+
+  return patternList => {
+    const patterns = Array.isArray(patternList) ? patternList : [patternList]
+    const rawSetCookie = getSetCookieHeader()
+
+    if (
+      !rawSetCookie ||
+      (Array.isArray(rawSetCookie) && rawSetCookie.length === 0)
+    ) {
+      return false
+    }
+
+    if (typeof rawSetCookie === 'string') {
+      let hasCandidate = false
+      for (const pattern of patterns) {
+        if (rawSetCookie.includes(pattern)) {
+          hasCandidate = true
+          break
+        }
+      }
+      if (!hasCandidate) return false
+    }
+
+    const parsedCookies = getCookies()
+    return hasAnyCookie(parsedCookies, patterns)
   }
 }
 
@@ -82,13 +116,6 @@ const createCompiledDetection = (detection, matches) => ({
   domain: detection.domain,
   matches
 })
-
-const createPatternMatcher = patterns => testPattern => {
-  for (const pattern of patterns) {
-    if (testPattern(pattern)) return true
-  }
-  return false
-}
 
 const compileHeaderRule = rule => {
   if (rule.equals !== undefined) {
@@ -134,11 +161,13 @@ const compileTextPattern = rule => {
 
 const compileTextDetection = (detection, getPatternTester) => {
   const patterns = detection.rules.map(compileTextPattern)
-  const matchPatterns = createPatternMatcher(patterns)
-
-  return createCompiledDetection(detection, context =>
-    matchPatterns(getPatternTester(context))
-  )
+  return createCompiledDetection(detection, context => {
+    const testPattern = getPatternTester(context)
+    for (const pattern of patterns) {
+      if (testPattern(pattern)) return true
+    }
+    return false
+  })
 }
 
 const DETECTION_COMPILERS = {
@@ -152,9 +181,12 @@ const DETECTION_COMPILERS = {
   url: detection => compileTextDetection(detection, ({ urlHas }) => urlHas),
   headers: detection => {
     const headerRules = detection.rules.map(compileHeaderRule)
-    return createCompiledDetection(detection, context =>
-      headerRules.some(test => test(context))
-    )
+    return createCompiledDetection(detection, context => {
+      for (const test of headerRules) {
+        if (test(context)) return true
+      }
+      return false
+    })
   },
   status_code: detection => {
     const statusCodes = detection.rules.map(rule => rule.status)
