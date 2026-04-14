@@ -49,7 +49,7 @@ jobs:
         with:
           version: latest
       - name: Install
-        run: pnpm install --ignore-scripts
+        run: pnpm install --dangerously-allow-all-builds
       - name: Test
         run: pnpm test
       - name: Report
@@ -59,6 +59,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
+        id: release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -66,4 +67,39 @@ jobs:
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
           git pull origin master
+          VERSION_BEFORE=$(node -p "require('./package.json').version")
           pnpm run release
+          VERSION_AFTER=$(node -p "require('./package.json').version")
+          if [ "$VERSION_BEFORE" != "$VERSION_AFTER" ]; then
+            echo "released=true" >> "$GITHUB_OUTPUT"
+            echo "version=v${VERSION_AFTER}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Dispatch release event
+        if: steps.release.outputs.released == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          REPOS=(
+            "musantro/is-antibot"
+          )
+          VERSION="${{ steps.release.outputs.version }}"
+          PAYLOAD=$(jq -n \
+            --arg repo "${{ github.repository }}" \
+            --arg version "$VERSION" \
+            --arg sha "${{ github.sha }}" \
+            '{
+              "event_type": "is-antibot-release-published",
+              "client_payload": {
+                "sourceRepository": $repo,
+                "version": $version,
+                "tagName": $version,
+                "sha": $sha,
+                "url": "https://github.com/\($repo)/releases/tag/\($version)",
+                "providersUrl": "https://raw.githubusercontent.com/\($repo)/\($version)/src/providers.json",
+                "schemaUrl": "https://raw.githubusercontent.com/\($repo)/\($version)/src/schema.json"
+              }
+            }')
+          for REPO in "${REPOS[@]}"; do
+            echo "Dispatching to ${REPO}"
+            gh api "repos/${REPO}/dispatches" --input - <<< "$PAYLOAD"
+          done
