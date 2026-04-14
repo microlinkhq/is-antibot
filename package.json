@@ -72,7 +72,6 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-
     "ava": "latest",
     "browser-sync": "latest",
     "c8": "latest",
