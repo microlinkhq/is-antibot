@@ -84,7 +84,7 @@
     "finepack": "latest",
     "git-authors-cli": "latest",
     "github-generate-release": "latest",
-    "got": "11",
+    "got": "15",
     "gulp": "5",
     "gulp-concat": "latest",
     "gulp-postcss": "latest",
