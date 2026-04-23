@@ -1,0 +1,88 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "24.11.1"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "https://www.reddit.com/r/ProductivityApps/comments/1sr2f0w/nocal_is_a_calendar_app_that_turns_your_calendar/",
+        "startedDateTime": "2026-04-23T15:55:52.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 150.0
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-04-23T15:55:52.000Z",
+        "time": 150.0,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.reddit.com/r/ProductivityApps/comments/1sr2f0w/nocal_is_a_calendar_app_that_turns_your_calendar/",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.reddit.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "Slackbot 1.0 (+https://api.slack.com/robots)"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 429,
+          "statusText": "Too Many Requests",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "x-ratelimit-remaining",
+              "value": "0.0"
+            },
+            {
+              "name": "x-ratelimit-reset",
+              "value": "247"
+            },
+            {
+              "name": "x-ratelimit-used",
+              "value": "45000"
+            },
+            {
+              "name": "server",
+              "value": "snooserv"
+            },
+            {
+              "name": "content-length",
+              "value": "0"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 0,
+            "mimeType": "text/html",
+            "text": ""
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1
+        }
+      }
+    ]
+  }
+}
