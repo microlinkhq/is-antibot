@@ -687,6 +687,22 @@
       ]
     },
     {
+      "name": "amazon",
+      "detections": [
+        {
+          "type": "headers",
+          "domainWithoutSuffix": "amazon",
+          "statusCodes": [500],
+          "rules": [
+            {
+              "header": "x-cache",
+              "startsWith": "Error from cloudfront"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "anubis",
       "detections": [
         {

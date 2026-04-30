@@ -71,6 +71,38 @@ test('supports cookie, contains, regex, and status operators', t => {
   t.is(detect({ statusCode: 451 }).detection, 'statusCode')
 })
 
+test('statusCodes AND-gates detection', t => {
+  const detect = createDetector({
+    providers: [
+      {
+        name: 'gated',
+        detections: [
+          {
+            type: 'headers',
+            statusCodes: [500],
+            rules: [{ header: 'x-cache', startsWith: 'Error' }]
+          }
+        ]
+      }
+    ]
+  })
+
+  t.is(
+    detect({
+      headers: { 'x-cache': 'Error from cloudfront' },
+      statusCode: 500
+    }).provider,
+    'gated'
+  )
+  t.is(
+    detect({
+      headers: { 'x-cache': 'Error from cloudfront' },
+      statusCode: 200
+    }).detected,
+    false
+  )
+})
+
 test('provider and detection order determines precedence', t => {
   const detect = createDetector({
     providers: [
