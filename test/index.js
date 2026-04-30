@@ -691,6 +691,42 @@ test('anubis (regex is case-sensitive)', t => {
   t.is(result.detected, false)
 })
 
+test('amazon (x-cache Error from cloudfront + amazon URL + status 500)', t => {
+  const result = isAntibot({
+    url: 'https://www.amazon.com/dp/B000000000',
+    headers: { 'x-cache': 'Error from cloudfront' },
+    statusCode: 500
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'amazon')
+  t.is(result.detection, 'headers')
+})
+
+test('amazon (no match without status 500)', t => {
+  const result = isAntibot({
+    url: 'https://www.amazon.com/dp/B000000000',
+    headers: { 'x-cache': 'Error from cloudfront' },
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
+test('amazon (no match when statusCode omitted)', t => {
+  const result = isAntibot({
+    url: 'https://www.amazon.com/dp/B000000000',
+    headers: { 'x-cache': 'Error from cloudfront' }
+  })
+  t.is(result.detected, false)
+})
+
+test('amazon (no false positive: CloudFront error off amazon)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/',
+    headers: { 'x-cache': 'Error from cloudfront' }
+  })
+  t.is(result.detected, false)
+})
+
 test('aws-waf (header)', t => {
   const headers = { 'x-amzn-waf-action': 'CHALLENGE' }
   const result = isAntibot({ headers })

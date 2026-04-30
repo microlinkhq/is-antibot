@@ -176,6 +176,7 @@ const createRegExp = (pattern, flags = '') => new RegExp(pattern, flags)
 const createCompiledDetection = (detection, matches) => ({
   type: detection.type,
   domain: detection.domain,
+  domainWithoutSuffix: detection.domainWithoutSuffix,
   matches
 })
 
@@ -259,8 +260,19 @@ const DETECTION_COMPILERS = {
   }
 }
 
-const compileDetection = detection =>
-  DETECTION_COMPILERS[detection.type](detection)
+const compileDetection = detection => {
+  const compiled = DETECTION_COMPILERS[detection.type](detection)
+  const statusCodes = detection.statusCodes
+  if (!Array.isArray(statusCodes) || statusCodes.length === 0) {
+    return compiled
+  }
+  const allowed = new Set(statusCodes)
+  const innerMatches = compiled.matches
+  return {
+    ...compiled,
+    matches: context => allowed.has(context.statusCode) && innerMatches(context)
+  }
+}
 
 const compileProviders = ({ providers = [] } = {}) =>
   providers.map(provider => ({
@@ -285,7 +297,13 @@ const detectWithProviders = (
   const headerNames = getHeaderNames(headers)
   const hasUrl = Boolean(url)
 
-  let domain
+  let parsedUrl
+  const getParsedUrl = () => {
+    if (!hasUrl) return null
+    if (!parsedUrl) parsedUrl = parseUrl(url)
+    return parsedUrl
+  }
+
   const context = {
     getHeader,
     headerNames,
@@ -297,10 +315,16 @@ const detectWithProviders = (
 
   for (const provider of compiledProviders) {
     for (const detection of provider.detections) {
-      if (detection.domain) {
-        if (!hasUrl) continue
-        if (domain === undefined) domain = parseUrl(url).domain
-        if (detection.domain !== domain) continue
+      if (detection.domain || detection.domainWithoutSuffix) {
+        const parsed = getParsedUrl()
+        if (!parsed) continue
+        if (detection.domain && detection.domain !== parsed.domain) continue
+        if (
+          detection.domainWithoutSuffix &&
+          detection.domainWithoutSuffix !== parsed.domainWithoutSuffix
+        ) {
+          continue
+        }
       }
       if (!detection.matches(context)) continue
       return createResult(
