@@ -2,7 +2,7 @@
   "name": "is-antibot",
   "description": "Detect antibot protection from 30+ providers — Cloudflare, Akamai, DataDome, PerimeterX, Kasada, Imperva, reCAPTCHA, hCaptcha, Turnstile, and more.",
   "homepage": "https://antibot.microlink.io/",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "exports": {
     ".": "./src/index.js",
     "./providers.json": "./src/providers.json",
