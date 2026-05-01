@@ -1,3 +1,8 @@
+## 2.0.6 (2026-05-01)
+
+### Performance Improvements
+
+* use indexOf ([#38](https://github.com/microlinkhq/is-antibot/issues/38)) ([6000727](https://github.com/microlinkhq/is-antibot/commit/600072728ac9e08ed9bb0b96f8d74d65f728527b))
 ## 2.0.5 (2026-05-01)
 ## 2.0.4 (2026-04-30)
 ## 2.0.3 (2026-04-23)
