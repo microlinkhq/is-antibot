@@ -699,6 +699,15 @@
               "startsWith": "Error from cloudfront"
             }
           ]
+        },
+        {
+          "type": "html",
+          "domainWithoutSuffix": "amazon",
+          "rules": [
+            {
+              "contains": "csm-captcha-instrumentation"
+            }
+          ]
         }
       ]
     },
