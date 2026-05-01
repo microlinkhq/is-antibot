@@ -719,6 +719,26 @@ test('amazon (no match when statusCode omitted)', t => {
   t.is(result.detected, false)
 })
 
+test('amazon (captcha page with csm-captcha-instrumentation)', t => {
+  const result = isAntibot({
+    url: 'https://www.amazon.es/-/en/Earpads-Earbuds/dp/B0FSKMP53K',
+    html: '<script src="https://images-eu.ssl-images-amazon.com/images/G/01/csminstrumentation/csm-captcha-instrumentation.min.js"></script>',
+    statusCode: 200
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'amazon')
+  t.is(result.detection, 'html')
+})
+
+test('amazon (csm-captcha-instrumentation on non-amazon URL should not match)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/page',
+    html: '<script src="https://images-eu.ssl-images-amazon.com/images/G/01/csminstrumentation/csm-captcha-instrumentation.min.js"></script>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
 test('amazon (no false positive: CloudFront error off amazon)', t => {
   const result = isAntibot({
     url: 'https://example.com/',
