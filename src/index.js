@@ -31,9 +31,9 @@ const createTestPattern = value => {
       }
     }
     if (pattern && pattern.type === 'contains') {
-      return lowerValue.includes(pattern.value)
+      return lowerValue.indexOf(pattern.value) !== -1
     }
-    return lowerValue.includes(pattern.toLowerCase())
+    return lowerValue.indexOf(pattern.toLowerCase()) !== -1
   }
 }
 
@@ -43,9 +43,9 @@ const createCompiledTestPattern = value => {
   return pattern => {
     if (pattern instanceof RegExp) return pattern.test(value)
     if (pattern && pattern.type === 'contains') {
-      return lowerValue.includes(pattern.value)
+      return lowerValue.indexOf(pattern.value) !== -1
     }
-    return lowerValue.includes(pattern.toLowerCase())
+    return lowerValue.indexOf(pattern.toLowerCase()) !== -1
   }
 }
 
