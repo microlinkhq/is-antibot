@@ -644,6 +644,19 @@
       ]
     },
     {
+      "name": "google",
+      "detections": [
+        {
+          "type": "url",
+          "rules": [
+            {
+              "contains": "consent.google.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "linkedin",
       "detections": [
         {

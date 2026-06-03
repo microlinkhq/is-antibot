@@ -1,0 +1,92 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "24.11.1"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "https://consent.google.com/m?continue=https://news.google.com/&gl=ES&m=0&pc=n&cm=2&hl=en-US&src=1",
+        "startedDateTime": "2026-06-03T14:01:57.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 150.0
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-06-03T14:01:57.000Z",
+        "time": 150.0,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://consent.google.com/m?continue=https://news.google.com/&gl=ES&m=0&pc=n&cm=2&hl=en-US&src=1",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "host",
+              "value": "consent.google.com"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/120.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "accept",
+              "value": "*/*"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/2.0",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "server",
+              "value": "ESF"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 12345,
+            "mimeType": "text/html",
+            "text": "<html><head><title>Before you continue to Google</title></head><body><div>Before you continue to Google</div><form action=\"https://consent.google.com/save\"><button>I agree</button></form></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": -1
+        }
+      }
+    ]
+  }
+}
