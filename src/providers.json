@@ -748,9 +748,6 @@
           "type": "html",
           "rules": [
             {
-              "contains": "Client Challenge"
-            },
-            {
               "contains": "_fs-ch-"
             }
           ]
