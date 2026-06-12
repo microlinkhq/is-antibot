@@ -1,0 +1,51 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "v24.16.0"
+    },
+    "entries": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://img1.doubanio.com/icon/ul1000001-30.jpg"
+        },
+        "response": {
+          "status": 418,
+          "headers": [
+            {
+              "name": "date",
+              "value": "Fri, 12 Jun 2026 17:42:13 GMT"
+            },
+            {
+              "name": "content-type",
+              "value": "image/jpeg"
+            },
+            {
+              "name": "content-length",
+              "value": "13"
+            },
+            {
+              "name": "connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "x-cache-status",
+              "value": "MISS"
+            },
+            {
+              "name": "server",
+              "value": "marco/3.2"
+            }
+          ],
+          "content": {
+            "size": 13,
+            "mimeType": "image/jpeg",
+            "text": "cdn error 001"
+          }
+        }
+      }
+    ]
+  }
+}
