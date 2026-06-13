@@ -1,3 +1,8 @@
+## 2.1.0 (2026-06-13)
+
+### Features
+
+* detect reddit verification, weibo, dribbble and douban gates ([#41](https://github.com/microlinkhq/is-antibot/issues/41)) ([09eaf3f](https://github.com/microlinkhq/is-antibot/commit/09eaf3f491af25940cd26286739344699c1d0049))
 ## 2.0.10 (2026-06-08)
 ## 2.0.9 (2026-06-04)
 ## 2.0.8 (2026-06-03)
