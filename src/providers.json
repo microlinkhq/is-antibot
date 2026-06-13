@@ -638,6 +638,9 @@
             {
               "regex": "blocked by network security\\.",
               "flags": "i"
+            },
+            {
+              "contains": "Please wait for verification"
             }
           ]
         }
@@ -794,6 +797,51 @@
           "rules": [
             {
               "cookie": "aws-waf-token="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "weibo",
+      "description": "Sina Visitor System gate served to non-China/bot clients before hydrating the page.",
+      "detections": [
+        {
+          "type": "html",
+          "domainWithoutSuffix": "weibo",
+          "rules": [
+            {
+              "contains": "Sina Visitor System"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dribbble",
+      "description": "Dribbble answers 403 Forbidden to crawler/bot user agents.",
+      "detections": [
+        {
+          "type": "status_code",
+          "domain": "dribbble.com",
+          "rules": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "douban",
+      "description": "Douban's image CDN answers 418 to requests without a matching Referer.",
+      "detections": [
+        {
+          "type": "status_code",
+          "domain": "doubanio.com",
+          "rules": [
+            {
+              "status": 418
             }
           ]
         }

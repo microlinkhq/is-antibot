@@ -594,6 +594,53 @@ test('reddit (allowed endpoint)', t => {
   t.is(result.provider, null)
 })
 
+test('reddit (please wait for verification interstitial)', t => {
+  const html =
+    '<html><head><title>Reddit - Please wait for verification</title></head><body></body></html>'
+  const url = 'https://www.reddit.com/user/kikobeats/'
+  const result = isAntibot({ html, url, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'reddit')
+  t.is(result.detection, 'html')
+})
+
+test('weibo (sina visitor system gate)', t => {
+  const html =
+    '<html><head><title>Sina Visitor System</title></head><body></body></html>'
+  const url = 'https://m.weibo.cn/u/2803301701'
+  const result = isAntibot({ html, url, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'weibo')
+  t.is(result.detection, 'html')
+})
+
+test('weibo (gate marker on non-weibo url should not match)', t => {
+  const html = '<html><head><title>Sina Visitor System</title></head></html>'
+  const result = isAntibot({ html, url: 'https://example.com/some/path' })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('dribbble (403 forbidden to bots)', t => {
+  const result = isAntibot({
+    statusCode: 403,
+    url: 'https://dribbble.com/omidnikrah'
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'dribbble')
+  t.is(result.detection, 'statusCode')
+})
+
+test('douban (image cdn 418 without referer)', t => {
+  const result = isAntibot({
+    statusCode: 418,
+    url: 'https://img1.doubanio.com/icon/ul1000001-30.jpg'
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'douban')
+  t.is(result.detection, 'statusCode')
+})
+
 test('linkedin (status 999)', t => {
   const result = isAntibot({
     statusCode: 999,

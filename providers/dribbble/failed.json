@@ -1,0 +1,91 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "v24.16.0"
+    },
+    "entries": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://dribbble.com/omidnikrah"
+        },
+        "response": {
+          "status": 403,
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/plain"
+            },
+            {
+              "name": "content-length",
+              "value": "10"
+            },
+            {
+              "name": "connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 12 Jun 2026 17:42:12 GMT"
+            },
+            {
+              "name": "x-runtime",
+              "value": "0.110796"
+            },
+            {
+              "name": "server",
+              "value": "nginx"
+            },
+            {
+              "name": "x-request-id",
+              "value": "dcdbb866-65fb-4310-a262-1de3c31803d2"
+            },
+            {
+              "name": "x-cache",
+              "value": "Error from cloudfront"
+            },
+            {
+              "name": "via",
+              "value": "1.1 f97045cd1d5b0bf2360d2e427fb0d2ae.cloudfront.net (CloudFront)"
+            },
+            {
+              "name": "x-amz-cf-pop",
+              "value": "CDG50-P5"
+            },
+            {
+              "name": "x-amz-cf-id",
+              "value": "0zTURQ1zPnKKWYtAvVR7-4BYBOubboCnptA0JFHOEqz8eY-YE9wtGQ=="
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "1; mode=block"
+            },
+            {
+              "name": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "name": "referrer-policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            }
+          ],
+          "content": {
+            "size": 10,
+            "mimeType": "text/plain",
+            "text": "Forbidden\n"
+          }
+        }
+      }
+    ]
+  }
+}

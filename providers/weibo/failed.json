@@ -1,0 +1,79 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "curl+node",
+      "version": "v24.16.0"
+    },
+    "entries": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://m.weibo.cn/u/2803301701"
+        },
+        "response": {
+          "status": 200,
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "transfer-encoding",
+              "value": "chunked"
+            },
+            {
+              "name": "connection",
+              "value": "keep-alive"
+            },
+            {
+              "name": "date",
+              "value": "Fri, 12 Jun 2026 17:42:11 GMT"
+            },
+            {
+              "name": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, must-revalidate"
+            },
+            {
+              "name": "expires",
+              "value": "Sat, 26 Jul 1997 05:00:00 GMT"
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache, no-cache"
+            },
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-security-policy",
+              "value": "upgrade-insecure-requests"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains"
+            },
+            {
+              "name": "server",
+              "value": "APISIX/3.14.1"
+            },
+            {
+              "name": "alb-x-request-id",
+              "value": "49996fcb-d5b6-405d-a546-8fa446788955"
+            }
+          ],
+          "content": {
+            "size": 9092,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html>\n<html>\n<head>\n    <meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"/>\n    <title>Sina Visitor System</title>\n</head>\n<body>\n<span id=\"message\"></span>\n<script type=\"text/javascript\" src=\"/js/visitor/mini_original.js?v=20161116\"></script>\n<script src=\"https://passport.sinaimg.cn/js/fp/1.2.1.umd.js\"></script>\n<script type=\"text/javascript\">\n    window.use_fp = \"0\" == \"1\"; // 是否采集设备指纹。\n    var url = url || {};\n    (function () {\n        this.l = function (u, c) {\n            try {\n                var s = document.createElement(\"script\");\n                s.type = \"text/javascript\";\n                s[document.all ? \"onreadystatechange\" : \"onload\"] = function () {\n                    if (document.all && this.readyState != \"loaded\" && this.readyState != \"complete\") {\n                        return\n                    }\n                    this[document.all ? \"onreadystatechange\" : \"onload\"] = null;\n                    this.parentNode.removeChild(this);\n                    if (c) {\n                        c()\n                    }\n                };\n                s.src = u;\n                document.getElementsByTagName(\"head\")[0].appendChild(s)\n            } catch (e) {\n            }\n        };\n    }).call(url);\n\n    var visitor_origin = function () {\n        try {\n            var need_restore = \"0\" == \"1\"; // 是否走恢复身份流程。\n\n            // 如果需要走恢复身份流程，尝试从 cookie 获取用户身份。\n            if (!need_restore || !Store.CookieHelper.get(\"SRF\")) {\n\n                // 若获取失败走创建访客流程。\n                // 流程执行时间过长（超过 3s），则认为出错。\n                var error_timeout = window.setTimeout(\"error_back()\", 5000);\n\n                tid.get(function (tid, where, confidence) {\n                    // 取指纹顺利完成，清除出错 timeout 。\n                    window.clearTimeout(error_timeout);\n                    incarnate(tid, where, confidence);\n                });\n            } else {\n                // 用户身份存在，尝试恢复用户身份。\n                restore();\n            }\n        } catch (e) {\n            // 出错。\n            error_back();\n        }\n    };\n\n    var visitor_gray = function () {\n        var from = \"weibo\";\n        var return_url = \"https://m.weibo.cn/u/2803301701\";\n        var request_id = \"c2469d596c7c3760ada78cc6c2e22ce2\";\n        var webdriver = navigator.webdriver;\n\n        // 先生成 rid，再发送请求\n        generateRid(function(rid) {\n            Store.DB.get(\"tid\", function (v) {\n                if (!v) {\n                    v = \"\";\n                }\n                ufp.util.postData('https://' + window.location.host + '/visitor/genvisitor2', 'cb=visitor_gray_callback&ver=20250916&request_id='+request_id+'&tid=' + v + '&from=' + from + '&webdriver=' + webdriver + '&rid=' + rid + '&return_url=' + return_url, function (res) {\n                    if (res) {\n                        eval(res);\n                    }\n                });\n            });\n        });\n    }\n\n    // 生成 rid 的独立方法\n    var generateRid = function(callback) {\n        var rid = Date.now();\n        var detector = window.wbBotDetector;\n        if (!detector) {\n            callback(rid);\n            return;\n        }\n        try{\n            detector.load({ \"from\": \"pc-visitor\" });\n            detector.get({useCache:false}).then(function (result) {\n                if (result.rid) {\n                    rid = result.rid;\n                }else{\n                    rid = \"error: empty\";\n                }\n                callback(rid);\n            }).catch(function (error) {\n                callback(\"get-error:\"+error);\n            });\n        }catch (e){\n            callback(\"error:\" + e.message);\n        }\n    };\n\n    // 流程入口。\n    wload(function () {\n        visitor_gray();\n    });\n\n    // “返回” 回调函数。\n    var return_back = function (response) {\n\n        if (response[\"retcode\"] == 20000000) {\n            back();\n        } else {\n            // 出错。\n            error_back(response[\"msg\"]);\n        }\n    };\n\n    // 跳转回初始地址。\n    var back = function () {\n\n        var url = \"https://m.weibo.cn/u/2803301701\";\n        if (url != \"none\") {\n            window.location.replace(url);\n        }\n    };\n\n    // 跨域广播。\n    var cross_domain = function (response) {\n\n        var from = \"weibo\";\n        var entry = \"sinawap\";\n        if (response[\"retcode\"] == 20000000) {\n\n            var crossdomain_host = \"none\";\n            if (crossdomain_host != \"none\") {\n\n                var cross_domain_intr = window.location.protocol + \"//\" + crossdomain_host + \"/visitor/visitor?a=crossdomain&cb=return_back&s=\" +\n                    encodeURIComponent(response[\"data\"][\"sub\"]) + \"&sp=\" + encodeURIComponent(response[\"data\"][\"subp\"]) + \"&from=\" + from + \"&_rand=\" + Math.random() + \"&entry=\" + entry;\n                url.l(cross_domain_intr);\n            } else {\n\n                back();\n            }\n        } else {\n\n            // 出错。\n            error_back(response[\"msg\"]);\n        }\n    };\n\n    // 跨域广播。\n    var cross_domain2 = function (response) {\n\n        var from = \"weibo\";\n        var entry = \"sinawap\";\n        if (response[\"retcode\"] == 20000000) {\n\n            var crossdomain_host = \"none\";\n            if (crossdomain_host != \"none\") {\n\n                var cross_domain_intr = window.location.protocol + \"//\" + crossdomain_host + \"/visitor/visitor?a=crossdomain&s=\" +\n                    encodeURIComponent(response[\"data\"][\"sub\"]) + \"&sp=\" + encodeURIComponent(response[\"data\"][\"subp\"]) + \"&from=\" + from + \"&_rand=\" + Math.random() + \"&entry=\" + entry+\"&url=\" + encodeURIComponent(\"https://m.weibo.cn/u/2803301701\");\n                window.location.replace(cross_domain_intr);\n            } else {\n                back();\n            }\n        } else {\n\n            // 出错。\n            error_back(response[\"msg\"]);\n        }\n    };\n\n    // 为用户赋予访客身份 。\n    var incarnate = function (tid, where, conficence) {\n\n        var gen_conf = \"\";\n        var from = \"weibo\";\n        var incarnate_intr = \"https://\" + window.location.host + \"/visitor/visitor?a=incarnate&t=\" +\n            encodeURIComponent(tid) + \"&w=\" + encodeURIComponent(where) + \"&c=\" + encodeURIComponent(conficence) +\n            \"&gc=\" + encodeURIComponent(gen_conf) + \"&cb=cross_domain&from=\" + from + \"&_rand=\" + Math.random();\n        url.l(incarnate_intr);\n    };\n\n    // 恢复用户丢失的身份。\n    var restore = function () {\n\n        var from = \"weibo\";\n        var restore_intr = \"https://\" + window.location.host +\n            \"/visitor/visitor?a=restore&cb=restore_back&from=\" + from + \"&_rand=\" + Math.random();\n\n        url.l(restore_intr);\n    };\n\n    // 跨域恢复丢失的身份。\n    var restore_back = function (response) {\n\n        // 身份恢复成功走广播流程，否则走创建访客流程。\n        if (response[\"retcode\"] == 20000000) {\n\n            var url = \"https://m.weibo.cn/u/2803301701\";\n            var alt = response[\"data\"][\"alt\"];\n            if (alt != \"\") {\n                requrl = (url == \"none\") ? \"\" : \"&url=\" + encodeURIComponent(url);\n                var params = \"entry=sso&source=visitor_restore&type=3&alt=\" + encodeURIComponent(alt) + requrl;\n                window.location.replace(\"https://passport.weibo.com/sso/v2/login?\" + params);\n            } else {\n\n                cross_domain(response);\n            }\n        } else if (response['retcode'] == 50111261 && isInIframe()) {\n            //do nothing\n        } else {\n\n            tid.get(function (tid, where, confidence) {\n                incarnate(tid, where, confidence);\n            });\n        }\n    };\n\n    // 出错情况返回登录页。\n    var error_back = function (msg) {\n\n        var url = \"https://m.weibo.cn/u/2803301701\";\n        var clientType = \"mobile\";\n        if (url != \"none\") {\n\n            if (url.indexOf(\"ssovie4c55=0\") === -1) {\n                url += (((url.indexOf(\"?\") === -1) ? \"?\" : \"&\") + \"ssovie4c55=0\");\n            }\n            if (clientType == \"mobile\") {\n                window.location.replace(\"https://passport.weibo.cn/signin/login?r=\" + url);\n            } else {\n                window.location.replace(\"https://weibo.com/login.php\");\n            }\n        } else {\n\n            if (document.getElementById(\"message\")) {\n                document.getElementById(\"message\").innerHTML = \"Error occurred\" + (msg ? (\": \" + msg) : \".\");\n            }\n        }\n    };\n\n    var visitor_gray_callback = function (response) {\n        if (response[\"retcode\"] === 20000000) {\n            var tid = response[\"data\"][\"tid\"];\n            Store.DB.set('tid', tid);\n\n            var alt = response[\"data\"][\"alt\"];\n            if (alt !== \"\") {\n                var url = \"https://m.weibo.cn/u/2803301701\";\n                requrl = (url === \"none\") ? \"\" : \"&url=\" + encodeURIComponent(url);\n                var params = \"entry=sso&source=visitor_restore&type=3&alt=\" + encodeURIComponent(alt) + requrl;\n                window.location.replace(\"https://passport.weibo.com/sso/v2/login?\" + params);\n            } else {\n                cross_domain2(response)\n            }\n        }\n    };\n\n    var isInIframe = function () {\n        try {\n            return window.self !== window.top;\n        } catch (e) {\n            return true;\n        }\n    };\n\n</script>\n</body>\n</html>"
+          }
+        }
+      }
+    ]
+  }
+}
