@@ -411,6 +411,7 @@
         },
         {
           "type": "html",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "contains": "g-recaptcha"

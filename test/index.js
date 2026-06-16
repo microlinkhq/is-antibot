@@ -355,9 +355,29 @@ test('recaptcha (no false positive for grecaptcha badge css)', t => {
   t.is(result.provider, null)
 })
 
-test('recaptcha (html g-recaptcha)', t => {
+test('recaptcha (html g-recaptcha on a blocking status)', t => {
   const html = '<div class="g-recaptcha" data-sitekey="test"></div>'
-  const result = isAntibot({ html })
+  for (const statusCode of [403, 429, 503]) {
+    const result = isAntibot({ html, statusCode })
+    t.is(result.detected, true, `should detect for status ${statusCode}`)
+    t.is(result.provider, 'recaptcha')
+  }
+})
+
+test('recaptcha (no false positive: g-recaptcha widget on a 200 content page)', t => {
+  // Sites embed a reCAPTCHA login/contact widget on fully-rendered content pages; the bare
+  // widget alone (status 200) is not a block — only a blocking status or active grecaptcha is.
+  const html =
+    '<html><body><article>real content</article><div class="c-form-group g-recaptcha" data-sitekey="k"></div></body></html>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('recaptcha (html active grecaptcha on a 200 page is still a block)', t => {
+  const html =
+    '<div class="g-recaptcha"></div><script>grecaptcha.render("x")</script>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
 })
