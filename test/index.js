@@ -34,11 +34,15 @@ test('akamai (akamai-cache-status error)', t => {
   t.is(result.provider, 'akamai')
 })
 
-test('akamai (akamai-grn header)', t => {
+test('akamai (akamai-grn header alone is not antibot)', t => {
+  // akamai-grn is a per-request CDN trace id present on every Akamai-fronted
+  // response; on its own it is not a bot challenge (e.g. msn.com serves full
+  // content with this header). A real signal must be present instead.
   const headers = { 'akamai-grn': 'test123' }
   const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'akamai')
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+  t.is(result.detection, null)
 })
 
 test('akamai (_abck set-cookie)', t => {
