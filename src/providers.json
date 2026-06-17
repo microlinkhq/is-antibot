@@ -49,10 +49,6 @@
               "startsWith": "Error"
             },
             {
-              "header": "akamai-grn",
-              "exists": true
-            },
-            {
               "header": "x-akamai-session-info",
               "exists": true
             }
