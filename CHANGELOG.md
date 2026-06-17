@@ -1,3 +1,8 @@
+## 2.1.2 (2026-06-17)
+
+### Bug Fixes
+
+* **akami:** remove false positive ([#43](https://github.com/microlinkhq/is-antibot/issues/43)) ([f5c3c81](https://github.com/microlinkhq/is-antibot/commit/f5c3c811ca8eb311a5548e54a6702f769bf32183))
 ## 2.1.1 (2026-06-16)
 ## 2.1.0 (2026-06-13)
 
