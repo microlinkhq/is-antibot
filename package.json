@@ -65,7 +65,7 @@
     "web-scraping"
   ],
   "dependencies": {
-    "@metascraper/helpers": "~5.50.0",
+    "@metascraper/helpers": "~5.51.1",
     "cookie-es": "~3.1.1",
     "debug-logfmt": "~1.4.7"
   },
