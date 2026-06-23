@@ -1,3 +1,8 @@
+## 2.1.5 (2026-06-23)
+
+### Bug Fixes
+
+* **providers:** eliminate bare vendor-word html false positives ([#46](https://github.com/microlinkhq/is-antibot/issues/46)) ([54a3862](https://github.com/microlinkhq/is-antibot/commit/54a38628e008396ccb44bf7ca46263a0e5d82f52))
 ## 2.1.4 (2026-06-22)
 ## 2.1.3 (2026-06-19)
 ## 2.1.2 (2026-06-17)
