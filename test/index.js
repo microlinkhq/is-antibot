@@ -160,6 +160,12 @@ test('shapesecurity (html)', t => {
   t.is(result.provider, 'shapesecurity')
 })
 
+test('shapesecurity (no false positive for bare mention)', t => {
+  const html = '<p>shapesecurity (now F5) writeup</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
+})
+
 test('kasada (header)', t => {
   const headers = { 'x-kasada': 'test' }
   const result = isAntibot({ headers })
@@ -193,6 +199,13 @@ test('imperva (html with imperva)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
+})
+
+test('imperva (no false positive for bare mention)', t => {
+  const html =
+    '<footer>Security powered by Imperva</footer><p>We migrated from Incapsula.</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('imperva (incap_ses_ set-cookie)', t => {
@@ -238,6 +251,12 @@ test('reblaze (html)', t => {
   t.is(result.detection, 'html')
 })
 
+test('reblaze (no false positive for bare mention)', t => {
+  const html = '<p>Reblaze vs Cloudflare comparison</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
+})
+
 test('cheq (html CheqSdk)', t => {
   const html = '<script>CheqSdk.init();</script>'
   const result = isAntibot({ html })
@@ -272,6 +291,12 @@ test('sucuri (html)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'sucuri')
+})
+
+test('sucuri (no false positive for badge / bare mention)', t => {
+  const html = '<a href="https://sitecheck.sucuri.net/">Scanned by Sucuri</a>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('threatmetrix (html)', t => {
@@ -310,6 +335,13 @@ test('meetrics (url)', t => {
   const result = isAntibot({ url })
   t.is(result.detected, true)
   t.is(result.provider, 'meetrics')
+})
+
+test('meetrics (no false positive for bare mention)', t => {
+  const html =
+    '<script>var x={"vendor":"meetrics"}</script><h1>Real article</h1>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('ocule (html)', t => {
@@ -444,6 +476,12 @@ test('funcaptcha (html with funcaptcha)', t => {
   t.is(result.provider, 'funcaptcha')
 })
 
+test('funcaptcha (no false positive for bare funcaptcha mention)', t => {
+  const html = '<p>funcaptcha is now called Arkose.</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
+})
+
 test('funcaptcha (html with arkoselabs.com)', t => {
   const html =
     '<script src="https://client-api.arkoselabs.com/fc/assets/loader.js"></script>'
@@ -475,6 +513,12 @@ test('geetest (html)', t => {
 
 test('geetest (no false positive for generic gt.js)', t => {
   const html = '<script src="/static/gt.js"></script>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
+})
+
+test('geetest (no false positive for bare mention)', t => {
+  const html = '<p>We evaluated geetest for our login.</p>'
   const result = isAntibot({ html })
   t.is(result.detected, false)
 })
@@ -872,6 +916,12 @@ test('aws-waf (html awswaf)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+})
+
+test('aws-waf (no false positive for bare mention)', t => {
+  const html = '<p>How to configure aws-waf rules in awswaf docs</p>'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
 })
 
 test('aws-waf (aws-waf-token set-cookie)', t => {
