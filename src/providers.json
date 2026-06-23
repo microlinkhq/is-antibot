@@ -309,7 +309,8 @@
           "type": "html",
           "rules": [
             {
-              "contains": "ThreatMetrix"
+              "regex": "ThreatMetrix\\.\\w+\\s*\\(",
+              "flags": ""
             }
           ]
         },

@@ -288,6 +288,16 @@ test('threatmetrix (url fp/check.js)', t => {
   t.is(result.provider, 'threatmetrix')
 })
 
+test('threatmetrix (html, not a false positive on config keys)', t => {
+  // Netflix embeds feature-flag config keys mentioning threatmetrix in the page
+  // JSON. These are not an antibot challenge: the device-profiling tag is only
+  // active when the ThreatMetrix JS API is invoked (e.g. ThreatMetrix.init()).
+  const html =
+    '{"enable.threatmetrix.debug":true,"enable.threatmetrix.onload.timeout":6000}'
+  const result = isAntibot({ html })
+  t.is(result.detected, false)
+})
+
 test('meetrics (html)', t => {
   const html = '<script>meetricsGlobal.init();</script>'
   const result = isAntibot({ html })
