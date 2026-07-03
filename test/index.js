@@ -628,6 +628,39 @@ test('aliexpress-captcha (html)', t => {
   t.is(result.provider, 'aliexpress-captcha')
 })
 
+test('houzz (blocked by status code)', t => {
+  // Houzz rate-limits datacenter IPs with a bare 429 "too many requests" page
+  // that carries no antibot fingerprint. Scope the status rule to the domain so
+  // an origin fetch surfacing a 429 escalates to the residential proxy.
+  const url =
+    'https://www.houzz.com/photos/primary-bathroom-retreat-transitional-bathroom-london-phvw-vp~210219633'
+  const html = '<html><body>\n429 Error too many requests \n</body></html>'
+  const result = isAntibot({ url, html, statusCode: 429 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'houzz')
+  t.is(result.detection, 'statusCode')
+})
+
+test('houzz (429 on non-houzz url should not match)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/some/path',
+    statusCode: 429
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('houzz (200 on houzz url should not match)', t => {
+  const url = 'https://www.houzz.com/photos/x~210219633'
+  const result = isAntibot({
+    url,
+    html: '<html><body>ok</body></html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('reddit (blocked html)', t => {
   const html = '<div>blocked by network security.</div>'
   const url =

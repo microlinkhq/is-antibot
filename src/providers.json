@@ -612,6 +612,20 @@
       ]
     },
     {
+      "name": "houzz",
+      "detections": [
+        {
+          "type": "status_code",
+          "domain": "houzz.com",
+          "rules": [
+            {
+              "status": 429
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "reddit",
       "detections": [
         {
