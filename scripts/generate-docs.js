@@ -71,7 +71,7 @@ const spell = count =>
     ? NUMBER[count].replace(/^./, first => first.toUpperCase())
     : String(count)
 
-const roundDown = count => Math.floor(count / 10) * 10
+const roundDown = count => (count < 10 ? count : Math.floor(count / 10) * 10)
 
 const claims = () => {
   const signals = spell($defs.detection.properties.type.enum.length)
@@ -185,5 +185,6 @@ module.exports.renderList = renderList
 module.exports.claims = claims
 module.exports.replaceBlock = replaceBlock
 module.exports.listMarker = listMarker
+module.exports.roundDown = roundDown
 
 if (require.main === module) main()

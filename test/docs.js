@@ -95,6 +95,22 @@ test('no surface states a count that contradicts the source', t => {
   t.true(found.length > 0, 'no claims found, the patterns went stale')
 })
 
+test('the advertised count never undersells the catalog', t => {
+  for (let count = 0; count <= 120; count++) {
+    const advertised = generate.roundDown(count)
+    t.true(advertised <= count, `${advertised}+ overstates ${count} providers`)
+    t.true(
+      count === 0 || advertised > 0,
+      `${count} providers must not advertise as 0+`
+    )
+  }
+
+  t.is(generate.roundDown(9), 9)
+  t.is(generate.roundDown(10), 10)
+  t.is(generate.roundDown(36), 30)
+  t.is(generate.roundDown(41), 40)
+})
+
 test('a category losing its last provider stays regenerable', t => {
   const heading = 'Detected CAPTCHA providers:'
   const marker = generate.listMarker(heading)
