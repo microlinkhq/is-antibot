@@ -73,11 +73,30 @@ const spell = count =>
 
 const roundDown = count => (count < 10 ? count : Math.floor(count / 10) * 10)
 
+const releasedOn = () => {
+  const changelog = fs.readFileSync(path.join(ROOT, 'CHANGELOG.md'), 'utf8')
+  const release = changelog.match(
+    /^#+ \[?\d+\.\d+\.\d+\]?[^\n(]*\((\d{4}-\d{2}-\d{2})\)/m
+  )
+
+  if (!release) {
+    throw new Error('Cannot read the latest release date from CHANGELOG.md')
+  }
+
+  return release[1]
+}
+
 const claims = () => {
   const signals = spell($defs.detection.properties.type.enum.length)
   const covered = `${roundDown(providers.length)}+`
+  const released = releasedOn()
 
   return [
+    [/<lastmod>[^<]*<\/lastmod>/g, `<lastmod>${released}</lastmod>`],
+    [
+      /(property="(?:og:updated_time|article:modified_time)" content=")[^"]*"/g,
+      `$1${released}T00:00:00Z"`
+    ],
     [/\b\d+\+ antibot providers\b/g, `${covered} antibot providers`],
     [/\b\d+\+ providers\b/g, `${covered} providers`],
     [
@@ -139,6 +158,7 @@ const TARGETS = [
   { file: path.join(DOCS, 'README.md'), render: withTable },
   { file: path.join(DOCS, 'llms.txt'), render: withLists },
   { file: path.join(DOCS, 'index.html'), render: content => content },
+  { file: path.join(DOCS, 'sitemap.xml'), render: content => content },
   { file: path.join(ROOT, 'package.json'), render: content => content }
 ]
 
@@ -186,5 +206,6 @@ module.exports.claims = claims
 module.exports.replaceBlock = replaceBlock
 module.exports.listMarker = listMarker
 module.exports.roundDown = roundDown
+module.exports.releasedOn = releasedOn
 
 if (require.main === module) main()

@@ -111,6 +111,28 @@ test('the advertised count never undersells the catalog', t => {
   t.is(generate.roundDown(41), 40)
 })
 
+test('freshness timestamps track the latest release', t => {
+  const released = generate.releasedOn()
+  t.regex(released, /^\d{4}-\d{2}-\d{2}$/)
+
+  const read = name =>
+    fs.readFileSync(
+      generate().find(({ file }) => file.endsWith(name)).file,
+      'utf8'
+    )
+
+  t.is(read('sitemap.xml').match(/<lastmod>(.*?)<\/lastmod>/)[1], released)
+
+  const stamps = [
+    ...read('index.html').matchAll(
+      /property="(?:og:updated_time|article:modified_time)" content="(.*?)"/g
+    )
+  ].map(([, value]) => value)
+
+  t.is(stamps.length, 2)
+  stamps.forEach(stamp => t.is(stamp, `${released}T00:00:00Z`))
+})
+
 test('a category losing its last provider stays regenerable', t => {
   const heading = 'Detected CAPTCHA providers:'
   const marker = generate.listMarker(heading)
