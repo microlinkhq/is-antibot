@@ -89,6 +89,14 @@ const validate = (value, definition, root, path = '$') => {
     if (definition.pattern && !new RegExp(definition.pattern).test(value)) {
       errors.push(`${path} does not match pattern ${definition.pattern}`)
     }
+    if (
+      definition.minLength !== undefined &&
+      value.length < definition.minLength
+    ) {
+      errors.push(
+        `${path} should be at least ${definition.minLength} characters`
+      )
+    }
     if (definition.format === 'regex') {
       try {
         // eslint-disable-next-line no-new
@@ -119,4 +127,36 @@ const validate = (value, definition, root, path = '$') => {
 test('providers json conforms to providers schema', t => {
   const errors = validate(providers, schema, schema)
   t.deepEqual(errors, [])
+})
+
+const validateProvider = provider =>
+  validate(provider, schema.$defs.provider, schema)
+
+test('provider requires label and category', t => {
+  const detections = [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+
+  t.deepEqual(validateProvider({ name: 'acme', detections }), [
+    '$ is missing required property "label"',
+    '$ is missing required property "category"'
+  ])
+
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'waf',
+      detections
+    }),
+    ['$.category should be one of: antibot, captcha, platform']
+  )
+
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections
+    }),
+    []
+  )
 })

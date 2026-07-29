@@ -4,6 +4,8 @@
   "providers": [
     {
       "name": "cloudflare",
+      "label": "Cloudflare",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -26,6 +28,8 @@
     },
     {
       "name": "vercel",
+      "label": "Vercel",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -40,6 +44,8 @@
     },
     {
       "name": "akamai",
+      "label": "Akamai",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -74,13 +80,18 @@
     },
     {
       "name": "datadome",
+      "label": "DataDome",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
           "rules": [
             {
               "header": "x-dd-b",
-              "oneOf": ["1", "2"]
+              "oneOf": [
+                "1",
+                "2"
+              ]
             },
             {
               "header": "x-datadome",
@@ -105,6 +116,8 @@
     },
     {
       "name": "perimeterx",
+      "label": "PerimeterX",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -144,6 +157,8 @@
     },
     {
       "name": "shapesecurity",
+      "label": "Shape Security",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -166,6 +181,8 @@
     },
     {
       "name": "kasada",
+      "label": "Kasada",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -195,6 +212,8 @@
     },
     {
       "name": "imperva",
+      "label": "Imperva / Incapsula",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -235,6 +254,8 @@
     },
     {
       "name": "reblaze",
+      "label": "Reblaze",
+      "category": "antibot",
       "detections": [
         {
           "type": "cookies",
@@ -259,6 +280,8 @@
     },
     {
       "name": "cheq",
+      "label": "Cheq",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -288,6 +311,8 @@
     },
     {
       "name": "sucuri",
+      "label": "Sucuri",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -301,6 +326,8 @@
     },
     {
       "name": "threatmetrix",
+      "label": "ThreatMetrix",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -323,6 +350,8 @@
     },
     {
       "name": "meetrics",
+      "label": "Meetrics",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -345,6 +374,8 @@
     },
     {
       "name": "ocule",
+      "label": "Ocule",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -367,6 +398,8 @@
     },
     {
       "name": "recaptcha",
+      "label": "reCAPTCHA",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -405,7 +438,11 @@
         },
         {
           "type": "html",
-          "statusCodes": [403, 429, 503],
+          "statusCodes": [
+            403,
+            429,
+            503
+          ],
           "rules": [
             {
               "contains": "g-recaptcha"
@@ -416,6 +453,8 @@
     },
     {
       "name": "hcaptcha",
+      "label": "hCaptcha",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -441,6 +480,8 @@
     },
     {
       "name": "funcaptcha",
+      "label": "FunCaptcha (Arkose Labs)",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -469,6 +510,8 @@
     },
     {
       "name": "geetest",
+      "label": "GeeTest",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -491,6 +534,8 @@
     },
     {
       "name": "cloudflare-turnstile",
+      "label": "Cloudflare Turnstile",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -516,6 +561,8 @@
     },
     {
       "name": "friendly-captcha",
+      "label": "Friendly Captcha",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -541,6 +588,8 @@
     },
     {
       "name": "captcha-eu",
+      "label": "Captcha.eu",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -566,6 +615,8 @@
     },
     {
       "name": "qcloud-captcha",
+      "label": "QCloud Captcha",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -591,6 +642,8 @@
     },
     {
       "name": "aliexpress-captcha",
+      "label": "AliExpress CAPTCHA",
+      "category": "captcha",
       "detections": [
         {
           "type": "url",
@@ -613,6 +666,8 @@
     },
     {
       "name": "houzz",
+      "label": "Houzz",
+      "category": "platform",
       "detections": [
         {
           "type": "status_code",
@@ -627,6 +682,8 @@
     },
     {
       "name": "reddit",
+      "label": "Reddit",
+      "category": "platform",
       "detections": [
         {
           "type": "status_code",
@@ -657,6 +714,8 @@
     },
     {
       "name": "google",
+      "label": "Google",
+      "category": "platform",
       "detections": [
         {
           "type": "url",
@@ -670,6 +729,8 @@
     },
     {
       "name": "linkedin",
+      "label": "LinkedIn",
+      "category": "platform",
       "detections": [
         {
           "type": "status_code",
@@ -684,6 +745,8 @@
     },
     {
       "name": "instagram",
+      "label": "Instagram",
+      "category": "platform",
       "detections": [
         {
           "type": "html",
@@ -699,6 +762,8 @@
     },
     {
       "name": "youtube",
+      "label": "YouTube",
+      "category": "platform",
       "detections": [
         {
           "type": "html",
@@ -713,11 +778,15 @@
     },
     {
       "name": "amazon",
+      "label": "Amazon",
+      "category": "platform",
       "detections": [
         {
           "type": "headers",
           "domainWithoutSuffix": "amazon",
-          "statusCodes": [500],
+          "statusCodes": [
+            500
+          ],
           "rules": [
             {
               "header": "x-cache",
@@ -738,6 +807,8 @@
     },
     {
       "name": "anubis",
+      "label": "Anubis",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -755,6 +826,8 @@
     },
     {
       "name": "fullstory-challenge",
+      "label": "FullStory Challenge",
+      "category": "antibot",
       "detections": [
         {
           "type": "html",
@@ -776,6 +849,8 @@
     },
     {
       "name": "aws-waf",
+      "label": "AWS WAF",
+      "category": "antibot",
       "detections": [
         {
           "type": "headers",
@@ -813,6 +888,8 @@
     },
     {
       "name": "weibo",
+      "label": "Weibo",
+      "category": "platform",
       "description": "Sina Visitor System gate served to non-China/bot clients before hydrating the page.",
       "detections": [
         {
@@ -828,6 +905,8 @@
     },
     {
       "name": "dribbble",
+      "label": "Dribbble",
+      "category": "platform",
       "description": "Dribbble answers 403 Forbidden to crawler/bot user agents.",
       "detections": [
         {
@@ -843,6 +922,8 @@
     },
     {
       "name": "douban",
+      "label": "Douban",
+      "category": "platform",
       "description": "Douban's image CDN answers 418 to requests without a matching Referer.",
       "detections": [
         {
