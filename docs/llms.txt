@@ -14,18 +14,19 @@ It is designed for:
 Detected antibot systems:
 
 - Cloudflare, Vercel, Akamai, DataDome, PerimeterX, Shape Security, Kasada
-- Imperva/Incapsula, AWS WAF, Reblaze, Anubis, Sucuri, ThreatMetrix
-- Cheq, Meetrics, Ocule, FullStory Challenge
+- Imperva / Incapsula, Reblaze, Cheq, Sucuri, ThreatMetrix, Meetrics
+- Ocule, Anubis, FullStory Challenge, AWS WAF
 
 Detected CAPTCHA providers:
 
-- reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha (Arkose Labs)
-- GeeTest, Friendly Captcha, Captcha.eu, QCloud Captcha, AliExpress CAPTCHA
+- reCAPTCHA, hCaptcha, FunCaptcha (Arkose Labs), GeeTest
+- Cloudflare Turnstile, Friendly Captcha, Captcha.eu, QCloud Captcha
+- AliExpress CAPTCHA
 
 Detected platform-specific protections:
 
-- LinkedIn, Reddit, Instagram, YouTube, Google, Amazon
-- Houzz, Weibo, Dribbble, Douban
+- Houzz, Reddit, Google, LinkedIn, Instagram, YouTube, Amazon, Weibo
+- Dribbble, Douban
 
 Five detection signals:
 

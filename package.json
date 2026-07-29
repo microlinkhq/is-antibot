@@ -111,6 +111,8 @@
     "coverage": "c8 report --reporter=text-lcov > coverage/lcov.info",
     "dev": "concurrently \"gulp\" \"npm run dev:server\"",
     "dev:server": "browser-sync start --server docs --files \"docs/index.html, docs/README.md, docs/static/**/*.(css|js)\"",
+    "docs": "node scripts/generate-docs.js",
+    "docs:check": "node scripts/generate-docs.js --check",
     "lint": "standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "pretest": "npm run lint",
@@ -128,6 +130,16 @@
     "files": [
       "test/**/*.js",
       "!test/util.js"
+    ]
+  },
+  "c8": {
+    "exclude": [
+      "bench/**",
+      "coverage/**",
+      "docs/**",
+      "gulpfile.js",
+      "scripts/**",
+      "test/**"
     ]
   },
   "commitlint": {

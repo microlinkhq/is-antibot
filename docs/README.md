@@ -131,6 +131,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
       </tr>
     </thead>
     <tbody>
+      <!-- providers:start -->
       <tr><td>Akamai</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>AliExpress CAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Amazon</td><td>Platform-specific</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
@@ -167,6 +168,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
       <tr><td>Vercel</td><td>Antibot</td><td>1</td><td><span class="provider-chip">Headers</span></td></tr>
       <tr><td>Weibo</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
       <tr><td>YouTube</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
+      <!-- providers:end -->
     </tbody>
   </table>
 </div>
