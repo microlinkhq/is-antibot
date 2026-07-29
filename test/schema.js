@@ -153,6 +153,16 @@ test('provider requires label and category', t => {
   t.deepEqual(
     validateProvider({
       name: 'acme',
+      label: '',
+      category: 'antibot',
+      detections
+    }),
+    ['$.label should be at least 1 characters']
+  )
+
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
       label: 'Acme',
       category: 'antibot',
       detections
