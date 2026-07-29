@@ -101,7 +101,10 @@ const replaceBlock = (content, pattern, block, hint) => {
   if (!pattern.test(content)) {
     throw new Error(`Cannot locate ${hint}: docs and generator are out of sync`)
   }
-  return content.replace(pattern, (match, open) => `${open}${block}\n`)
+  return content.replace(
+    pattern,
+    (match, open) => `${open}${block}${block && '\n'}`
+  )
 }
 
 const providersMarker =
@@ -109,7 +112,7 @@ const providersMarker =
 
 const listMarker = heading =>
   new RegExp(
-    `(${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\n\\n)(?:- .*\\n)+`
+    `(${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\n\\n)(?:- .*\\n)*`
   )
 
 const withTable = content =>
@@ -180,5 +183,7 @@ module.exports = generate
 module.exports.renderTable = renderTable
 module.exports.renderList = renderList
 module.exports.claims = claims
+module.exports.replaceBlock = replaceBlock
+module.exports.listMarker = listMarker
 
 if (require.main === module) main()

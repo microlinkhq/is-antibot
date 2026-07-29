@@ -95,6 +95,21 @@ test('no surface states a count that contradicts the source', t => {
   t.true(found.length > 0, 'no claims found, the patterns went stale')
 })
 
+test('a category losing its last provider stays regenerable', t => {
+  const heading = 'Detected CAPTCHA providers:'
+  const marker = generate.listMarker(heading)
+  const section = `${heading}\n\n- reCAPTCHA, hCaptcha\n\nNext:\n`
+
+  const emptied = generate.replaceBlock(section, marker, '', heading)
+  t.is(emptied, `${heading}\n\n\nNext:\n`)
+  t.is(generate.replaceBlock(emptied, marker, '', heading), emptied)
+
+  t.is(
+    generate.replaceBlock(emptied, marker, '- GeeTest', heading),
+    `${heading}\n\n- GeeTest\n\nNext:\n`
+  )
+})
+
 test('llms.txt lists every provider exactly once', t => {
   const listed = ['antibot', 'captcha', 'platform']
     .flatMap(category => generate.renderList(category).split('\n'))
