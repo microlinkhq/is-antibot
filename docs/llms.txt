@@ -15,12 +15,17 @@ Detected antibot systems:
 
 - Cloudflare, Vercel, Akamai, DataDome, PerimeterX, Shape Security, Kasada
 - Imperva/Incapsula, AWS WAF, Reblaze, Anubis, Sucuri, ThreatMetrix
-- Cheq, Meetrics, Ocule, LinkedIn, Reddit, Instagram, YouTube
+- Cheq, Meetrics, Ocule, FullStory Challenge
 
 Detected CAPTCHA providers:
 
 - reCAPTCHA, hCaptcha, Cloudflare Turnstile, FunCaptcha (Arkose Labs)
 - GeeTest, Friendly Captcha, Captcha.eu, QCloud Captcha, AliExpress CAPTCHA
+
+Detected platform-specific protections:
+
+- LinkedIn, Reddit, Instagram, YouTube, Google, Amazon
+- Houzz, Weibo, Dribbble, Douban
 
 Five detection signals:
 

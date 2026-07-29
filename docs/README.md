@@ -133,6 +133,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
     <tbody>
       <tr><td>Akamai</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>AliExpress CAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
+      <tr><td>Amazon</td><td>Platform-specific</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Anubis</td><td>Antibot</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
       <tr><td>AWS WAF</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Captcha.eu</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
@@ -140,10 +141,15 @@ Each provider has unique fingerprints across one or more of these signals. The l
       <tr><td>Cloudflare</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span></td></tr>
       <tr><td>Cloudflare Turnstile</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>DataDome</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span></td></tr>
+      <tr><td>Douban</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
+      <tr><td>Dribbble</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Friendly Captcha</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
+      <tr><td>FullStory Challenge</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>FunCaptcha (Arkose Labs)</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>GeeTest</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
+      <tr><td>Google</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">URL</span></td></tr>
       <tr><td>hCaptcha</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
+      <tr><td>Houzz</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Imperva / Incapsula</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Instagram</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Kasada</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
@@ -152,13 +158,14 @@ Each provider has unique fingerprints across one or more of these signals. The l
       <tr><td>Ocule</td><td>Antibot</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>PerimeterX</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>QCloud Captcha</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
-      <tr><td>reCAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Reblaze</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
+      <tr><td>reCAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Reddit</td><td>Platform-specific</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Shape Security</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Sucuri</td><td>Antibot</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
       <tr><td>ThreatMetrix</td><td>Antibot</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Vercel</td><td>Antibot</td><td>1</td><td><span class="provider-chip">Headers</span></td></tr>
+      <tr><td>Weibo</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
       <tr><td>YouTube</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
     </tbody>
   </table>
