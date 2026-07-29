@@ -3,9 +3,12 @@
 const path = require('path')
 const fs = require('fs')
 
+const { $defs } = require('../src/schema.json')
 const { providers } = require('../src/providers.json')
+const { dependencies } = require('../package.json')
 
-const DOCS = path.join(__dirname, '..', 'docs')
+const ROOT = path.join(__dirname, '..')
+const DOCS = path.join(ROOT, 'docs')
 
 const CATEGORY = {
   antibot: { label: 'Antibot', heading: 'Detected antibot systems:' },
@@ -61,6 +64,39 @@ const renderList = (category, width = 74) =>
     }, [])
     .join('\n')
 
+const NUMBER = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven']
+
+const spell = count =>
+  count < NUMBER.length
+    ? NUMBER[count].replace(/^./, first => first.toUpperCase())
+    : String(count)
+
+const roundDown = count => Math.floor(count / 10) * 10
+
+const claims = () => {
+  const signals = spell($defs.detection.properties.type.enum.length)
+  const covered = `${roundDown(providers.length)}+`
+
+  return [
+    [/\b\d+\+ antibot providers\b/g, `${covered} antibot providers`],
+    [/\b\d+\+ providers\b/g, `${covered} providers`],
+    [
+      /\b(?:[A-Z][a-z]+|\d+) detection signals\b/g,
+      `${signals} detection signals`
+    ],
+    [
+      /\bonly \d+ dependencies\b/g,
+      `only ${Object.keys(dependencies).length} dependencies`
+    ]
+  ]
+}
+
+const applyClaims = content =>
+  claims().reduce(
+    (updated, [pattern, value]) => updated.replace(pattern, value),
+    content
+  )
+
 const replaceBlock = (content, pattern, block, hint) => {
   if (!pattern.test(content)) {
     throw new Error(`Cannot locate ${hint}: docs and generator are out of sync`)
@@ -76,35 +112,40 @@ const listMarker = heading =>
     `(${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\n\\n)(?:- .*\\n)+`
   )
 
-const generate = () => {
-  const readme = path.join(DOCS, 'README.md')
-  const llms = path.join(DOCS, 'llms.txt')
-
-  const table = replaceBlock(
-    fs.readFileSync(readme, 'utf8'),
+const withTable = content =>
+  replaceBlock(
+    content,
     providersMarker,
     renderTable(),
     'the providers table markers in docs/README.md'
   )
 
-  const lists = Object.entries(CATEGORY).reduce(
-    (content, [category, { heading }]) =>
+const withLists = content =>
+  Object.entries(CATEGORY).reduce(
+    (updated, [category, { heading }]) =>
       replaceBlock(
-        content,
+        updated,
         listMarker(heading),
         renderList(category),
         `"${heading}" in docs/llms.txt`
       ),
-    fs.readFileSync(llms, 'utf8')
+    content
   )
 
-  return [
-    { file: readme, content: table },
-    { file: llms, content: lists }
-  ]
-}
+const TARGETS = [
+  { file: path.join(DOCS, 'README.md'), render: withTable },
+  { file: path.join(DOCS, 'llms.txt'), render: withLists },
+  { file: path.join(DOCS, 'index.html'), render: content => content },
+  { file: path.join(ROOT, 'package.json'), render: content => content }
+]
 
-const relative = file => path.relative(path.join(__dirname, '..'), file)
+const generate = () =>
+  TARGETS.map(({ file, render }) => ({
+    file,
+    content: applyClaims(render(fs.readFileSync(file, 'utf8')))
+  }))
+
+const relative = file => path.relative(ROOT, file)
 
 const main = () => {
   const check = process.argv.includes('--check')
@@ -138,5 +179,6 @@ const main = () => {
 module.exports = generate
 module.exports.renderTable = renderTable
 module.exports.renderList = renderList
+module.exports.claims = claims
 
 if (require.main === module) main()

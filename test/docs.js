@@ -4,7 +4,11 @@ const test = require('ava')
 const fs = require('fs')
 
 const generate = require('../scripts/generate-docs')
+const { $defs } = require('../src/schema.json')
 const { providers } = require('../src/providers.json')
+const { dependencies } = require('../package.json')
+
+const WORD = ['zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven']
 
 const SIGNAL = {
   headers: 'Headers',
@@ -63,6 +67,32 @@ test('table rows are sorted by label', t => {
     label.toLowerCase()
   )
   t.deepEqual(labels, [...labels].sort())
+})
+
+test('no surface states a count that contradicts the source', t => {
+  const expected = {
+    providers: `${Math.floor(providers.length / 10) * 10}+`,
+    signals: WORD[$defs.detection.properties.type.enum.length],
+    dependencies: String(Object.keys(dependencies).length)
+  }
+
+  const CLAIMS = [
+    [/\b(\d+\+)(?: antibot)? providers\b/g, expected.providers],
+    [/\b([A-Z][a-z]+) detection signals\b/g, expected.signals],
+    [/\bonly (\d+) dependencies\b/g, expected.dependencies]
+  ]
+
+  const found = generate().flatMap(({ file }) => {
+    const content = fs.readFileSync(file, 'utf8')
+    return CLAIMS.flatMap(([pattern, value]) =>
+      [...content.matchAll(pattern)].map(([match, stated]) => {
+        t.is(stated, value, `${file}: "${match}"`)
+        return match
+      })
+    )
+  })
+
+  t.true(found.length > 0, 'no claims found, the patterns went stale')
 })
 
 test('llms.txt lists every provider exactly once', t => {
