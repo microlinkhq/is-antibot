@@ -24,13 +24,22 @@
   "$defs": {
     "provider": {
       "type": "object",
-      "required": ["name", "detections"],
+      "required": ["name", "label", "category", "detections"],
       "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string",
           "pattern": "^[a-z][a-z0-9-]*$",
           "description": "Unique provider identifier (kebab-case)."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable provider name as rendered in docs and dashboards (e.g. 'AWS WAF')."
+        },
+        "category": {
+          "enum": ["antibot", "captcha", "platform"],
+          "description": "antibot: general-purpose bot mitigation. captcha: challenge widget vendor. platform: protection specific to a single site."
         },
         "description": {
           "type": "string",
