@@ -71,7 +71,7 @@ test('table rows are sorted by label', t => {
 
 test('no surface states a count that contradicts the source', t => {
   const expected = {
-    providers: `${Math.floor(providers.length / 10) * 10}+`,
+    providers: `${generate.roundDown(providers.length)}+`,
     signals: WORD[$defs.detection.properties.type.enum.length],
     dependencies: String(Object.keys(dependencies).length)
   }
@@ -129,6 +129,7 @@ test('a category losing its last provider stays regenerable', t => {
 test('llms.txt lists every provider exactly once', t => {
   const listed = ['antibot', 'captcha', 'platform']
     .flatMap(category => generate.renderList(category).split('\n'))
+    .filter(Boolean)
     .flatMap(line => line.replace(/^- /, '').split(', '))
 
   t.deepEqual([...listed].sort(), providers.map(({ label }) => label).sort())
