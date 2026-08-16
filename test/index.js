@@ -28,6 +28,19 @@ test('cloudflare (html _cf_chl_opt interstitial)', t => {
   t.is(result.detection, 'html')
 })
 
+test('cloudflare (html Just a moment title on 403)', t => {
+  const html = '<title>Just a moment...</title>'
+  const result = isAntibot({ html, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudflare')
+  t.is(result.detection, 'html')
+})
+
+test('cloudflare (no false positive for Just a moment title on 200)', t => {
+  const html = '<title>Just a moment...</title>'
+  t.is(isAntibot({ html, statusCode: 200 }).detected, false)
+})
+
 test('cloudflare (no false positive for jsd beacon)', t => {
   const html =
     "<script>window.__CF$cv$params={r:'abc'};a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';</script>"

@@ -31,6 +31,15 @@
               "contains": "_cf_chl_opt"
             }
           ]
+        },
+        {
+          "type": "html",
+          "statusCodes": [403, 503],
+          "rules": [
+            {
+              "contains": "<title>Just a moment...</title>"
+            }
+          ]
         }
       ]
     },
