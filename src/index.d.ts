@@ -36,13 +36,13 @@ declare namespace isAntibot {
     | 'instagram'
     | 'youtube'
     | 'amazon'
-    | 'cloudfront'
     | 'anubis'
     | 'fullstory-challenge'
     | 'aws-waf'
     | 'weibo'
     | 'dribbble'
     | 'douban'
+    | 'cloudfront'
 
   interface Input {
     headers?: HeadersLike
