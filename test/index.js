@@ -20,23 +20,6 @@ test('cloudflare (cf_clearance set-cookie)', t => {
   t.is(result.detection, 'cookies')
 })
 
-test('cloudflare (html challenge-platform on 403)', t => {
-  const html =
-    "<script>a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';</script>"
-  const result = isAntibot({ html, statusCode: 403 })
-  t.is(result.detected, true)
-  t.is(result.provider, 'cloudflare')
-  t.is(result.detection, 'html')
-})
-
-test('cloudflare (html __CF$cv$params on 503)', t => {
-  const html = '<script>window.__CF$cv$params={r:"abc"};</script>'
-  const result = isAntibot({ html, statusCode: 503 })
-  t.is(result.detected, true)
-  t.is(result.provider, 'cloudflare')
-  t.is(result.detection, 'html')
-})
-
 test('cloudflare (html _cf_chl_opt interstitial)', t => {
   const html = '<script>window._cf_chl_opt={cvId:"2"};</script>'
   const result = isAntibot({ html })
@@ -45,11 +28,11 @@ test('cloudflare (html _cf_chl_opt interstitial)', t => {
   t.is(result.detection, 'html')
 })
 
-test('cloudflare (no false positive for jsd beacon on 200)', t => {
+test('cloudflare (no false positive for jsd beacon)', t => {
   const html =
     "<script>window.__CF$cv$params={r:'abc'};a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';</script>"
-  const result = isAntibot({ html, statusCode: 200 })
-  t.is(result.detected, false)
+  t.is(isAntibot({ html, statusCode: 200 }).detected, false)
+  t.is(isAntibot({ html, statusCode: 403 }).detected, false)
 })
 
 test('cloudflare (no false positive for cdn-cgi email protection)', t => {

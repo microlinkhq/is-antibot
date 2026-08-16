@@ -26,18 +26,6 @@
         },
         {
           "type": "html",
-          "statusCodes": [403, 503],
-          "rules": [
-            {
-              "contains": "cdn-cgi/challenge-platform"
-            },
-            {
-              "contains": "__CF$cv$params"
-            }
-          ]
-        },
-        {
-          "type": "html",
           "rules": [
             {
               "contains": "_cf_chl_opt"
