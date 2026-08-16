@@ -9,6 +9,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "cf-mitigated",
@@ -18,6 +19,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "cf_clearance="
@@ -26,6 +28,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "_cf_chl_opt"
@@ -41,6 +44,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-vercel-mitigated",
@@ -57,6 +61,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "waf",
           "rules": [
             {
               "header": "akamai-cache-status",
@@ -70,6 +75,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "_abck="
@@ -78,6 +84,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "bmak."
@@ -93,6 +100,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-dd-b",
@@ -114,6 +122,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "datadome="
@@ -129,6 +138,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-px-authorization",
@@ -138,6 +148,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "window._pxAppId"
@@ -152,6 +163,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "_px3="
@@ -170,6 +182,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "headerNamePattern": "^x-[a-z0-9]{8}-[abcdfz]$",
@@ -179,6 +192,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "shapesecurity\\.\\w+\\s*\\("
@@ -194,6 +208,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-kasada",
@@ -207,6 +222,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "__kasada"
@@ -225,6 +241,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "waf",
           "rules": [
             {
               "header": "x-cdn",
@@ -238,6 +255,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "(?:incapsula|imperva)\\.\\w+\\s*\\("
@@ -246,6 +264,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "incap_ses_"
@@ -267,6 +286,7 @@
       "detections": [
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "rbzid="
@@ -278,6 +298,7 @@
         },
         {
           "type": "html",
+          "technique": "waf",
           "rules": [
             {
               "contains": "Protected by Reblaze"
@@ -293,6 +314,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "CheqSdk"
@@ -304,6 +326,7 @@
         },
         {
           "type": "url",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "cheqzone\\.com",
@@ -324,6 +347,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "waf",
           "rules": [
             {
               "contains": "Sucuri Website Firewall"
@@ -339,6 +363,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "ThreatMetrix\\.\\w+\\s*\\(",
@@ -348,6 +373,7 @@
         },
         {
           "type": "url",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "fp/check.js"
@@ -363,6 +389,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "meetricsGlobal\\.\\w+\\s*\\("
@@ -371,6 +398,7 @@
         },
         {
           "type": "url",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "meetrics\\.com",
@@ -387,6 +415,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "ocule.co.uk"
@@ -395,6 +424,7 @@
         },
         {
           "type": "url",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "ocule\\.co\\.uk",
@@ -411,6 +441,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "recaptcha/api"
@@ -429,6 +460,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b",
@@ -446,6 +478,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "statusCodes": [
             403,
             429,
@@ -466,6 +499,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "hcaptcha\\.com",
@@ -475,6 +509,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "hcaptcha.com"
@@ -493,6 +528,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "arkoselabs\\.com",
@@ -505,6 +541,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "arkoselabs.com"
@@ -523,6 +560,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "geetest\\.com",
@@ -532,6 +570,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "geetest\\.\\w+\\s*\\("
@@ -547,6 +586,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "challenges\\.cloudflare\\.com\\/turnstile",
@@ -556,6 +596,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "cf-turnstile"
@@ -574,6 +615,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "friendlycaptcha\\.com",
@@ -583,6 +625,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "frc-captcha"
@@ -601,6 +644,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "captcha\\.eu",
@@ -610,6 +654,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "CaptchaEU"
@@ -628,6 +673,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "turing\\.captcha\\.qcloud\\.com",
@@ -637,6 +683,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "TencentCaptcha"
@@ -655,6 +702,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "captcha",
           "rules": [
             {
               "regex": "punish\\?x5secdata",
@@ -664,6 +712,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "rules": [
             {
               "contains": "x5secdata"
@@ -679,6 +728,7 @@
       "detections": [
         {
           "type": "status_code",
+          "technique": "waf",
           "domain": "houzz.com",
           "rules": [
             {
@@ -695,6 +745,7 @@
       "detections": [
         {
           "type": "status_code",
+          "technique": "waf",
           "domain": "reddit.com",
           "rules": [
             {
@@ -707,6 +758,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "domain": "reddit.com",
           "rules": [
             {
@@ -727,6 +779,7 @@
       "detections": [
         {
           "type": "url",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "consent.google.com"
@@ -742,6 +795,7 @@
       "detections": [
         {
           "type": "status_code",
+          "technique": "waf",
           "domain": "linkedin.com",
           "rules": [
             {
@@ -758,6 +812,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "domain": "instagram.com",
           "rules": [
             {
@@ -775,6 +830,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "waf",
           "rules": [
             {
               "regex": "<title>\\s*-\\s*YouTube<\\/title>",
@@ -791,6 +847,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "waf",
           "domainWithoutSuffix": "amazon",
           "statusCodes": [
             500
@@ -804,6 +861,7 @@
         },
         {
           "type": "html",
+          "technique": "captcha",
           "domainWithoutSuffix": "amazon",
           "rules": [
             {
@@ -820,6 +878,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "<script id=\"anubis_challenge\"",
@@ -839,6 +898,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "contains": "_fs-ch-"
@@ -847,6 +907,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "_fs_ch_st_"
@@ -862,6 +923,7 @@
       "detections": [
         {
           "type": "headers",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-amzn-waf-action",
@@ -875,6 +937,7 @@
         },
         {
           "type": "html",
+          "technique": "javascript",
           "rules": [
             {
               "regex": "aws-waf\\.\\w+\\s*\\("
@@ -886,6 +949,7 @@
         },
         {
           "type": "cookies",
+          "technique": "cookie",
           "rules": [
             {
               "cookie": "aws-waf-token="
@@ -902,6 +966,7 @@
       "detections": [
         {
           "type": "html",
+          "technique": "javascript",
           "domainWithoutSuffix": "weibo",
           "rules": [
             {
@@ -919,6 +984,7 @@
       "detections": [
         {
           "type": "status_code",
+          "technique": "waf",
           "domain": "dribbble.com",
           "rules": [
             {
@@ -936,6 +1002,7 @@
       "detections": [
         {
           "type": "status_code",
+          "technique": "waf",
           "domain": "doubanio.com",
           "rules": [
             {

@@ -1,5 +1,7 @@
 'use strict'
 
+const fs = require('fs')
+const path = require('path')
 const test = require('ava')
 
 const schema = require('../src/schema.json')
@@ -124,6 +126,17 @@ const validate = (value, definition, root, path = '$') => {
   return errors
 }
 
+test('typescript ProviderName matches the catalog', t => {
+  const dts = fs.readFileSync(path.join(__dirname, '../src/index.d.ts'), 'utf8')
+  const block = dts.match(/type ProviderName =([\s\S]*?)interface Input/)
+  t.truthy(block, 'ProviderName union is present')
+  const names = [...block[1].matchAll(/'([^']+)'/g)].map(([, name]) => name)
+  t.deepEqual(
+    names,
+    providers.providers.map(({ name }) => name)
+  )
+})
+
 test('providers json conforms to providers schema', t => {
   const errors = validate(providers, schema, schema)
   t.deepEqual(errors, [])
@@ -133,7 +146,13 @@ const validateProvider = provider =>
   validate(provider, schema.$defs.provider, schema)
 
 test('provider requires label and category', t => {
-  const detections = [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+  const detections = [
+    {
+      type: 'html',
+      technique: 'javascript',
+      rules: [{ contains: 'challenge' }]
+    }
+  ]
 
   t.deepEqual(validateProvider({ name: 'acme', detections }), [
     '$ is missing required property "label"',
@@ -168,5 +187,31 @@ test('provider requires label and category', t => {
       detections
     }),
     []
+  )
+})
+
+test('detection requires technique', t => {
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+    }),
+    ['$.detections[0] is missing required property "technique"']
+  )
+
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [
+        { type: 'html', technique: 'browser', rules: [{ contains: 'x' }] }
+      ]
+    }),
+    [
+      '$.detections[0].technique should be one of: javascript, captcha, waf, cookie'
+    ]
   )
 })

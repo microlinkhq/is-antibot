@@ -127,6 +127,7 @@ test('provider and detection order determines precedence', t => {
 
   t.is(result.provider, 'first-provider')
   t.is(result.detection, 'url')
+  t.is(result.technique, null)
 })
 
 test('regex flags honors explicit empty string and defaults to i when omitted', t => {

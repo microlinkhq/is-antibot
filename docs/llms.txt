@@ -40,7 +40,7 @@ Key capabilities:
 
 - zero configuration, works with any HTTP client (fetch, got, axios, undici)
 - lightweight with only 3 dependencies
-- returns provider name and detection signal for programmatic routing
+- returns provider name, detection signal, and technique (`javascript`, `captcha`, `waf`, `cookie`) for programmatic routing
 
 Primary page:
 
