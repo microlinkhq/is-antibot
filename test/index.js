@@ -20,6 +20,33 @@ test('cloudflare (cf_clearance set-cookie)', t => {
   t.is(result.detection, 'cookies')
 })
 
+test('cloudflare (html _cf_chl_opt interstitial)', t => {
+  const html = '<script>window._cf_chl_opt={cvId:"2"};</script>'
+  const result = isAntibot({ html })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudflare')
+  t.is(result.detection, 'html')
+})
+
+test('cloudflare (no false positive for jsd beacon)', t => {
+  const html =
+    "<script>window.__CF$cv$params={r:'abc'};a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';</script>"
+  t.is(isAntibot({ html, statusCode: 200 }).detected, false)
+  t.is(isAntibot({ html, statusCode: 403 }).detected, false)
+})
+
+test('cloudflare (no false positive for cdn-cgi email protection)', t => {
+  const html = '<a href="/cdn-cgi/l/email-protection">email</a>'
+  const result = isAntibot({ html, statusCode: 403 })
+  t.is(result.detected, false)
+})
+
+test('cloudflare (no false positive for bare cloudflare mention)', t => {
+  const html = '<p>We use Cloudflare CDN.</p>'
+  const result = isAntibot({ html, statusCode: 403 })
+  t.is(result.detected, false)
+})
+
 test('vercel', t => {
   const headers = { 'x-vercel-mitigated': 'challenge' }
   const result = isAntibot({ headers })

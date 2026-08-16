@@ -23,6 +23,14 @@
               "cookie": "cf_clearance="
             }
           ]
+        },
+        {
+          "type": "html",
+          "rules": [
+            {
+              "contains": "_cf_chl_opt"
+            }
+          ]
         }
       ]
     },
