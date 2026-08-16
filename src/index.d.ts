@@ -42,6 +42,7 @@ declare namespace isAntibot {
     | 'weibo'
     | 'dribbble'
     | 'douban'
+    | 'cloudfront'
 
   interface Input {
     headers?: HeadersLike

@@ -15,7 +15,7 @@ Detected antibot systems:
 
 - Cloudflare, Vercel, Akamai, DataDome, PerimeterX, Shape Security, Kasada
 - Imperva / Incapsula, Reblaze, Cheq, Sucuri, ThreatMetrix, Meetrics
-- Ocule, Anubis, FullStory Challenge, AWS WAF
+- Ocule, Anubis, FullStory Challenge, AWS WAF, CloudFront
 
 Detected CAPTCHA providers:
 
