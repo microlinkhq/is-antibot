@@ -872,6 +872,33 @@
       ]
     },
     {
+      "name": "cloudfront",
+      "label": "CloudFront",
+      "category": "antibot",
+      "detections": [
+        {
+          "type": "headers",
+          "technique": "waf",
+          "rules": [
+            {
+              "header": "x-cache",
+              "startsWith": "Error from cloudfront"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "waf",
+          "statusCodes": [403, 502, 503, 504],
+          "rules": [
+            {
+              "contains": "The request could not be satisfied"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "anubis",
       "label": "Anubis",
       "category": "antibot",

@@ -893,21 +893,23 @@ test('amazon (x-cache Error from cloudfront + amazon URL + status 500)', t => {
   t.is(result.detection, 'headers')
 })
 
-test('amazon (no match without status 500)', t => {
+test('amazon (status 200 cloudfront error is not amazon)', t => {
   const result = isAntibot({
     url: 'https://www.amazon.com/dp/B000000000',
     headers: { 'x-cache': 'Error from cloudfront' },
     statusCode: 200
   })
-  t.is(result.detected, false)
+  t.not(result.provider, 'amazon')
+  t.is(result.provider, 'cloudfront')
 })
 
-test('amazon (no match when statusCode omitted)', t => {
+test('amazon (omitted status cloudfront error is not amazon)', t => {
   const result = isAntibot({
     url: 'https://www.amazon.com/dp/B000000000',
     headers: { 'x-cache': 'Error from cloudfront' }
   })
-  t.is(result.detected, false)
+  t.not(result.provider, 'amazon')
+  t.is(result.provider, 'cloudfront')
 })
 
 test('amazon (captcha page with csm-captcha-instrumentation)', t => {
@@ -930,10 +932,51 @@ test('amazon (csm-captcha-instrumentation on non-amazon URL should not match)', 
   t.is(result.detected, false)
 })
 
-test('amazon (no false positive: CloudFront error off amazon)', t => {
+test('amazon (cloudfront error off amazon is not amazon)', t => {
   const result = isAntibot({
     url: 'https://example.com/',
     headers: { 'x-cache': 'Error from cloudfront' }
+  })
+  t.not(result.provider, 'amazon')
+})
+
+test('cloudfront (x-cache Error from cloudfront)', t => {
+  const result = isAntibot({
+    url: 'https://www.un.org/en/about-us',
+    headers: { 'x-cache': 'Error from cloudfront' },
+    statusCode: 403
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudfront')
+  t.is(result.technique, 'waf')
+})
+
+test('cloudfront (html error page on 403)', t => {
+  const result = isAntibot({
+    url: 'https://www.un.org/en/about-us',
+    html: '<title>ERROR: The request could not be satisfied</title>',
+    statusCode: 403
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'cloudfront')
+  t.is(result.technique, 'waf')
+})
+
+test('cloudfront (no false positive: Miss from cloudfront on 200)', t => {
+  const result = isAntibot({
+    url: 'https://www.un.org/en/about-us',
+    headers: { 'x-cache': 'Miss from cloudfront' },
+    html: '<title>About Us | United Nations</title>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
+test('cloudfront (no false positive: error copy on a 200 page)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/cloudfront-errors',
+    html: '<p>The request could not be satisfied. CloudFront returns this when the request is blocked.</p>',
+    statusCode: 200
   })
   t.is(result.detected, false)
 })
