@@ -28,16 +28,14 @@ test('cloudflare (html _cf_chl_opt interstitial)', t => {
   t.is(result.detection, 'html')
 })
 
-test('cloudflare (html Just a moment title on 403)', t => {
+test('cloudflare (html Just a moment title)', t => {
   const html = '<title>Just a moment...</title>'
-  const result = isAntibot({ html, statusCode: 403 })
-  t.is(result.detected, true)
-  t.is(result.provider, 'cloudflare')
-  t.is(result.detection, 'html')
-})
-
-test('cloudflare (no false positive for Just a moment title on 200)', t => {
-  const html = '<title>Just a moment...</title>'
+  for (const statusCode of [403, 503]) {
+    const result = isAntibot({ html, statusCode })
+    t.is(result.detected, true)
+    t.is(result.provider, 'cloudflare')
+    t.is(result.detection, 'html')
+  }
   t.is(isAntibot({ html, statusCode: 200 }).detected, false)
 })
 
