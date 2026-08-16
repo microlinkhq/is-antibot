@@ -10,6 +10,7 @@ test('cloudflare (cf-mitigated header)', t => {
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
   t.is(result.detection, 'headers')
+  t.is(result.technique, 'javascript')
 })
 
 test('cloudflare (cf_clearance set-cookie)', t => {
@@ -18,6 +19,7 @@ test('cloudflare (cf_clearance set-cookie)', t => {
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
   t.is(result.detection, 'cookies')
+  t.is(result.technique, 'cookie')
 })
 
 test('cloudflare (html _cf_chl_opt interstitial)', t => {
@@ -26,6 +28,7 @@ test('cloudflare (html _cf_chl_opt interstitial)', t => {
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare')
   t.is(result.detection, 'html')
+  t.is(result.technique, 'javascript')
 })
 
 test('cloudflare (no false positive for jsd beacon)', t => {
@@ -418,6 +421,7 @@ test('recaptcha (html grecaptcha)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
+  t.is(result.technique, 'captcha')
 })
 
 test('recaptcha (no false positive for grecaptcha badge css)', t => {
@@ -666,6 +670,7 @@ test('houzz (blocked by status code)', t => {
   t.is(result.detected, true)
   t.is(result.provider, 'houzz')
   t.is(result.detection, 'statusCode')
+  t.is(result.technique, 'waf')
 })
 
 test('houzz (429 on non-houzz url should not match)', t => {
@@ -1014,6 +1019,8 @@ test('no headers provided', t => {
   const result = isAntibot()
   t.is(result.detected, false)
   t.is(result.provider, null)
+  t.is(result.detection, null)
+  t.is(result.technique, null)
 })
 
 test('support Headers object', t => {

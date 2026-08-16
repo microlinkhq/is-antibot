@@ -49,9 +49,14 @@ const createCompiledTestPattern = value => {
   }
 }
 
-const createResult = (detected, provider, detection = null) => {
-  debug({ detected, provider, detection })
-  return { detected, provider, detection }
+const createResult = (
+  detected,
+  provider,
+  detection = null,
+  technique = null
+) => {
+  debug({ detected, provider, detection, technique })
+  return { detected, provider, detection, technique }
 }
 
 const compileCookieMatcher = patternList => {
@@ -175,6 +180,7 @@ const createRegExp = (pattern, flags = '') => new RegExp(pattern, flags)
 
 const createCompiledDetection = (detection, matches) => ({
   type: detection.type,
+  technique: detection.technique ?? null,
   domain: detection.domain,
   domainWithoutSuffix: detection.domainWithoutSuffix,
   matches
@@ -330,7 +336,8 @@ const detectWithProviders = (
       return createResult(
         true,
         provider.name,
-        DETECTION[detection.type] || detection.type
+        DETECTION[detection.type] || detection.type,
+        detection.technique
       )
     }
   }

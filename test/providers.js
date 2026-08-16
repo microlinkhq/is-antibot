@@ -12,6 +12,10 @@ test('true', async t => {
     const result = isAntibot(fixture)
     t.is(result.detected, true, `Failed ${name}`)
     t.truthy(result.provider, `Failed ${name}`)
+    t.true(
+      ['javascript', 'captcha', 'waf', 'cookie'].includes(result.technique),
+      `Failed ${name} technique`
+    )
   }
 })
 

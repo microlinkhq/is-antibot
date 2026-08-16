@@ -56,11 +56,15 @@
     },
     "detection": {
       "type": "object",
-      "required": ["type", "rules"],
+      "required": ["type", "technique", "rules"],
       "additionalProperties": false,
       "properties": {
         "type": {
           "enum": ["headers", "cookies", "html", "url", "status_code"]
+        },
+        "technique": {
+          "enum": ["javascript", "captcha", "waf", "cookie"],
+          "description": "Challenge kind on the matching detection. javascript: JS interstitial that needs a browser. captcha: interactive widget. waf: network/status/IP block. cookie: vendor cookie (may be leftover on success)."
         },
         "domain": {
           "type": "string",

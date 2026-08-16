@@ -133,7 +133,13 @@ const validateProvider = provider =>
   validate(provider, schema.$defs.provider, schema)
 
 test('provider requires label and category', t => {
-  const detections = [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+  const detections = [
+    {
+      type: 'html',
+      technique: 'javascript',
+      rules: [{ contains: 'challenge' }]
+    }
+  ]
 
   t.deepEqual(validateProvider({ name: 'acme', detections }), [
     '$ is missing required property "label"',
@@ -168,5 +174,31 @@ test('provider requires label and category', t => {
       detections
     }),
     []
+  )
+})
+
+test('detection requires technique', t => {
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+    }),
+    ['$.detections[0] is missing required property "technique"']
+  )
+
+  t.deepEqual(
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [
+        { type: 'html', technique: 'browser', rules: [{ contains: 'x' }] }
+      ]
+    }),
+    [
+      '$.detections[0].technique should be one of: javascript, captcha, waf, cookie'
+    ]
   )
 })

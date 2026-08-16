@@ -88,7 +88,7 @@ import isAntibot from 'is-antibot'
 
 const response = await fetch('https://example.com')
 
-const { detected, provider, detection } = isAntibot({
+const { detected, provider, detection, technique } = isAntibot({
   headers: response.headers,
   statusCode: response.status,
   html: await response.text(),
@@ -96,8 +96,8 @@ const { detected, provider, detection } = isAntibot({
 })
 
 if (detected) {
-  console.log(`Blocked by ${provider} (via ${detection})`)
-  // => "Blocked by CloudFlare (via headers)"
+  console.log(`Blocked by ${provider} (via ${detection}, ${technique})`)
+  // => "Blocked by CloudFlare (via headers, javascript)"
 }
 ```
 
@@ -114,7 +114,7 @@ At a high level, **is-antibot** classifies challenge responses using:
 - **Response headers and body markers**: Blocking responses usually expose hints in headers and HTML, such as mitigation headers, challenge tokens, or provider-specific script references.
 - **Provider-specific fingerprints**: Each provider leaves a distinct combination of signals; for example, Cloudflare commonly surfaces `cf-mitigated: challenge`, while other providers rely more on cookie, URL, or HTML fingerprints.
 
-Each provider has unique fingerprints across one or more of these signals. The library checks them in priority order and returns the first match.
+Each provider has unique fingerprints across one or more of these signals. The library checks them in priority order and returns the first match, including a `technique` (`javascript`, `captcha`, `waf`, or `cookie`) so callers can choose a retry strategy.
 
 ## Providers
 
