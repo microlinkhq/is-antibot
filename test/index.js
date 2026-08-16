@@ -181,6 +181,7 @@ test('shapesecurity (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'shapesecurity')
+  t.is(result.technique, 'javascript')
 })
 
 test('shapesecurity (html)', t => {
@@ -967,6 +968,7 @@ test('aws-waf (header)', t => {
   const result = isAntibot({ headers })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+  t.is(result.technique, 'javascript')
 })
 
 test('aws-waf (html aws-waf)', t => {

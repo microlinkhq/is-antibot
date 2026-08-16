@@ -182,7 +182,7 @@
       "detections": [
         {
           "type": "headers",
-          "technique": "waf",
+          "technique": "javascript",
           "rules": [
             {
               "headerNamePattern": "^x-[a-z0-9]{8}-[abcdfz]$",
@@ -923,7 +923,7 @@
       "detections": [
         {
           "type": "headers",
-          "technique": "waf",
+          "technique": "javascript",
           "rules": [
             {
               "header": "x-amzn-waf-action",

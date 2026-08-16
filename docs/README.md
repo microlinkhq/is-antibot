@@ -97,7 +97,7 @@ const { detected, provider, detection, technique } = isAntibot({
 
 if (detected) {
   console.log(`Blocked by ${provider} (via ${detection}, ${technique})`)
-  // => "Blocked by CloudFlare (via headers, javascript)"
+  // => "Blocked by cloudflare (via headers, javascript)"
 }
 ```
 

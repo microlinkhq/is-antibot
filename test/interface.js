@@ -22,7 +22,7 @@ test('from fetch', async t => {
   t.true(
     ['headers', 'cookies', 'html', 'url', 'statusCode'].includes(detection)
   )
-  t.true(['javascript', 'captcha', 'waf', 'cookie'].includes(technique))
+  t.is(technique, 'waf')
 })
 
 test('from got', async t => {
@@ -33,5 +33,5 @@ test('from got', async t => {
   t.true(
     ['headers', 'cookies', 'html', 'url', 'statusCode'].includes(detection)
   )
-  t.true(['javascript', 'captcha', 'waf', 'cookie'].includes(technique))
+  t.is(technique, 'waf')
 })

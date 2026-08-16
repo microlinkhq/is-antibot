@@ -13,5 +13,5 @@ const { detected, provider, detection, technique } = isAntibot({
 
 if (detected) {
   console.log(`Blocked by ${provider} (via ${detection}, ${technique})`)
-  // => "Blocked by LinkedIn (via statusCode, waf)"
+  // => "Blocked by linkedin (via statusCode, waf)"
 }
