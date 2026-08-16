@@ -1,5 +1,7 @@
 'use strict'
 
+const fs = require('fs')
+const path = require('path')
 const test = require('ava')
 
 const schema = require('../src/schema.json')
@@ -123,6 +125,17 @@ const validate = (value, definition, root, path = '$') => {
 
   return errors
 }
+
+test('typescript ProviderName matches the catalog', t => {
+  const dts = fs.readFileSync(path.join(__dirname, '../src/index.d.ts'), 'utf8')
+  const block = dts.match(/type ProviderName =([\s\S]*?)interface Input/)
+  t.truthy(block, 'ProviderName union is present')
+  const names = [...block[1].matchAll(/'([^']+)'/g)].map(([, name]) => name)
+  t.deepEqual(
+    names,
+    providers.providers.map(({ name }) => name)
+  )
+})
 
 test('providers json conforms to providers schema', t => {
   const errors = validate(providers, schema, schema)
