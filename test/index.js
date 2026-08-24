@@ -213,9 +213,34 @@ test('kasada (html)', t => {
 
 test('imperva (header)', t => {
   const headers = { 'x-cdn': 'Incapsula' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
+})
+
+test('imperva (fronting headers on a served page are not a block)', t => {
+  const headers = { 'x-cdn': 'Incapsula', 'x-iinfo': '39-6829515-6829577 NNYN' }
+  const html = '<html><body>real content</body></html>'
+  for (const statusCode of [200, 301, 404]) {
+    const result = isAntibot({ headers, html, statusCode })
+    t.is(result.detected, false, `statusCode ${statusCode}`)
+  }
+})
+
+test('imperva (challenge interstitial is a block on a 200)', t => {
+  const html =
+    '<html><head><script src="/_Incapsula_Resource?SWJIYLWA=5074a744e2e3d891814e9a2dace20bd4,719d34d31c8e3a6e6fffd425f7e032f3"></script></head><body></body></html>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'imperva')
+  t.is(result.technique, 'javascript')
+})
+
+test('imperva (telemetry script on a served page is not a block)', t => {
+  const html =
+    '<html><body>real content<script src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=673101135"></script></body></html>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('imperva (html with incapsula)', t => {
@@ -241,23 +266,53 @@ test('imperva (no false positive for bare mention)', t => {
 
 test('imperva (incap_ses_ set-cookie)', t => {
   const headers = { 'set-cookie': 'incap_ses_123=abc; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
+})
+
+test('imperva (incap_ses_ on a served page is not a block)', t => {
+  const headers = { 'set-cookie': 'incap_ses_123=abc; path=/' }
+  const result = isAntibot({
+    headers,
+    html: '<html>ok</html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
 })
 
 test('imperva (visid_incap_ set-cookie)', t => {
   const headers = { 'set-cookie': 'visid_incap_456=xyz; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
 })
 
+test('imperva (visid_incap_ on a served page is not a block)', t => {
+  const headers = { 'set-cookie': 'visid_incap_456=xyz; path=/' }
+  const result = isAntibot({
+    headers,
+    html: '<html>ok</html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
 test('imperva (reese84 set-cookie)', t => {
   const headers = { 'set-cookie': 'reese84=abc123; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'imperva')
+})
+
+test('imperva (reese84 on a served page is not a block)', t => {
+  const headers = { 'set-cookie': 'reese84=abc123; path=/' }
+  const result = isAntibot({
+    headers,
+    html: '<html>ok</html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
 })
 
 test('reblaze (rbzid set-cookie)', t => {
@@ -419,10 +474,17 @@ test('recaptcha (url with recaptcha.net)', t => {
 
 test('recaptcha (html grecaptcha)', t => {
   const html = '<script>grecaptcha.execute();</script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 429 })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
   t.is(result.technique, 'captcha')
+})
+
+test('recaptcha (v3 on a served page is not a block)', t => {
+  const html =
+    '<script>grecaptcha.ready(function () { grecaptcha.execute("6Ldl") })</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('recaptcha (no false positive for grecaptcha badge css)', t => {
@@ -1119,7 +1181,9 @@ test('support Fetch Response with await text()', async t => {
 })
 
 test('fallback body string to html', t => {
-  const result = isAntibot({ body: '<script>grecaptcha.execute();</script>' })
+  const result = isAntibot({
+    body: '<script src="https://hcaptcha.com/1/api.js"></script>'
+  })
   t.is(result.detected, true)
-  t.is(result.provider, 'recaptcha')
+  t.is(result.provider, 'hcaptcha')
 })
