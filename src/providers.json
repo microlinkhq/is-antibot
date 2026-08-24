@@ -240,16 +240,11 @@
       "category": "antibot",
       "detections": [
         {
-          "type": "headers",
-          "technique": "waf",
+          "type": "html",
+          "technique": "javascript",
           "rules": [
             {
-              "header": "x-cdn",
-              "equals": "Incapsula"
-            },
-            {
-              "header": "x-iinfo",
-              "exists": true
+              "regex": "_Incapsula_Resource\\?[A-Za-z0-9_]+=[0-9a-f]{8,},[0-9a-f]{8,}"
             }
           ]
         },
@@ -263,8 +258,32 @@
           ]
         },
         {
+          "type": "headers",
+          "technique": "waf",
+          "statusCodes": [
+            403,
+            429,
+            503
+          ],
+          "rules": [
+            {
+              "header": "x-cdn",
+              "equals": "Incapsula"
+            },
+            {
+              "header": "x-iinfo",
+              "exists": true
+            }
+          ]
+        },
+        {
           "type": "cookies",
           "technique": "cookie",
+          "statusCodes": [
+            403,
+            429,
+            503
+          ],
           "rules": [
             {
               "cookie": "incap_ses_"
@@ -461,6 +480,21 @@
         {
           "type": "html",
           "technique": "captcha",
+          "rules": [
+            {
+              "regex": "^(?=[\\s\\S]*g-recaptcha)(?=[\\s\\S]*grecaptcha\\s*\\.\\s*render)",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [
+            403,
+            429,
+            503
+          ],
           "rules": [
             {
               "regex": "\\b(?:window\\.)?grecaptcha\\s*\\.(?:execute|render|ready|getResponse|enterprise)\\b",

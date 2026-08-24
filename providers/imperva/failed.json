@@ -1,0 +1,67 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "is-antibot",
+      "version": "1.0"
+    },
+    "entries": [
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://www.twinkl.de/",
+          "httpVersion": "HTTP/2",
+          "headers": [],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": -1
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/2",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, no-store"
+            },
+            {
+              "name": "content-length",
+              "value": "212"
+            },
+            {
+              "name": "x-iinfo",
+              "value": "5-2434707-0 0NNN RT(1787592163179 114) q(0 -1 -1 0) r(0 -1) B10(4,289,0) U18"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000"
+            },
+            {
+              "name": "set-cookie",
+              "value": "visid_incap_1346924=SYuyJ/D3Svi0uoMqbdugq9t9jGoAAAAAQUIPAAAAAACI6W+wjycsSoTq4Yp03V9b; expires=Mon, 23 Aug 2027 22:26:26 GMT; HttpOnly; path=/; Domain=.twinkl.de; Secure; SameSite=None"
+            },
+            {
+              "name": "set-cookie",
+              "value": "incap_ses_1393_1346924=rF21FM4JGCIHCYDk0e5UE+J9jGoAAAAAoaJK9ZHUe6eW5CFjyTTFDw==; path=/; Domain=.twinkl.de; Secure; SameSite=None"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 205,
+            "mimeType": "text/html",
+            "text": "<html>\n<head>\n<META NAME=\"robots\" CONTENT=\"noindex,nofollow\">\n<script src=\"/_Incapsula_Resource?SWJIYLWA=5074a744e2e3d891814e9a2dace20bd4,719d34d31c8e3a6e6fffd425f7e032f3\">\n</script>\n<body>\n</body></html>\n"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 205
+        }
+      }
+    ]
+  }
+}
