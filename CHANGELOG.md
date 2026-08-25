@@ -1,3 +1,9 @@
+## 2.5.3 (2026-08-25)
+
+### Bug Fixes
+
+* ignore AWS WAF and captcha widgets on served pages ([#66](https://github.com/microlinkhq/is-antibot/issues/66)) ([411de26](https://github.com/microlinkhq/is-antibot/commit/411de26d02040627326a89a035b1fc9a23daae9e))
+
 ## 2.5.2 (2026-08-25)
 
 ### Bug Fixes
