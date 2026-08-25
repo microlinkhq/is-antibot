@@ -1186,6 +1186,13 @@ test('fullstory-challenge (no false positive for Fastly NGWAF script on a conten
     '<title>The Disadvantages of Pivot Tables</title><article>Hearst article</article><script src="/_fs-ch-1T1wmsGaOgGaSxcX/assets/script.js" id="fastly-ngwaf-script"></script>'
   const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, false)
+  t.is(
+    isAntibot({
+      html: '<title>Client Challenger</title><link href="/_fs-ch-x/assets/styles.css" />',
+      statusCode: 200
+    }).detected,
+    false
+  )
 })
 
 test('aws-waf (header)', t => {
