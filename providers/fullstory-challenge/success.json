@@ -1,0 +1,64 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "The Disadvantages of Pivot Tables",
+        "startedDateTime": "2026-08-25T18:50:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-25T18:50:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://smallbusiness.chron.com/disadvantages-pivot-tables-46914.html",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "smallbusiness.chron.com"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 291,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>The Disadvantages of Pivot Tables</title></head><body><article><h1>The Disadvantages of Pivot Tables</h1><p>Pivot tables can hide source-data errors.</p></article><script src=\"/_fs-ch-1T1wmsGaOgGaSxcX/assets/script.js\" id=\"fastly-ngwaf-script\"></script></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 291
+        }
+      }
+    ]
+  }
+}
