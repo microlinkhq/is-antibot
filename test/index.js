@@ -1206,11 +1206,18 @@ test('aws-waf (html aws-waf)', t => {
   t.is(result.provider, 'aws-waf')
 })
 
-test('aws-waf (html awswaf challenge)', t => {
+test('aws-waf (html awswaf challenge.js on a blocking status)', t => {
   const html = '<script src="/awswaf/challenge.js"></script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+})
+
+test('aws-waf (SDK challenge.js on a 200 is not a block)', t => {
+  const html =
+    '<script src="https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/challenge.js" defer></script><article>checkout</article>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('aws-waf (SDK integration URL on a 200 is not a block)', t => {
@@ -1218,6 +1225,13 @@ test('aws-waf (SDK integration URL on a 200 is not a block)', t => {
     '<script>window.WEB_ACL_INTEGRATION_URL="https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/b00be2a099fd"</script><article>checkout</article>'
   const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, false)
+})
+
+test('aws-waf (gokuProps interstitial on a 200)', t => {
+  const html = '<script>window.gokuProps={"key":"k"}</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'aws-waf')
 })
 
 test('aws-waf (no false positive for bare mention)', t => {

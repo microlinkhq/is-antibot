@@ -1022,12 +1022,6 @@
             },
             {
               "contains": "gokuProps"
-            },
-            {
-              "regex": "awswaf\\.com[^\"' ]*challenge"
-            },
-            {
-              "regex": "\\/awswaf\\/[^\"' ]*challenge"
             }
           ]
         },

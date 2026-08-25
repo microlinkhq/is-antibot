@@ -56,7 +56,7 @@
           "content": {
             "size": 277,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Genesis -part 9</title></head><body><article><h1>Genesis -part 9</h1><p>Discover Your Library</p></article><script>window.WEB_ACL_INTEGRATION_URL=\"https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/b00be2a099fd\"</script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Genesis -part 9</title><script src=\"https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/challenge.js\" defer></script></head><body><article><h1>Genesis -part 9</h1><p>Discover Your Library</p></article></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
