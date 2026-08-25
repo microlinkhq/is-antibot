@@ -1,3 +1,9 @@
+## 2.5.4 (2026-08-25)
+
+### Bug Fixes
+
+* ignore Fastly NGWAF script on content pages ([#68](https://github.com/microlinkhq/is-antibot/issues/68)) ([dffe7c7](https://github.com/microlinkhq/is-antibot/commit/dffe7c7a106eab452610322ef9eeaf86a1c781fb))
+
 ## 2.5.3 (2026-08-25)
 
 ### Bug Fixes
