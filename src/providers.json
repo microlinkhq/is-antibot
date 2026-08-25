@@ -633,6 +633,21 @@
           "technique": "captcha",
           "rules": [
             {
+              "regex": "^(?=[\\s\\S]*cf-turnstile)(?=[\\s\\S]*(?:Just a moment|Attention Required|Verify you are (?:a )?human))",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [
+            403,
+            429,
+            503
+          ],
+          "rules": [
+            {
               "contains": "cf-turnstile"
             },
             {

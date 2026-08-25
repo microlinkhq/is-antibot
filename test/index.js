@@ -655,17 +655,34 @@ test('cloudflare-turnstile (url)', t => {
   t.is(result.provider, 'cloudflare-turnstile')
 })
 
-test('cloudflare-turnstile (html cf-turnstile)', t => {
+test('cloudflare-turnstile (html cf-turnstile on a blocking status)', t => {
   const html = '<div class="cf-turnstile"></div>'
-  const result = isAntibot({ html })
+  for (const statusCode of [403, 429, 503]) {
+    const result = isAntibot({ html, statusCode })
+    t.is(result.detected, true, `should detect for status ${statusCode}`)
+    t.is(result.provider, 'cloudflare-turnstile')
+  }
+})
+
+test('cloudflare-turnstile (widget on a 200 content page is not a block)', t => {
+  const html =
+    '<article>real article</article><script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script><div class="cf-turnstile"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('cloudflare-turnstile (html turnstile API on a blocking status)', t => {
+  const html =
+    '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>'
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
 })
 
-test('cloudflare-turnstile (html turnstile API)', t => {
+test('cloudflare-turnstile (Just a moment interstitial on a 200)', t => {
   const html =
-    '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>'
-  const result = isAntibot({ html })
+    '<title>Just a moment...</title><div class="cf-turnstile" data-sitekey="k"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'cloudflare-turnstile')
 })
