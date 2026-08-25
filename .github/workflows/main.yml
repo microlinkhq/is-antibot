@@ -69,6 +69,7 @@ jobs:
           git pull origin master
           VERSION_BEFORE=$(node -p "require('./package.json').version")
           pnpm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
+          npm config set "//registry.npmjs.org/:_authToken" "$NPM_TOKEN"
           pnpm run release
           VERSION_AFTER=$(node -p "require('./package.json').version")
           if [ "$VERSION_BEFORE" != "$VERSION_AFTER" ]; then
