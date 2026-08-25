@@ -1,3 +1,9 @@
+## 2.5.2 (2026-08-25)
+
+### Bug Fixes
+
+* ignore Turnstile widgets on served pages ([#65](https://github.com/microlinkhq/is-antibot/issues/65)) ([12221d3](https://github.com/microlinkhq/is-antibot/commit/12221d3eb8d1855949f8c7e365905e20135bcb14))
+
 ## 2.5.1 (2026-08-25)
 
 ### Bug Fixes
