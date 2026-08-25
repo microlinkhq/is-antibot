@@ -8,7 +8,7 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?",
+        "title": "Verify you are human",
         "startedDateTime": "2026-08-25T13:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
@@ -25,12 +25,12 @@
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "https://www.delve.ai/fr/blog/personas-synthetiques",
+          "url": "https://share.google/r61H0vQO2WLpfzAgn",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.delve.ai"
+              "value": "share.google"
             }
           ],
           "queryString": [],
@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 398,
+            "size": 246,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?</title><style>.c-search-captcha{display:flex}</style></head><body><article><h1>Personas</h1><p>Delve AI has been featured in Gartner's Hype Cycle.</p></article><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Verify you are human</title></head><body><script src=\"https://wbd-api.arkoselabs.com/v2/enforcement.js\"></script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 398
+          "bodySize": 246
         }
       }
     ]

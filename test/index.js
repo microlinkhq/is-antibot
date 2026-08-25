@@ -553,11 +553,27 @@ test('hcaptcha (url)', t => {
   t.is(result.provider, 'hcaptcha')
 })
 
-test('hcaptcha (html hcaptcha.com)', t => {
+test('hcaptcha (html hcaptcha.com on a blocking status)', t => {
   const html = '<script src="https://hcaptcha.com/1/api.js"></script>'
-  const result = isAntibot({ html })
-  t.is(result.detected, true)
-  t.is(result.provider, 'hcaptcha')
+  for (const statusCode of [403, 429, 503]) {
+    const result = isAntibot({ html, statusCode })
+    t.is(result.detected, true, `should detect for status ${statusCode}`)
+    t.is(result.provider, 'hcaptcha')
+  }
+})
+
+test('hcaptcha (widget on a 200 content page is not a block)', t => {
+  const html =
+    '<article>real article</article><script src="https://hcaptcha.com/1/api.js"></script><div class="h-captcha"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('hcaptcha (no false positive for search-captcha CSS)', t => {
+  const html =
+    '<style>.c-search-captcha{display:flex}</style><article>Les Personas Synthétiques</article>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('hcaptcha (no false positive for bare hcaptcha mention)', t => {
@@ -566,9 +582,17 @@ test('hcaptcha (no false positive for bare hcaptcha mention)', t => {
   t.is(result.detected, false)
 })
 
-test('hcaptcha (html h-captcha)', t => {
+test('hcaptcha (html h-captcha on a blocking status)', t => {
   const html = '<div class="h-captcha"></div>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'hcaptcha')
+})
+
+test('hcaptcha (Verify you are human interstitial on a 200)', t => {
+  const html =
+    '<title>Verify you are human</title><div class="h-captcha" data-sitekey="k"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
 })
@@ -594,9 +618,9 @@ test('funcaptcha (url with funcaptcha)', t => {
   t.is(result.provider, 'funcaptcha')
 })
 
-test('funcaptcha (html with funcaptcha)', t => {
+test('funcaptcha (html with funcaptcha on a blocking status)', t => {
   const html = '<script>funcaptcha.init();</script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
 })
@@ -607,10 +631,25 @@ test('funcaptcha (no false positive for bare funcaptcha mention)', t => {
   t.is(result.detected, false)
 })
 
-test('funcaptcha (html with arkoselabs.com)', t => {
+test('funcaptcha (html with arkoselabs.com on a blocking status)', t => {
   const html =
     '<script src="https://client-api.arkoselabs.com/fc/assets/loader.js"></script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'funcaptcha')
+})
+
+test('funcaptcha (Arkose keys on a 200 content page are not a block)', t => {
+  const html =
+    '<article>CNN story</article><script>window.ARKOSE_LOOKUP_SRC="https://wbd-api.arkoselabs.com/v2/key/api.js"</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('funcaptcha (Verify you are human interstitial on a 200)', t => {
+  const html =
+    '<title>Verify you are human</title><script src="https://client-api.arkoselabs.com/v2/api.js"></script>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'funcaptcha')
 })
@@ -700,16 +739,23 @@ test('friendly-captcha (url)', t => {
   t.is(result.provider, 'friendly-captcha')
 })
 
-test('friendly-captcha (html frc-captcha)', t => {
+test('friendly-captcha (html frc-captcha on a blocking status)', t => {
   const html = '<div class="frc-captcha" data-sitekey="test"></div>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'friendly-captcha')
 })
 
-test('friendly-captcha (html friendlyChallenge)', t => {
+test('friendly-captcha (widget on a 200 content page is not a block)', t => {
+  const html =
+    '<article>real article</article><div class="frc-captcha" data-sitekey="test"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('friendly-captcha (html friendlyChallenge on a blocking status)', t => {
   const html = '<script>friendlyChallenge.render();</script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'friendly-captcha')
 })
@@ -1143,6 +1189,16 @@ test('aws-waf (header)', t => {
   t.is(result.technique, 'javascript')
 })
 
+test('aws-waf (x-amzn-requestid on a 200 is not a block)', t => {
+  const headers = { 'x-amzn-requestid': 'ee270925-a72c-4312-a2c7-c680bc157787' }
+  const result = isAntibot({
+    headers,
+    statusCode: 200,
+    html: '<article>Genesis -part 9</article>'
+  })
+  t.is(result.detected, false)
+})
+
 test('aws-waf (html aws-waf)', t => {
   const html = '<script>aws-waf.init();</script>'
   const result = isAntibot({ html })
@@ -1150,11 +1206,18 @@ test('aws-waf (html aws-waf)', t => {
   t.is(result.provider, 'aws-waf')
 })
 
-test('aws-waf (html awswaf)', t => {
+test('aws-waf (html awswaf challenge)', t => {
   const html = '<script src="/awswaf/challenge.js"></script>'
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+})
+
+test('aws-waf (SDK integration URL on a 200 is not a block)', t => {
+  const html =
+    '<script>window.WEB_ACL_INTEGRATION_URL="https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/b00be2a099fd"</script><article>checkout</article>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('aws-waf (no false positive for bare mention)', t => {
@@ -1163,11 +1226,21 @@ test('aws-waf (no false positive for bare mention)', t => {
   t.is(result.detected, false)
 })
 
-test('aws-waf (aws-waf-token set-cookie)', t => {
+test('aws-waf (aws-waf-token set-cookie on a blocking status)', t => {
   const headers = { 'set-cookie': 'aws-waf-token=abc123; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'aws-waf')
+})
+
+test('aws-waf (aws-waf-token leftover on a 200 is not a block)', t => {
+  const headers = { 'set-cookie': 'aws-waf-token=abc123; path=/' }
+  const result = isAntibot({
+    headers,
+    statusCode: 200,
+    html: '<article>ok</article>'
+  })
+  t.is(result.detected, false)
 })
 
 test('createTestPattern with invalid regex catches error', t => {
@@ -1230,7 +1303,8 @@ test('support Fetch Response with await text()', async t => {
 
 test('fallback body string to html', t => {
   const result = isAntibot({
-    body: '<script src="https://hcaptcha.com/1/api.js"></script>'
+    body: '<script src="https://hcaptcha.com/1/api.js"></script>',
+    statusCode: 403
   })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
