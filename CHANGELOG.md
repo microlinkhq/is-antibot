@@ -1,3 +1,9 @@
+## 2.5.1 (2026-08-25)
+
+### Bug Fixes
+
+* replace deprecated conventional-changelog-cli ([#63](https://github.com/microlinkhq/is-antibot/issues/63)) ([2494145](https://github.com/microlinkhq/is-antibot/commit/2494145d4afc32862de6ba8d25070ab01c9ae4d1))
+
 ## 2.5.0 (2026-08-16)
 ## 2.4.0 (2026-08-16)
 ## 2.3.5 (2026-08-16)
