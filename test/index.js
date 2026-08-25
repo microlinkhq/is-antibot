@@ -530,6 +530,14 @@ test('recaptcha (docs URL is not a captcha endpoint)', t => {
   t.is(result.detected, false)
 })
 
+test('recaptcha (nested google.com/recaptcha in another host path is not a block)', t => {
+  const result = isAntibot({
+    url: 'https://example.test/redirect/https://www.google.com/recaptcha/enterprise.js',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
 test('recaptcha (Google unusual-traffic interstitial on a 200)', t => {
   const html =
     '<form id="captcha-form"><div class="g-recaptcha" data-sitekey="k"></div></form>'

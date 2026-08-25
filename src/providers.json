@@ -472,7 +472,7 @@
               "contains": "recaptcha.net"
             },
             {
-              "regex": "(?:^|//)(?:www\\.)?google\\.com/recaptcha/(?:api|enterprise)",
+              "regex": "^https?://(?:www\\.)?google\\.com/recaptcha/(?:api|enterprise)",
               "flags": "i"
             }
           ]
