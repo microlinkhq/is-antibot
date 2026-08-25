@@ -589,7 +589,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*arkoselabs\\.com)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify|enforcement\\.js))",
+              "regex": "^(?=[\\s\\S]*arkoselabs\\.com)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|enforcement\\.js))",
               "flags": "i"
             }
           ]

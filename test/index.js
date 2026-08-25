@@ -646,6 +646,15 @@ test('funcaptcha (Arkose keys on a 200 content page are not a block)', t => {
   t.is(result.detected, false)
 })
 
+test('funcaptcha (Please verify disclaimer + arkose allowlist on 200 is not a block)', t => {
+  const html =
+    '<title>daily calm video for support group - Search Videos</title>' +
+    '<p>AI-generated content. Please verify before relying on it.</p>' +
+    '<script>const allow=["microsoft-api.arkoselabs.com","challenges.cloudflare.com"]</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
 test('funcaptcha (Verify you are human interstitial on a 200)', t => {
   const html =
     '<title>Verify you are human</title><script src="https://client-api.arkoselabs.com/v2/api.js"></script>'
