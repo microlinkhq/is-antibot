@@ -983,7 +983,8 @@
           "technique": "javascript",
           "rules": [
             {
-              "contains": "_fs-ch-"
+              "regex": "^(?=[\\s\\S]*_fs-ch-)(?=[\\s\\S]*<title[^>]*>\\s*Client Challenge)",
+              "flags": "i"
             }
           ]
         },
