@@ -514,9 +514,25 @@ test('recaptcha (no false positive: g-recaptcha widget on a 200 content page)', 
   t.is(result.provider, null)
 })
 
-test('recaptcha (html active grecaptcha on a 200 page is still a block)', t => {
+test('recaptcha (comment-form grecaptcha.render on a 200 page is not a block)', t => {
   const html =
-    '<div class="g-recaptcha"></div><script>grecaptcha.render("x")</script>'
+    '<article>real article</article><input name="g-recaptcha-response"><script>grecaptcha.render("x")</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('recaptcha (docs URL is not a captcha endpoint)', t => {
+  const result = isAntibot({
+    url: 'https://docs.cloud.google.com/recaptcha/docs/create-key-website',
+    html: '<html><title>Create a key</title></html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
+test('recaptcha (Google unusual-traffic interstitial on a 200)', t => {
+  const html =
+    '<form id="captcha-form"><div class="g-recaptcha" data-sitekey="k"></div></form>'
   const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'recaptcha')
@@ -547,6 +563,13 @@ test('hcaptcha (html h-captcha)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
+})
+
+test('hcaptcha (no false positive for Shopify h-captcha-response field)', t => {
+  const html =
+    "<script>const d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response']</script><article>Tennis paddles</article>"
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
 })
 
 test('funcaptcha (url with arkoselabs)', t => {
