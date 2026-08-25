@@ -1,0 +1,69 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "온라인 학교폭력의 실태",
+        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "http://www.jeonmin.co.kr/news/articleView.html?idxno=353270",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.jeonmin.co.kr"
+            }
+          ],
+          "queryString": [
+            {
+              "name": "idxno",
+              "value": "353270"
+            }
+          ],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 298,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>온라인 학교폭력의 실태</title></head><body><article><h1>사이버 불링</h1><p>학교폭력의 실태를 다룬 기사입니다.</p></article><input id=\"g-recaptcha-response\" name=\"g-recaptcha-response\" type=\"hidden\" value=\"\" /><script>grecaptcha.render('captcha_container', {sitekey: 'k'})</script></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 298
+        }
+      }
+    ]
+  }
+}

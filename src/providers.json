@@ -472,7 +472,7 @@
               "contains": "recaptcha.net"
             },
             {
-              "regex": "google\\.com\\/recaptcha",
+              "regex": "^https?://(?:www\\.)?google\\.com/recaptcha/(?:api|enterprise)",
               "flags": "i"
             }
           ]
@@ -482,7 +482,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*g-recaptcha)(?=[\\s\\S]*grecaptcha\\s*\\.\\s*render)",
+              "regex": "^(?=[\\s\\S]*captcha-form)(?=[\\s\\S]*g-recaptcha)",
               "flags": "i"
             }
           ]
@@ -549,7 +549,7 @@
               "contains": "hcaptcha.com"
             },
             {
-              "contains": "h-captcha"
+              "regex": "h-captcha(?!-response)"
             }
           ]
         }

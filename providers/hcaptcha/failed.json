@@ -1,0 +1,64 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "Tennis - Gamma Sports",
+        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.gammasports.com/collections/tennis",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.gammasports.com"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 189,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>Tennis - Gamma Sports</title></head><body><script src=\"https://hcaptcha.com/1/api.js\"></script><div class=\"h-captcha\" data-sitekey=\"k\"></div></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 189
+        }
+      }
+    ]
+  }
+}
