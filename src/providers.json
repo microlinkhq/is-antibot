@@ -546,10 +546,21 @@
           "technique": "captcha",
           "rules": [
             {
+              "regex": "^(?=[\\s\\S]*\\bh-captcha(?!-response))(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify))",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [403, 429, 503],
+          "rules": [
+            {
               "contains": "hcaptcha.com"
             },
             {
-              "regex": "h-captcha(?!-response)"
+              "regex": "\\bh-captcha(?!-response)"
             }
           ]
         }
@@ -576,6 +587,17 @@
         {
           "type": "html",
           "technique": "captcha",
+          "rules": [
+            {
+              "regex": "^(?=[\\s\\S]*arkoselabs\\.com)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify|enforcement\\.js))",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "contains": "arkoselabs.com"
@@ -675,6 +697,17 @@
         {
           "type": "html",
           "technique": "captcha",
+          "rules": [
+            {
+              "regex": "^(?=[\\s\\S]*frc-captcha)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify))",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "contains": "frc-captcha"
@@ -977,10 +1010,6 @@
             {
               "header": "x-amzn-waf-action",
               "exists": true
-            },
-            {
-              "header": "x-amzn-requestid",
-              "exists": true
             }
           ]
         },
@@ -992,6 +1021,16 @@
               "regex": "aws-waf\\.\\w+\\s*\\("
             },
             {
+              "contains": "gokuProps"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "javascript",
+          "statusCodes": [202, 403, 405, 429, 503],
+          "rules": [
+            {
               "regex": "awswaf\\.com|\\/awswaf\\/"
             }
           ]
@@ -999,6 +1038,7 @@
         {
           "type": "cookies",
           "technique": "cookie",
+          "statusCodes": [202, 403, 405, 429, 503],
           "rules": [
             {
               "cookie": "aws-waf-token="

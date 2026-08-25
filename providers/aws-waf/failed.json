@@ -8,7 +8,7 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?",
+        "title": "Genesis -part 9",
         "startedDateTime": "2026-08-25T13:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
@@ -25,12 +25,12 @@
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "https://www.delve.ai/fr/blog/personas-synthetiques",
+          "url": "https://open.spreaker.com/A4NZ/r8gof0tb",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.delve.ai"
+              "value": "open.spreaker.com"
             }
           ],
           "queryString": [],
@@ -46,17 +46,25 @@
             {
               "name": "content-type",
               "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "x-amzn-requestid",
+              "value": "ee270925-a72c-4312-a2c7-c680bc157787"
+            },
+            {
+              "name": "x-amzn-waf-action",
+              "value": "challenge"
             }
           ],
           "cookies": [],
           "content": {
-            "size": 398,
+            "size": 277,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?</title><style>.c-search-captcha{display:flex}</style></head><body><article><h1>Personas</h1><p>Delve AI has been featured in Gartner's Hype Cycle.</p></article><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Genesis -part 9</title><script src=\"https://a40627b4876a.edge.sdk.awswaf.com/a40627b4876a/challenge.js\" defer></script></head><body><article><h1>Genesis -part 9</h1><p>Discover Your Library</p></article></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 398
+          "bodySize": 277
         }
       }
     ]

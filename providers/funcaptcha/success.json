@@ -8,7 +8,7 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?",
+        "title": "4,000-year-old handprint found on ancient Egyptian tomb | CNN",
         "startedDateTime": "2026-08-25T13:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
@@ -25,12 +25,12 @@
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "https://www.delve.ai/fr/blog/personas-synthetiques",
+          "url": "https://share.google/r61H0vQO2WLpfzAgn",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.delve.ai"
+              "value": "share.google"
             }
           ],
           "queryString": [],
@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 398,
+            "size": 368,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?</title><style>.c-search-captcha{display:flex}</style></head><body><article><h1>Personas</h1><p>Delve AI has been featured in Gartner's Hype Cycle.</p></article><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>4,000-year-old handprint found on ancient Egyptian tomb | CNN</title></head><body><article><h1>Handprint</h1><p>Archaeologists found a 4,000-year-old handprint.</p></article><script>window.ARKOSE_LOOKUP_SRC=\"https://wbd-api.arkoselabs.com/v2/72361606-06A8-445C-A3D0-9FB07DB14610/api.js\"</script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 398
+          "bodySize": 368
         }
       }
     ]
