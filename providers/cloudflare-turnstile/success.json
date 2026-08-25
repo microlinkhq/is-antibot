@@ -1,0 +1,68 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "Tuberculosis cases trigger mandatory treatment of North Korean workers in Russia",
+        "startedDateTime": "2026-08-25T08:00:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-25T08:00:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.nknews.org/2026/06/tuberculosis-cases-trigger-mandatory-treatment-of-north-korean-workers-in-russia/",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.nknews.org"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "server",
+              "value": "cloudflare"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 349,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>Tuberculosis cases trigger mandatory treatment of North Korean workers in Russia</title></head><body><article><h1>Tuberculosis cases</h1><p>North Korean workers in Russia must undergo mandatory treatment.</p></article><script src=\"https://challenges.cloudflare.com/turnstile/v0/api.js\" defer></script></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 349
+        }
+      }
+    ]
+  }
+}
