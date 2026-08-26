@@ -54,13 +54,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 312,
+            "size": 307,
             "mimeType": "text/html",
             "text": "<html lang=\"en\"><head><title>power-technology.com</title></head><body style=\"margin:0\"><p id=\"cmsg\">Please enable JS and disable any ad blocker</p><script>var dd={'rt':'c','host':'geo.captcha-delivery.com','cookie':'abc123'}</script><script src=\"https://ct.captcha-delivery.com/c.js\"></script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 312
+          "bodySize": 307
         }
       }
     ]
