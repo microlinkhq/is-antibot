@@ -127,9 +127,26 @@ test('datadome (x-datadome-cid header)', t => {
   t.is(result.provider, 'datadome')
 })
 
-test('datadome (set-cookie)', t => {
+test('datadome (set-cookie on a blocking status)', t => {
   const headers = { 'set-cookie': 'datadome=abc123; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'datadome')
+})
+
+test('datadome (set-cookie on a content page is not enough)', t => {
+  const headers = { 'set-cookie': 'datadome=abc123; path=/' }
+  const html =
+    '<html><head><title>Hindustan Power closes financing</title></head><body><article><p>Hindustan Power has closed financing for a 435MWp solar project in India.</p></article></body></html>'
+  const result = isAntibot({ headers, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('datadome (captcha-delivery interstitial)', t => {
+  const html =
+    "<html><head><title>example.com</title></head><body><p>Please enable JS and disable any ad blocker</p><script>var dd={'host':'geo.captcha-delivery.com'}</script><script src=\"https://ct.captcha-delivery.com/c.js\"></script></body></html>"
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'datadome')
 })
