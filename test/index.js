@@ -840,16 +840,33 @@ test('qcloud-captcha (url)', t => {
   t.is(result.provider, 'qcloud-captcha')
 })
 
-test('qcloud-captcha (html TencentCaptcha)', t => {
+test('qcloud-captcha (html TencentCaptcha on a blocking status)', t => {
   const html = '<script>new TencentCaptcha("appid");</script>'
-  const result = isAntibot({ html })
+  for (const statusCode of [403, 429, 503]) {
+    const result = isAntibot({ html, statusCode })
+    t.is(result.detected, true, `should detect for status ${statusCode}`)
+    t.is(result.provider, 'qcloud-captcha')
+  }
+})
+
+test('qcloud-captcha (widget on a 200 content page is not a block)', t => {
+  const html =
+    '<article>real article</article><span id="TencentCaptcha">获取验证码</span><script src="https://turing.captcha.qcloud.com/TCaptcha.js"></script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('qcloud-captcha (html turing.captcha on a blocking status)', t => {
+  const html = '<script src="//turing.captcha.gtimg.com/tdc.js"></script>'
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'qcloud-captcha')
 })
 
-test('qcloud-captcha (html turing.captcha)', t => {
-  const html = '<script src="//turing.captcha.gtimg.com/tdc.js"></script>'
-  const result = isAntibot({ html })
+test('qcloud-captcha (interstitial on a 200)', t => {
+  const html =
+    '<title>请点击按钮开始验证</title><div id="TencentCaptcha"></div><script src="https://turing.captcha.qcloud.com/TCaptcha.js"></script>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'qcloud-captcha')
 })

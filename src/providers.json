@@ -786,6 +786,17 @@
           "technique": "captcha",
           "rules": [
             {
+              "regex": "^(?=[\\s\\S]*(?:TencentCaptcha|turing\\.captcha))(?=[\\s\\S]*(?:请点击按钮开始验证|请完成安全验证|tcaptcha_transform))",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "technique": "captcha",
+          "statusCodes": [403, 429, 503],
+          "rules": [
+            {
               "contains": "TencentCaptcha"
             },
             {
