@@ -1,3 +1,9 @@
+## 2.5.5 (2026-08-26)
+
+### Bug Fixes
+
+* ignore Arkose Please verify on content pages ([#69](https://github.com/microlinkhq/is-antibot/issues/69)) ([961b615](https://github.com/microlinkhq/is-antibot/commit/961b6151ac4a1b3a2297f5ee9edd1607178e8ac3))
+
 ## 2.5.4 (2026-08-25)
 
 ### Bug Fixes
