@@ -1,3 +1,9 @@
+## 2.5.7 (2026-08-26)
+
+### Bug Fixes
+
+* ignore DataDome session cookie on content pages ([#71](https://github.com/microlinkhq/is-antibot/issues/71)) ([1222e51](https://github.com/microlinkhq/is-antibot/commit/1222e5189bb429f7a7fb607208c80733cd20891f))
+
 ## 2.5.6 (2026-08-26)
 
 ### Bug Fixes
