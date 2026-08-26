@@ -121,8 +121,18 @@
           ]
         },
         {
+          "type": "html",
+          "technique": "javascript",
+          "rules": [
+            {
+              "contains": "captcha-delivery.com"
+            }
+          ]
+        },
+        {
           "type": "cookies",
           "technique": "cookie",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "cookie": "datadome="

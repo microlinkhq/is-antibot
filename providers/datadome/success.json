@@ -1,0 +1,68 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "Hindustan Power closes financing for 435MWp solar project in India",
+        "startedDateTime": "2026-08-26T06:28:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-26T06:28:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.power-technology.com/news/hindustan-power-financing-435mwp-solar-india/",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.power-technology.com"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "set-cookie",
+              "value": "datadome=abc123; Max-Age=31536000; Domain=.power-technology.com; Path=/; Secure; SameSite=Lax"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 291,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>Hindustan Power closes financing for 435MWp solar project in India</title></head><body><article><h1>Hindustan Power closes financing for 435MWp solar project in India</h1><p>Hindustan Power has closed financing for a 435MWp solar project in India.</p></article></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 291
+        }
+      }
+    ]
+  }
+}
