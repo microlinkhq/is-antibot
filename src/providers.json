@@ -151,13 +151,21 @@
           "technique": "javascript",
           "rules": [
             {
-              "contains": "window._pxAppId"
-            },
-            {
-              "contains": "pxInit"
+              "regex": "^(?=[\\s\\S]*window\\._pxAppId)(?=[\\s\\S]*(?:px-captcha|/captcha/captcha\\.js|_pxAction|Robot or human))",
+              "flags": "i"
             },
             {
               "contains": "_pxAction"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "technique": "javascript",
+          "domain": "walmart.com",
+          "rules": [
+            {
+              "contains": "/blocked?"
             }
           ]
         },
