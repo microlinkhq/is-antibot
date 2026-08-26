@@ -158,7 +158,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
       <tr><td>LinkedIn</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Meetrics</td><td>Antibot</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Ocule</td><td>Antibot</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
-      <tr><td>PerimeterX</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
+      <tr><td>PerimeterX</td><td>Antibot</td><td>4</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>QCloud Captcha</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Reblaze</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>reCAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>

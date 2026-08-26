@@ -141,18 +141,13 @@ test('perimeterx (header)', t => {
   t.is(result.provider, 'perimeterx')
 })
 
-test('perimeterx (html window._pxAppId)', t => {
-  const html = '<script>window._pxAppId = "PX123";</script>'
-  const result = isAntibot({ html })
+test('perimeterx (html hold-button challenge)', t => {
+  const html =
+    '<title>Robot or human?</title><div id="px-captcha"></div><script>window._pxAppId="PXu6b0qd2S";var captchajs="/px/"+window._pxAppId+"/captcha/captcha.js"</script>'
+  const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
-})
-
-test('perimeterx (html pxInit)', t => {
-  const html = '<script>pxInit();</script>'
-  const result = isAntibot({ html })
-  t.is(result.detected, true)
-  t.is(result.provider, 'perimeterx')
+  t.is(result.detection, 'html')
 })
 
 test('perimeterx (html _pxAction)', t => {
@@ -160,6 +155,37 @@ test('perimeterx (html _pxAction)', t => {
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
+})
+
+test('perimeterx (no false positive for sensor snippet on a content page)', t => {
+  const html =
+    '<title>Coolcold Laptop Cooling Pad - Walmart.com</title><article>6 Quiet Fans</article><script>window._pxAppId=\'PXu6b0qd2S\'</script><script src="/px/PXu6b0qd2S/init.js"></script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('perimeterx (no false positive for pxInit on a content page)', t => {
+  const html = '<title>Product</title><script>pxInit();</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('perimeterx (no false positive for Robot or human in page copy)', t => {
+  const html =
+    '<title>Coolcold Laptop Cooling Pad - Walmart.com</title><p>Robot or human? Great cooling pad.</p><script>window._pxAppId="PXu6b0qd2S"</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
+test('perimeterx (walmart /blocked url)', t => {
+  const result = isAntibot({
+    url: 'https://www.walmart.com/blocked?url=L2lwL3Rlc3Q&uuid=1',
+    statusCode: 200
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'perimeterx')
+  t.is(result.detection, 'url')
 })
 
 test('perimeterx (_px3 set-cookie)', t => {

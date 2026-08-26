@@ -1,0 +1,64 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "Coolcold Laptop Cooling Pad - Walmart.com",
+        "startedDateTime": "2026-08-26T05:33:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-26T05:33:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://www.walmart.com/ip/Coolcold-15-6-17-3inch-Laptop-Cooling-Pad-with-6-Quiet-Fans-7-Height-Wind-Speed-Adjustable-2-USB-Port-Laptop-Cooer-With-Mobile-Phone-Holde/3031434175",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "www.walmart.com"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 297,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>Coolcold Laptop Cooling Pad - Walmart.com</title></head><body><article><h1>Coolcold Laptop Cooling Pad</h1><p>6 Quiet Fans, 7 Height adjustable.</p></article><script>window._pxAppId='PXu6b0qd2S'</script><script src=\"/px/PXu6b0qd2S/init.js\"></script></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 297
+        }
+      }
+    ]
+  }
+}
