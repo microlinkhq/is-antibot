@@ -1,3 +1,9 @@
+## 2.5.8 (2026-08-26)
+
+### Bug Fixes
+
+* ignore QCloud Captcha widget on content pages ([#72](https://github.com/microlinkhq/is-antibot/issues/72)) ([976cbca](https://github.com/microlinkhq/is-antibot/commit/976cbca98e0aef729db2a0a998913094d3138b97))
+
 ## 2.5.7 (2026-08-26)
 
 ### Bug Fixes
