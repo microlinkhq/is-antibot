@@ -151,7 +151,7 @@
           "technique": "javascript",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*window\\._pxAppId)(?=[\\s\\S]*(?:px-captcha|/captcha/captcha\\.js|_pxAction|Robot or human))",
+              "regex": "^(?=[\\s\\S]*window\\._pxAppId)(?=[\\s\\S]*(?:px-captcha|/captcha/captcha\\.js|_pxAction|<title\\b[^>]*>\\s*Robot or human\\??\\s*<\\/title>))",
               "flags": "i"
             },
             {

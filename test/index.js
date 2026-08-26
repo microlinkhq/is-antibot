@@ -171,6 +171,13 @@ test('perimeterx (no false positive for pxInit on a content page)', t => {
   t.is(result.detected, false)
 })
 
+test('perimeterx (no false positive for Robot or human in page copy)', t => {
+  const html =
+    '<title>Coolcold Laptop Cooling Pad - Walmart.com</title><p>Robot or human? Great cooling pad.</p><script>window._pxAppId="PXu6b0qd2S"</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+})
+
 test('perimeterx (walmart /blocked url)', t => {
   const result = isAntibot({
     url: 'https://www.walmart.com/blocked?url=L2lwL3Rlc3Q&uuid=1',
