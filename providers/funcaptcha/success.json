@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 368,
+            "size": 320,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>4,000-year-old handprint found on ancient Egyptian tomb | CNN</title></head><body><article><h1>Handprint</h1><p>Archaeologists found a 4,000-year-old handprint.</p></article><script>window.ARKOSE_LOOKUP_SRC=\"https://wbd-api.arkoselabs.com/v2/72361606-06A8-445C-A3D0-9FB07DB14610/api.js\"</script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>4,000-year-old handprint found on ancient Egyptian tomb | CNN</title></head><body><article><h1>Handprint</h1><p>AI-generated content. Please verify before relying on it.</p></article><script>const allow=[\"microsoft-api.arkoselabs.com\",\"challenges.cloudflare.com\"]</script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 368
+          "bodySize": 320
         }
       }
     ]
