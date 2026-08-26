@@ -1,3 +1,9 @@
+## 2.5.6 (2026-08-26)
+
+### Bug Fixes
+
+* ignore PerimeterX sensor snippet on content pages ([#70](https://github.com/microlinkhq/is-antibot/issues/70)) ([4a94ba8](https://github.com/microlinkhq/is-antibot/commit/4a94ba8df61e676a6636c09b865f795ac96af611))
+
 ## 2.5.5 (2026-08-26)
 
 ### Bug Fixes
