@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 398,
+            "size": 354,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?</title><style>.c-search-captcha{display:flex}</style></head><body><article><h1>Personas</h1><p>Delve AI has been featured in Gartner's Hype Cycle.</p></article><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Les Personas Synthétiques sont-ils la Nouvelle Norme de la Recherche Utilisateur ?</title></head><body><article><h1>Personas</h1><p>Delve AI has been featured in Gartner's Hype Cycle.</p></article><div class=\"h-captcha\" data-sitekey=\"k\"></div><script>const copy=\"Please verify your email address\"</script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 398
+          "bodySize": 354
         }
       }
     ]

@@ -8,8 +8,8 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "Verify you are human",
-        "startedDateTime": "2026-08-25T13:00:00.000Z",
+        "title": "FlashArray: Unified Block, File, and Object Storage Platform | Everpure",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
           "onLoad": 100
@@ -19,18 +19,18 @@
     "entries": [
       {
         "pageref": "page_1",
-        "startedDateTime": "2026-08-25T13:00:00.000Z",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "time": 100,
         "serverIPAddress": "",
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "https://www.delve.ai/fr/blog/personas-synthetiques",
+          "url": "https://www.purestorage.com/products/block-file-object-storage.html",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.delve.ai"
+              "value": "www.purestorage.com"
             }
           ],
           "queryString": [],
@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 188,
+            "size": 275,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Verify you are human</title></head><body><div class=\"h-captcha\" data-sitekey=\"k\"></div><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>FlashArray: Unified Block, File, and Object Storage Platform | Everpure</title><link rel=\"preconnect\" href=\"//obs.cheqzone.com\"/></head><body><article><h1>FlashArray</h1><p>Unified block, file, and object storage.</p></article></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 188
+          "bodySize": 275
         }
       }
     ]

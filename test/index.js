@@ -386,18 +386,26 @@ test('reblaze (no false positive for bare mention)', t => {
   t.is(result.detected, false)
 })
 
-test('cheq (html CheqSdk)', t => {
+test('cheq (html CheqSdk on a blocking status)', t => {
   const html = '<script>CheqSdk.init();</script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'cheq')
 })
 
-test('cheq (html cheqzone.com)', t => {
+test('cheq (html cheqzone.com on a blocking status)', t => {
   const html = '<script src="https://ob.cheqzone.com/script.js"></script>'
-  const result = isAntibot({ html })
+  const result = isAntibot({ html, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'cheq')
+})
+
+test('cheq (SDK preconnect on a 200 content page is not a block)', t => {
+  const html =
+    '<title>FlashArray | Everpure</title><article>Unified block storage</article><link rel="preconnect" href="//obs.cheqzone.com"/>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('cheq (url cheqzone.com)', t => {
@@ -589,6 +597,14 @@ test('recaptcha (Google unusual-traffic interstitial on a 200)', t => {
   t.is(result.provider, 'recaptcha')
 })
 
+test('recaptcha (CSS .captcha-form + widget on a 200 page is not a block)', t => {
+  const html =
+    '<title>Transporte em Guarulhos</title><style>.captcha-form img{float:right}</style><article>Jávai Logística</article><div class="g-recaptcha" data-sitekey="k"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('hcaptcha (url)', t => {
   const url = 'https://hcaptcha.com/captcha/v1'
   const result = isAntibot({ url })
@@ -638,6 +654,14 @@ test('hcaptcha (Verify you are human interstitial on a 200)', t => {
   const result = isAntibot({ html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'hcaptcha')
+})
+
+test('hcaptcha (Please verify your email + widget on a 200 page is not a block)', t => {
+  const html =
+    '<title>33 DIY Bag Charm Ideas</title><article>real post</article><div class="h-captcha" data-sitekey="k"></div><script>const copy="Please verify your email address"</script>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('hcaptcha (no false positive for Shopify h-captcha-response field)', t => {
