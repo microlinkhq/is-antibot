@@ -501,7 +501,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*\\bid=[\"']captcha-form[\"'])(?=[\\s\\S]*g-recaptcha)",
+              "regex": "^(?=[\\s\\S]*\\sid=[\"']captcha-form[\"'])(?=[\\s\\S]*g-recaptcha)",
               "flags": "i"
             }
           ]

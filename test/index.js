@@ -597,6 +597,14 @@ test('recaptcha (Google unusual-traffic interstitial on a 200)', t => {
   t.is(result.provider, 'recaptcha')
 })
 
+test('recaptcha (data-id=captcha-form + widget on a 200 page is not a block)', t => {
+  const html =
+    '<article>real content</article><div data-id="captcha-form" class="g-recaptcha" data-sitekey="k"></div>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('recaptcha (CSS .captcha-form + widget on a 200 page is not a block)', t => {
   const html =
     '<title>Transporte em Guarulhos</title><style>.captcha-form img{float:right}</style><article>Jávai Logística</article><div class="g-recaptcha" data-sitekey="k"></div>'
