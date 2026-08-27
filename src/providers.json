@@ -352,6 +352,7 @@
         {
           "type": "html",
           "technique": "javascript",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "contains": "CheqSdk"
@@ -500,7 +501,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*captcha-form)(?=[\\s\\S]*g-recaptcha)",
+              "regex": "^(?=[\\s\\S]*\\sid=[\"']captcha-form[\"'])(?=[\\s\\S]*g-recaptcha)",
               "flags": "i"
             }
           ]
@@ -564,7 +565,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*\\bh-captcha(?!-response))(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify))",
+              "regex": "^(?=[\\s\\S]*\\bh-captcha(?!-response))(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required))",
               "flags": "i"
             }
           ]

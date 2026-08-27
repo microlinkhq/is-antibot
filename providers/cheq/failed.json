@@ -8,8 +8,8 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "Verify you are human",
-        "startedDateTime": "2026-08-25T13:00:00.000Z",
+        "title": "Access Denied",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
           "onLoad": 100
@@ -19,18 +19,18 @@
     "entries": [
       {
         "pageref": "page_1",
-        "startedDateTime": "2026-08-25T13:00:00.000Z",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "time": 100,
         "serverIPAddress": "",
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "https://www.delve.ai/fr/blog/personas-synthetiques",
+          "url": "https://www.purestorage.com/products/block-file-object-storage.html",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.delve.ai"
+              "value": "www.purestorage.com"
             }
           ],
           "queryString": [],
@@ -39,8 +39,8 @@
           "bodySize": 0
         },
         "response": {
-          "status": 200,
-          "statusText": "OK",
+          "status": 403,
+          "statusText": "Forbidden",
           "httpVersion": "http/1.1",
           "headers": [
             {
@@ -50,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 188,
+            "size": 191,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>Verify you are human</title></head><body><div class=\"h-captcha\" data-sitekey=\"k\"></div><script src=\"https://hcaptcha.com/1/api.js\"></script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Access Denied</title></head><body><p>Access Denied</p><script>CheqSdk.init();</script><script src=\"https://ob.cheqzone.com/script.js\"></script></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 188
+          "bodySize": 191
         }
       }
     ]

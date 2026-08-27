@@ -8,8 +8,8 @@
     "pages": [
       {
         "id": "page_1",
-        "title": "온라인 학교폭력의 실태",
-        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "title": "Transporte em Guarulhos - Jávai Logística",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "pageTimings": {
           "onContentLoad": -1,
           "onLoad": 100
@@ -19,26 +19,21 @@
     "entries": [
       {
         "pageref": "page_1",
-        "startedDateTime": "2026-08-25T05:00:00.000Z",
+        "startedDateTime": "2026-08-27T07:00:00.000Z",
         "time": 100,
         "serverIPAddress": "",
         "connection": "443",
         "request": {
           "method": "GET",
-          "url": "http://www.jeonmin.co.kr/news/articleView.html?idxno=353270",
+          "url": "https://dimiexpress.com.br/",
           "httpVersion": "http/1.1",
           "headers": [
             {
               "name": "host",
-              "value": "www.jeonmin.co.kr"
+              "value": "dimiexpress.com.br"
             }
           ],
-          "queryString": [
-            {
-              "name": "idxno",
-              "value": "353270"
-            }
-          ],
+          "queryString": [],
           "cookies": [],
           "headersSize": -1,
           "bodySize": 0
@@ -55,13 +50,13 @@
           ],
           "cookies": [],
           "content": {
-            "size": 298,
+            "size": 281,
             "mimeType": "text/html",
-            "text": "<!DOCTYPE html><html><head><title>온라인 학교폭력의 실태</title></head><body><article><h1>사이버 불링</h1><p>학교폭력의 실태를 다룬 기사입니다.</p></article><input id=\"g-recaptcha-response\" name=\"g-recaptcha-response\" type=\"hidden\" value=\"\" /><script>grecaptcha.render('captcha_container', {sitekey: 'k'})</script></body></html>"
+            "text": "<!DOCTYPE html><html><head><title>Transporte em Guarulhos - Jávai Logística</title><style>.captcha-form img{float:right}</style></head><body><article><h1>Jávai Logística</h1><p>Transporte em Guarulhos.</p></article><div class=\"g-recaptcha\" data-sitekey=\"k\"></div></body></html>"
           },
           "redirectURL": "",
           "headersSize": -1,
-          "bodySize": 298
+          "bodySize": 281
         }
       }
     ]
