@@ -1,3 +1,9 @@
+## 2.5.9 (2026-08-27)
+
+### Bug Fixes
+
+* ignore vendor fingerprints on content pages ([#73](https://github.com/microlinkhq/is-antibot/issues/73)) ([481afe1](https://github.com/microlinkhq/is-antibot/commit/481afe1b71c35eaae8582a56d85c4c94e91a8468))
+
 ## 2.5.8 (2026-08-26)
 
 ### Bug Fixes
