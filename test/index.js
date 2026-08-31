@@ -75,18 +75,35 @@ test('akamai (akamai-grn header alone is not antibot)', t => {
   t.is(result.detection, null)
 })
 
-test('akamai (_abck set-cookie)', t => {
+test('akamai (_abck set-cookie on a blocking status)', t => {
   const headers = { 'set-cookie': '_abck=abc123~0~; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'akamai')
 })
 
-test('akamai (bmak in html)', t => {
+test('akamai (_abck set-cookie on a content page is not enough)', t => {
+  const headers = { 'set-cookie': '_abck=abc123~0~; path=/' }
+  const html =
+    '<html><head><title>Shrine of Remembrance</title></head><body><form><input type="email" name="MERGE0"><input type="submit" value="Subscribe"></form></body></html>'
+  const result = isAntibot({ headers, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('akamai (bmak.sensor_data in html)', t => {
   const html = '<script>bmak.sensor_data = "test";</script>'
   const result = isAntibot({ html })
   t.is(result.detected, true)
   t.is(result.provider, 'akamai')
+})
+
+test('akamai (bmak.form_submit telemetry on a content page is not a challenge)', t => {
+  const html =
+    '<html><head><title>Shrine of Remembrance</title></head><body><form><input type="email"><input type="submit" value="Subscribe"></form><script>else if (window.bmak) { window.bmak.form_submit(); }</script></body></html>'
+  const result = isAntibot({ html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('akamai (no antibot)', t => {
