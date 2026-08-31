@@ -1,3 +1,9 @@
+## 2.5.10 (2026-08-31)
+
+### Bug Fixes
+
+* ignore Akamai sensor telemetry on content pages ([#74](https://github.com/microlinkhq/is-antibot/issues/74)) ([63277a5](https://github.com/microlinkhq/is-antibot/commit/63277a5b24d25fca946cbd4012c70a5c42a5324a))
+
 ## 2.5.9 (2026-08-27)
 
 ### Bug Fixes
