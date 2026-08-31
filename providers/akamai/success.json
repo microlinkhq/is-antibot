@@ -1,0 +1,68 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "microlink-api",
+      "version": "1.0.0"
+    },
+    "pages": [
+      {
+        "id": "page_1",
+        "title": "Shrine of Remembrance",
+        "startedDateTime": "2026-08-31T06:30:00.000Z",
+        "pageTimings": {
+          "onContentLoad": -1,
+          "onLoad": 100
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_1",
+        "startedDateTime": "2026-08-31T06:30:00.000Z",
+        "time": 100,
+        "serverIPAddress": "",
+        "connection": "443",
+        "request": {
+          "method": "GET",
+          "url": "https://shrine.us2.list-manage.com/subscribe?u=24882855c0ac8b7832a1c3b44&id=ed43b6a37b",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "host",
+              "value": "shrine.us2.list-manage.com"
+            }
+          ],
+          "queryString": [],
+          "cookies": [],
+          "headersSize": -1,
+          "bodySize": 0
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "http/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "set-cookie",
+              "value": "_abck=abc123~0~; Domain=.list-manage.com; Path=/; Secure"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "size": 412,
+            "mimeType": "text/html",
+            "text": "<!DOCTYPE html><html><head><title>Shrine of Remembrance</title></head><body><form><label>Email</label><input type=\"email\" name=\"MERGE0\"><input type=\"submit\" value=\"Subscribe\"></form><script>else if (window.bmak) { window.bmak.form_submit(); }</script></body></html>"
+          },
+          "redirectURL": "",
+          "headersSize": -1,
+          "bodySize": 412
+        }
+      }
+    ]
+  }
+}
