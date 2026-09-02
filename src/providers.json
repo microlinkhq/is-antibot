@@ -183,6 +183,7 @@
         {
           "type": "cookies",
           "technique": "cookie",
+          "statusCodes": [403, 429, 503],
           "rules": [
             {
               "cookie": "_px3="

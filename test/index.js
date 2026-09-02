@@ -222,18 +222,20 @@ test('perimeterx (walmart /blocked url)', t => {
   t.is(result.detection, 'url')
 })
 
-test('perimeterx (_px3 set-cookie)', t => {
+test('perimeterx (_px3 set-cookie on a blocking status)', t => {
   const headers = { 'set-cookie': '_px3=abc123; path=/' }
-  const result = isAntibot({ headers })
+  const result = isAntibot({ headers, statusCode: 403 })
   t.is(result.detected, true)
   t.is(result.provider, 'perimeterx')
 })
 
-test('perimeterx (_pxhd set-cookie)', t => {
+test('perimeterx (_pxhd set-cookie on a content page is not enough)', t => {
   const headers = { 'set-cookie': '_pxhd=abc123; path=/' }
-  const result = isAntibot({ headers })
-  t.is(result.detected, true)
-  t.is(result.provider, 'perimeterx')
+  const html =
+    '<html><head><title>A Purple Evening event returns for Ravens female fans - WBAL</title></head><body><article><p>A Purple Evening event returns for Ravens female fans.</p></article></body></html>'
+  const result = isAntibot({ headers, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
 })
 
 test('shapesecurity (header)', t => {
