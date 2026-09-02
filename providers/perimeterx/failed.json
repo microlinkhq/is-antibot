@@ -46,6 +46,14 @@
             {
               "name": "content-type",
               "value": "text/html; charset=utf-8"
+            },
+            {
+              "name": "set-cookie",
+              "value": "_px3=abc123; Path=/; Secure"
+            },
+            {
+              "name": "set-cookie",
+              "value": "_pxhd=def456; Path=/; Secure"
             }
           ],
           "cookies": [],
