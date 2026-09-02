@@ -1,3 +1,9 @@
+## 2.5.11 (2026-09-02)
+
+### Bug Fixes
+
+* ignore PerimeterX session cookie on content pages ([#75](https://github.com/microlinkhq/is-antibot/issues/75)) ([af23131](https://github.com/microlinkhq/is-antibot/commit/af231315f997a57910ae919f7e7cb055b122f402))
+
 ## 2.5.10 (2026-08-31)
 
 ### Bug Fixes
