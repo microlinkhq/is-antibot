@@ -940,7 +940,8 @@
           "domain": "instagram.com",
           "rules": [
             {
-              "contains": "/accounts/login"
+              "regex": "^https?://[^/?#]+/accounts/login(?:[/?#]|$)",
+              "flags": "i"
             }
           ]
         },

@@ -1136,6 +1136,15 @@ test('instagram (accounts/login url)', t => {
   t.is(result.detection, 'url')
 })
 
+test('instagram (login path in query is not a login wall)', t => {
+  const result = isAntibot({
+    url: 'https://www.instagram.com/explore/?next=/accounts/login',
+    html: '<!DOCTYPE html><html><head><title>Explore</title></head></html>',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
 test('instagram (generic title on non-instagram url should not match)', t => {
   const result = isAntibot({
     html: '<!DOCTYPE html><html><head><title>Instagram</title></head></html>',
