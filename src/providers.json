@@ -935,12 +935,26 @@
           ]
         },
         {
+          "type": "url",
+          "technique": "javascript",
+          "domain": "instagram.com",
+          "rules": [
+            {
+              "contains": "/accounts/login"
+            }
+          ]
+        },
+        {
           "type": "html",
           "technique": "javascript",
           "domain": "instagram.com",
           "rules": [
             {
               "regex": "<title>\\s*Login\\s*[•·]\\s*Instagram\\s*<\\/title>",
+              "flags": "i"
+            },
+            {
+              "regex": "<title>\\s*Instagram\\s*<\\/title>",
               "flags": "i"
             }
           ]

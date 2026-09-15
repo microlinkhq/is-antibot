@@ -1109,6 +1109,42 @@ test('instagram (login page redirect)', t => {
   t.is(result.detection, 'html')
 })
 
+test('instagram (generic login title)', t => {
+  // Origin fetch 302s to /accounts/login (or the logged-out homepage) and
+  // serves <title>Instagram</title> — not "Login • Instagram" — so discovery
+  // never started. Real profile titles keep the @user suffix.
+  const html =
+    '<!DOCTYPE html><html lang="en"><head><title>Instagram</title></head><body></body></html>'
+  const result = isAntibot({
+    html,
+    url: 'https://www.instagram.com/evolving.ai',
+    statusCode: 200
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'html')
+})
+
+test('instagram (accounts/login url)', t => {
+  const result = isAntibot({
+    url: 'https://www.instagram.com/accounts/login/',
+    html: '<!DOCTYPE html><html><head><title>Whatever</title></head></html>',
+    statusCode: 200
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'url')
+})
+
+test('instagram (generic title on non-instagram url should not match)', t => {
+  const result = isAntibot({
+    html: '<!DOCTYPE html><html><head><title>Instagram</title></head></html>',
+    url: 'https://example.com/accounts/login',
+    statusCode: 200
+  })
+  t.is(result.detected, false)
+})
+
 test('instagram (blocked by status code)', t => {
   // Production k8s IPs get a bare 429 with an empty body — no login title, so
   // the HTML rule never fires and discovery never starts. Scope 429 to the
