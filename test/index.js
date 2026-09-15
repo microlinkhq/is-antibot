@@ -1109,6 +1109,36 @@ test('instagram (login page redirect)', t => {
   t.is(result.detection, 'html')
 })
 
+test('instagram (blocked by status code)', t => {
+  // Production k8s IPs get a bare 429 with an empty body — no login title, so
+  // the HTML rule never fires and discovery never starts. Scope 429 to the
+  // domain so origin rate-limits escalate to scrape.do (DC already wins).
+  const url = 'https://www.instagram.com/evolving.ai'
+  const result = isAntibot({ url, html: '', statusCode: 429 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'statusCode')
+  t.is(result.technique, 'waf')
+})
+
+test('instagram (429 on non-instagram url should not match)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/some/path',
+    statusCode: 429
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('instagram (200 on instagram url should not match)', t => {
+  const url = 'https://www.instagram.com/evolving.ai'
+  const html =
+    '<!DOCTYPE html><html><head><title>Evolving AI (@evolving.ai) • Instagram photos and videos</title></head><body></body></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('youtube (empty title in html)', t => {
   const html =
     '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'

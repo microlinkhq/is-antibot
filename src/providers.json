@@ -925,6 +925,16 @@
       "category": "platform",
       "detections": [
         {
+          "type": "status_code",
+          "technique": "waf",
+          "domain": "instagram.com",
+          "rules": [
+            {
+              "status": 429
+            }
+          ]
+        },
+        {
           "type": "html",
           "technique": "javascript",
           "domain": "instagram.com",

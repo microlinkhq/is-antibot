@@ -153,7 +153,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
       <tr><td>hCaptcha</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Houzz</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Imperva / Incapsula</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
-      <tr><td>Instagram</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
+      <tr><td>Instagram</td><td>Platform-specific</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Kasada</td><td>Antibot</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>LinkedIn</td><td>Platform-specific</td><td>1</td><td><span class="provider-chip">Status Code</span></td></tr>
       <tr><td>Meetrics</td><td>Antibot</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
