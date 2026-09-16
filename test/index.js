@@ -1479,6 +1479,69 @@ test('testPattern with invalid regex', t => {
   t.is(result.provider, null)
 })
 
+test('hostinger (hcdn js challenge html)', t => {
+  const url =
+    'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
+  const html =
+    '<title>Checking your browser before accessing. Just a moment...</title><script src="/hcdn-cgi/jschallenge"></script>'
+  const result = isAntibot({ html, url, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'hostinger')
+  t.is(result.detection, 'html')
+  t.is(result.technique, 'javascript')
+})
+
+test('hostinger (hcdn 403 without challenge html)', t => {
+  const url =
+    'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
+  const result = isAntibot({
+    url,
+    statusCode: 403,
+    headers: { server: 'hcdn', 'x-hcdn-request-id': 'abc' },
+    html: '<html><head><title>the-berlin-precedent</title></head><body></body></html>'
+  })
+  t.is(result.detected, true)
+  t.is(result.provider, 'hostinger')
+  t.is(result.detection, 'headers')
+  t.is(result.technique, 'waf')
+})
+
+test('hostinger (challenge html on other host should not match)', t => {
+  const result = isAntibot({
+    url: 'https://example.com/',
+    statusCode: 403,
+    headers: { server: 'hcdn' },
+    html: '<title>Checking your browser before accessing. Just a moment...</title><script src="/hcdn-cgi/jschallenge"></script>'
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('hostinger (hcdn 200 article should not match)', t => {
+  const url =
+    'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
+  const result = isAntibot({
+    url,
+    statusCode: 200,
+    headers: { server: 'hcdn', 'x-hcdn-request-id': 'abc' },
+    html: '<title>The Berlin Precedent: How the Merz Government Coordinates the Purge</title><article>real content</article>'
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('hostinger (just a moment without hcdn is not hostinger)', t => {
+  const url =
+    'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
+  const result = isAntibot({
+    url,
+    statusCode: 200,
+    html: '<title>Just a moment...</title><div id="cf-wrapper"></div>'
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('general (no antibot)', t => {
   const result = isAntibot({ headers: {} })
   t.is(result.detected, false)

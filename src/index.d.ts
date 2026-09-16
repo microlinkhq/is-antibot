@@ -43,6 +43,7 @@ declare namespace isAntibot {
     | 'dribbble'
     | 'douban'
     | 'cloudfront'
+    | 'hostinger'
 
   interface Input {
     headers?: HeadersLike

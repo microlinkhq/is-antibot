@@ -1186,6 +1186,39 @@
           ]
         }
       ]
+    },
+    {
+      "name": "hostinger",
+      "label": "Hostinger",
+      "category": "antibot",
+      "description": "Hostinger hCDN JavaScript interstitial. Bare “Just a moment” and server:hcdn on 200s are not challenges.",
+      "detections": [
+        {
+          "type": "html",
+          "technique": "javascript",
+          "domain": "vtforeignpolicy.com",
+          "rules": [
+            {
+              "contains": "/hcdn-cgi/jschallenge"
+            },
+            {
+              "contains": "Checking your browser before accessing"
+            }
+          ]
+        },
+        {
+          "type": "headers",
+          "technique": "waf",
+          "domain": "vtforeignpolicy.com",
+          "statusCodes": [403],
+          "rules": [
+            {
+              "header": "server",
+              "equals": "hcdn"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
