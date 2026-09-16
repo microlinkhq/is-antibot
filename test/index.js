@@ -1491,6 +1491,19 @@ test('hostinger (hcdn js challenge html)', t => {
   t.is(result.technique, 'javascript')
 })
 
+test('hostinger (js challenge html on 200)', t => {
+  // Hostinger can serve the interstitial as 200. Gating the HTML rule on 403
+  // would miss the wall the API currently returns as a successful scrape.
+  const url =
+    'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
+  const html =
+    '<title>Checking your browser before accessing. Just a moment...</title><script src="/hcdn-cgi/jschallenge"></script>'
+  const result = isAntibot({ html, url, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'hostinger')
+  t.is(result.detection, 'html')
+})
+
 test('hostinger (hcdn 403 without challenge html)', t => {
   const url =
     'https://vtforeignpolicy.com/2026/09/the-berlin-precedent-how-the-merz-government-coordinates-the-purge-of-the-opposition-ahead-of-the-house-of-representatives-elections/'
