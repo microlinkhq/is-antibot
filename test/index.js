@@ -1184,6 +1184,28 @@ test('instagram (200 on instagram url should not match)', t => {
   t.is(result.provider, null)
 })
 
+test('instagram (logged-out pack with profile og title)', t => {
+  // scrape.do 200s the logged-out haste cohort while keeping the profile
+  // og:title, so the title rules miss. Origin profile HTML has PolarisLoggedOut
+  // experiment flags without this pack name.
+  const url = 'https://www.instagram.com/evolving.ai'
+  const html =
+    '<!DOCTYPE html><html><head><title>Evolving AI (@evolving.ai) • Instagram photos and videos</title></head><body><script>{"pkg_cohort":"HYP:instagram_web_logged_out_pkg"}</script></body></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'html')
+})
+
+test('instagram (PolarisLoggedOut without logged-out pack is not a wall)', t => {
+  const url = 'https://www.instagram.com/evolving.ai'
+  const html =
+    '<!DOCTYPE html><html><head><title>Evolving AI (@evolving.ai) • Instagram photos and videos</title></head><body><script>PolarisLoggedOutUpsellExposureV2</script></body></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('youtube (empty title in html)', t => {
   const html =
     '<!DOCTYPE html><html><head><title> - YouTube</title></head><body><ytd-app disable-upgrade="true"></ytd-app></body></html>'
