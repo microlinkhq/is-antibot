@@ -1196,6 +1196,44 @@ test('instagram (logged-out pack with a real title is metadata)', t => {
   t.is(result.provider, null)
 })
 
+test('instagram (generic title with post open graph is metadata)', t => {
+  // Datacenter HTML keeps <title>Instagram</title> while og:title and og:image
+  // already describe the post. Rejecting it fetches the same document again.
+  const url = 'https://www.instagram.com/p/DUiixLTkvv3'
+  const html =
+    '<!DOCTYPE html><html><head><title>Instagram</title>' +
+    '<meta property="og:title" content="Local Standard Tokyo (@localstandard_tokyo) • Instagram reel">' +
+    '<meta content="https://scontent.cdninstagram.com/photo.jpg" property="og:image">' +
+    '</head></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('instagram (generic title with a shell og:title is still a wall)', t => {
+  const url = 'https://www.instagram.com/p/DUiixLTkvv3'
+  const html =
+    '<!DOCTYPE html><html><head><title>Instagram</title>' +
+    '<meta property="og:title" content="Instagram">' +
+    '<meta property="og:image" content="https://static.cdninstagram.com/logo.webp">' +
+    '</head></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+  t.is(result.detection, 'html')
+})
+
+test('instagram (generic title with og:title and no image is still a wall)', t => {
+  const url = 'https://www.instagram.com/p/DUiixLTkvv3'
+  const html =
+    '<!DOCTYPE html><html><head><title>Instagram</title>' +
+    '<meta property="og:title" content="Local Standard Tokyo (@localstandard_tokyo) • Instagram reel">' +
+    '</head></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'instagram')
+})
+
 test('instagram (logged-out pack with generic title is still a shell)', t => {
   const url = 'https://www.instagram.com/evolving.ai'
   const html =

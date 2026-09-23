@@ -256,6 +256,10 @@
           "type": "string",
           "pattern": "^[imsu]*$",
           "default": "i"
+        },
+        "unlessOpenGraph": {
+          "const": true,
+          "description": "Suppress the match when the document already has a non-shell og:title and an absolute og:image."
         }
       }
     },

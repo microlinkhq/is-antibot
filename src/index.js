@@ -14,6 +14,38 @@ const DETECTION = {
   status_code: 'statusCode'
 }
 
+const OPEN_GRAPH = 'openGraph'
+const META_KEY = /\b(?:property|name)\s*=\s*(?:"([^"]*)"|'([^']*)')/i
+const META_CONTENT = /\bcontent\s*=\s*(?:"([^"]*)"|'([^']*)')/i
+const SHELL_OG_TITLE = /^(?:login\s*[•·]\s*)?instagram$/i
+
+const metaAttr = (tag, pattern) => {
+  const match = pattern.exec(tag)
+  return match ? match[1] ?? match[2] ?? '' : ''
+}
+
+/**
+ * A logged-out Instagram document can keep `<title>Instagram</title>` while
+ * `og:title` and `og:image` already describe the post. That document is the
+ * metadata; a shell has the tab title and no post image.
+ */
+const hasPostOpenGraph = html => {
+  let title = ''
+  let image = ''
+  for (const tag of html.matchAll(/<meta\b[^>]*>/gi)) {
+    const key = metaAttr(tag[0], META_KEY).toLowerCase()
+    if (key !== 'og:title' && key !== 'og:image') continue
+    const content = metaAttr(tag[0], META_CONTENT).trim()
+    if (key === 'og:title') title = content
+    else if (/^https?:\/\//i.test(content)) image = content
+  }
+  return (
+    Boolean(image) &&
+    Boolean(title) &&
+    !SHELL_OG_TITLE.test(title.replace(/\s+/g, ' '))
+  )
+}
+
 const createGetHeader = headers =>
   typeof headers.get === 'function'
     ? name => headers.get(name)
@@ -41,11 +73,14 @@ const createCompiledTestPattern = value => {
   if (!value) return () => false
   const lowerValue = value.toLowerCase()
   return pattern => {
-    if (pattern instanceof RegExp) return pattern.test(value)
-    if (pattern && pattern.type === 'contains') {
-      return lowerValue.indexOf(pattern.value) !== -1
-    }
-    return lowerValue.indexOf(pattern.toLowerCase()) !== -1
+    const inner =
+      pattern && pattern.type === OPEN_GRAPH ? pattern.pattern : pattern
+    let matched = false
+    if (inner instanceof RegExp) matched = inner.test(value)
+    else if (inner && inner.type === 'contains') { matched = lowerValue.indexOf(inner.value) !== -1 } else if (inner) { matched = lowerValue.indexOf(String(inner).toLowerCase()) !== -1 }
+    if (!matched) return false
+    if (pattern && pattern.type === OPEN_GRAPH && hasPostOpenGraph(value)) { return false }
+    return true
   }
 }
 
@@ -222,10 +257,12 @@ const compileHeaderRule = rule => {
 }
 
 const compileTextPattern = rule => {
-  if (rule.contains !== undefined) {
-    return { type: 'contains', value: rule.contains.toLowerCase() }
-  }
-  return createRegExp(rule.regex, rule.flags ?? 'i')
+  const pattern =
+    rule.contains !== undefined
+      ? { type: 'contains', value: rule.contains.toLowerCase() }
+      : createRegExp(rule.regex, rule.flags ?? 'i')
+  if (!rule.unlessOpenGraph) return pattern
+  return { type: OPEN_GRAPH, pattern }
 }
 
 const compileTextDetection = (detection, getPatternTester) => {

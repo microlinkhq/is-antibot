@@ -952,11 +952,13 @@
           "rules": [
             {
               "regex": "<title>\\s*Login\\s*[•·]\\s*Instagram\\s*<\\/title>",
-              "flags": "i"
+              "flags": "i",
+              "unlessOpenGraph": true
             },
             {
               "regex": "<title>\\s*Instagram\\s*<\\/title>",
-              "flags": "i"
+              "flags": "i",
+              "unlessOpenGraph": true
             }
           ]
         }
