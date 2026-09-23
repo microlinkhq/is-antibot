@@ -1184,13 +1184,22 @@ test('instagram (200 on instagram url should not match)', t => {
   t.is(result.provider, null)
 })
 
-test('instagram (logged-out pack with profile og title)', t => {
-  // scrape.do 200s the logged-out haste cohort while keeping the profile
-  // og:title, so the title rules miss. Origin profile HTML has PolarisLoggedOut
-  // experiment flags without this pack name.
+test('instagram (logged-out pack with a real title is metadata)', t => {
+  // scrape.do's logged-out haste cohort keeps the profile or post title and
+  // og:image. Later tiers return the same document, so the pack name is not a
+  // wall — flagging it only spends another hop on HTML we already have.
   const url = 'https://www.instagram.com/evolving.ai'
   const html =
     '<!DOCTYPE html><html><head><title>Evolving AI (@evolving.ai) • Instagram photos and videos</title></head><body><script>{"pkg_cohort":"HYP:instagram_web_logged_out_pkg"}</script></body></html>'
+  const result = isAntibot({ url, html, statusCode: 200 })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
+test('instagram (logged-out pack with generic title is still a shell)', t => {
+  const url = 'https://www.instagram.com/evolving.ai'
+  const html =
+    '<!DOCTYPE html><html><head><title>Instagram</title></head><body><script>{"pkg_cohort":"HYP:instagram_web_logged_out_pkg"}</script></body></html>'
   const result = isAntibot({ url, html, statusCode: 200 })
   t.is(result.detected, true)
   t.is(result.provider, 'instagram')

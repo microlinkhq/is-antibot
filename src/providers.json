@@ -957,9 +957,6 @@
             {
               "regex": "<title>\\s*Instagram\\s*<\\/title>",
               "flags": "i"
-            },
-            {
-              "contains": "instagram_web_logged_out_pkg"
             }
           ]
         }
