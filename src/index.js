@@ -76,10 +76,17 @@ const createCompiledTestPattern = value => {
     const inner =
       pattern && pattern.type === OPEN_GRAPH ? pattern.pattern : pattern
     let matched = false
-    if (inner instanceof RegExp) matched = inner.test(value)
-    else if (inner && inner.type === 'contains') { matched = lowerValue.indexOf(inner.value) !== -1 } else if (inner) { matched = lowerValue.indexOf(String(inner).toLowerCase()) !== -1 }
+    if (inner instanceof RegExp) {
+      matched = inner.test(value)
+    } else if (inner && inner.type === 'contains') {
+      matched = lowerValue.indexOf(inner.value) !== -1
+    } else if (inner) {
+      matched = lowerValue.indexOf(String(inner).toLowerCase()) !== -1
+    }
     if (!matched) return false
-    if (pattern && pattern.type === OPEN_GRAPH && hasPostOpenGraph(value)) { return false }
+    if (pattern && pattern.type === OPEN_GRAPH && hasPostOpenGraph(value)) {
+      return false
+    }
     return true
   }
 }
