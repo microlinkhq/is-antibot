@@ -82,7 +82,6 @@
     "node": ">= 20"
   },
   "files": [
-    "providers",
     "src"
   ],
   "scripts": {
