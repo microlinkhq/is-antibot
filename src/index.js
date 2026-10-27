@@ -1,20 +1,10 @@
 'use strict'
 
 const { splitSetCookieString } = require('cookie-es')
-const { parse } = require('tldts')
+const { parseUrl } = require('@metascraper/helpers')
 const debug = require('debug-logfmt')('is-antibot')
 
 const providersData = require('./providers.json')
-
-let lastUrl
-let lastParsedUrl
-const parseUrl = url => {
-  if (url !== lastUrl) {
-    lastParsedUrl = parse(url)
-    lastUrl = url
-  }
-  return lastParsedUrl
-}
 
 const DETECTION = {
   headers: 'headers',
