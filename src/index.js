@@ -84,7 +84,9 @@ const createCompiledTestPattern = (value, anyLiteral) => {
   const lowerValue = value.toLowerCase()
   let hasAnyLiteral
   const containsLiteral = literal => {
-    hasAnyLiteral ??= !anyLiteral || anyLiteral.test(lowerValue)
+    if (hasAnyLiteral === undefined) {
+      hasAnyLiteral = !anyLiteral || anyLiteral.test(lowerValue)
+    }
     return hasAnyLiteral && lowerValue.indexOf(literal) !== -1
   }
   return pattern => {
