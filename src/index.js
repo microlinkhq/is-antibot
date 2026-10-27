@@ -69,9 +69,16 @@ const createTestPattern = value => {
   }
 }
 
-const createCompiledTestPattern = value => {
+const createCompiledTestPattern = (value, anyLiteral) => {
   if (!value) return () => false
   const lowerValue = value.toLowerCase()
+  let hasAnyLiteral
+  const containsLiteral = literal => {
+    if (hasAnyLiteral === undefined) {
+      hasAnyLiteral = !anyLiteral || anyLiteral.test(lowerValue)
+    }
+    return hasAnyLiteral && lowerValue.indexOf(literal) !== -1
+  }
   return pattern => {
     const inner =
       pattern && pattern.type === OPEN_GRAPH ? pattern.pattern : pattern
@@ -79,7 +86,7 @@ const createCompiledTestPattern = value => {
     if (inner instanceof RegExp) {
       matched = inner.test(value)
     } else if (inner && inner.type === 'contains') {
-      matched = lowerValue.indexOf(inner.value) !== -1
+      matched = containsLiteral(inner.value)
     } else if (inner) {
       matched = lowerValue.indexOf(String(inner).toLowerCase()) !== -1
     }
@@ -324,14 +331,29 @@ const compileDetection = detection => {
   }
 }
 
-const compileProviders = ({ providers = [] } = {}) =>
-  providers.map(provider => ({
+const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+const compileAnyLiteral = (providers, type) =>
+  new RegExp(
+    providers
+      .flatMap(provider => provider.detections)
+      .filter(detection => detection.type === type)
+      .flatMap(detection => detection.rules)
+      .filter(rule => rule.contains !== undefined)
+      .map(rule => escapeRegExp(rule.contains.toLowerCase()))
+      .join('|')
+  )
+
+const compileProviders = ({ providers = [] } = {}) => ({
+  providers: providers.map(provider => ({
     name: provider.name,
     detections: provider.detections.map(compileDetection)
-  }))
+  })),
+  anyHtmlLiteral: compileAnyLiteral(providers, 'html')
+})
 
 const detectWithProviders = (
-  compiledProviders,
+  { providers: compiledProviders, anyHtmlLiteral },
   { headers = {}, html = '', url = '', statusCode } = {}
 ) => {
   const getHeader = createGetHeader(headers)
@@ -342,7 +364,7 @@ const detectWithProviders = (
     }
     return hasCookieImpl(patterns)
   }
-  const htmlHas = createCompiledTestPattern(html)
+  const htmlHas = createCompiledTestPattern(html, anyHtmlLiteral)
   const urlHas = createCompiledTestPattern(url)
   const headerNames = getHeaderNames(headers)
   const hasUrl = Boolean(url)

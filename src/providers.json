@@ -162,7 +162,7 @@
           "technique": "javascript",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*window\\._pxAppId)(?=[\\s\\S]*(?:px-captcha|/captcha/captcha\\.js|_pxAction|<title\\b[^>]*>\\s*Robot or human\\??\\s*<\\/title>))",
+              "regex": "^(?=[\\s\\S]*?window\\._pxAppId)(?=[\\s\\S]*?(?:px-captcha|/captcha/captcha\\.js|_pxAction|<title\\b[^>]*>\\s*Robot or human\\??\\s*<\\/title>))",
               "flags": "i"
             },
             {
@@ -503,7 +503,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*\\sid=[\"']captcha-form[\"'])(?=[\\s\\S]*g-recaptcha)",
+              "regex": "^(?=[\\s\\S]*?\\sid=[\"']captcha-form[\"'])(?=[\\s\\S]*?g-recaptcha)",
               "flags": "i"
             }
           ]
@@ -567,7 +567,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*\\bh-captcha(?!-response))(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required))",
+              "regex": "^(?=[\\s\\S]*?\\bh-captcha(?!-response))(?=[\\s\\S]*?(?:Verify you are (?:a )?human|Attention Required))",
               "flags": "i"
             }
           ]
@@ -610,7 +610,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*arkoselabs\\.com)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|enforcement\\.js))",
+              "regex": "^(?=[\\s\\S]*?arkoselabs\\.com)(?=[\\s\\S]*?(?:Verify you are (?:a )?human|Attention Required|enforcement\\.js))",
               "flags": "i"
             }
           ]
@@ -676,7 +676,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*cf-turnstile)(?=[\\s\\S]*(?:Just a moment|Attention Required|Verify you are (?:a )?human))",
+              "regex": "^(?=[\\s\\S]*?cf-turnstile)(?=[\\s\\S]*?(?:Just a moment|Attention Required|Verify you are (?:a )?human))",
               "flags": "i"
             }
           ]
@@ -720,7 +720,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*frc-captcha)(?=[\\s\\S]*(?:Verify you are (?:a )?human|Attention Required|Please verify))",
+              "regex": "^(?=[\\s\\S]*?frc-captcha)(?=[\\s\\S]*?(?:Verify you are (?:a )?human|Attention Required|Please verify))",
               "flags": "i"
             }
           ]
@@ -789,7 +789,7 @@
           "technique": "captcha",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*(?:TencentCaptcha|turing\\.captcha))(?=[\\s\\S]*(?:请点击按钮开始验证|请完成安全验证|tcaptcha_transform))",
+              "regex": "^(?=[\\s\\S]*?(?:TencentCaptcha|turing\\.captcha))(?=[\\s\\S]*?(?:请点击按钮开始验证|请完成安全验证|tcaptcha_transform))",
               "flags": "i"
             }
           ]
@@ -1042,7 +1042,7 @@
           "technique": "javascript",
           "rules": [
             {
-              "regex": "^(?=[\\s\\S]*_fs-ch-)(?=[\\s\\S]*<title\\b[^>]*>\\s*Client Challenge\\s*<\\/title>)",
+              "regex": "^(?=[\\s\\S]*?_fs-ch-)(?=[\\s\\S]*?<title\\b[^>]*>\\s*Client Challenge\\s*<\\/title>)",
               "flags": "i"
             }
           ]
