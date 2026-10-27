@@ -1,3 +1,9 @@
+## 2.5.20 (2026-10-27)
+
+### Performance Improvements
+
+* **html:** scan lookahead rules lazily, prefilter contains literals, drop helpers ([#87](https://github.com/microlinkhq/is-antibot/issues/87)) ([d9b1179](https://github.com/microlinkhq/is-antibot/commit/d9b11791f2a636f8c192c391a7de2e81b66eff39))
+
 ## 2.5.19 (2026-10-27)
 
 ## 2.5.18 (2026-10-27)
