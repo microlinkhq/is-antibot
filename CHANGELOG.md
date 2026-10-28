@@ -1,3 +1,9 @@
+## 2.5.22 (2026-10-28)
+
+### Bug Fixes
+
+* declare the real minimum Node.js version ([#90](https://github.com/microlinkhq/is-antibot/issues/90)) ([1a12272](https://github.com/microlinkhq/is-antibot/commit/1a12272829dc92c07bc8c28947dbb3807971f706))
+
 ## 2.5.21 (2026-10-28)
 
 ## 2.5.20 (2026-10-27)
