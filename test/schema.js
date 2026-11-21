@@ -241,6 +241,9 @@ test('asn detection takes integer asn rules and no statusCodes', t => {
 
   t.deepEqual(provider({ rules: [{ asn: 64500 }] }), [])
   t.deepEqual(provider({ rules: [{ asn: 64500 }], fallback: true }), [])
+  t.deepEqual(provider({ rules: [{ asn: 64500 }], fallback: false }), [
+    '$.detections[0].fallback should be exactly true'
+  ])
   t.deepEqual(provider({ rules: [{ asn: 64500 }], statusCodes: [403] }), [
     '$.detections[0] should not match the forbidden shape'
   ])
