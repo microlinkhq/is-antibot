@@ -11,7 +11,8 @@ const DETECTION = {
   cookies: 'cookies',
   html: 'html',
   url: 'url',
-  status_code: 'statusCode'
+  status_code: 'statusCode',
+  asn: 'asn'
 }
 
 const OPEN_GRAPH = 'openGraph'
@@ -46,10 +47,14 @@ const hasPostOpenGraph = html => {
   )
 }
 
-const createGetHeader = headers =>
-  typeof headers.get === 'function'
-    ? name => headers.get(name)
-    : name => headers[name]
+const createGetHeader = headers => {
+  if (typeof headers.get === 'function') return name => headers.get(name)
+  const byName = new Map()
+  for (const name of Object.keys(headers)) {
+    byName.set(name.toLowerCase(), headers[name])
+  }
+  return name => byName.get(name.toLowerCase())
+}
 
 const createTestPattern = value => {
   if (!value) return () => false
@@ -259,7 +264,12 @@ const compileHeaderRule = rule => {
 
   if (rule.oneOf !== undefined) {
     const oneOf = new Set(rule.oneOf)
-    return ({ getHeader }) => oneOf.has(getHeader(rule.header))
+    return ({ getHeader }) => {
+      const value = getHeader(rule.header)
+      return Array.isArray(value)
+        ? value.some(item => oneOf.has(item))
+        : oneOf.has(value)
+    }
   }
 
   if (typeof rule.headerNamePattern === 'string') {
@@ -268,6 +278,11 @@ const compileHeaderRule = rule => {
   }
 
   throw new TypeError('Invalid header rule shape')
+}
+
+const compileAsnRule = rule => {
+  if (!Number.isInteger(rule.asn)) throw new TypeError('Invalid asn rule shape')
+  return rule.asn
 }
 
 const compileTextPattern = rule => {
@@ -314,12 +329,22 @@ const DETECTION_COMPILERS = {
     return createCompiledDetection(detection, ({ statusCode }) =>
       statusCodes.includes(statusCode)
     )
+  },
+  asn: detection => {
+    const networks = new Set(detection.rules.map(compileAsnRule))
+    return createCompiledDetection(
+      detection,
+      ({ asn, statusCode }) => statusCode == null && networks.has(asn)
+    )
   }
 }
 
 const compileDetection = detection => {
-  const compiled = DETECTION_COMPILERS[detection.type](detection)
   const statusCodes = detection.statusCodes
+  if (detection.type === 'asn' && statusCodes !== undefined) {
+    throw new TypeError('An asn detection cannot be gated by statusCodes')
+  }
+  const compiled = DETECTION_COMPILERS[detection.type](detection)
   if (!Array.isArray(statusCodes) || statusCodes.length === 0) {
     return compiled
   }
@@ -344,17 +369,26 @@ const compileAnyLiteral = (providers, type) =>
       .join('|')
   )
 
-const compileProviders = ({ providers = [] } = {}) => ({
-  providers: providers.map(provider => ({
-    name: provider.name,
-    detections: provider.detections.map(compileDetection)
-  })),
-  anyHtmlLiteral: compileAnyLiteral(providers, 'html')
-})
+const compileProviders = ({ providers = [] } = {}) => {
+  const entries = providers.flatMap(provider =>
+    provider.detections.map(detection => ({
+      provider: provider.name,
+      fallback: detection.fallback === true,
+      detection: compileDetection(detection)
+    }))
+  )
+  return {
+    detections: [
+      ...entries.filter(entry => !entry.fallback),
+      ...entries.filter(entry => entry.fallback)
+    ],
+    anyHtmlLiteral: compileAnyLiteral(providers, 'html')
+  }
+}
 
 const detectWithProviders = (
-  { providers: compiledProviders, anyHtmlLiteral },
-  { headers = {}, html = '', url = '', statusCode } = {}
+  { detections, anyHtmlLiteral },
+  { headers = {}, html = '', url = '', statusCode, asn } = {}
 ) => {
   const getHeader = createGetHeader(headers)
   let hasCookieImpl
@@ -382,30 +416,29 @@ const detectWithProviders = (
     hasCookie,
     htmlHas,
     urlHas,
-    statusCode
+    statusCode,
+    asn
   }
 
-  for (const provider of compiledProviders) {
-    for (const detection of provider.detections) {
-      if (detection.domain || detection.domainWithoutSuffix) {
-        const parsed = getParsedUrl()
-        if (!parsed) continue
-        if (detection.domain && detection.domain !== parsed.domain) continue
-        if (
-          detection.domainWithoutSuffix &&
-          detection.domainWithoutSuffix !== parsed.domainWithoutSuffix
-        ) {
-          continue
-        }
+  for (const { provider, detection } of detections) {
+    if (detection.domain || detection.domainWithoutSuffix) {
+      const parsed = getParsedUrl()
+      if (!parsed) continue
+      if (detection.domain && detection.domain !== parsed.domain) continue
+      if (
+        detection.domainWithoutSuffix &&
+        detection.domainWithoutSuffix !== parsed.domainWithoutSuffix
+      ) {
+        continue
       }
-      if (!detection.matches(context)) continue
-      return createResult(
-        true,
-        provider.name,
-        DETECTION[detection.type] || detection.type,
-        detection.technique
-      )
     }
+    if (!detection.matches(context)) continue
+    return createResult(
+      true,
+      provider,
+      DETECTION[detection.type] || detection.type,
+      detection.technique
+    )
   }
 
   return createResult(false, null, null)
@@ -413,13 +446,20 @@ const detectWithProviders = (
 
 const COMPILED_PROVIDERS = compileProviders(providersData)
 
+const toAsn = asn => {
+  const body = String(asn).trim().replace(/^AS/i, '')
+  if (body === '') return undefined
+  return Number(body)
+}
+
 const normalizeInput = input => {
-  const { headers, html, body, url, statusCode, status } = input || {}
+  const { headers, html, body, url, statusCode, status, asn } = input || {}
   return {
     headers,
     html: html || body,
     url,
-    statusCode: statusCode ?? status
+    statusCode: statusCode ?? status,
+    asn: toAsn(asn)
   }
 }
 

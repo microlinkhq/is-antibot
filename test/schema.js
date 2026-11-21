@@ -33,6 +33,20 @@ const validate = (value, definition, root, path = '$') => {
 
   const errors = []
 
+  if (
+    definition.if &&
+    validate(value, definition.if, root, path).length === 0
+  ) {
+    errors.push(...validate(value, definition.then, root, path))
+  }
+
+  if (
+    definition.not &&
+    validate(value, definition.not, root, path).length === 0
+  ) {
+    errors.push(`${path} should not match the forbidden shape`)
+  }
+
   if (definition.type === 'object') {
     if (typeof value !== 'object' || value === null || Array.isArray(value)) {
       return [`${path} should be an object`]
@@ -214,4 +228,31 @@ test('detection requires technique', t => {
       '$.detections[0].technique should be one of: javascript, captcha, waf, cookie'
     ]
   )
+})
+
+test('asn detection takes integer asn rules and no statusCodes', t => {
+  const provider = detection =>
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [{ type: 'asn', technique: 'waf', ...detection }]
+    })
+
+  t.deepEqual(provider({ rules: [{ asn: 64500 }] }), [])
+  t.deepEqual(provider({ rules: [{ asn: 64500 }], fallback: true }), [])
+  t.deepEqual(provider({ rules: [{ asn: 64500 }], fallback: false }), [
+    '$.detections[0].fallback should be exactly true'
+  ])
+  t.deepEqual(provider({ rules: [{ asn: 64500 }], statusCodes: [403] }), [
+    '$.detections[0] should not match the forbidden shape'
+  ])
+  t.deepEqual(provider({ rules: [{ asn: '64500' }] }), [
+    '$.detections[0].rules[0].asn should be an integer',
+    '$.detections[0].rules[0] should match exactly one schema in oneOf'
+  ])
+  t.deepEqual(provider({ rules: [{ contains: 'x' }] }), [
+    '$.detections[0].rules[0] is missing required property "asn"',
+    '$.detections[0].rules[0].contains is not allowed'
+  ])
 })

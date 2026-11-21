@@ -28,13 +28,14 @@ Detected platform-specific protections:
 - Houzz, Reddit, Google, LinkedIn, Instagram, YouTube, Amazon, Weibo
 - Dribbble, Douban
 
-Five detection signals:
+Six detection signals:
 
 - Response headers (e.g., cf-mitigated, x-dd-b, x-vercel-mitigated)
 - Set-cookie headers (e.g., cf_clearance, _abck, datadome)
 - HTML content (e.g., challenge scripts, SDK references, DOM patterns)
 - URL patterns (e.g., CAPTCHA provider domains, challenge endpoints)
 - HTTP status codes (e.g., LinkedIn 999, Reddit 403)
+- Origin network, when the origin never answered (e.g., an Akamai ASN)
 
 Key capabilities:
 

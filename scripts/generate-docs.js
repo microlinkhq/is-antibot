@@ -24,7 +24,8 @@ const SIGNAL = {
   cookies: 'Cookies',
   html: 'HTML',
   url: 'URL',
-  status_code: 'Status Code'
+  status_code: 'Status Code',
+  asn: 'ASN'
 }
 
 const signalsOf = ({ detections }) =>

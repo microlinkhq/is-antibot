@@ -114,6 +114,223 @@ test('akamai (no antibot)', t => {
   t.is(result.detection, null)
 })
 
+test('akamai (edge Access Denied 403)', t => {
+  const headers = {
+    server: 'AkamaiGHost',
+    'content-type': 'text/html',
+    'akamai-grn': '0.c6d31102.1795280177.1839551e'
+  }
+  const result = isAntibot({ headers, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'akamai')
+  t.is(result.detection, 'headers')
+  t.is(result.technique, 'waf')
+})
+
+test('akamai (WAF failover page served from NetStorage)', t => {
+  const headers = { server: 'AkamaiNetStorage', 'content-type': 'text/html' }
+  const result = isAntibot({ headers, statusCode: 403 })
+  t.is(result.detected, true)
+  t.is(result.provider, 'akamai')
+  t.is(result.detection, 'headers')
+})
+
+test('akamai (edge server header name and repeated value)', t => {
+  const canonical = isAntibot({
+    headers: { Server: 'AkamaiGHost' },
+    statusCode: 403
+  })
+  t.is(canonical.provider, 'akamai')
+  t.is(canonical.detection, 'headers')
+  const repeated = isAntibot({
+    headers: { server: ['AkamaiNetStorage'] },
+    statusCode: 403
+  })
+  t.is(repeated.provider, 'akamai')
+  t.is(repeated.detection, 'headers')
+  const mixed = isAntibot({
+    headers: { server: ['nginx', 'AkamaiGHost'] },
+    statusCode: 403
+  })
+  t.is(mixed.provider, 'akamai')
+  t.is(mixed.detection, 'headers')
+  t.is(
+    isAntibot({ headers: { server: ['nginx'] }, statusCode: 403 }).detected,
+    false
+  )
+})
+
+test('akamai (edge server header on a non-403 is not a block)', t => {
+  const headers = { server: 'AkamaiGHost', 'content-type': 'text/html' }
+  for (const statusCode of [200, 301, 404, 503]) {
+    const result = isAntibot({ headers, statusCode })
+    t.is(result.detected, false, `statusCode ${statusCode}`)
+  }
+})
+
+test('akamai (a 403 the origin sent through Akamai is not a block)', t => {
+  const headers = { server: 'nginx', 'akamai-grn': '0.c6d31102.1795280177' }
+  t.is(isAntibot({ headers, statusCode: 403 }).detected, false)
+})
+
+test('akamai (origin on an Akamai network never answered)', t => {
+  for (const asn of [20940, 16625, '20940', '16625']) {
+    const result = isAntibot({ url: 'https://www.viviennewestwood.com/', asn })
+    t.is(result.detected, true, `asn ${asn}`)
+    t.is(result.provider, 'akamai')
+    t.is(result.detection, 'asn')
+    t.is(result.technique, 'waf')
+  }
+  t.is(isAntibot({ asn: 20940, statusCode: null }).detection, 'asn')
+  t.is(isAntibot({ asn: 20940, status: null }).detection, 'asn')
+})
+
+test('akamai (an origin on an Akamai network that answered is judged by its answer)', t => {
+  const headers = { server: 'Apache', 'akamai-cache-status': 'Miss from child' }
+  for (const statusCode of [200, 404, 504]) {
+    const result = isAntibot({ headers, statusCode, asn: 20940 })
+    t.is(result.detected, false, `statusCode ${statusCode}`)
+  }
+  t.is(isAntibot({ headers, status: 200, asn: 20940 }).detected, false)
+  t.is(
+    isAntibot({ headers, statusCode: null, status: 200, asn: 20940 }).detected,
+    false
+  )
+})
+
+test('asn (an empty value is not autonomous system 0)', t => {
+  const detect = isAntibot.createDetector({
+    providers: [
+      {
+        name: 'zero',
+        detections: [{ type: 'asn', technique: 'waf', rules: [{ asn: 0 }] }]
+      }
+    ]
+  })
+  t.is(detect({ asn: '' }).detected, false)
+  t.is(detect({ asn: 'AS' }).detected, false)
+  t.is(detect({ asn: 0 }).detection, 'asn')
+  t.is(detect({ asn: '0' }).detection, 'asn')
+  t.is(detect({ asn: 'AS0' }).detection, 'asn')
+})
+
+test('asn (an unanswered origin off Akamai is not a block)', t => {
+  t.is(isAntibot({ asn: 13335 }).detected, false)
+  t.is(isAntibot({ asn: undefined }).detected, false)
+  t.is(isAntibot({ asn: '' }).detected, false)
+  t.is(isAntibot({}).detected, false)
+})
+
+test('akamai (a more specific provider behind the Akamai edge keeps the verdict)', t => {
+  const server = 'AkamaiGHost'
+  const cases = [
+    [{ 'set-cookie': '_abck=x; path=/' }, 'akamai', 'cookies', 'cookie'],
+    [{ 'set-cookie': 'datadome=abc; path=/' }, 'datadome', 'cookies', 'cookie'],
+    [{ 'set-cookie': '_px3=abc; path=/' }, 'perimeterx', 'cookies', 'cookie'],
+    [{ 'x-cache': 'Error from cloudfront' }, 'cloudfront', 'headers', 'waf']
+  ]
+  for (const [headers, provider, detection, technique] of cases) {
+    const result = isAntibot({
+      headers: { server, ...headers },
+      statusCode: 403
+    })
+    t.deepEqual(
+      result,
+      { detected: true, provider, detection, technique },
+      provider
+    )
+  }
+  const html = '<script src="https://js.hcaptcha.com/1/api.js"></script>'
+  const result = isAntibot({ headers: { server }, html, statusCode: 403 })
+  t.is(result.provider, 'hcaptcha')
+})
+
+test('asn (origin network written as AS<number>)', t => {
+  t.is(isAntibot({ asn: 'AS20940' }).detection, 'asn')
+  t.is(isAntibot({ asn: 'as16625' }).detection, 'asn')
+  t.is(isAntibot({ asn: '\uFEFFAS20940' }).detection, 'asn')
+  t.is(isAntibot({ asn: ' AS20940' }).detection, 'asn')
+})
+
+test('asn (a malformed rule is rejected instead of matching every unanswered request)', t => {
+  const detector = rules => () =>
+    isAntibot.createDetector({
+      providers: [{ name: 'bad', detections: [{ type: 'asn', rules }] }]
+    })
+  for (const rules of [[{}], [{ asn: '64500' }], [{ asn: 1.5 }]]) {
+    t.throws(detector(rules), { message: 'Invalid asn rule shape' })
+  }
+  t.throws(
+    () =>
+      isAntibot.createDetector({
+        providers: [
+          {
+            name: 'bad',
+            detections: [
+              { type: 'asn', statusCodes: [403], rules: [{ asn: 1 }] }
+            ]
+          }
+        ]
+      }),
+    { message: 'An asn detection cannot be gated by statusCodes' }
+  )
+  t.throws(
+    () =>
+      isAntibot.createDetector({
+        providers: [
+          {
+            name: 'bad',
+            detections: [{ type: 'asn', statusCodes: [], rules: [{ asn: 1 }] }]
+          }
+        ]
+      }),
+    { message: 'An asn detection cannot be gated by statusCodes' }
+  )
+})
+
+test('fallback (a fallback detection waits for every other provider)', t => {
+  const detect = isAntibot.createDetector({
+    providers: [
+      {
+        name: 'weak',
+        detections: [
+          {
+            type: 'headers',
+            fallback: true,
+            rules: [{ header: 'server', equals: 'edge' }]
+          }
+        ]
+      },
+      {
+        name: 'strong',
+        detections: [{ type: 'html', rules: [{ contains: 'challenge' }] }]
+      }
+    ]
+  })
+  const headers = { server: 'edge' }
+  t.is(detect({ headers, html: 'challenge' }).provider, 'strong')
+  t.is(detect({ headers }).provider, 'weak')
+})
+
+test('asn (custom detector rule)', t => {
+  const detect = isAntibot.createDetector({
+    providers: [
+      {
+        name: 'acme',
+        detections: [{ type: 'asn', technique: 'waf', rules: [{ asn: 64500 }] }]
+      }
+    ]
+  })
+  t.deepEqual(detect({ asn: '64500' }), {
+    detected: true,
+    provider: 'acme',
+    detection: 'asn',
+    technique: 'waf'
+  })
+  t.is(detect({ asn: 64500, statusCode: 200 }).detected, false)
+  t.is(detect({ asn: 64501 }).detected, false)
+})
+
 test('datadome (x-dd-b header)', t => {
   for (const value of ['1', '2']) {
     const headers = { 'x-dd-b': value }
