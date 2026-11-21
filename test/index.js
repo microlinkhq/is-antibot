@@ -135,6 +135,21 @@ test('akamai (WAF failover page served from NetStorage)', t => {
   t.is(result.detection, 'headers')
 })
 
+test('akamai (edge server header name and repeated value)', t => {
+  const canonical = isAntibot({
+    headers: { Server: 'AkamaiGHost' },
+    statusCode: 403
+  })
+  t.is(canonical.provider, 'akamai')
+  t.is(canonical.detection, 'headers')
+  const repeated = isAntibot({
+    headers: { server: ['AkamaiNetStorage'] },
+    statusCode: 403
+  })
+  t.is(repeated.provider, 'akamai')
+  t.is(repeated.detection, 'headers')
+})
+
 test('akamai (edge server header on a non-403 is not a block)', t => {
   const headers = { server: 'AkamaiGHost', 'content-type': 'text/html' }
   for (const statusCode of [200, 301, 404, 503]) {
@@ -156,6 +171,7 @@ test('akamai (origin on an Akamai network never answered)', t => {
     t.is(result.detection, 'asn')
     t.is(result.technique, 'waf')
   }
+  t.is(isAntibot({ asn: 20940, statusCode: null }).detection, 'asn')
 })
 
 test('akamai (an origin on an Akamai network that answered is judged by its answer)', t => {
@@ -164,6 +180,23 @@ test('akamai (an origin on an Akamai network that answered is judged by its answ
     const result = isAntibot({ headers, statusCode, asn: 20940 })
     t.is(result.detected, false, `statusCode ${statusCode}`)
   }
+  t.is(isAntibot({ headers, status: 200, asn: 20940 }).detected, false)
+})
+
+test('asn (an empty value is not autonomous system 0)', t => {
+  const detect = isAntibot.createDetector({
+    providers: [
+      {
+        name: 'zero',
+        detections: [{ type: 'asn', technique: 'waf', rules: [{ asn: 0 }] }]
+      }
+    ]
+  })
+  t.is(detect({ asn: '' }).detected, false)
+  t.is(detect({ asn: 'AS' }).detected, false)
+  t.is(detect({ asn: 0 }).detection, 'asn')
+  t.is(detect({ asn: '0' }).detection, 'asn')
+  t.is(detect({ asn: 'AS0' }).detection, 'asn')
 })
 
 test('asn (an unanswered origin off Akamai is not a block)', t => {
@@ -200,6 +233,8 @@ test('akamai (a more specific provider behind the Akamai edge keeps the verdict)
 test('asn (origin network written as AS<number>)', t => {
   t.is(isAntibot({ asn: 'AS20940' }).detection, 'asn')
   t.is(isAntibot({ asn: 'as16625' }).detection, 'asn')
+  t.is(isAntibot({ asn: '\uFEFFAS20940' }).detection, 'asn')
+  t.is(isAntibot({ asn: ' AS20940' }).detection, 'asn')
 })
 
 test('asn (a malformed rule is rejected instead of matching every unanswered request)', t => {

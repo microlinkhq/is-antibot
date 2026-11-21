@@ -47,10 +47,15 @@ const hasPostOpenGraph = html => {
   )
 }
 
-const createGetHeader = headers =>
-  typeof headers.get === 'function'
-    ? name => headers.get(name)
-    : name => headers[name]
+const createGetHeader = headers => {
+  if (typeof headers.get === 'function') return name => headers.get(name)
+  const byName = new Map()
+  for (const name of Object.keys(headers)) {
+    const lower = name.toLowerCase()
+    if (!byName.has(lower) || name === lower) byName.set(lower, headers[name])
+  }
+  return name => byName.get(name.toLowerCase())
+}
 
 const createTestPattern = value => {
   if (!value) return () => false
@@ -260,7 +265,12 @@ const compileHeaderRule = rule => {
 
   if (rule.oneOf !== undefined) {
     const oneOf = new Set(rule.oneOf)
-    return ({ getHeader }) => oneOf.has(getHeader(rule.header))
+    return ({ getHeader }) => {
+      const value = getHeader(rule.header)
+      return Array.isArray(value)
+        ? value.some(item => oneOf.has(item))
+        : oneOf.has(value)
+    }
   }
 
   if (typeof rule.headerNamePattern === 'string') {
@@ -437,8 +447,11 @@ const detectWithProviders = (
 
 const COMPILED_PROVIDERS = compileProviders(providersData)
 
-const toAsn = asn =>
-  asn == null ? undefined : Number(String(asn).replace(/^AS/i, ''))
+const toAsn = asn => {
+  const body = String(asn).trim().replace(/^AS/i, '')
+  if (body === '') return undefined
+  return Number(body)
+}
 
 const normalizeInput = input => {
   const { headers, html, body, url, statusCode, status, asn } = input || {}
