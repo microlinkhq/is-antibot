@@ -51,8 +51,7 @@ const createGetHeader = headers => {
   if (typeof headers.get === 'function') return name => headers.get(name)
   const byName = new Map()
   for (const name of Object.keys(headers)) {
-    const lower = name.toLowerCase()
-    if (!byName.has(lower) || name === lower) byName.set(lower, headers[name])
+    byName.set(name.toLowerCase(), headers[name])
   }
   return name => byName.get(name.toLowerCase())
 }

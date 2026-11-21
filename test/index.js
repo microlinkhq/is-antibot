@@ -148,6 +148,16 @@ test('akamai (edge server header name and repeated value)', t => {
   })
   t.is(repeated.provider, 'akamai')
   t.is(repeated.detection, 'headers')
+  const mixed = isAntibot({
+    headers: { server: ['nginx', 'AkamaiGHost'] },
+    statusCode: 403
+  })
+  t.is(mixed.provider, 'akamai')
+  t.is(mixed.detection, 'headers')
+  t.is(
+    isAntibot({ headers: { server: ['nginx'] }, statusCode: 403 }).detected,
+    false
+  )
 })
 
 test('akamai (edge server header on a non-403 is not a block)', t => {
@@ -172,6 +182,7 @@ test('akamai (origin on an Akamai network never answered)', t => {
     t.is(result.technique, 'waf')
   }
   t.is(isAntibot({ asn: 20940, statusCode: null }).detection, 'asn')
+  t.is(isAntibot({ asn: 20940, status: null }).detection, 'asn')
 })
 
 test('akamai (an origin on an Akamai network that answered is judged by its answer)', t => {
@@ -181,6 +192,10 @@ test('akamai (an origin on an Akamai network that answered is judged by its answ
     t.is(result.detected, false, `statusCode ${statusCode}`)
   }
   t.is(isAntibot({ headers, status: 200, asn: 20940 }).detected, false)
+  t.is(
+    isAntibot({ headers, statusCode: null, status: 200, asn: 20940 }).detected,
+    false
+  )
 })
 
 test('asn (an empty value is not autonomous system 0)', t => {
