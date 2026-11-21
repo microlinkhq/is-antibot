@@ -30,6 +30,21 @@ test('supports header operators', t => {
   t.is(detect({ headers: { 'x-prefix': 'Error from edge' } }).provider, 'test')
   t.is(detect({ headers: { 'x-exists': '1' } }).provider, 'test')
   t.is(detect({ headers: { 'x-one-of': 'b' } }).provider, 'test')
+  t.is(detect({ headers: { 'X-One-Of': 'b' } }).provider, 'test')
+  const canonical = createDetector({
+    providers: [
+      {
+        name: 'test',
+        detections: [
+          {
+            type: 'headers',
+            rules: [{ header: 'X-One-Of', oneOf: ['b'] }]
+          }
+        ]
+      }
+    ]
+  })
+  t.is(canonical({ headers: { 'x-one-of': 'b' } }).provider, 'test')
   t.is(detect({ headers: { 'x-except': 'challenge' } }).provider, 'test')
   t.is(detect({ headers: { 'x-except': 'PROTECTED' } }).detected, false)
   t.is(detect({ headers: { 'x-abc12345-a': '1' } }).provider, 'test')
