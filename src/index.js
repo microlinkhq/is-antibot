@@ -331,13 +331,13 @@ const DETECTION_COMPILERS = {
 }
 
 const compileDetection = detection => {
-  const compiled = DETECTION_COMPILERS[detection.type](detection)
   const statusCodes = detection.statusCodes
+  if (detection.type === 'asn' && statusCodes !== undefined) {
+    throw new TypeError('An asn detection cannot be gated by statusCodes')
+  }
+  const compiled = DETECTION_COMPILERS[detection.type](detection)
   if (!Array.isArray(statusCodes) || statusCodes.length === 0) {
     return compiled
-  }
-  if (detection.type === 'asn') {
-    throw new TypeError('An asn detection cannot be gated by statusCodes')
   }
   const allowed = new Set(statusCodes)
   const innerMatches = compiled.matches

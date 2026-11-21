@@ -224,6 +224,18 @@ test('asn (a malformed rule is rejected instead of matching every unanswered req
       }),
     { message: 'An asn detection cannot be gated by statusCodes' }
   )
+  t.throws(
+    () =>
+      isAntibot.createDetector({
+        providers: [
+          {
+            name: 'bad',
+            detections: [{ type: 'asn', statusCodes: [], rules: [{ asn: 1 }] }]
+          }
+        ]
+      }),
+    { message: 'An asn detection cannot be gated by statusCodes' }
+  )
 })
 
 test('fallback (a fallback detection waits for every other provider)', t => {
