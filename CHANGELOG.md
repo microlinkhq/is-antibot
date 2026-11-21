@@ -1,3 +1,9 @@
+## 2.6.0 (2026-11-21)
+
+### Features
+
+* **akamai:** detect edge denies from headers and silent hangs from the origin network ([#92](https://github.com/microlinkhq/is-antibot/issues/92)) ([6f9ced8](https://github.com/microlinkhq/is-antibot/commit/6f9ced8561f59adc34dded27d06bb708c7901413))
+
 ## 2.5.22 (2026-10-28)
 
 ### Bug Fixes
