@@ -3,7 +3,13 @@ type HeadersLike =
   | Record<string, string | string[] | undefined>
 
 declare namespace isAntibot {
-  type Detection = 'headers' | 'cookies' | 'html' | 'url' | 'statusCode'
+  type Detection =
+    | 'headers'
+    | 'cookies'
+    | 'html'
+    | 'url'
+    | 'statusCode'
+    | 'asn'
   type Technique = 'javascript' | 'captcha' | 'waf' | 'cookie'
   type ProviderName =
     | 'cloudflare'
@@ -52,6 +58,7 @@ declare namespace isAntibot {
     url?: string
     statusCode?: number
     status?: number
+    asn?: number | string
   }
 
   interface Result {
@@ -71,12 +78,14 @@ declare namespace isAntibot {
     | { contains: string }
     | { regex: string; flags?: string }
     | { status: number }
+    | { asn: number }
 
   interface DetectorDetection {
-    type: 'headers' | 'cookies' | 'html' | 'url' | 'status_code'
+    type: 'headers' | 'cookies' | 'html' | 'url' | 'status_code' | 'asn'
     technique?: Technique
     domain?: string
     domainWithoutSuffix?: string
+    fallback?: true
     statusCodes?: number[]
     rules: DetectionRule[]
   }

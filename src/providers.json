@@ -74,6 +74,18 @@
           ]
         },
         {
+          "type": "headers",
+          "technique": "waf",
+          "fallback": true,
+          "statusCodes": [403],
+          "rules": [
+            {
+              "header": "server",
+              "oneOf": ["AkamaiGHost", "AkamaiNetStorage"]
+            }
+          ]
+        },
+        {
           "type": "cookies",
           "technique": "cookie",
           "statusCodes": [403, 429, 503],
@@ -89,6 +101,19 @@
           "rules": [
             {
               "contains": "bmak.sensor_data"
+            }
+          ]
+        },
+        {
+          "type": "asn",
+          "technique": "waf",
+          "fallback": true,
+          "rules": [
+            {
+              "asn": 16625
+            },
+            {
+              "asn": 20940
             }
           ]
         }

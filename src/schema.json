@@ -58,9 +58,21 @@
       "type": "object",
       "required": ["type", "technique", "rules"],
       "additionalProperties": false,
+      "if": {
+        "type": "object",
+        "properties": { "type": { "const": "asn" } }
+      },
+      "then": {
+        "type": "object",
+        "not": { "type": "object", "required": ["statusCodes"] },
+        "properties": {
+          "rules": { "type": "array", "items": { "$ref": "#/$defs/asnEquals" } }
+        }
+      },
       "properties": {
         "type": {
-          "enum": ["headers", "cookies", "html", "url", "status_code"]
+          "enum": ["headers", "cookies", "html", "url", "status_code", "asn"],
+          "description": "asn matches only when the response has no status code: the origin never answered, so the network its IP belongs to is the only signal left."
         },
         "technique": {
           "enum": ["javascript", "captcha", "waf", "cookie"],
@@ -73,6 +85,10 @@
         "domainWithoutSuffix": {
           "type": "string",
           "description": "When set, this detection only applies if the request URL's registrable domain without public suffix matches (e.g. 'amazon' for amazon.es, amazon.co.uk, amazon.com)."
+        },
+        "fallback": {
+          "const": true,
+          "description": "Evaluate this detection only after every provider's other detections missed. For weak signals (an edge server header, the origin network) that would otherwise take the verdict from a more specific provider seen through the same edge."
         },
         "statusCodes": {
           "type": "array",
@@ -123,6 +139,9 @@
         },
         {
           "$ref": "#/$defs/statusEquals"
+        },
+        {
+          "$ref": "#/$defs/asnEquals"
         }
       ]
     },
@@ -260,6 +279,17 @@
         "unlessOpenGraph": {
           "const": true,
           "description": "Suppress the match when the document already has a non-shell og:title and an absolute og:image."
+        }
+      }
+    },
+    "asnEquals": {
+      "type": "object",
+      "description": "Match when the origin IP belongs to the autonomous system with this number.",
+      "required": ["asn"],
+      "additionalProperties": false,
+      "properties": {
+        "asn": {
+          "type": "integer"
         }
       }
     },

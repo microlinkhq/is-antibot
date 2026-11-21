@@ -105,6 +105,15 @@ The result is deterministic and fast—designed to run on every request without 
 
 It works with any HTTP client, including [got](https://github.com/sindresorhus/got), [axios](https://github.com/axios/axios), [undici](https://github.com/nodejs/undici) or just the vanilla [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
+When the request got no answer at all (it timed out or the connection was dropped), there is no response to read. Pass the autonomous system number of the origin IP as `asn` instead, and a provider that holds blocked clients on an open connection, as Akamai does, is still detected:
+
+```js
+const { detected, provider, detection } = isAntibot({ url, asn: 20940 })
+// => { detected: true, provider: 'akamai', detection: 'asn' }
+```
+
+`asn` is only read when there is no `statusCode`, so leave `statusCode` out only when no response arrived: an origin that answered is judged by its answer. Both `20940` and `'AS20940'` are accepted.
+
 ## How it works
 
 At a high level, **is-antibot** classifies challenge responses using:
@@ -132,7 +141,7 @@ Each provider has unique fingerprints across one or more of these signals. The l
     </thead>
     <tbody>
       <!-- providers:start -->
-      <tr><td>Akamai</td><td>Antibot</td><td>3</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span></td></tr>
+      <tr><td>Akamai</td><td>Antibot</td><td>4</td><td><span class="provider-chip">Headers</span><span class="provider-chip">Cookies</span><span class="provider-chip">HTML</span><span class="provider-chip">ASN</span></td></tr>
       <tr><td>AliExpress CAPTCHA</td><td>CAPTCHA</td><td>2</td><td><span class="provider-chip">HTML</span><span class="provider-chip">URL</span></td></tr>
       <tr><td>Amazon</td><td>Platform-specific</td><td>2</td><td><span class="provider-chip">Headers</span><span class="provider-chip">HTML</span></td></tr>
       <tr><td>Anubis</td><td>Antibot</td><td>1</td><td><span class="provider-chip">HTML</span></td></tr>
