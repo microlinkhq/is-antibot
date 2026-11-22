@@ -155,6 +155,86 @@ test('unlessHeaders vetoes a detection when any listed header is present', t => 
   )
 })
 
+test('unlessHeaders keeps a domain gate', t => {
+  const detect = createDetector({
+    providers: [
+      {
+        name: 'vetoed',
+        detections: [
+          {
+            type: 'headers',
+            domain: 'example.com',
+            unlessHeaders: ['x-failure-reason'],
+            rules: [{ header: 'server', equals: 'edge' }]
+          }
+        ]
+      }
+    ]
+  })
+
+  t.is(
+    detect({
+      url: 'https://example.com/a',
+      headers: { server: 'edge' }
+    }).provider,
+    'vetoed'
+  )
+  t.is(
+    detect({
+      url: 'https://other.test/a',
+      headers: { server: 'edge' }
+    }).detected,
+    false
+  )
+  t.is(
+    detect({
+      url: 'https://example.com/a',
+      headers: { server: 'edge', 'x-failure-reason': 'x' }
+    }).detected,
+    false
+  )
+})
+
+test('unlessHeaders keeps a domainWithoutSuffix gate', t => {
+  const detect = createDetector({
+    providers: [
+      {
+        name: 'vetoed',
+        detections: [
+          {
+            type: 'headers',
+            domainWithoutSuffix: 'amazon',
+            unlessHeaders: ['x-failure-reason'],
+            rules: [{ header: 'server', equals: 'edge' }]
+          }
+        ]
+      }
+    ]
+  })
+
+  t.is(
+    detect({
+      url: 'https://www.amazon.co.uk/a',
+      headers: { server: 'edge' }
+    }).provider,
+    'vetoed'
+  )
+  t.is(
+    detect({
+      url: 'https://example.com/a',
+      headers: { server: 'edge' }
+    }).detected,
+    false
+  )
+  t.is(
+    detect({
+      url: 'https://www.amazon.co.uk/a',
+      headers: { server: 'edge', 'x-failure-reason': 'x' }
+    }).detected,
+    false
+  )
+})
+
 test('provider and detection order determines precedence', t => {
   const detect = createDetector({
     providers: [
