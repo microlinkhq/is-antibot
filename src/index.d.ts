@@ -87,6 +87,7 @@ declare namespace isAntibot {
     domainWithoutSuffix?: string
     fallback?: true
     statusCodes?: number[]
+    unlessHeaders?: string[]
     rules: DetectionRule[]
   }
 

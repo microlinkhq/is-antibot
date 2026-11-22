@@ -98,6 +98,15 @@
           "minItems": 1,
           "description": "When set, the detection matches only if the response status code equals one of these values (AND with the detection's rules)."
         },
+        "unlessHeaders": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "description": "Response headers whose presence vetoes the detection, whatever their value. For origins that state why they refused (e.g. x-failure-reason: failure-expired on an expired signed URL) behind an edge that otherwise looks like a block."
+        },
         "rules": {
           "type": "array",
           "minItems": 1,

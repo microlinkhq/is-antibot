@@ -118,6 +118,43 @@ test('statusCodes AND-gates detection', t => {
   )
 })
 
+test('unlessHeaders vetoes a detection when any listed header is present', t => {
+  const detect = createDetector({
+    providers: [
+      {
+        name: 'vetoed',
+        detections: [
+          {
+            type: 'headers',
+            statusCodes: [403],
+            unlessHeaders: ['x-failure-reason', 'x-origin-denied'],
+            rules: [{ header: 'server', oneOf: ['edge'] }]
+          }
+        ]
+      }
+    ]
+  })
+
+  t.is(
+    detect({ headers: { server: 'edge' }, statusCode: 403 }).provider,
+    'vetoed'
+  )
+  t.is(
+    detect({
+      headers: { server: 'edge', 'X-Failure-Reason': 'failure-expired' },
+      statusCode: 403
+    }).detected,
+    false
+  )
+  t.is(
+    detect({
+      headers: { server: 'edge', 'x-origin-denied': '' },
+      statusCode: 403
+    }).detected,
+    false
+  )
+})
+
 test('provider and detection order determines precedence', t => {
   const detect = createDetector({
     providers: [

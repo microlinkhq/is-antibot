@@ -345,14 +345,30 @@ const compileDetection = detection => {
     throw new TypeError('An asn detection cannot be gated by statusCodes')
   }
   const compiled = DETECTION_COMPILERS[detection.type](detection)
-  if (!Array.isArray(statusCodes) || statusCodes.length === 0) {
-    return compiled
-  }
+  return gateByHeaders(
+    gateByStatusCodes(compiled, statusCodes),
+    detection.unlessHeaders
+  )
+}
+
+const gateByStatusCodes = (compiled, statusCodes) => {
+  if (!Array.isArray(statusCodes) || statusCodes.length === 0) return compiled
   const allowed = new Set(statusCodes)
   const innerMatches = compiled.matches
   return {
     ...compiled,
     matches: context => allowed.has(context.statusCode) && innerMatches(context)
+  }
+}
+
+const gateByHeaders = (compiled, unlessHeaders) => {
+  if (!Array.isArray(unlessHeaders) || unlessHeaders.length === 0) { return compiled }
+  const innerMatches = compiled.matches
+  const isVetoed = ({ getHeader }) =>
+    unlessHeaders.some(name => getHeader(name) != null)
+  return {
+    ...compiled,
+    matches: context => innerMatches(context) && !isVetoed(context)
   }
 }
 

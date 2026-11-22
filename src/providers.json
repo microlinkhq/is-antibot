@@ -78,6 +78,7 @@
           "technique": "waf",
           "fallback": true,
           "statusCodes": [403],
+          "unlessHeaders": ["x-failure-reason"],
           "rules": [
             {
               "header": "server",
