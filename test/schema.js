@@ -256,3 +256,28 @@ test('asn detection takes integer asn rules and no statusCodes', t => {
     '$.detections[0].rules[0].contains is not allowed'
   ])
 })
+
+test('unlessHeaders lists at least one non-empty header name', t => {
+  const provider = detection =>
+    validateProvider({
+      name: 'acme',
+      label: 'Acme',
+      category: 'antibot',
+      detections: [
+        {
+          type: 'headers',
+          technique: 'waf',
+          rules: [{ header: 'server', equals: 'edge' }],
+          ...detection
+        }
+      ]
+    })
+
+  t.deepEqual(provider({ unlessHeaders: ['x-failure-reason'] }), [])
+  t.deepEqual(provider({ unlessHeaders: [] }), [
+    '$.detections[0].unlessHeaders should contain at least 1 items'
+  ])
+  t.deepEqual(provider({ unlessHeaders: [''] }), [
+    '$.detections[0].unlessHeaders[0] should be at least 1 characters'
+  ])
+})

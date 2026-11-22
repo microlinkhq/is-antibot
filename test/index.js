@@ -135,6 +135,27 @@ test('akamai (WAF failover page served from NetStorage)', t => {
   t.is(result.detection, 'headers')
 })
 
+test('akamai (expired signed URL is the origin refusing, not a challenge)', t => {
+  const headers = {
+    server: 'AkamaiGHost',
+    'content-type': 'text/html',
+    'x-cache': 'TCP_DENIED from a2-16-8-141.deploy.akamaitechnologies.com',
+    'x-tt-trace-tag': 'id=16;cdn-cache=hit;type=static',
+    'x-failure-reason': 'failure-expired'
+  }
+  const html =
+    '<HTML><HEAD><TITLE>Access Denied</TITLE></HEAD><BODY><H1>Access Denied</H1>' +
+    '<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;8d081002</P></BODY></HTML>'
+  const result = isAntibot({
+    headers,
+    html,
+    statusCode: 403,
+    url: 'https://p16-common-sign.tiktokcdn-us.com/tos-useast2a-p-0037-euttp/owHQr6yODQsxuvleAiFAeejIcEfyL5GIE3g0IL~tplv-tiktokx-origin.image?x-expires=1791666000&x-signature=00p3OdVR222ztUPtZagnptSNDRY%3D'
+  })
+  t.is(result.detected, false)
+  t.is(result.provider, null)
+})
+
 test('akamai (edge server header name and repeated value)', t => {
   const canonical = isAntibot({
     headers: { Server: 'AkamaiGHost' },
