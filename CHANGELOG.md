@@ -1,3 +1,9 @@
+## 2.6.1 (2026-11-22)
+
+### Bug Fixes
+
+* **akamai:** leave an expired signed URL to its origin ([#93](https://github.com/microlinkhq/is-antibot/issues/93)) ([2d21dd7](https://github.com/microlinkhq/is-antibot/commit/2d21dd78a7cdc111b29492f467ddd11abd96b23a))
+
 ## 2.6.0 (2026-11-21)
 
 ### Features
